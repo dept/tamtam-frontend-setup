@@ -1,0 +1,48 @@
+
+%heading-base {
+    font-family: $font-stack-header;
+    font-weight: normal;
+    color: $color-text-header;
+}
+
+%regular-h1 {
+    @extend %heading-base;
+    font-size: $font-size-h1;
+}
+
+%regular-h2 {
+    @extend %heading-base;
+    font-size: $font-size-h2;
+}
+
+%regular-h3 {
+    @extend %heading-base;
+    font-size: $font-size-h3;
+}
+
+%regular-h4 {
+    @extend %heading-base;
+    font-size: $font-size-h4;
+}
+
+%regular-h5 {
+    @extend %heading-base;
+    font-size: $font-size-h5;
+}
+
+%regular-h6 {
+    @extend %heading-base;
+    font-size: $font-size-h6;
+}
+
+
+// apply regular styles to h tags.
+@for $i from 1 through 6 {
+
+    h#{$i}, .h#{$i} {
+
+        @extend %regular-h#{$i};
+
+    }
+
+}

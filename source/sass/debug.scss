@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+// debug config
+
+
+
+
+
+// Add an extra nested layer to try to make sure the debug style won't be compromised by the css of the project
+html._debug_page_ {
+
+    background-color: #ECECEC;
+
+    @import "_debug/project/info";
+    @import "_debug/project/pages-list";
+    @import "_debug/project/directories";
+
+    @import "_debug/styleguide/block";
+    @import "_debug/styleguide/block-fonts";
+    @import "_debug/styleguide/svg-collection";
+
+}
+
+// the debug data panel should be able to be used everywhere
+@import "_debug/tools/debug-data";
+
+
+// Move browserSync notification to the bottom right
+#__bs_notify__ {
+    top: auto !important;
+    bottom: 0 !important;
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 0px !important;
+}
+
+
+
+
+
+
+

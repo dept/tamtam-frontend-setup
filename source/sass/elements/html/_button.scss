@@ -1,0 +1,68 @@
+
+
+
+// ----------------- Button styling ---------------
+
+%button-base {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    vertical-align: top;
+}
+
+%regular-button {
+
+    @extend %button-base;
+
+    background-color: $color-primary;
+    color: $color-white;
+
+    font-family: $font-stack-buttons;
+    overflow: hidden;
+    text-transform: uppercase;
+    text-align: center;
+
+    // regular
+    padding: 11px 20px 10px 20px;
+    font-size: 15px;
+    line-height: 15px;
+
+	transition-property: background-color $animation-button-time $animation-button-ease;
+
+    &:hover, &:focus {
+        background-color: darken($color-primary, 10%);
+    }
+
+}
+
+.button {
+
+    @extend %regular-button;
+
+    //    &--large
+    //    {
+    //        @extend %button-base;
+    //
+    //        padding: 15px 30px 11px 35px;
+    //        font-size: 2.5rem;
+    //        line-height: 2.5rem;
+    //
+    //    }
+
+    &--down
+    {
+        @extend %regular-button;
+
+        .icon-arrow-down {
+            margin-left: 10px;
+            top: 2px;
+            font-size: 12px;
+        }
+
+    }
+
+}
+
+

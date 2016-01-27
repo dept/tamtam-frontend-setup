@@ -1,0 +1,47 @@
+
+
+// most basic link style
+%a {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    text-overflow: ellipsis;
+}
+
+// regular link style
+%regular-link {
+
+    @extend %a;
+
+    color: $color-primary;
+    border-bottom: 2px solid transparent;
+	transition: border-bottom-color $animation-link-time $animation-link-ease;
+
+    &:hover, &:focus {
+        border-bottom-color: $color-primary;
+    }
+
+    &:active {
+        border-bottom-color: darken($color-primary, 10%);
+    }
+
+}
+
+a { @extend %a; } // apply basics
+
+
+.link {
+
+	@extend %regular-link;
+
+	&--underline {
+
+		@extend %regular-link;
+
+		padding-bottom: 1px;
+		border-bottom: 2px solid $color-primary;
+
+	}
+
+}
+

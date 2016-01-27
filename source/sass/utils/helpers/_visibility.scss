@@ -1,0 +1,36 @@
+//
+//    A collection of some helper classes for toggling the visibility of elements
+//
+//    e.g.
+//
+//    <div class=" hidden-xs ">
+//        This element will be hidden on screen size xs
+//    </div>
+//
+
+
+$visibility-breakpoints: (
+                     'lg': $screen-extra-large-only,
+                     'md': $screen-medium-only,
+                     'sm': $screen-small-only,
+                     'xs': $screen-small-and-down
+                  );
+
+
+@each $visibility-modifier, $visibility-media in $visibility-breakpoints {
+
+    .visible-#{$visibility-modifier}-block,
+    .visible-#{$visibility-modifier}-inline-block,
+    .visible-#{$visibility-modifier}-inline             {      display: none            !important; }
+
+
+    @media #{$visibility-media} {
+
+        .visible-#{$visibility-modifier}-block          {      display: block           !important; }
+        .visible-#{$visibility-modifier}-inline-block   {      display: inline-block    !important; }
+        .visible-#{$visibility-modifier}-inline         {      display: inline          !important; }
+        .hidden-#{$visibility-modifier}                 {      display: none            !important; }
+
+    }
+
+}
