@@ -1,6 +1,6 @@
 //@formatter:off
 
-var template            = require('lodash.template');
+var _            		= require('lodash');
 var pathUtil            = require('path');
 var gulpUtil            = require('gulp-util');
 var log                 = require('./log');
@@ -48,7 +48,7 @@ function PathConfig ( root ) {
 
         var loopNum = 0, maxRecursion = 10;
         while ( _loDashTemplateRegExp.test( path ) && loopNum <= maxRecursion ) {
-            path = template( path );
+            path = _.template( path );
             path = path( _context );
 
             if( loopNum++ > maxRecursion ) gulpUtil.log( gulpUtil.colors.red( 'Error: Maximum recursion (' + maxRecursion + ') reached or failed to compile path template for name: \'' + name + '\'. Compiled path: \'' + path + '\'' ) );

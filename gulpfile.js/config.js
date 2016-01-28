@@ -68,9 +68,9 @@ source.root					= { path: './source' };
 source.bower                = { path: './bower_components' };
 source.assets               = { path: '<%= root %>/assets' };
 source.html                 = { path: '<%= root %>/html',			files: '*.html' 	};		// entry point files
-source.data                 = { path: '<%= html %>/data',			files: '**.json' 	};
 source.css                  = { path: '<%= root %>/sass',			files: '*.scss' 	};		// entry point files
 source.javascript           = { path: '<%= root %>/javascript',		files: '*.js' 		};		// entry point files
+source.data                 = { path: '<%= assets %>/data',			files: [ '*.json', '**/*.json' ] 	};
 source.images               = { path: '<%= assets %>/images',		files: [ '*.{jpg,jpeg,png,gif,svg}', '*/**.{jpg,jpeg,png,gif,svg}' ] };
 source.svg                  = { path: '<%= assets %>/svg',			files: [ '*.svg', '*/**.svg' ] };
 
