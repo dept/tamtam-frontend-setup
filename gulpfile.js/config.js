@@ -86,11 +86,4 @@ dest.svg                    = { path: '<%= assets %>/svg' };
 dest.sourcemaps             = { path: '<%= assets %>/sourcemaps' };
 
 
-config.source.getPath( 'javascript' )	// returns './source/javascript'
-
-config.source.getPath( 'javascript', 'somefile.js' )	// returns './source/javascript/somefile.js'
-
-config.source.getFiles( 'javascript' )	// returns './source/javascript/*.js'
-
-
 module.exports              = config;

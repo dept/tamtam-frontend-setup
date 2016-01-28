@@ -265,11 +265,14 @@ function wrapTaskFunction ( taskFunction ) {
 
         wrappedTaskFunction = function () {
             try {
+
                 return taskFunction.apply( _gulp, arguments );
-            }
+
+			}
             catch ( error ) {
-                console.log('log error');
+
                 log.error( error, true, true );
+
             }
         }
 

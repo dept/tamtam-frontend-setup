@@ -3,6 +3,7 @@
 var loadPlugins 				= require( '../util/loadPlugins' );
 var log 						= require( '../util/log' );
 var startTime 					= process.hrtime();
+var config 						= require('../config');
 var gulp;
 
 
@@ -34,6 +35,8 @@ function gulpInit ( callback ) {
 
 	gulpDecorator.decorate( gulp ); // Decorate gulp with extra functionality for better debugging and error handling.
 
+	console.log('decorated');
+	
 	log.time( { sender: 'gulpfile', message: 'init - ', time: process.hrtime( startTime ) } );
 
 	callback( gulp );

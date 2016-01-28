@@ -7,9 +7,6 @@ var requireCachedModule     = require('./requireCachedModule');
 var path                    = require('path');
 var glob                    = requireCachedModule('glob');
 
-
-var dotRegExp               = /^\./;
-
 // @formatter:on
 
 function loadTasks () {
@@ -20,11 +17,11 @@ function loadTasks () {
     log.debug( { sender: 'loadTasks', message: '\tLoading tasks...' } );
 
     var relative = path.relative( __dirname, process.cwd() );
-    var taskFiles = glob.sync( './gulp/tasks/**/*.js' );
+    var taskFiles = glob.sync( path.normalize('gulpfile.js/tasks/*.js') );
 
     for ( var i = 0, leni = taskFiles.length; i < leni; i++ ) {
 
-        require( taskFiles[ i ].replace( dotRegExp, relative ) );
+        require( relative + path.sep + taskFiles[ i ] );
 
         if( config.gulp.debug ) log.info( { sender: 'loadTasks', message: 'task loaded: ' + taskFiles[ i ] } );
 

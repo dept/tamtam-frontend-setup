@@ -13,21 +13,21 @@ var imageminWebp            = requireCachedModule('imagemin-webp');
  * Task for webp images.
  * @see https://github.com/imagemin/imagemin-webp
  */
-gulp.task('webp', function () {
+gulp.task( 'webp', function () {
 
-    var options = {
+	var options = {
 
-        config: {
-            quality: 100,
-            lossless: true
-        }
+		config: {
+			quality: 100,
+			lossless: true
+		}
 
-    };
+	};
 
-    return gulp.src( config.source.getFiles( 'images' ) )
+	return gulp.src( config.source.getFiles( 'images' ) )
 
-        .pipe( changed( config.dest.getPath( 'images' ) ) )     // Ignore unchanged files
-        .pipe(imageminWebp(options.config))                     // Convert to webp
-        .pipe( gulp.dest( config.dest.getPath( 'images' ) ) );  // Export
+		.pipe( changed( config.dest.getPath( 'images' ) ) )     // Ignore unchanged files
+		.pipe( imageminWebp( options.config ) )                     // Convert to webp
+		.pipe( gulp.dest( config.dest.getPath( 'images' ) ) );  // Export
 
 } );
