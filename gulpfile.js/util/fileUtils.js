@@ -3,6 +3,7 @@
 var log                     = require('./log');
 var glob                    = require('glob');
 var path                    = require('path');
+var _                    	= require('lodash');
 
 // @formatter:on
 
@@ -53,7 +54,7 @@ fileUtils.getList = function ( sourceGlob, opt_stripRoot, opt_stripExtension ) {
 
     }
 
-    return fileList;
+    return _.uniq(fileList);
 
 }
 

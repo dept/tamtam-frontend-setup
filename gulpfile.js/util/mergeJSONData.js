@@ -1,8 +1,10 @@
 //@formatter:off
 
+var path                    = require('path');
+var fs                    	= require('fs');
+
 var log                     = require('./log');
 var config                  = require('../config');
-var path                    = require('path');
 var requireCachedModule     = require('../util/requireCachedModule');
 var fileUtils               = require('../util/fileUtils');
 var glob                    = requireCachedModule('glob');
@@ -18,52 +20,72 @@ var jsonFileRegExp          = /.json$/i;
  */
 function mergeJSONData ( root, source ) {
 
-    if( root.slice( -1 ) !== path.sep ) root += path.sep; // force path separator as last character
+	if( root.slice( -1 ) !== path.sep ) root += path.sep; // force path separator as last character
 
-    var data = {};
+	var data = {};
+	var files = fileUtils.getList( source );
 
-    var files = fileUtils.getList( source );
 
-    for ( var i = 0, leni = files.length; i < leni; i++ ) {
+	for ( var i = 0, leni = files.length; i < leni; i++ ) {
 
-        var filePath = files[ i ];
+		var filePath = files[ i ];
 
-        if( !jsonFileRegExp.test( filePath ) ) {
-            log.warn( { sender: 'mergeJSONData', message: 'Can only merge JSON Data!' } );
-            continue;
-        }
+		if( !jsonFileRegExp.test( filePath ) ) {
+			log.warn( {
+				sender: 'mergeJSONData',
+				message: 'Can only merge JSON Data!'
+			} );
+			continue;
+		}
 
-        var relativePath = path.relative( __dirname, filePath );
-        var fileData = require( relativePath );
+		try {
 
-        var dataPath = filePath.replace( root, '' );
-        dataPath = dataPath.replace( jsonFileRegExp, '' );
-        dataPath = dataPath.split( path.sep );
+			var fileData = fs.readFileSync( filePath, 'utf-8' );
+			if( fileData ) fileData = JSON.parse( fileData );
 
-        var currentNode = data;
-        for ( var j = 0, lenj = dataPath.length; j < lenj; j++ ) {
+		} catch ( error ) {
 
-            var key = dataPath[ j ];
+			log.error( {
+				sender: 'mergeJSONData',
+				message: 'Failed to load json data for file: ' + filePath
+			} );
 
-            if( !key.length ) continue;
+			log.error( error );
 
-            if( j === lenj - 1 ) {
+			continue;
 
-                // assign the data on the last node
-                currentNode[ key ] = fileData;
+		}
 
-            } else {
+		var dataPath = filePath.replace( root, '' );
+		dataPath = dataPath.replace( jsonFileRegExp, '' );
+		dataPath = dataPath.split( path.sep );
 
-                currentNode[ key ] = currentNode[ key ] || {};
-                currentNode = currentNode[ key ];
+		var currentNode = data;
+		for ( var j = 0, lenj = dataPath.length; j < lenj; j++ ) {
 
-            }
+			var key = dataPath[ j ];
 
-        }
+			if( !key.length ) continue;
 
-    }
+			if( j === lenj - 1 ) {
 
-    return data;
+				// assign the data on the last node
+				currentNode[ key ] = fileData;
+
+			} else {
+
+				currentNode[ key ] = currentNode[ key ] || {};
+				currentNode = currentNode[ key ];
+
+			}
+
+		}
+
+	}
+
+	console.log( 'data: ', data );
+
+	return data;
 
 }
 
