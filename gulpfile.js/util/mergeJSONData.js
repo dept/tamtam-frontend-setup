@@ -83,8 +83,6 @@ function mergeJSONData ( root, source ) {
 
 	}
 
-	console.log( 'data: ', data );
-
 	return data;
 
 }

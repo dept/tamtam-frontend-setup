@@ -1,4 +1,4 @@
-div._project-pages-list {
+._project-pages-list {
 	position: relative;
 	margin: 50px auto;
 	text-align: center;
@@ -30,13 +30,13 @@ div._project-pages-list {
 		position: relative;
 		padding: 4px 10px !important;
 		margin: 0 !important;
-		color: #EDE0CE;
+		color: #ECECEC;
 		text-decoration: none !important;
 		z-index: 2;
 		transition-property: color;
 
 		&, &:before {
-			transition: 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940); // ease out quad
+			transition: 150ms cubic-bezier(0.250, 0.460, 0.450, 0.940); // ease out quad
 		}
 
 		&:before {
@@ -54,12 +54,13 @@ div._project-pages-list {
 		}
 
 		&:hover {
-			color: #2B2A27;
+//			color: #2B2A27;
 
 			&:before {
 				background-color: #EDE0CE;
-				left: -3px;
-				right: -3px;
+				background-color: $color-primary;
+				left: -5px;
+				right: -5px;
 			}
 		}
 	}
@@ -67,7 +68,7 @@ div._project-pages-list {
 	li {
 		position: relative;
 		height: 30px;
-		margin: 0 0 7px 0 !important;
+		margin: 0 0 4px 0 !important;
 		padding: 0 !important;
 		list-style: none !important;
 
@@ -85,17 +86,17 @@ div._project-pages-list {
 .dark ._project-pages-list {
 
 	a {
-		color: #EDE0CE;
+		color: #333;
 
 		&:before {
-			background-color: #4e4d49;
+			background-color: #ECECEC;
 		}
 
 		&:hover {
 			color: #2B2A27;
 
 			&:before {
-				background-color: #EDE0CE;
+				background-color: $color-primary;
 			}
 		}
 	}

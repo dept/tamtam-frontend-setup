@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
-// debug config
 
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
-
+@import "_debug/settings/colors";
 
 
 // Add an extra nested layer to try to make sure the debug style won't be compromised by the css of the project
