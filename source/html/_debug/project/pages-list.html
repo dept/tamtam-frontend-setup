@@ -1,0 +1,13 @@
+<div class="_project-pages-list">
+    <ul>
+        {% for page in project.pages %}
+
+            {% if page != "index.html" %}
+            <li>
+                <a href="{{ page }}">{{ page | replace(".html", "") }}</a>
+            </li>
+            {% endif %}
+
+        {% endfor %}
+    </ul>
+</div>
