@@ -9,7 +9,15 @@
 // Add an extra nested layer to try to make sure the debug style won't be compromised by the css of the project
 html._debug_page_ {
 
+	font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: #ECECEC;
+	color: #333333;
+
+	&.dark
+	{
+		background-color: #333333;
+		color: #ECECEC;
+	}
 
     @import "_debug/project/info";
     @import "_debug/project/pages-list";
