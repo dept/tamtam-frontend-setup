@@ -5,7 +5,7 @@ var config                  = require('../config');
 
 var changed                 = requireCachedModule('gulp-changed');
 var gulp                    = requireCachedModule('gulp');
-var imageminWebp            = requireCachedModule('imagemin-webp');
+var webP                    = requireCachedModule('gulp-webp');
 
 // @formatter:on
 
@@ -27,7 +27,7 @@ gulp.task( 'webp', function () {
 	return gulp.src( config.source.getFiles( 'images' ) )
 
 		.pipe( changed( config.dest.getPath( 'images' ) ) )     // Ignore unchanged files
-		.pipe( imageminWebp( options.config ) )                     // Convert to webp
+		.pipe( webP( options.config ) )                 				// Convert to webp
 		.pipe( gulp.dest( config.dest.getPath( 'images' ) ) );  // Export
 
 } );

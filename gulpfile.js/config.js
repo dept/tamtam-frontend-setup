@@ -64,7 +64,7 @@ config.applyProcessArgs = function  (  ) {
 var source 	= config.source = new PathConfig();
 var dest 	= config.dest  	= new PathConfig();
 
-source.root					= { path: './source' };
+source.root					        = { path: './source' };
 source.bower                = { path: './bower_components' };
 source.assets               = { path: '<%= root %>/assets' };
 source.html                 = { path: '<%= root %>/html',			files: '*.html' 	};		// entry point files
