@@ -27,6 +27,7 @@ config.throwError       = false;    			// Actually throws an (native) error when
 
 config.minify           = false;
 config.optimizeImages   = true;
+config.webpImages       = true;
 config.sourcemaps       = true;
 config.cleanCSS         = false;    			// removes unused CSS, requires 'gulp-uncss' installation.
 config.prettyHTML       = false;
@@ -62,7 +63,7 @@ config.applyProcessArgs = function  (  ) {
  *  config.dest.getPath('css');
  */
 var source 	= config.source = new PathConfig();
-var dest 	= config.dest  	= new PathConfig();
+var dest 	= config.dest    	= new PathConfig();
 
 source.root					        = { path: './source' };
 source.bower                = { path: './bower_components' };
@@ -71,11 +72,12 @@ source.html                 = { path: '<%= root %>/html',			files: '*.html' 	};	
 source.css                  = { path: '<%= root %>/sass',			files: '*.scss' 	};		// entry point files
 source.javascript           = { path: '<%= root %>/javascript',		files: '*.js' 		};		// entry point files
 source.data                 = { path: '<%= assets %>/data',			files: [ '*.json', '**/*.json' ] 	};
-source.images               = { path: '<%= assets %>/images',		files: [ '*.{jpg,jpeg,png,gif,svg}', '*/**.{jpg,jpeg,png,gif,svg}' ] };
+source.images               = { path: '<%= assets %>/images',   files: [ '*.{jpg,jpeg,png,gif,svg}', '*/**.{jpg,jpeg,png,gif,svg}' ] };
+source.webp                 = { path: '<%= assets %>/images',		files: [ '*.{jpg,jpeg,png,gif,svg}', '*/**.{jpg,jpeg,png,gif,svg}' ] };
 source.svg                  = { path: '<%= assets %>/svg',			files: [ '*.svg', '*/**.svg' ] };
 
 
-dest.root					= { path: './build' };
+dest.root					          = { path: './build' };
 dest.assets                 = { path: '<%= root %>' };
 dest.html                   = { path: '<%= root %>' };
 dest.css                    = { path: '<%= assets %>/css' };
