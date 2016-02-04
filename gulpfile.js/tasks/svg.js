@@ -36,7 +36,7 @@ gulp.task( 'svg', function () {
     };
 
 
-    return gulp.src( config.source.getFiles( 'svg' ) )
+    return gulp.src( config.source.getFileGlobs( 'svg' ) )
 
         .pipe( changed( config.dest.getPath( 'svg' ) ) )        // Ignore unchanged files
         .pipe( svgmin( options.svgmin ) )                       // Optimize

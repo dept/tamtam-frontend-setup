@@ -35,8 +35,6 @@ function gulpInit ( callback ) {
 
 	gulpDecorator.decorate( gulp ); // Decorate gulp with extra functionality for better debugging and error handling.
 
-	console.log('decorated');
-	
 	log.time( { sender: 'gulpfile', message: 'init - ', time: process.hrtime( startTime ) } );
 
 	callback( gulp );

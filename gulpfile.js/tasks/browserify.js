@@ -63,7 +63,7 @@ function createBundleConfigs () {
 
     var bundleConfigs = [];
     var fileEntries = [];
-    var fileGlob = config.source.getFiles('javascript');
+    var fileGlob = config.source.getFileGlobs('javascript');
 
 
     if( Array.isArray( fileGlob ) ) {

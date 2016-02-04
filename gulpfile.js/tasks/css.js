@@ -78,7 +78,7 @@ gulp.task('css', function () {
     var sizeAfter = gulpSize( { showFiles: true } );
 
 
-    return gulp.src( config.source.getFiles('css') )
+    return gulp.src( config.source.getFileGlobs('css') )
 
         .pipe( gulpIf( config.sourcemaps, sourcemaps.init() ) )
         // sass
@@ -91,7 +91,7 @@ gulp.task('css', function () {
         .pipe( autoprefixer( options.autoprefixer ) )
 
         // sourcemaps need a relative path from the output folder
-        .pipe( gulpIf( config.sourcemaps, sourcemaps.write( path.relative( config.dest.getPath( 'css' ), config.dest.getPath( 'sourcemaps' ) ) ) ) )
+        .pipe( gulpIf( config.sourcemaps, sourcemaps.write( '.' ) ) )
 
         .pipe( gulp.dest( config.dest.getPath('css') ) )
         // exclude map files because somehow they break the browserSync flow/connection

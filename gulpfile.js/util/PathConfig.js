@@ -4,8 +4,15 @@ var _            		= require('lodash');
 var pathUtil            = require('path');
 var gulpUtil            = require('gulp-util');
 var log                 = require('./log');
+var fileUtils           = require('./fileUtils');
 
 //@formatter:on
+
+
+// A RegExp to test whether a string contains a lodash template.
+// @see https://lodash.com/docs#template
+var _loDashTemplateRegExp = /<%=\s*\w+\s*%>/
+
 
 /**
  * Simple object containing a function to parse lodash path variables on itself.
@@ -19,10 +26,6 @@ function PathConfig ( root ) {
 
     _this.root = { path: root };
 
-
-    // A RegExp to test whether a string contains a lodash template.
-    // @see https://lodash.com/docs#template
-    var _loDashTemplateRegExp = /<%=\s*\w+\s*%>/
 
     /**
      * The path string can be a lodash template, this functions passes
@@ -60,11 +63,11 @@ function PathConfig ( root ) {
     }
 
     /**
-     * Returns the file path glob that was defined in the named data
+     * Returns the file path globs that was defined in the named data
      * @param name
      * @returns {string|Array}
      */
-    _this.getFiles = function ( name ) {
+    _this.getFileGlobs = function ( name ) {
 
         if( !_context ) createContext();
 
@@ -79,7 +82,7 @@ function PathConfig ( root ) {
 
         if( filesGlob === undefined ) return log.error( {
             sender: 'PathConfig',
-            message: 'attempting getFiles on a config that does not contain a files configuration: \'' + name + '\''
+            message: 'attempting getFilesGlob on a config that does not contain a files configuration: \'' + name + '\''
         } );
 
 
@@ -102,6 +105,19 @@ function PathConfig ( root ) {
         return filePathsGlob;
 
     }
+
+	/**
+	 * Returns the file paths found in the fileGlobs
+ 	 * @param name
+	 */
+	_this.getFilePaths = function  ( name ) {
+
+		var globs = _this.getFileGlobs( name );
+		var files = fileUtils.getList( globs );
+
+		return files;
+
+	}
 
     /**
      * Generates the context in which paths are parsed.

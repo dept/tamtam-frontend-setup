@@ -62,7 +62,7 @@ gulp.task( 'sprite', function () {
     var pngStream;
     var svgStream;
 
-    svgStream = gulp.src( config.source.getFiles( 'svg' ) )
+    svgStream = gulp.src( config.source.getFileGlobs( 'svg' ) )
 
         .pipe( svgmin( options.svgmin ) )                       // Optimize SVG files
         .pipe( gulpSvgSprite( options.svgSprite ) )             // Create sprite and SASS template

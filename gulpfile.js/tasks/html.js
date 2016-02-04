@@ -81,7 +81,7 @@ gulp.task( 'html', function () {
 
 
 	var contextData = {};
-	var jsonData = mergeJSONData( config.source.getPath( 'data' ), config.source.getFiles( 'data' ) );
+	var jsonData = mergeJSONData( config.source.getPath( 'data' ), config.source.getFileGlobs( 'data' ) );
 
 	// merge retrieved data into the context object
 	for ( var key in jsonData ) {
@@ -101,8 +101,8 @@ gulp.task( 'html', function () {
 
 	}
 
-	var pagesList = fileUtils.getList( config.source.getFiles( 'html' ), config.source.getPath( 'html' ) );
-	var svgList = fileUtils.getList( config.source.getFiles( 'svg' ), config.source.getPath( 'svg' ), true );
+	var pagesList = fileUtils.getList( config.source.getFileGlobs( 'html' ), config.source.getPath( 'html' ) );
+	var svgList = fileUtils.getList( config.source.getFileGlobs( 'svg' ), config.source.getPath( 'svg' ), true );
 
 	contextData.project = {
 		name: packageJSON.name,
@@ -128,7 +128,7 @@ gulp.task( 'html', function () {
 	environment.addExtension( 'DebugExtension', new DebugExtension( gulpNunjucks.nunjucks ) );
 
 
-	return gulp.src( config.source.getFiles( 'html' ), { base: config.source.getPath( 'html' ) } )
+	return gulp.src( config.source.getFileGlobs( 'html' ), { base: config.source.getPath( 'html' ) } )
 
 		.pipe( gulpData( getDataForFile ) )
 		.pipe( gulpNunjucks() )

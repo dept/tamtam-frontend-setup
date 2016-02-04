@@ -35,7 +35,7 @@ gulp.task('images', function () {
 
     };
 
-    return gulp.src( config.source.getFiles( 'images' ) )
+    return gulp.src( config.source.getFileGlobs( 'images' ) )
 
         .pipe( changed( config.dest.getPath( 'images' ) ) )                         // Ignore unchanged files
         .pipe( gulpIf( config.optimizeImages, imagemin( options.imageConfig ) ) )   // Optimize

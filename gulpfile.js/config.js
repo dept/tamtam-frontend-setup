@@ -62,30 +62,29 @@ config.applyProcessArgs = function  (  ) {
  *
  *  config.dest.getPath('css');
  */
-var source 	= config.source = new PathConfig();
+var source 	= config.source 	= new PathConfig();
 var dest 	= config.dest    	= new PathConfig();
 
-source.root					        = { path: './source' };
-source.bower                = { path: './bower_components' };
-source.assets               = { path: '<%= root %>/assets' };
-source.html                 = { path: '<%= root %>/html',			files: '*.html' 	};		// entry point files
-source.css                  = { path: '<%= root %>/sass',			files: '*.scss' 	};		// entry point files
-source.javascript           = { path: '<%= root %>/javascript',		files: '*.js' 		};		// entry point files
-source.data                 = { path: '<%= assets %>/data',			files: [ '*.json', '**/*.json' ] 	};
-source.images               = { path: '<%= assets %>/images',   files: [ '*.{jpg,jpeg,png,gif,svg}', '*/**.{jpg,jpeg,png,gif,svg}' ] };
-source.webp                 = { path: '<%= assets %>/images',		files: [ '*.{jpg,jpeg,png,gif,svg}', '*/**.{jpg,jpeg,png,gif,svg}' ] };
-source.svg                  = { path: '<%= assets %>/svg',			files: [ '*.svg', '*/**.svg' ] };
+source.root						= { path: './source' };
+source.bower                	= { path: './bower_components' };
+source.assets               	= { path: '<%= root %>/assets' };
+source.html                 	= { path: '<%= root %>/html',			files: '*.html' 	};		// entry point files
+source.css                  	= { path: '<%= root %>/sass',			files: '*.scss' 	};		// entry point files
+source.javascript           	= { path: '<%= root %>/javascript',		files: '*.js' 		};		// entry point files
+source.data                 	= { path: '<%= assets %>/data',			files: [ '*.json', '**/*.json' ] 	};
+source.images               	= { path: '<%= assets %>/images',   	files: [ '*.{jpg,jpeg,png,gif,svg}', '*/**.{jpg,jpeg,png,gif,svg}' ] };
+source.webp                 	= { path: '<%= assets %>/images',		files: [ '*.{jpg,jpeg,png,gif,svg}', '*/**.{jpg,jpeg,png,gif,svg}' ] };
+source.svg                  	= { path: '<%= assets %>/svg',			files: [ '*.svg', '*/**.svg' ] };
 
 
-dest.root					          = { path: './build' };
-dest.assets                 = { path: '<%= root %>' };
-dest.html                   = { path: '<%= root %>' };
-dest.css                    = { path: '<%= assets %>/css' };
-dest.javascript             = { path: '<%= assets %>/js' };
-dest.images                 = { path: '<%= assets %>/images' };
-dest.fonts                  = { path: '<%= assets %>/fonts' };
-dest.svg                    = { path: '<%= assets %>/svg' };
-dest.sourcemaps             = { path: '<%= assets %>/sourcemaps' };
+dest.root						= { path: './build' };
+dest.assets                 	= { path: '<%= root %>' };
+dest.html                   	= { path: '<%= root %>' };
+dest.css                    	= { path: '<%= assets %>/css' };
+dest.javascript             	= { path: '<%= assets %>/js' };
+dest.images                 	= { path: '<%= assets %>/images' };
+dest.fonts                  	= { path: '<%= assets %>/fonts' };
+dest.svg                    	= { path: '<%= assets %>/svg' };
 
 
 module.exports              = config;
