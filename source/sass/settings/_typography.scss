@@ -12,18 +12,18 @@ $font-stack-secondary	: 'Helvetica Neue', 'Helvetica Neue', Helvetica, Arial, sa
 // Font settings
 
 $font-stack-header		: $font-stack-primary;
-$font-stack-body		: $font-stack-secondary;
+$font-stack-body		  : $font-stack-secondary;
 $font-stack-buttons		: $font-stack-secondary;
 
 
 // Font sizes
 
-$font-size-root			: 10px;       // The font size set on the root html element.
-$font-size-body			: 1.6rem;     // Regular font size
-
-$font-size-h1			: 3.2rem;
-$font-size-h2			: 2.4rem;
-$font-size-h3			: 1.9rem;
-$font-size-h4			: 1.6rem;
-$font-size-h5			: 1.3rem;
-$font-size-h6			: 1.1rem;
+$font-size-root		   	: 10px;       // The font size set on the root html element.
+$font-size-body		   	: 1.6rem;     // Regular font size
+  
+$font-size-h1			    : 3.2rem;
+$font-size-h2			    : 2.4rem;
+$font-size-h3			    : 1.9rem;
+$font-size-h4		     	: 1.6rem;
+$font-size-h5		     	: 1.3rem;
+$font-size-h6		    	: 1.1rem;

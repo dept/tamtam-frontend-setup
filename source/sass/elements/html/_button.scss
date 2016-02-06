@@ -29,7 +29,7 @@
     font-size: 15px;
     line-height: 15px;
 
-	transition-property: background-color $animation-button-time $animation-button-ease;
+	transition-property: background-color $transition-button-time $transition-button-ease;
 
     &:hover, &:focus {
         background-color: darken($color-primary, 10%);

@@ -64,7 +64,7 @@
         line-height: 3.6rem;
         z-index: 1; // force inner content to be above the :before
         border: 1px solid $color-grey;
-        transition: border-color $animation-form-time $animation-form-ease;
+        transition: border-color $transition-form-time $transition-form-ease;
     }
 
     svg {

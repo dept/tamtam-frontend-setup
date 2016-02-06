@@ -15,7 +15,7 @@
 
     color: $color-primary;
     border-bottom: 2px solid transparent;
-	transition: border-bottom-color $animation-link-time $animation-link-ease;
+	transition: border-bottom-color $transition-link-time $transition-link-ease;
 
     &:hover, &:focus {
         border-bottom-color: $color-primary;

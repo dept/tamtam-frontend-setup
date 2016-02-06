@@ -54,7 +54,7 @@
         cursor: pointer;
         padding: .97em 2.5em .97em 1em;
 
-        transition: border-color $animation-form-time $animation-form-ease;
+        transition: border-color $transition-form-time $transition-form-ease;
 
         &:focus {
 

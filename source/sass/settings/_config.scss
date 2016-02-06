@@ -8,15 +8,15 @@ $config-path-images						: '/images';
 $config-path-fonts						: '/fonts';
 
 
-// 	Set some default animation values
-$animation-button-time					: 200ms;
-$animation-button-ease					: $ease-in-out-quad;
+// 	Set some default transition values
+$transition-button-time				: 200ms;
+$transition-button-ease				: $ease-in-out-quad;
 
-$animation-link-time					: 200ms;
-$animation-link-ease					: $ease-in-out-quad;
+$transition-link-time					: 200ms;
+$transition-link-ease					: $ease-in-out-quad;
 
-$animation-form-time					: 250ms;
-$animation-form-ease					: $ease-in-out-quad;
+$transition-form-time					: 250ms;
+$transition-form-ease					: $ease-in-out-quad;
 
 
 
