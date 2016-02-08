@@ -15,7 +15,7 @@ var gulp                    = requireCached('gulp');
  * file changes and interactions across multiple devices
  * @see http://www.browsersync.io/
  */
-gulp.task('browserSync', function () {
+gulp.task('browser-sync', function () {
 
     var options = {
 

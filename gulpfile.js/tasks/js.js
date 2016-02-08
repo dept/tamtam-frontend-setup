@@ -26,29 +26,48 @@ gulp.task('js', function (callback) {
 
 		webpack: {
 
-			debug: false,
+			debug: config.debug,
 
-			entry: config.source.getFilePaths( 'javascript' ),
+			entry: config.source.getFilePaths( 'javascript', true ),
 
 			output: {
 				path: config.dest.getPath( 'javascript' ),
 				filename: "[name].js"
 			},
 
-			plugins: [
-				new webpack.SourceMapDevToolPlugin(
-					'[file].map', null,
-					"[absolute-resource-path]", "[absolute-resource-path]")
-			]
+			plugins: []
+		},
+
+		uglify: {
+
+			mangle: true, 				// Pass false to skip mangling names.
+			preserveComments: false 	// 'all', 'some', {function}
+
 		}
 
 	};
 
 
+	if( config.sourcemaps ) options.webpack.sourcetool = 'source-map';
+
+	if( config.minify ) {
+
+		options.webpack.plugins.push( new webpack.optimize.DedupePlugin() );
+		options.webpack.plugins.push( new webpack.optimize.UglifyJsPlugin() );
+		options.webpack.plugins.push( new webpack.NoErrorsPlugin( options.uglify ) );
+
+	}
+
+
 	webpack( options.webpack, function ( error, status ) {
 
-		//console.log( error, status );
-		//browserSync.reload();
+		if(error) {
+
+			log.error( error );
+
+		}
+
+		browserSync.reload();
 
 		callback();
 

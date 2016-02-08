@@ -110,10 +110,21 @@ function PathConfig ( root ) {
 	 * Returns the file paths found in the fileGlobs
  	 * @param name
 	 */
-	_this.getFilePaths = function  ( name ) {
+	_this.getFilePaths = function  ( name, resolve ) {
 
 		var globs = _this.getFileGlobs( name );
 		var files = getFileList( globs );
+
+		if( resolve ) {
+
+			var root = _this.getPath( 'root' );
+
+			for ( var i = 0, leni = files.length; i < leni; i++ ) {
+				var filePath = files[ i ];
+				files[ i ] = pathUtil.resolve( root, '../', filePath);
+			}
+
+		}
 
 		return files;
 
