@@ -1,11 +1,11 @@
 // @formatter:off
 
-var requireCachedModule     = require('../util/requireCachedModule');
+var requireCached     		= require('../src/gulp/require-cached');
 var config                  = require('../config');
 
-var gulp                    = requireCachedModule('gulp');
-var watch                   = requireCachedModule('gulp-watch');
-var browserSync             = requireCachedModule('browser-sync');
+var gulp                    = requireCached('gulp');
+var watch                   = requireCached('gulp-watch');
+var browserSync             = requireCached('browser-sync');
 
 var reloadTimeout;
 var RELOAD_TIMEOUT_DELAY    = 200; // in milliseconds

@@ -1,9 +1,10 @@
 //@formatter:off
 
-var log                     = require('./log');
 var glob                    = require('glob');
 var path                    = require('path');
 var _                    	= require('lodash');
+
+var log                     = require('../../debug/log');
 
 // @formatter:on
 

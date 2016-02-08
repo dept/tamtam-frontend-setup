@@ -1,7 +1,7 @@
 //@formatter:off
 
-var log                     = require('./log');
-var config                  = require('../config');
+var log                     = require('../debug/log');
+var config                  = require('../../config');
 
 var specialCharacterRegExp  = /[^\w-]/g;
 var cameCaseRexp            = /-(\w)/g;
@@ -56,7 +56,7 @@ function requireCachedModule ( module ) {
 			
             return {
 
-				// if the module was supposed to be a gulp plugin the 'on' function will be triggered when someone attempts to run it.
+				// If the module was supposed to be a gulp plugin the 'on' function will be triggered when someone attempts to run it.
 				// This is done so we can add tasks inside of a gulp-if without triggering an error right away.
 				// So people don't need to install this dependency unless they change the config which causes the plugin to run.
 

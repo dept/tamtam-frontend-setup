@@ -1,6 +1,6 @@
 //@formatter:off
 
-var log                     = require('./log');
+var log                     = require('../debug/log');
 
 //@formatter:on
 

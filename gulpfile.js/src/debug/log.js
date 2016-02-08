@@ -13,7 +13,7 @@
 
 // @formatter:off
 
-var config                      = require('../config');
+var config                      = require('../../config');
 
 // Note: we don't use requireCachedModule here because it causes a circular reference which causes problems.
 var humanSize                   = require('human-size');

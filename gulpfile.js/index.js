@@ -1,8 +1,8 @@
 // @formatter:off
 
 var config                      = require('./config');
-var init                      	= require('./util/init');
 var runSequence					= require( 'run-sequence' );
+var init                      	= require('./src/gulp/init');
 
 
 
@@ -44,7 +44,9 @@ config.libs = function () {
 
 //--------------     M A I N   T A S K S    L I S T     --------------
 
+
 function registerMainTasks( gulp ){
+
 
     // Specifies the default set of tasks to run when you run `gulp`.
     gulp.task( 'default', [ 'server' ] );
@@ -61,7 +63,7 @@ function registerMainTasks( gulp ){
 
         runSequence(
             'build',
-            'browserSync',
+            'browser-sync',
             'watch',
             callback
         );

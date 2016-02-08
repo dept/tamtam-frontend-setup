@@ -3,8 +3,8 @@
 var _            		= require('lodash');
 var pathUtil            = require('path');
 var gulpUtil            = require('gulp-util');
-var log                 = require('./log');
-var fileUtils           = require('./fileUtils');
+var log                 = require('../debug/log');
+var getFileList           = require('../node/file/get-list');
 
 //@formatter:on
 
@@ -113,7 +113,7 @@ function PathConfig ( root ) {
 	_this.getFilePaths = function  ( name ) {
 
 		var globs = _this.getFileGlobs( name );
-		var files = fileUtils.getList( globs );
+		var files = getFileList( globs );
 
 		return files;
 

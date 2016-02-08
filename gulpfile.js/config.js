@@ -10,9 +10,9 @@
 
 // @formatter:off
 
-var PathConfig          = require('./util/PathConfig');
+var PathConfig          = require('./src/data/path-config');
+var processArguments    = require( './src/node/process-arguments' );
 var packageJSON         = require('../package.json');
-var processArguments    = require( './util/processArguments' );
 
 
 
@@ -72,9 +72,9 @@ source.html                 	= { path: '<%= root %>/html',			files: '*.html' 	};
 source.css                  	= { path: '<%= root %>/sass',			files: '*.scss' 	};		// entry point files
 source.javascript           	= { path: '<%= root %>/javascript',		files: '*.js' 		};		// entry point files
 source.data                 	= { path: '<%= assets %>/data',			files: [ '*.json', '**/*.json' ] 	};
-source.images               	= { path: '<%= assets %>/images',   	files: [ '*.{jpg,jpeg,png,gif,svg}', '*/**.{jpg,jpeg,png,gif,svg}' ] };
-source.webp                 	= { path: '<%= assets %>/images',		files: [ '*.{jpg,jpeg,png,gif,svg}', '*/**.{jpg,jpeg,png,gif,svg}' ] };
-source.svg                  	= { path: '<%= assets %>/svg',			files: [ '*.svg', '*/**.svg' ] };
+source.images               	= { path: '<%= assets %>/images',   	files: [ '*.{jpg,jpeg,png,gif,svg}', '**/*.{jpg,jpeg,png,gif,svg}' ] };
+source.webp                 	= { path: '<%= assets %>/images',		files: [ '*.{jpg,jpeg,png,gif,svg}', '**/*.{jpg,jpeg,png,gif,svg}' ] };
+source.svg                  	= { path: '<%= assets %>/svg',			files: [ '*.svg', '**/*.svg' ] };
 
 
 dest.root						= { path: './build' };

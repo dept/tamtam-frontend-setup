@@ -1,7 +1,7 @@
 //@formatter:off
 
-var log                     = require('./log');
-var config                  = require('../config');
+var log                     = require('../debug/log');
+var config                  = require('../../config');
 
 var gulpLoadPlugins         = require('gulp-load-plugins');
 

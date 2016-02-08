@@ -1,14 +1,14 @@
 //@formatter:off
 
-var requireCachedModule         = require('../util/requireCachedModule');
+var requireCached     			= require('../src/gulp/require-cached');
 var config                      = require('../config');
-var log                         = require('../util/log');
+var log                         = require('../src/debug/log');
 var path                        = require('path');
 
-var gulp                        = requireCachedModule('gulp');
-var browserSync                 = requireCachedModule('browser-sync');
-var webpack                     = requireCachedModule('webpack');
-var sourcemaps                  = requireCachedModule('gulp-sourcemaps');
+var gulp                        = requireCached('gulp');
+var browserSync                 = requireCached('browser-sync');
+var webpack                     = requireCached('webpack');
+var sourcemaps                  = requireCached('gulp-sourcemaps');
 
 /**
  * Task for compiled SASS files back to CSS, uses lib-sass instead of ruby for faster compiling.

@@ -1,12 +1,12 @@
 // @formatter:off
 
-var requireCachedModule     = require('../util/requireCachedModule');
+var requireCached     		= require('../src/gulp/require-cached');
+var log                     = require('../src/debug/log');
 var config                  = require('../config');
-var log                     = require('../util/log');
 
-var gulp                    = requireCachedModule('gulp');
-var gulpUtil                = requireCachedModule('gulp-util');
-var del                     = requireCachedModule('del');
+var gulp                    = requireCached('gulp');
+var gulpUtil                = requireCached('gulp-util');
+var del                     = requireCached('del');
 
 // @formatter:on
 

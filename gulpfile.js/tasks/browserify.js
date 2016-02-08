@@ -1,25 +1,26 @@
 // @formatter:off
 
-var config                  = require('../config');
-var log                     = require('../util/log');
-var requireCachedModule     = require('../util/requireCachedModule');
 var path                    = require('path');
 
-var gulp                    = requireCachedModule('gulp');
-var uglify                  = requireCachedModule('gulp-uglify');
-var gulpSize                = requireCachedModule('gulp-size');
-var sourcemaps              = requireCachedModule('gulp-sourcemaps');
-var gulpDebug               = requireCachedModule('gulp-debug');
-var gulpPlumber             = requireCachedModule('gulp-plumber');
-var gulpIf                  = requireCachedModule('gulp-if');
-var gulpIgnore              = requireCachedModule('gulp-ignore');
-var browserSync             = requireCachedModule('browser-sync');
-var watchify                = requireCachedModule('watchify');
-var browserify              = requireCachedModule('browserify');
-var source                  = requireCachedModule('vinyl-source-stream');
-var mergeStream             = requireCachedModule('merge-stream');
-var buffer                  = requireCachedModule('vinyl-buffer');
-var glob                    = requireCachedModule('glob');
+var config                  = require('../config');
+var log                     = require('../src/debug/log');
+var requireCached     		= require('../src/gulp/require-cached');
+
+var gulp                    = requireCached('gulp');
+var uglify                  = requireCached('gulp-uglify');
+var gulpSize                = requireCached('gulp-size');
+var sourcemaps              = requireCached('gulp-sourcemaps');
+var gulpDebug               = requireCached('gulp-debug');
+var gulpPlumber             = requireCached('gulp-plumber');
+var gulpIf                  = requireCached('gulp-if');
+var gulpIgnore              = requireCached('gulp-ignore');
+var browserSync             = requireCached('browser-sync');
+var watchify                = requireCached('watchify');
+var browserify              = requireCached('browserify');
+var source                  = requireCached('vinyl-source-stream');
+var mergeStream             = requireCached('merge-stream');
+var buffer                  = requireCached('vinyl-buffer');
+var glob                    = requireCached('glob');
 
 
 //@formatter:on
