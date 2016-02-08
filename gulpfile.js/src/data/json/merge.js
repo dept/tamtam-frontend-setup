@@ -23,7 +23,7 @@ function mergeJSONData ( root, source ) {
 	if( root.slice( -1 ) !== path.sep ) root += path.sep; // force path separator as last character
 
 	var data = {};
-	var files = getFileList.getList( source );
+	var files = getFileList( source );
 
 
 	for ( var i = 0, leni = files.length; i < leni; i++ ) {

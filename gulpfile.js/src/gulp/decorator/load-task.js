@@ -21,7 +21,7 @@ function loadTask ( taskName ) {
 
     if( _loadedTasks[ taskName ] === undefined ) {
 
-		var taskPath = '../tasks/' + taskName;
+		var taskPath = '../../../tasks/' + taskName;
 
         try {
 

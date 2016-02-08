@@ -27,8 +27,9 @@ function init ( callback ) {
 function gulpInit ( callback ) {
 
 	// initialization code, no need to touch this.
+	
 
-	if( !config.gulp.lazy ) {
+	if( config.gulp.lazy ) {
 
 		log.info( { sender: 'gulp/init', message: '\tRunning in lazy mode, tasks will be loaded at runtime.' } );
 

@@ -8,7 +8,7 @@ var parameterNames			= require('../../function/parameter-names');
 //@formatter:on
 
 
-function wrapTaskFunction ( gulp, taskFunction ) {
+module.exports =  function wrapTask( gulp, taskFunction ) {
 
     var parameters = parameterNames( taskFunction );
     var wrappedTaskFunction;

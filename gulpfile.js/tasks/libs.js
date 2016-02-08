@@ -36,7 +36,7 @@ gulp.task('libs', function () {
         .pipe( gulpIf( config.sourcemaps, sourcemaps.init( ) ) )
         .pipe( gulpConcat('libs.js') )
         .pipe( gulpIf( config.minify, uglify( options.uglifyOptions ) ) )
-        .pipe( gulpIf( config.sourcemaps, sourcemaps.write( path.relative( config.dest.getPath( 'javascript' ), config.dest.getPath( 'sourcemaps' ) ) ) ) )
+        .pipe( gulpIf( config.sourcemaps, sourcemaps.write( '.' ) ) )
         .pipe( gulp.dest( config.dest.getPath( 'javascript' ) ) );                  // Export
 
 } );

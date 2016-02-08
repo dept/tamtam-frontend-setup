@@ -9,10 +9,7 @@ var log                     = require('../../debug/log');
 // @formatter:on
 
 
-var fileUtils = {};
-
-
-fileUtils.getList = function ( sourceGlob, opt_stripRoot, opt_stripExtension ) {
+module.exports = function getList ( sourceGlob, opt_stripRoot, opt_stripExtension ) {
 
 
     var fileList = [];
@@ -58,5 +55,3 @@ fileUtils.getList = function ( sourceGlob, opt_stripRoot, opt_stripExtension ) {
     return _.uniq(fileList);
 
 }
-
-module.exports = fileUtils;

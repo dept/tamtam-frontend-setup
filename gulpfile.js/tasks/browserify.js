@@ -36,7 +36,6 @@ function createBundleConfigs () {
     var options = {
 
         sourcemaps: config.sourcemaps,
-        sourcemapsDest: config.dest.getPath('sourcemaps'),
 
         minify: config.minify,
         uglifyOptions: {
@@ -209,7 +208,7 @@ function createBundle ( bundleConfig, opt_watch ) {
             .pipe( gulpIf( bundleConfig.minify, uglify( bundleConfig.uglifyOptions ) ) )
 
             // sourcemaps need a relative path from the output folder
-            .pipe( gulpIf( config.sourcemaps, sourcemaps.write( path.relative( bundleConfig.dest, config.dest.getPath( 'sourcemaps' ) ) ) ) )
+            .pipe( gulpIf( config.sourcemaps, sourcemaps.write( '.' ) ) )
 
             .pipe( gulp.dest( bundleConfig.dest ) )
 
