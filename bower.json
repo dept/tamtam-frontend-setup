@@ -6,7 +6,5 @@
     "*.log",
     "node_modules"
   ],
-  "dependencies": {
-    "jquery": "~2.2.0"
-  }
+  "dependencies": {}
 }
