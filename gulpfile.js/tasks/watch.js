@@ -18,7 +18,7 @@ var RELOAD_TIMEOUT_DELAY    = 200; // in milliseconds
  * JavaScript is done via watchify instead for this task for optimized configuration.
  * @see https://www.npmjs.com/package/gulp-watch
  */
-gulp.task( 'watch', [ 'watchify' ], function ( callback ) {
+gulp.task( 'watch', [ 'js-watch' ], function ( callback ) {
 
     watch( config.source.getFileGlobs( 'images' ),
         function ( events, done ) { gulp.start( 'images' ); } );

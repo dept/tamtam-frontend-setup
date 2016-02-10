@@ -82,7 +82,7 @@ function registerMainTasks( gulp ){
         runSequence(
             'clean',
             [ 'copy', 'images', 'svg' ],
-            [ 'html', 'libs', 'browserify', 'css' ],
+            [ 'html', 'libs', 'js', 'css' ],
             callback
         );
 
@@ -127,7 +127,7 @@ function registerMainTasks( gulp ){
         runSequence(
             'clean',
             [ 'copy', 'images', 'svg' ],
-            [ 'html', 'libs', 'browserify', 'css' ],
+            [ 'html', 'libs', 'js', 'css' ],
             callback
         );
 

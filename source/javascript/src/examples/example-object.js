@@ -11,18 +11,18 @@ var notGlobal = 'This variable is not global because this file is wrapped into i
  */
 function ExampleObject ( opt_message ) {
 
-    // a private variable, ONLY accessible from within this class.
+    // a private variable, ONLY accessible from within this object.
     var _message = opt_message || 'This is a default message...'
 
 
-    // a public function, can be called upon any instance of this class.
+    // a public function, can be called upon any instance of this object.
     this.test = function () {
 
         console.log( lowercase( _message ) );
 
     }
 
-    // a private function, can ONLY be called from within this class.
+    // a private function, can ONLY be called from within this object.
     function lowercase ( string ) {
 
         return string.toLocaleLowerCase();

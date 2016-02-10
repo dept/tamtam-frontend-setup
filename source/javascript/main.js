@@ -23,4 +23,3 @@ var example2 		= new ExampleObject( 'An amazing custom message!' );
 
 example1.test();
 example2.test();
-

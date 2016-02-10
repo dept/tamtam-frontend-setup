@@ -6,25 +6,19 @@ var log                         = require('../src/debug/log');
 var path                        = require('path');
 
 var gulp                        = requireCached('gulp');
-var browserSync                 = requireCached('browser-sync');
 var webpack                     = requireCached('webpack');
-var sourcemaps                  = requireCached('gulp-sourcemaps');
 
-/**
- * Task for compiled SASS files back to CSS, uses lib-sass instead of ruby for faster compiling.
- * Depending on the settings it will also remove unused CSS lines, add source maps and minify the output.
- *
- * @see https://www.npmjs.com/package/gulp-sass
- * @see http://libsass.org/
- * @see: https://github.com/sindresorhus/gulp-size
- */
-gulp.task('js', function (callback) {
+
+
+function js (callback) {
 
 	// @formatter:on
 	// @see: http://webpack.github.io/docs/configuration.html
 	var options = {
 
 		webpack: {
+
+			bail: config.throwError,
 
 			debug: config.debug,
 
@@ -48,33 +42,63 @@ gulp.task('js', function (callback) {
 	};
 
 
-	if( config.sourcemaps ) options.webpack.sourcetool = 'source-map';
+	if( options.webpack.entry.length > 1 ) {
 
-	if( config.minify ) {
+		var entries = options.webpack.entry;
+		var webpackEntries = {};
 
-		options.webpack.plugins.push( new webpack.optimize.DedupePlugin() );
-		options.webpack.plugins.push( new webpack.optimize.UglifyJsPlugin() );
-		options.webpack.plugins.push( new webpack.NoErrorsPlugin( options.uglify ) );
+		for ( var i = 0, leni = entries.length; i < leni; i++ ) {
+
+			var entryPath = entries[ i ];
+			var pathObject = path.parse( entryPath );
+
+			webpackEntries[ pathObject.name ] = entryPath;
+
+		}
+
+		options.webpack.entry = webpackEntries;
 
 	}
 
 
-	webpack( options.webpack, function ( error, status ) {
+	if( config.sourcemaps ) options.webpack.devtool = 'source-map';
 
-		if(error) {
+	if( config.minify ) {
 
-			log.error( error );
+		options.webpack.plugins.push( new webpack.optimize.DedupePlugin() );
+		options.webpack.plugins.push( new webpack.optimize.UglifyJsPlugin( options.uglify ) );
+		options.webpack.plugins.push( new webpack.NoErrorsPlugin() );
+
+	}
+
+	return webpack( options.webpack, function ( error, status ) {
+
+		if( error ) log.error( error );
+
+		var compErrors = status.compilation.errors;
+		if( compErrors && compErrors.length ) {
+
+			for ( var i = 0, leni = compErrors.length; i < leni; i++ ) {
+				var compError = compErrors[ i ];
+				log.error( {
+					sender: 'js',
+					name: compError.name,
+					message: compError.message
+				} )
+			}
 
 		}
 
-		browserSync.reload();
 
 		callback();
 
 	} );
 
+}
 
-} );
+gulp.task('js', js);
+
+module.exports = js;
 
 
 
