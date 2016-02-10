@@ -53,9 +53,6 @@ gulp.task( 'js-watch', function jsWatch ( callback ) {
 
 
 		var compErrors = stats.compilation.errors;
-
-		console.log( compErrors );
-
 		if( compErrors && compErrors.length ) {
 
 			for ( var i = 0, leni = compErrors.length; i < leni; i++ ) {
