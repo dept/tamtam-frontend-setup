@@ -2,7 +2,7 @@
 
 var config                  = require('../../../config');
 var log                     = require('../../debug/log');
-
+var path           			= require('path');
 //@formatter:on
 
 
@@ -21,7 +21,7 @@ function loadTask ( taskName ) {
 
     if( _loadedTasks[ taskName ] === undefined ) {
 
-		var taskPath = '../../../tasks/' + taskName;
+		var taskPath = path.normalize( '../../../tasks/' + taskName );
 
         try {
 

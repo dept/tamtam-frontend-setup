@@ -3,7 +3,6 @@
 var fileSystem              = require( 'fs' );
 var path                    = require( 'path' );
 var config                  = require('../../../../gulpfile.js/config');
-var SVG_FOLDER              = config.dest.getPath('svg');
 var SVG_CLASS_PREFIX        = 'svg-';
 
 //@formatter:on
@@ -23,7 +22,7 @@ module.exports = function ( name ) {
     name = name.replace(/\.svg$/, '');
 
     var svg = '';
-    var svgPath = SVG_FOLDER + path.sep +  name + '.svg';
+    var svgPath = config.dest.getPath( 'svg', '/' +  name + '.svg' );
     
     try {
 
