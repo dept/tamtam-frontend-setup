@@ -1,0 +1,24 @@
+
+
+RegExps for converting FileInclude template to NunJucks!
+
+
+// All includes
+
+@@include\(\s?'([\w|\-|/|_]*)\.html'(\s*,\s*\{.*\})?\)
+
+{% include '$1.html' %} $2
+
+
+// Variables
+
+@@(\w*)
+
+{{ $1 }}
+
+
+// SVG helper
+
+@@include\(\s?'helper/svg\.html'\s*,\s*\{\s*"svg"\s*:\s*"([\w|/|\-|_]*)"\s*}\s*\)
+
+{% svg '$1' %}
