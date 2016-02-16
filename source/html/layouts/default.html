@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="{{ site.language }}" dir="{{ site.direction }}">
 
 
 <head>
@@ -13,15 +13,15 @@
 
 
     <!-- You can use open graph tags to customize link previews.
-   Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-    <meta property="og:url"           content="http://www.your-domain.com/your-page.html" />
+ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+    <meta property="og:url"           content="{{ site.url }}" />
     <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="{{ global.title }}" />
-    <meta property="og:description"   content="{{ project.description }}" />
-    <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
+    <meta property="og:title"         content="{{ site.title }}" />
+    <meta property="og:description"   content="{{ site.description }}" />
+    <meta property="og:image"         content="{{ site.image }}" />
 
 
-    <title>{{ global.title }}</title>
+    <title>{{ site.title }}</title>
 
     <!-- Style sheets -->
     {% if project.debug %} <link rel="stylesheet" href="/css/debug.css"/> {% endif %}
@@ -35,10 +35,14 @@
 </head>
 
 
-<body>
+<body {% if angularModule %}ng-app="{{ angularModule }}"{% endif %}>
 
 
-    {% include "modules/common/gtm.html" %}
+    {% if site.gtm and site.gtm != 'GTM-XXXX' %}
+
+        {% include "modules/common/gtm.html" %}
+
+    {% endif %}
 
 
     {% include "modules/common/header.html" %}

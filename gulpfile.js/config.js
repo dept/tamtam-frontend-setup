@@ -71,7 +71,7 @@ source.assets               	= { path: '<%= root %>/assets' };
 source.html                 	= { path: '<%= root %>/html',			files: '*.html' 	};		// entry point files
 source.css                  	= { path: '<%= root %>/sass',			files: '*.scss' 	};		// entry point files
 source.javascript           	= { path: '<%= root %>/javascript',		files: '*.js' 		};		// entry point files
-source.data                 	= { path: '<%= assets %>/data',			files: [ '*.json', '**/*.json' ] 	};
+source.data                 	= { path: '<%= root %>/data',			files: [ '*.json', '**/*.json' ] 	};
 source.images               	= { path: '<%= assets %>/images',   	files: [ '*.{jpg,jpeg,png,gif,svg}', '**/*.{jpg,jpeg,png,gif,svg}' ] };
 source.webp                 	= { path: '<%= assets %>/images',		files: [ '*.{jpg,jpeg,png,gif,svg}', '**/*.{jpg,jpeg,png,gif,svg}' ] };
 source.svg                  	= { path: '<%= assets %>/svg',			files: [ '*.svg', '**/*.svg' ] };
