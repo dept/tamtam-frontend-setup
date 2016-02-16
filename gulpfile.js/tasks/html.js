@@ -133,6 +133,7 @@ gulp.task( 'html', function () {
 		.pipe( gulpData( getDataForFile ) )
 		.pipe( gulpNunjucks() )
 
+
 		.pipe( gulpif( options.pretty, prettify( options.prettyConfig ) ) )
 		.pipe( gulpif( options.minify, htmlmin( options.htmlmin ) ) )
 

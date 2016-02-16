@@ -120,7 +120,7 @@ function registerMainTasks( gulp ){
         config.sourcemaps           = false;
         config.throwError           = true;
         config.minify               = true;
-        config.prettyHTML           = true;
+        config.prettyHTML           = false;
 
         config.dest.html.path     	= '<%= root %>/html';
 

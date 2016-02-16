@@ -1,13 +1,3 @@
-/**
- * @author Geert Fokke [ geert@sector22.com ]
- * @www sector22.com
- *
- * Inspired by the Gulp-starter project of Daniel Tello
- * @author Daniel Tello
- * @link: github.com/greypants/gulp-starter
- *
- */
-
 // @formatter:off
 
 var PathConfig          = require('./src/data/path-config');
