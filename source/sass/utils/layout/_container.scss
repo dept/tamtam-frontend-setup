@@ -6,11 +6,11 @@
 // @license:	MIT
 
 $container-config						: (	max-width: 1024px,
-											gutter: 40px,
-											gutter-small: 20px,
-											postfix: '',
-											add-break: true,
-											add-flood: true	) 	!default;
+																gutter: 40px,
+																gutter-small: 20px,
+																postfix: '',
+																add-break: true,
+																add-flood: true	) 	!default;
 
 $container-mobile-first					: true			!default;
 $container-padding-small-breakpoint		: 768px			!default;
@@ -46,7 +46,7 @@ $_container-created: ();
 	$add-break			: map_get( $container-config, add-break );
 	$add-flood			: map_get( $container-config, add-flood );
 	$max-width-media	: null;
-
+	
 	@if ( $max-width != null and $gutter != null ) {
 
 		@if( unit( $max-width ) != unit( $gutter ) ){
@@ -54,7 +54,6 @@ $_container-created: ();
 		}
 
 		$max-width-media: $max-width - $gutter * 2;
-
 	}
 
 	@if ( $gutter == null ) { $gutter: 0; }
