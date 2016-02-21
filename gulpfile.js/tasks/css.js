@@ -64,7 +64,7 @@ gulp.task('css', function () {
             html: [config.dest.getPath('html', '*.html')],
             // Provide a list of selectors that should not be removed by UnCSS. For example, styles added by user interaction with the page (hover, click),
             // Both literal names and regex patterns are recognized.
-            ignore: [ /\.modal.*/, /\.panel.*/, /\.popup.*/, /.*\.is-.*/ ]
+            ignore: [ /\.modal.*/, /\.panel.*/, /\.popup.*/, /.*\.is-.*/, /.*\.has-.*/ ]
             //timeout: 0 //  Specify how long to wait for the JS to be loaded.
         }
 
