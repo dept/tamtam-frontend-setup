@@ -3,7 +3,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
-@import "_debug/settings/colors";
+@import "_dev/settings/colors";
 
 
 // Add an extra nested layer to try to make sure the debug style won't be compromised by the css of the project
@@ -19,18 +19,18 @@ html._debug_page_ {
 		color: #ECECEC;
 	}
 
-    @import "_debug/project/info";
-    @import "_debug/project/pages-list";
-    @import "_debug/project/directories";
+    @import "_dev/project/info";
+    @import "_dev/project/pages-list";
+    @import "_dev/project/directories";
 
-    @import "_debug/styleguide/block";
-    @import "_debug/styleguide/block-fonts";
-    @import "_debug/styleguide/svg-collection";
+    @import "_dev/styleguide/block";
+    @import "_dev/styleguide/block-fonts";
+    @import "_dev/styleguide/svg-collection";
 
 }
 
 // the debug data panel should be able to be used everywhere
-@import "_debug/tools/debug-data";
+@import "_dev/tools/debug-data";
 
 
 // Move browserSync notification to the bottom right

@@ -1,11 +1,10 @@
-// Fonts imports    ( import statements will be generated from this list )
-
-$font-imports			: ( 'http://fonts.googleapis.com/css?family=Titillium+Web' );
+// Fonts face
+// Never import in css!
 
 
 // Font stacks
 
-$font-stack-primary		: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-stack-primary		: 'Arial', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-stack-secondary	: 'Helvetica Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 
@@ -18,12 +17,36 @@ $font-stack-buttons		: $font-stack-secondary;
 
 // Font sizes
 
-$font-size-root		   	: 10px;       // The font size set on the root html element.
+$font-size-root       : 10px;       // The font size set on the root html element.
+
 $font-size-body		   	: 1.6rem;     // Regular font size
-  
-$font-size-h1			    : 3.2rem;
-$font-size-h2			    : 2.4rem;
-$font-size-h3			    : 1.9rem;
-$font-size-h4		     	: 1.6rem;
-$font-size-h5		     	: 1.3rem;
-$font-size-h6		    	: 1.1rem;
+
+$font-size-h1         : 3.2rem;
+
+$font-size-h2         : 2.4rem;
+
+$font-size-h3         : 1.9rem;
+
+$font-size-h4         : 1.6rem;
+
+$font-size-h5         : 1.3rem;
+
+$font-size-h6         : 1.1rem;
+
+
+// Font line heights
+// Divide the the given line height by the font size to give an unitless line height
+
+$font-line-height-body: 3.2 strip-unit($font-size-body);
+
+$font-line-height-h1: 3.2 / strip-unit($font-size-h1);
+
+$font-line-height-h2: 3.2 / strip-unit($font-size-h2);
+
+$font-line-height-h3: 3.2 / strip-unit($font-size-h3);
+
+$font-line-height-h4: 3.2 / strip-unit($font-size-h4);
+
+$font-line-height-h5: 3.2 / strip-unit($font-size-h5);
+
+$font-line-height-h6: 3.2 / strip-unit($font-size-h6);

@@ -21,7 +21,10 @@ var RELOAD_TIMEOUT_DELAY    = 200; // in milliseconds
 gulp.task( 'watch', [ 'js-watch' ], function ( callback ) {
 
     watch( config.source.getFileGlobs( 'images' ),
-        function ( events, done ) { gulp.start( 'images' ); } );
+        function ( events, done ) { 
+            gulp.start( 'images' ); 
+            gulp.start( 'webp' ); 
+        } );
 
     watch( config.source.getPath( 'css', '**/*.scss' ),
         function ( events, done ) { gulp.start( 'css' ); } );

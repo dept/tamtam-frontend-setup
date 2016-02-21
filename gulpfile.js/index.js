@@ -13,6 +13,7 @@ config.debug                    = true;
 config.sourcemaps               = true;
 config.notifyErrors             = true;
 config.minify                   = false;
+config.webpImages               = true;
 config.prettyHTML               = true;
 
 config.applyProcessArgs();
@@ -81,7 +82,7 @@ function registerMainTasks( gulp ){
 
         runSequence(
             'clean',
-            [ 'copy', 'images', 'svg' ],
+            [ 'copy', 'images', 'webp', 'svg' ],
             [ 'html', 'libs', 'js', 'css' ],
             callback
         );
@@ -126,7 +127,7 @@ function registerMainTasks( gulp ){
 
         runSequence(
             'clean',
-            [ 'copy', 'images', 'svg' ],
+            [ 'copy', 'images', 'webp', 'svg' ],
             [ 'html', 'libs', 'js', 'css' ],
             callback
         );

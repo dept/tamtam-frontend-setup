@@ -6,7 +6,7 @@ var config                  = require('../config');
 var changed                 = requireCached('gulp-changed');
 var gulp                    = requireCached('gulp');
 var gulpIf                  = requireCached('gulp-if');
-var imagemin                = requireCached('gulp-imagemin');
+var webp                    = requireCached('gulp-webp');
 
 // @formatter:on
 
@@ -14,11 +14,11 @@ var imagemin                = requireCached('gulp-imagemin');
  * Task for optimizing images (size).
  * @see https://www.npmjs.com/package/gulp-imagemin
  */
-gulp.task('images', function () {
+gulp.task('webp', function () {
 
     var options = {
 
-        imageConfig: {
+        webpConfig: {
             optimizationLevel: 3,   // default 3
             progressive: false,     // for JPG, default false
             interlaces: false,      // for GIF, default false
@@ -30,7 +30,7 @@ gulp.task('images', function () {
     return gulp.src( config.source.getFileGlobs( 'images' ) )
 
         .pipe( changed( config.dest.getPath( 'images' ) ) )                         // Ignore unchanged files
-        .pipe( gulpIf( config.optimizeImages, imagemin( options.imageConfig ) ) )   // Optimize
+        .pipe( gulpIf( config.webpImages, webp( options.webpConfig ) ) )            // Optimize
         .pipe( gulp.dest( config.dest.getPath( 'images' ) ) );                      // Export
 
 } );

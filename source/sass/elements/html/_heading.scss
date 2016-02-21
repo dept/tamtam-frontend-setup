@@ -8,31 +8,37 @@
 %regular-h1 {
     @extend %heading-base;
     font-size: $font-size-h1;
+    line-height: $font-line-height-h1;
 }
 
 %regular-h2 {
     @extend %heading-base;
     font-size: $font-size-h2;
+    line-height: $font-line-height-h2;
 }
 
 %regular-h3 {
     @extend %heading-base;
     font-size: $font-size-h3;
+    line-height: $font-line-height-h3;
 }
 
 %regular-h4 {
     @extend %heading-base;
     font-size: $font-size-h4;
+    line-height: $font-line-height-h4;
 }
 
 %regular-h5 {
     @extend %heading-base;
     font-size: $font-size-h5;
+    line-height: $font-line-height-h5;
 }
 
 %regular-h6 {
     @extend %heading-base;
     font-size: $font-size-h6;
+    line-height: $font-line-height-h6;
 }
 
 

@@ -26,8 +26,8 @@ $container-padding-small-breakpoint		: $breakpoint-small;
 $container-mobile-first					      : true;
 $container-config						          : (	max-width: $breakpoint-large,
                                           padding: 40px,
-                    											gutter: 2rem,
-                    											padding-small: 2rem);
+                    											gutter: 20px,
+                    											padding-small: 20px);
 
 // 	Grid config(s)
 // 	@see: util/layout/grid.scss for more info
@@ -37,8 +37,8 @@ $grid-gutter-small-breakpoint	: $container-padding-small-breakpoint;
 $grid-breakpoints						  : (	'sm': $breakpoint-small,
 											            'md': $breakpoint-medium	);
 $grid-config							    : (	columns: 12,
-            											gutter: 2rem,
-            											gutter-small: 1rem,
+            											gutter: 20px,
+            											gutter-small: 15px,
             											push-pull: true,
             											pre-post: true	);
 
