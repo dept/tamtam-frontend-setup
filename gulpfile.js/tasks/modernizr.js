@@ -1,15 +1,15 @@
 // @formatter:off
 
-var requireCachedModule     = require('../util/requireCachedModule');
+var requireCached     		= require('../src/gulp/require-cached');
 var config                  = require('../config');
-var log                     = require('../util/log');
+var log                     = require('../src/debug/log');
 
 var path                    = require('path');
-var gulp                    = requireCachedModule('gulp');
-var modernizr               = requireCachedModule('gulp-modernizr');
-var browserSync             = requireCachedModule('browser-sync');
-var uglify                  = requireCachedModule('gulp-uglify');
-var gulpIf                  = requireCachedModule('gulp-if');
+var gulp                    = requireCached('gulp');
+var modernizr               = requireCached('gulp-modernizr');
+var browserSync             = requireCached('browser-sync');
+var uglify                  = requireCached('gulp-uglify');
+var gulpIf                  = requireCached('gulp-if');
 
 //@formatter:on
 

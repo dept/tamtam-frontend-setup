@@ -1,14 +1,14 @@
 // @formatter:off
 
-var requireCachedModule     = require('../util/requireCachedModule');
+var requireCached     		= require('../src/gulp/require-cached');
 var config                  = require('../config');
 var path                    = require('path');
 
-var gulp                    = requireCachedModule('gulp');
-var gulpIf                  = requireCachedModule('gulp-if');
-var gulpConcat              = requireCachedModule('gulp-concat');
-var uglify                  = requireCachedModule('gulp-uglify');
-var sourcemaps              = requireCachedModule('gulp-sourcemaps');
+var gulp                    = requireCached('gulp');
+var gulpIf                  = requireCached('gulp-if');
+var gulpConcat              = requireCached('gulp-concat');
+var uglify                  = requireCached('gulp-uglify');
+var sourcemaps              = requireCached('gulp-sourcemaps');
 
 // @formatter:on
 
@@ -36,7 +36,7 @@ gulp.task('libs', function () {
         .pipe( gulpIf( config.sourcemaps, sourcemaps.init( ) ) )
         .pipe( gulpConcat('libs.js') )
         .pipe( gulpIf( config.minify, uglify( options.uglifyOptions ) ) )
-        .pipe( gulpIf( config.sourcemaps, sourcemaps.write( path.relative( config.dest.getPath( 'javascript' ), config.dest.getPath( 'sourcemaps' ) ) ) ) )
+        .pipe( gulpIf( config.sourcemaps, sourcemaps.write( '.' ) ) )
         .pipe( gulp.dest( config.dest.getPath( 'javascript' ) ) );                  // Export
 
 } );

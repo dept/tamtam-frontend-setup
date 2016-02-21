@@ -11,7 +11,8 @@
 // Feel free to roll your own logic.
 var add 			= require( './src/examples/add' );
 var value 			= require( './src/examples/value' );
-var ExampleObject 	= require( './src/examples/example-object' );
+var ExampleObject 	= require( './src/examples/object' );
+var exampleModule 	= require( './src/examples/module' );
 
 
 console.log( 'main.js initiated!' );
@@ -24,3 +25,5 @@ var example2 		= new ExampleObject( 'An amazing custom message!' );
 example1.test();
 example2.test();
 
+
+exampleModule.init();

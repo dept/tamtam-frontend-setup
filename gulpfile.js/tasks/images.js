@@ -1,13 +1,13 @@
 // @formatter:off
 
-var requireCachedModule     = require('../util/requireCachedModule');
+var requireCached     		= require('../src/gulp/require-cached');
 var config                  = require('../config');
 
-var changed                 = requireCachedModule('gulp-changed');
-var gulp                    = requireCachedModule('gulp');
-var gulpIf                  = requireCachedModule('gulp-if');
-var imagemin                = requireCachedModule('gulp-imagemin');
-var webp                    = requireCachedModule('gulp-webp');
+var changed                 = requireCached('gulp-changed');
+var gulp                    = requireCached('gulp');
+var gulpIf                  = requireCached('gulp-if');
+var imagemin                = requireCached('gulp-imagemin');
+var webp                    = requireCached('gulp-webp');
 
 // @formatter:on
 
@@ -35,7 +35,7 @@ gulp.task('images', function () {
 
     };
 
-    return gulp.src( config.source.getFiles( 'images' ) )
+    return gulp.src( config.source.getFileGlobs( 'images' ) )
 
         .pipe( changed( config.dest.getPath( 'images' ) ) )                         // Ignore unchanged files
         .pipe( gulpIf( config.optimizeImages, imagemin( options.imageConfig ) ) )   // Optimize

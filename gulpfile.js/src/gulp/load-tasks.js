@@ -1,18 +1,17 @@
 //@formatter:off
 
-var log                     = require('./log');
-var config                  = require('../config');
-var requireCachedModule     = require('./requireCachedModule');
+var log                     = require('../debug/log');
+var config                  = require('../../config');
+var requireCached     		= require('./require-cached');
 
 var path                    = require('path');
-var glob                    = requireCachedModule('glob');
+var glob                    = requireCached('glob');
 
 // @formatter:on
 
 function loadTasks () {
 
     // pre-load all gulp tasks if we're not loading at runtime
-    if( config.gulp.lazy ) return log.info( { sender: 'loadTasks', message: '\tRunning in lazy mode, tasks will be loaded at runtime.' } );
 
     log.debug( { sender: 'loadTasks', message: '\tLoading tasks...' } );
 

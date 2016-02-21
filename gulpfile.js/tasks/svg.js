@@ -1,15 +1,15 @@
 // @formatter:off
 
-var requireCachedModule     = require('../util/requireCachedModule');
+var requireCached     		= require('../src/gulp/require-cached');
 var config                  = require('../config');
-var log                     = require('../util/log');
+var log                     = require('../src/debug/log');
 
 var path                    = require('path');
-var changed                 = requireCachedModule('gulp-changed');
-var gulp                    = requireCachedModule('gulp');
-var svgmin                  = requireCachedModule('gulp-svgmin');
-var glob                    = requireCachedModule('glob');
-var mkdirp                  = requireCachedModule('mkdirp');
+var changed                 = requireCached('gulp-changed');
+var gulp                    = requireCached('gulp');
+var svgmin                  = requireCached('gulp-svgmin');
+var glob                    = requireCached('glob');
+var mkdirp                  = requireCached('mkdirp');
 
 // @formatter:on
 
@@ -36,7 +36,7 @@ gulp.task( 'svg', function () {
     };
 
 
-    return gulp.src( config.source.getFiles( 'svg' ) )
+    return gulp.src( config.source.getFileGlobs( 'svg' ) )
 
         .pipe( changed( config.dest.getPath( 'svg' ) ) )        // Ignore unchanged files
         .pipe( svgmin( options.svgmin ) )                       // Optimize

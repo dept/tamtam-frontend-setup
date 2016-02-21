@@ -1,19 +1,19 @@
 // @formatter:off
 
-var requireCachedModule     = require('../util/requireCachedModule');
+var requireCached     		= require('../src/gulp/require-cached');
 var config                  = require('../config');
-var log                     = require('../util/log');
+var log                     = require('../src/debug/log');
 
 var path                    = require('path');
-var changed                 = requireCachedModule('gulp-changed');
-var gulp                    = requireCachedModule('gulp');
-var svgmin                  = requireCachedModule('gulp-svgmin');
-var svg2png                 = requireCachedModule('gulp-svg2png');
-var glob                    = requireCachedModule('glob');
-var mkdirp                  = requireCachedModule('mkdirp');
-var gulpSvgSprite           = requireCachedModule('gulpSvgSprite');
-var mergeStream             = requireCachedModule('merge-stream');
-var svgmin                  = requireCachedModule('gulp-svgmin');
+var changed                 = requireCached('gulp-changed');
+var gulp                    = requireCached('gulp');
+var svgmin                  = requireCached('gulp-svgmin');
+var svg2png                 = requireCached('gulp-svg2png');
+var glob                    = requireCached('glob');
+var mkdirp                  = requireCached('mkdirp');
+var gulpSvgSprite           = requireCached('gulpSvgSprite');
+var mergeStream             = requireCached('merge-stream');
+var svgmin                  = requireCached('gulp-svgmin');
 
 // @formatter:on
 
@@ -62,7 +62,7 @@ gulp.task( 'sprite', function () {
     var pngStream;
     var svgStream;
 
-    svgStream = gulp.src( config.source.getFiles( 'svg' ) )
+    svgStream = gulp.src( config.source.getFileGlobs( 'svg' ) )
 
         .pipe( svgmin( options.svgmin ) )                       // Optimize SVG files
         .pipe( gulpSvgSprite( options.svgSprite ) )             // Create sprite and SASS template

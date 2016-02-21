@@ -1,7 +1,7 @@
 //@formatter:off
 
-var log                     = require('./log');
-var config                  = require('../config');
+var log                     = require('../debug/log');
+var config                  = require('../../config');
 
 var specialCharacterRegExp  = /[^\w-]/g;
 var cameCaseRexp            = /-(\w)/g;
@@ -42,7 +42,24 @@ function requireCachedModule ( module ) {
         // assign placeholder function
         moduleInstance = function ( options ) {
 
+			// Test to see if the module is a gulp plugin based on the name.
+			if( !/^gulp-/ig.test( module ) ) {
+
+				log.error( {
+					sender: 'requireCachedModule',
+					message: 'Missing module: ' + log.colors.yellow(module) + '.\n' +
+					'Please make sure the missing module is installed.\n' +
+					'Run: '+ log.colors.yellow('"npm install ' + module + ' --save-dev"') + ' to install the missing module.'
+				}, null, true );
+
+			}
+			
             return {
+
+				// If the module was supposed to be a gulp plugin the 'on' function will be triggered when someone attempts to run it.
+				// This is done so we can add tasks inside of a gulp-if without triggering an error right away.
+				// So people don't need to install this dependency unless they change the config which causes the plugin to run.
+
                 on: function () {
 
                     log.error( {

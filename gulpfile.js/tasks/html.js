@@ -1,24 +1,24 @@
 // @formatter:off
 
-var requireCachedModule     = require('../util/requireCachedModule');
+var requireCached     		= require('../src/gulp/require-cached');
 var config                  = require('../config');
-var log                     = require('../util/log');
-var mergeJSONData           = require('../util/mergeJSONData');
-var fileUtils               = require('../util/fileUtils');
+var log                     = require('../src/debug/log');
+var mergeJSONData           = require('../src/data/json/merge');
+var getFileList             = require('../src/node/file/get-list');
 var packageJSON             = require('../../package.json');
-var SvgExtension            = require('../template/nunjucks/SvgExtension');
-var DebugExtension          = require('../template/nunjucks/DebugExtension');
+var SvgExtension            = require('../src/template/nunjucks/svg-extension');
+var DebugExtension          = require('../src/template/nunjucks/debug-extension');
 
 var path                    = require('path');
-var mkdirp                  = requireCachedModule('mkdirp');
-var gulp                    = requireCachedModule('gulp');
-var gulpData                = requireCachedModule('gulp-data');
-var gulpNunjucks            = requireCachedModule('gulp-nunjucks-render');
-var htmlmin                 = requireCachedModule('gulp-htmlmin');
-var gulpif                  = requireCachedModule('gulp-if');
-var browserSync             = requireCachedModule('browser-sync');
-var prettify                = requireCachedModule('gulp-jsbeautifier');
-var glob                    = requireCachedModule('glob');
+var mkdirp                  = requireCached('mkdirp');
+var gulp                    = requireCached('gulp');
+var gulpData                = requireCached('gulp-data');
+var gulpNunjucks            = requireCached('gulp-nunjucks-render');
+var htmlmin                 = requireCached('gulp-htmlmin');
+var gulpif                  = requireCached('gulp-if');
+var browserSync             = requireCached('browser-sync');
+var prettify                = requireCached('gulp-jsbeautifier');
+var glob                    = requireCached('glob');
 
 
 var RESERVED_DATA_KEYWORDS  = [ 'project', 'ext' ];
@@ -81,7 +81,7 @@ gulp.task( 'html', function () {
 
 
 	var contextData = {};
-	var jsonData = mergeJSONData( config.source.getPath( 'data' ), config.source.getFiles( 'data' ) );
+	var jsonData = mergeJSONData( config.source.getPath( 'data' ), config.source.getFileGlobs( 'data' ) );
 
 	// merge retrieved data into the context object
 	for ( var key in jsonData ) {
@@ -101,8 +101,8 @@ gulp.task( 'html', function () {
 
 	}
 
-	var pagesList = fileUtils.getList( config.source.getFiles( 'html' ), config.source.getPath( 'html' ) );
-	var svgList = fileUtils.getList( config.source.getFiles( 'svg' ), config.source.getPath( 'svg' ), true );
+	var pagesList = getFileList( config.source.getFileGlobs( 'html' ), config.source.getPath( 'html' ) );
+	var svgList = getFileList( config.source.getFileGlobs( 'svg' ), config.source.getPath( 'svg' ), true );
 
 	contextData.project = {
 		name: packageJSON.name,
@@ -128,10 +128,11 @@ gulp.task( 'html', function () {
 	environment.addExtension( 'DebugExtension', new DebugExtension( gulpNunjucks.nunjucks ) );
 
 
-	return gulp.src( config.source.getFiles( 'html' ), { base: config.source.getPath( 'html' ) } )
+	return gulp.src( config.source.getFileGlobs( 'html' ), { base: config.source.getPath( 'html' ) } )
 
 		.pipe( gulpData( getDataForFile ) )
 		.pipe( gulpNunjucks() )
+
 
 		.pipe( gulpif( options.pretty, prettify( options.prettyConfig ) ) )
 		.pipe( gulpif( options.minify, htmlmin( options.htmlmin ) ) )

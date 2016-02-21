@@ -1,11 +1,11 @@
 // @formatter:off
 
-var requireCachedModule     = require('../util/requireCachedModule');
+var requireCached     		= require('../src/gulp/require-cached');
 var config                  = require('../config');
 
-var gulp                    = requireCachedModule('gulp');
-var watch                   = requireCachedModule('gulp-watch');
-var browserSync             = requireCachedModule('browser-sync');
+var gulp                    = requireCached('gulp');
+var watch                   = requireCached('gulp-watch');
+var browserSync             = requireCached('browser-sync');
 
 var reloadTimeout;
 var RELOAD_TIMEOUT_DELAY    = 200; // in milliseconds
@@ -18,9 +18,9 @@ var RELOAD_TIMEOUT_DELAY    = 200; // in milliseconds
  * JavaScript is done via watchify instead for this task for optimized configuration.
  * @see https://www.npmjs.com/package/gulp-watch
  */
-gulp.task( 'watch', [ 'watchify' ], function ( callback ) {
+gulp.task( 'watch', [ 'js-watch' ], function ( callback ) {
 
-    watch( config.source.getFiles( 'images' ),
+    watch( config.source.getFileGlobs( 'images' ),
         function ( events, done ) { gulp.start( 'images' ); } );
 
     watch( config.source.getPath( 'css', '**/*.scss' ),
@@ -29,7 +29,7 @@ gulp.task( 'watch', [ 'watchify' ], function ( callback ) {
     watch( config.source.getPath( 'html', '**' ),
         function ( events, done ) { gulp.start( 'html' ); } );
 
-    watch( config.source.getFiles( 'data' ),
+    watch( config.source.getFileGlobs( 'data' ),
         function ( events, done ) { gulp.start( 'html' ); } );
 
     watch( config.dest.getPath( 'html', '**/*.html' ), onHTMLChange );

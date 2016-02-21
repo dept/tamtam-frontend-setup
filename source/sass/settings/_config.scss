@@ -20,4 +20,26 @@ $transition-form-ease					: $ease-in-out-quad;
 
 
 
+// 	Container config(s)
+// 	@see: util/layout/container.scss for more info
+$container-padding-small-breakpoint		: $breakpoint-small;
+$container-mobile-first					      : true;
+$container-config						          : (	max-width: $breakpoint-large,
+                                          padding: 40px,
+                    											gutter: 2rem,
+                    											padding-small: 2rem);
+
+// 	Grid config(s)
+// 	@see: util/layout/grid.scss for more info
+$grid-font-reset						  : $font-stack-body;
+$grid-mobile-first						: true;
+$grid-gutter-small-breakpoint	: $container-padding-small-breakpoint;
+$grid-breakpoints						  : (	'sm': $breakpoint-small,
+											            'md': $breakpoint-medium	);
+$grid-config							    : (	columns: 12,
+            											gutter: 2rem,
+            											gutter-small: 1rem,
+            											push-pull: true,
+            											pre-post: true	);
+
 
