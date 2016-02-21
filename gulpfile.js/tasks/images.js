@@ -18,7 +18,7 @@ gulp.task('images', function () {
 
     var options = {
 
-        imageConfig: {
+        config: {
             optimizationLevel: 3,   // default 3
             progressive: false,     // for JPG, default false
             interlaces: false,      // for GIF, default false
@@ -30,7 +30,7 @@ gulp.task('images', function () {
     return gulp.src( config.source.getFileGlobs( 'images' ) )
 
         .pipe( changed( config.dest.getPath( 'images' ) ) )                         // Ignore unchanged files
-        .pipe( gulpIf( config.optimizeImages, imagemin( options.imageConfig ) ) )   // Optimize
+        .pipe( gulpIf( config.optimizeImages, imagemin( options.config ) ) )   // Optimize
         .pipe( gulp.dest( config.dest.getPath( 'images' ) ) );                      // Export
 
 } );

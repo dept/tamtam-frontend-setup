@@ -12,8 +12,7 @@ var init                      	= require('./src/gulp/init');
 config.debug                    = true;
 config.sourcemaps               = true;
 config.notifyErrors             = true;
-config.minify                   = false;
-config.webpImages               = true;
+config.minify                   = false
 config.prettyHTML               = true;
 
 config.applyProcessArgs();
@@ -82,7 +81,7 @@ function registerMainTasks( gulp ){
 
         runSequence(
             'clean',
-            [ 'copy', 'images', 'webp', 'svg' ],
+            [ 'copy', 'images', 'svg' ],
             [ 'html', 'libs', 'js', 'css' ],
             callback
         );
@@ -127,7 +126,7 @@ function registerMainTasks( gulp ){
 
         runSequence(
             'clean',
-            [ 'copy', 'images', 'webp', 'svg' ],
+            [ 'copy', 'images', 'svg' ],
             [ 'html', 'libs', 'js', 'css' ],
             callback
         );
