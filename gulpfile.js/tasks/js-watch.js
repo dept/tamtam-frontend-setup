@@ -35,6 +35,8 @@ gulp.task( 'js-watch', function jsWatch ( callback ) {
 		}
 
 		previousStats = stats;
+
+		browserSync.reload();
 		
 	} );
 
