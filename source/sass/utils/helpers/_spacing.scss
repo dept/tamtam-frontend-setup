@@ -3,25 +3,16 @@
 //    A collection of some helper classes for tweaking the layout of the elements.
 //
 //
-//    .offset-top-xs      - .margin-top-lg
-//    .offset-right-xs    - .margin-right-lg
-//    .offset-bottom-xs   - .margin-bottom-lg
-//    .offset-left-xs     - .margin-left-lg
+//    .margin-top-xs      - .margin-top-lg
+//    .margin-right-xs    - .margin-right-lg
+//    .margin-bottom-xs   - .margin-bottom-lg
+//    .margin-left-xs     - .margin-left-lg
 //
 //
-
-$spacing-margins: (
-                     'lg': 100px,
-                     'md': 50px,
-                     'sm': 20px,
-                     'xs': 10px
-                  );
 
 @each $spacing-modifier, $spacing-margin in $spacing-margins {
 
-    .offset-top--#{$spacing-modifier}    {   margin-top: $spacing-margin     !important; }
-//    .offset-right--#{$spacing-modifier}  {   margin-right: $spacing-margin   !important; }
-    .offset-bottom--#{$spacing-modifier} {   margin-bottom: $spacing-margin  !important; }
-//    .offset-left--#{$spacing-modifier}   {   margin-left: $spacing-margin    !important; }
+  .margin-top--#{$spacing-modifier}    {   margin-top: $spacing-margin     !important; }
+  .margin-bottom--#{$spacing-modifier} {   margin-bottom: $spacing-margin  !important; }
 
 }

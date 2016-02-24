@@ -2,7 +2,7 @@
 // Misc mixins
 
 @import "mixins/conversion";
-@import "mixins/placeholder";
+@import "mixins/input-placeholder";
 @import "mixins/triangle";
 @import "mixins/vertical-center-dib";
 @import "mixins/map-functions";
@@ -22,8 +22,8 @@
 
 
 // Layout
-@import "layout/container";
-@import "layout/grid";
+@import "grid/generate-container";
+@import "grid/generate-grid";
 
 
 

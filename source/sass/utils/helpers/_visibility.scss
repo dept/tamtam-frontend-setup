@@ -3,7 +3,7 @@
 //
 //    e.g.
 //
-//    <div class=" hidden-xs ">
+//    <div class="hidden-xs">
 //        This element will be hidden on screen size xs
 //    </div>
 //
@@ -19,13 +19,15 @@ $visibility-breakpoints: (
 
 @each $visibility-modifier, $visibility-media in $visibility-breakpoints {
 
-    .visible-#{$visibility-modifier}-block,
-    .visible-#{$visibility-modifier}-inline-block,
-    .visible-#{$visibility-modifier}-inline             {      display: none            !important; }
+    .hidden-#{$visibility-modifier}-table-cell,
+    .hidden-#{$visibility-modifier}-block,
+    .hidden-#{$visibility-modifier}-inline-block,
+    .hidden-#{$visibility-modifier}-inline             {      display: none            !important; }
 
 
     @media #{$visibility-media} {
 
+        .visible-#{$visibility-modifier}-table-cell     {      display: table-cell      !important; }
         .visible-#{$visibility-modifier}-block          {      display: block           !important; }
         .visible-#{$visibility-modifier}-inline-block   {      display: inline-block    !important; }
         .visible-#{$visibility-modifier}-inline         {      display: inline          !important; }

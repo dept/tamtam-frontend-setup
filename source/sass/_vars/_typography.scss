@@ -36,6 +36,7 @@ $font-size-h6         : 1.1rem;
 
 // Font line heights
 // Divide the the given line height by the font size to give an unitless line height
+// @example {design line height} / {font size of text} = {unitless lineheight}
 
 $font-line-height-body: 3.2 strip-unit($font-size-body);
 

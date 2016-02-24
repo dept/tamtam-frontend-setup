@@ -1,0 +1,16 @@
+// @formatter:off
+//
+//    Set the margins for each viewport
+//
+//    @see: helpers/spacing
+//
+//    @exmaple: .offset-top-xs
+//
+//
+
+$spacing-margins: (
+                     'lg': 100px,
+                     'md': 50px,
+                     'sm': 20px,
+                     'xs': 10px
+                  );
