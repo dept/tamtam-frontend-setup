@@ -7,15 +7,15 @@ html {
     background-color: $color-background-html;
     min-height: 100%;
 
+    &.noscroll {
+
+        position: fixed;
+        overflow-y: scroll;
+        width: 100%;
+
+    }
 }
 
-html.noscroll {
-
-    position: fixed;
-    overflow-y: scroll;
-    width: 100%;
-
-}
 
 html, body {
 

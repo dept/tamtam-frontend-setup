@@ -12,11 +12,11 @@ $container-config						: (	max-width: 1024px,
 																add-break: true,
 																add-flood: true	) 	!default;
 
-$container-mobile-first					: true			!default;
-$container-padding-small-breakpoint		: 768px			!default;
-$container-base-class					: 'container'	!default;
-$container-flood-modifier				: 'flood'		!default;
-$container-break-modifier				: 'break'		!default;
+$container-mobile-first							: true			!default;
+$container-padding-small-breakpoint	: 768px			!default;
+$container-base-class								: 'container'	!default;
+$container-flood-modifier						: 'flood'		!default;
+$container-break-modifier						: 'break'		!default;
 
 %container-base {
 
@@ -39,12 +39,12 @@ $_container-created: ();
 
 	@if (type-of( $container-config ) != "map") { @error '$container-config is not a valid map. Current config: ' + $container-config; }
 
-	$max-width			: map_get( $container-config, max-width );
-	$gutter				: map_get( $container-config, gutter );
-	$gutter-small		: map_get( $container-config, gutter-small );
-	$postfix			: map_get( $container-config, postfix );
-	$add-break			: map_get( $container-config, add-break );
-	$add-flood			: map_get( $container-config, add-flood );
+	$max-width				: map_get( $container-config, max-width );
+	$gutter						: map_get( $container-config, gutter );
+	$gutter-small			: map_get( $container-config, gutter-small );
+	$postfix					: map_get( $container-config, postfix );
+	$add-break				: map_get( $container-config, add-break );
+	$add-flood				: map_get( $container-config, add-flood );
 	$max-width-media	: null;
 	
 	@if ( $max-width != null and $gutter != null ) {
