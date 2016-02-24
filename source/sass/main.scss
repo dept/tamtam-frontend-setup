@@ -16,9 +16,9 @@
 @import "_vars/index";
 @import "utils/index";
 
-@import "core/normalize";
-@import "core/html";
-@import "core/typography";
+@import "layout/normalize";
+@import "layout/html";
+@import "layout/typography";
 
 
 
@@ -41,7 +41,7 @@
 @import "elements/checkbox";
 
 @import "elements/background-image";
-@import "elements/background";
+@import "elements/background-color";
 @import "elements/text";
 
 

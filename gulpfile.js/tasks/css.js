@@ -39,7 +39,7 @@ gulp.task('css', function () {
         // @see: http://caniuse.com/
         // @see: https://github.com/postcss/autoprefixer-core
         autoprefixer: {
-            browsers: ['last 3 versions'],
+            browsers: ['last 3 versions', 'iOS 8'],
             remove: true // By default, Autoprefixer will not only add new prefixes, but also remove outdated ones.
         },
 

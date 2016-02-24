@@ -24,14 +24,14 @@
     text-transform: uppercase;
     text-align: center;
 
-    // regular
+    // Regular styling
     padding: 11px 20px 10px 20px;
     font-size: 15px;
     line-height: 15px;
 
-	transition-property: background-color $transition-button-time $transition-button-ease;
+	transition-property: all $transition-button-time $transition-button-ease;
 
-    &:hover, &:focus {
+    &:hover {
         background-color: darken($color-primary, 10%);
     }
 
@@ -41,19 +41,15 @@
 
     @extend %regular-button;
 
-    //    &--large
-    //    {
-    //        @extend %button-base;
-    //
-    //        padding: 15px 30px 11px 35px;
-    //        font-size: 2.5rem;
-    //        line-height: 2.5rem;
-    //
-    //    }
+    // Large styling
+    &--large{
+        padding: 15px 30px 11px 35px;
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+    }
 
-    &--down
-    {
-        @extend %regular-button;
+    // Arrow down styling
+    &--down{
 
         .icon-arrow-down {
             margin-left: 10px;
