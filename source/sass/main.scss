@@ -13,7 +13,7 @@
 //      - common helper classes
 //      - html / body style
 
-@import "settings/index";
+@import "_vars/index";
 @import "utils/index";
 
 @import "core/normalize";
@@ -25,31 +25,34 @@
 //	Elements
 // 		- Very small re-usable components used by modules
 
-@import "elements/html/button";					//	( native ) HTML
-@import "elements/html/figure";
-@import "elements/html/heading";
-@import "elements/html/link";
-@import "elements/html/list";
-@import "elements/html/quote";
-@import "elements/html/svg";
-@import "elements/html/table";
 
-@import "elements/form/form";					//	form
-@import "elements/form/input";
-@import "elements/form/select";
-@import "elements/form/checkbox";
+@import "elements/button";
+@import "elements/figure";
+@import "elements/heading";
+@import "elements/link";
+@import "elements/list";
+@import "elements/quote";
+@import "elements/svg";
+@import "elements/table";
 
-@import "elements/misc/background-image";		//	other
-@import "elements/misc/background";
-@import "elements/misc/text";
+@import "elements/form";
+@import "elements/input";
+@import "elements/select";
+@import "elements/checkbox";
+
+@import "elements/background-image";
+@import "elements/background";
+@import "elements/text";
 
 
 
 //	Modules
 //		- Re-usable blocks consisting mostly of elements
 
-@import "modules/common/cookie";				//	common
-@import "modules/common/footer";
-@import "modules/common/header";
+/* Default */
+@import "modules/default-cookie";
+@import "modules/default-footer";
+@import "modules/default-header";
 
-@import "modules/content/rich-text";			//	content
+/* Content  */
+@import "modules/content-rich-text";
