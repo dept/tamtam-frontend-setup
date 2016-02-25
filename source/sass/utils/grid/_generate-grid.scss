@@ -278,9 +278,8 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
     @if( strip-unit( $gutter-size ) > 0) {
 
         margin-left:        -$gutter-size;
-        margin-right:       -$gutter-size;
 
-        & > [class*="#{$grid-column-base-class}-"] { padding-left:   $gutter-size; padding-right:   $gutter-size; }
+        & > [class*="#{$grid-column-base-class}-"] { padding-left:   $gutter-size; }
 
     }
     @else {
