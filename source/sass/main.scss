@@ -18,20 +18,16 @@
 
 @import "layout/normalize";
 @import "layout/html";
-@import "layout/typography";
-
 
 
 //	Elements
 // 		- Very small re-usable components used by modules
-
 
 @import "elements/button";
 @import "elements/figure";
 @import "elements/heading";
 @import "elements/link";
 @import "elements/list";
-@import "elements/quote";
 @import "elements/svg";
 @import "elements/table";
 
@@ -41,7 +37,6 @@
 @import "elements/checkbox";
 
 @import "elements/background-image";
-@import "elements/background-color";
 @import "elements/text";
 
 
@@ -50,9 +45,9 @@
 //		- Re-usable blocks consisting mostly of elements
 
 /* Default */
-@import "modules/default-cookie";
-@import "modules/default-footer";
-@import "modules/default-header";
+@import "modules/common/cookie";
+@import "modules/common/footer";
+@import "modules/common/header";
 
 /* Content  */
-@import "modules/content-rich-text";
+@import "modules/rich-text";

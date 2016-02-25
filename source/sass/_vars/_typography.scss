@@ -10,7 +10,6 @@ $font-stack-secondary	: 'Helvetica Neue', 'Helvetica Neue', Helvetica, Arial, sa
 
 // Font settings
 
-$font-stack-header		: $font-stack-primary;
 $font-stack-body		  : $font-stack-secondary;
 $font-stack-buttons		: $font-stack-secondary;
 
@@ -36,18 +35,18 @@ $font-size-h6         : 1.1rem;
 
 // Font line heights
 // Divide the the given line height by the font size to give an unitless line height
-// @example {design line height} / {font size of text} = {unitless lineheight}
+// @example {design line height} / {font size} = {unitless lineheight}
 
 $font-line-height-body: 3.2 strip-unit($font-size-body);
 
-$font-line-height-h1: 3.2 / strip-unit($font-size-h1);
+$font-line-height-h1:   3.2 / strip-unit($font-size-h1);
 
-$font-line-height-h2: 3.2 / strip-unit($font-size-h2);
+$font-line-height-h2:   3.2 / strip-unit($font-size-h2);
 
-$font-line-height-h3: 3.2 / strip-unit($font-size-h3);
+$font-line-height-h3:   3.2 / strip-unit($font-size-h3);
 
-$font-line-height-h4: 3.2 / strip-unit($font-size-h4);
+$font-line-height-h4:   3.2 / strip-unit($font-size-h4);
 
-$font-line-height-h5: 3.2 / strip-unit($font-size-h5);
+$font-line-height-h5:   3.2 / strip-unit($font-size-h5);
 
-$font-line-height-h6: 3.2 / strip-unit($font-size-h6);
+$font-line-height-h6:   3.2 / strip-unit($font-size-h6);

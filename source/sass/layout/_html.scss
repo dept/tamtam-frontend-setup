@@ -7,7 +7,7 @@ html {
     background-color: $color-background-html;
     min-height: 100%;
 
-    &.noscroll {
+    &.no-scroll {
 
         position: fixed;
         overflow-y: scroll;

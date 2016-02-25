@@ -5,14 +5,11 @@
 @import "mixins/input-placeholder";
 @import "mixins/triangle";
 @import "mixins/vertical-center-dib";
-@import "mixins/map-functions";
-
+@import "mixins/spaceless";
 
 // Common placeholders
 
 @import "placeholders/clearfix";
-@import "placeholders/placeholder";
-@import "placeholders/spaceless";
 
 
 // Helper classes
@@ -24,6 +21,3 @@
 // Layout
 @import "grid/generate-container";
 @import "grid/generate-grid";
-
-
-

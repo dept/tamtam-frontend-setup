@@ -28,40 +28,10 @@
     vertical-align: middle;
 
     overflow: hidden;
-    background-color: $color-white;
-
-
-    svg {
-
-        position: absolute;
-        right: .7em;
-        top: 50%;
-        transform: translateY(-50%);
-
-    }
 
     select {
 
         @extend %select-reset;
-
-        background-color: transparent; // transparent so we can show svg images underneath the select without it affecting the click area
-        position: relative;
-        display: block;
-        width: 100%;
-        height: 100%;
-
-        z-index: 2;
-        cursor: pointer;
-        padding: .97em 2.5em .97em 1em;
-
-        transition: border-color $transition-form-time $transition-form-ease;
-
-        &:focus {
-
-            border-color: $color-form-focus;
-
-        }
-
 
     }
 

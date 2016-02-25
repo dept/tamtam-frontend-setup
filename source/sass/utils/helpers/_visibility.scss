@@ -19,10 +19,10 @@ $visibility-breakpoints: (
 
 @each $visibility-modifier, $visibility-media in $visibility-breakpoints {
 
-    .hidden-#{$visibility-modifier}-table-cell,
-    .hidden-#{$visibility-modifier}-block,
-    .hidden-#{$visibility-modifier}-inline-block,
-    .hidden-#{$visibility-modifier}-inline             {      display: none            !important; }
+    .visible-#{$visibility-modifier}-table-cell,
+    .visible-#{$visibility-modifier}-block,
+    .visible-#{$visibility-modifier}-inline-block,
+    .visible-#{$visibility-modifier}-inline             {      display: none            !important; }
 
 
     @media #{$visibility-media} {

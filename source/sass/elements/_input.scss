@@ -5,7 +5,7 @@ input[type="text"] {
 
     @include placeholder( $color-form-placeholder );
 
-    padding: .85em 1em;
+    padding: 1rem 1rem;
     background-color: $color-white;
     font-size: inherit;
     border: 1px solid transparent;

@@ -69,9 +69,37 @@ $grid-middle-modifier			: 'middle'			!default;
 
 // -------------------------------- END OF CONFIG -------------------------------- //
 
+//    Reverse map function.
+//
+//    @see: https://gist.github.com/seanislegend/107ccf9c81ec9fd1aae0
+@function grid-map-reverse ($map) {
+    $result: null;
+
+    @if type-of($map) == "map" {
+        $keys: map-keys($map);
+        $grid-map-reversed: ();
+
+        @for $i from length($keys) through 1 {
+            $grid-map-reversed: map-merge(
+                            $grid-map-reversed,
+                            (nth($keys, $i): map-get($map, nth($keys, $i)))
+            );
+        }
+
+        @if type-of($grid-map-reversed) == "map" {
+            $result: $grid-map-reversed;
+        } @else {
+            @warn 'There was an error reversing the order of "#{$map}"';
+        }
+    } @else {
+        @warn '"#{$map}" is not a valid map';
+    }
+
+    @return $result;
+}
 
 // Run dependency test
-@if ( function-exists( map-reverse ) == false ) { @error "'map-reverse' function was not found!"; }
+@if ( function-exists( grid-map-reverse ) == false ) { @error "'grid-map-reverse' function was not found!"; }
 @if ( function-exists( strip-unit ) == false ) { @error "'strip-unit' function was not found!"; }
 
 
@@ -79,7 +107,7 @@ $grid-middle-modifier			: 'middle'			!default;
 //  These variables are used for generating the grids and should not be touched!
 $_grid-created                  	: ();
 $_grid-small-gutters-created    	: false;
-$_grid-breakpoints-large-to-small   : map-reverse( $grid-breakpoints );
+$_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
 
 %grid-base {

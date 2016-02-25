@@ -27,7 +27,6 @@
 //		</span>
 
 .checkbox {
-
     display: inline-block;
     position: relative;
     vertical-align: middle;
@@ -37,39 +36,6 @@
     input[type="checkbox"] {
 
         @extend %checkbox-reset;
-
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: 10;
-        opacity: 0;
-        cursor: pointer;
-
-        &:focus {
-            & + span {
-                border-color: $color-form-focus;
-            }
-        }
-
-    }
-
-    > span {
-
-        display: block;
-        position: relative;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        line-height: 3.6rem;
-        z-index: 1; // force inner content to be above the :before
-        border: 1px solid $color-grey;
-        transition: border-color $transition-form-time $transition-form-ease;
-    }
-
-    svg {
-
-        position: absolute;
 
     }
 

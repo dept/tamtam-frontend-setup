@@ -8,9 +8,14 @@
 //
 //
 
+$margin-large:  100px;
+$margin-medium: 50px;
+$margin-small:  20px;
+$margin-xsmall: 10px;
+
 $spacing-margins: (
-                     'lg': 100px,
-                     'md': 50px,
-                     'sm': 20px,
-                     'xs': 10px
+                     'lg': $margin-large,
+                     'md': $margin-medium,
+                     'sm': $margin-small,
+                     'xs': $margin-xsmall
                   );
