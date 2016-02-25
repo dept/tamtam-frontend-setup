@@ -17,7 +17,6 @@ config.throwError       = false;    			// Actually throws an (native) error when
 
 config.minify           = false;
 config.optimizeImages   = true;
-config.webpImages       = true;           // Use webp images
 config.sourcemaps       = true;
 config.cleanCSS         = false;    			// removes unused CSS, requires 'gulp-uncss' installation.
 config.prettyHTML       = false;
