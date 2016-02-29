@@ -42,10 +42,20 @@ In the root of the folder, the pages are set.
 
 Folders are used for **elements**, **layout** and **modules**.
 
-The **_dev** folder is used for development / debug purpose and there's no real need to edit this. These files are not used in the real project, but during internal development.
+The **_dev** folder is used for development / debug purpose and there's no real need to edit this. These files are not used in the real project, but during local development.
 
 
 ## Javascript ##
 CommonJS setup with various sample images to explain how to use, export and reuse the modules.
 
-# Build #
+
+## SASS ##
+Folder which contains all SASS and related files, e.g. configs, mixins and extends.
+
+The **_dev** folder is - again - just being used in local development. All other folders and files are split and sorted into elements, layout, modules and utils.
+
+Files can be rearranges as wished, as long as the main folder structure stays intact.
+
+
+# Build and Dist #
+Both folders will be created by the corresponding Gulp task and will include all final files.
