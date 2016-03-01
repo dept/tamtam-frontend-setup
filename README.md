@@ -14,7 +14,8 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
         - [Javascript](#javascript)
         - [SASS](#sass)
     - [Build and Dist](#build-and-dist)
-6.  [HTML Templating](#html-templating-with-nunjucks)
+6.  [HTML Templating](#html-templating-nunjucks)
+7.  [Grid system](#grid-system)
 
 
 # Setup #
@@ -151,6 +152,67 @@ __Result__
     <label for="username"></label>
     <input class="input--text" type="text" name="username" id="username" placeholder="" />
 </div>
+```
+
+------
+
+
+# HTML Templating - Nunjucks #
+[What is nunjucks?](https://mozilla.github.io/nunjucks/) Nunjucks is a powerful templating engine, using Javascript. It allows you to create sophisticated [macros](https://mozilla.github.io/nunjucks/templating.html#macro) to render clean and easy-to-read html.
+
+[Read the Documentation here](https://mozilla.github.io/nunjucks/templating.html)
+
+### Example ###
+
+__Macro definition__
+```
+{% macro inputText(name, value='', type='text') %}
+<div class="input__holder">
+    <label for="{{ name }}"></label>
+    <input class="input--{{ type }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
+</div>
+{% endmacro %}
+```
+
+__Usage__
+
+```
+{{ inputText('username', false, 'text') }}
+```
+
+__Result__
+```
+<div class="input__holder">
+    <label for="username"></label>
+    <input class="input--text" type="text" name="username" id="username" placeholder="" />
+</div>
+```
+
+------
+
+# Grid system #
+
+## Config ##
+
+__Breakpoints__
+The media query [config](src/develop/source/sass/_vars/_media.scss) can be found in the [_vars](src/develop/source/sass/_vars/) folder. Here you can configure the breakpoints to fit your needs.
+
+__Grid__
+The grid [config](src/develop/source/sass/_vars/_config.scss) can be found in the [_vars](src/develop/source/sass/_vars/) folder. Here you can configure the breakpoints, gutters and max-width for the container and grid.
+
+You can also add extra breakpoints or change the prefix in the `$grid-breakpoints` var.
+__Original__
+```
+$grid-breakpoints   : ( 'sm': $breakpoint-small,
+                        'md': $breakpoint-medium );
+```
+
+__Added breakpoints__
+This example will add a new breakpoint called large. By default the large breakpoint is `1024px`.
+```
+$grid-breakpoints   : ( 'sm': $breakpoint-small,
+                        'md': $breakpoint-medium,
+                        'lg': $breakpoint-large );
 ```
 
 ------
