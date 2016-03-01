@@ -201,6 +201,7 @@ __Grid__
 The grid [config](src/develop/source/sass/_vars/_config.scss) can be found in the [_vars](src/develop/source/sass/_vars/) folder. Here you can configure the breakpoints, gutters and max-width for the container and grid.
 
 You can also add extra breakpoints or change the prefix in the `$grid-breakpoints` var.
+
 __Original__
 ```
 $grid-breakpoints   : ( 'sm': $breakpoint-small,
@@ -209,6 +210,7 @@ $grid-breakpoints   : ( 'sm': $breakpoint-small,
 
 __Added breakpoints__
 This example will add a new breakpoint called large. By default the large breakpoint is `1024px`.
+
 ```
 $grid-breakpoints   : ( 'sm': $breakpoint-small,
                         'md': $breakpoint-medium,
