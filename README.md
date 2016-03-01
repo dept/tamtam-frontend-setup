@@ -13,7 +13,7 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
         - [HTML](#html)
         - [Javascript](#javascript)
         - [SASS](#sass)
-5.  [Build and Dist](#build-and-dist)
+    - [Build and Dist](#build-and-dist)
 6.  [HTML Templating](#html-templating-with-nunjucks)
 
 
@@ -115,9 +115,9 @@ The **_dev** folder is - again - just being used in local development. All other
 
 Files can be rearranges as wished, as long as the main folder structure stays intact.
 
-------
 
-# Build and Dist #
+
+## Build and Dist ##
 Both folders will be created by the corresponding Gulp task and will include all final files.
 
 ------
