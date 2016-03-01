@@ -198,11 +198,13 @@ __Breakpoints__
 
 The media query [config](src/develop/source/sass/_vars/_media.scss) can be found in the [_vars](src/develop/source/sass/_vars/) folder. Here you can configure the breakpoints to fit your needs.
 
+
 __Grid__
 
 The grid [config](src/develop/source/sass/_vars/_config.scss) can be found in the [_vars](src/develop/source/sass/_vars/) folder. Here you can configure the breakpoints, gutters and max-width for the container and grid.
 
 You can also add extra breakpoints or change the prefix in the `$grid-breakpoints` var.
+
 
 __Original__
 
