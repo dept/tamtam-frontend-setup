@@ -156,40 +156,6 @@ __Result__
 
 ------
 
-
-# HTML Templating - Nunjucks #
-[What is nunjucks?](https://mozilla.github.io/nunjucks/) Nunjucks is a powerful templating engine, using Javascript. It allows you to create sophisticated [macros](https://mozilla.github.io/nunjucks/templating.html#macro) to render clean and easy-to-read html.
-
-[Read the Documentation here](https://mozilla.github.io/nunjucks/templating.html)
-
-### Example ###
-
-__Macro definition__
-```
-{% macro inputText(name, value='', type='text') %}
-<div class="input__holder">
-    <label for="{{ name }}"></label>
-    <input class="input--{{ type }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
-</div>
-{% endmacro %}
-```
-
-__Usage__
-
-```
-{{ inputText('username', false, 'text') }}
-```
-
-__Result__
-```
-<div class="input__holder">
-    <label for="username"></label>
-    <input class="input--text" type="text" name="username" id="username" placeholder="" />
-</div>
-```
-
-------
-
 # Grid system #
 
 ## Config ##
