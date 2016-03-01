@@ -1,5 +1,21 @@
 [frontend-setup](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup)
 ==============
+This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter) and has been modified to an ideal usecase.
+
+# Table of Contents
+1. [Intro](#setup)
+2. [Install](#install)
+3. [Gulp](#gulp)
+4. [Folder structure](#folder-structure)
+    - [Source](#source)
+        - [Assets](#assets)
+        - [Data](#data)
+        - [HTML](#html)
+        - [Javascript](#javascript)
+        - [SASS](#sass)
+5.  [Build and Dist](#build-and-dist)
+6.  [HTML Templating](#html-templating-with-nunjucks)
+
 
 # Setup #
 Welcome to the readme of the TamTam frontend setup.
@@ -31,7 +47,7 @@ So let's make this setup as best as we can so every project is setup in no time 
 * Geert Fokke (geert@tamtam.nl)
 * All frontend developers within TamTam (frontend@tamtam.nl)
 
-
+------
 
 # Install #
 Some simple ordered steps to get your project running.
@@ -39,6 +55,8 @@ Some simple ordered steps to get your project running.
 1. npm install
 1. bower install
 1. gulp
+
+------
 
 # Gulp #
 We're using Gulp by default for our project setup.
@@ -61,17 +79,22 @@ Pro-users could dive deeper into the Gulp setup, but it's not required.
 * gulp server 
 > (build including live server)
 
-# Source #
-## Assets ##
+------
+
+# Folder Structure #
+
+## Source ##
+
+### Assets ###
 Contains fonts, images and SVG files.
 
 These will be automaticly copied to the right folders.
 
-## Data ##
+### Data ###
 JSON data which is available for your Nunjucks templating.
 The files are sorted per page.
 
-## HTML ##
+### HTML ###
 Modular setup of the HTML files.
 
 In the root of the folder, the pages are set.
@@ -81,17 +104,53 @@ Folders are used for **elements**, **layout** and **modules**.
 The **_dev** folder is used for development / debug purpose and there's no real need to edit this. These files are not used in the real project, but during local development.
 
 
-## Javascript ##
+### Javascript ###
 CommonJS setup with various sample images to explain how to use, export and reuse the modules.
 
 
-## SASS ##
+### SASS ###
 Folder which contains all SASS and related files, e.g. configs, mixins and extends.
 
 The **_dev** folder is - again - just being used in local development. All other folders and files are split and sorted into elements, layout, modules and utils.
 
 Files can be rearranges as wished, as long as the main folder structure stays intact.
 
+------
 
 # Build and Dist #
 Both folders will be created by the corresponding Gulp task and will include all final files.
+
+------
+
+# HTML Templating - Nunjucks #
+[What is nunjucks?](https://mozilla.github.io/nunjucks/) Nunjucks is a powerful templating engine, using Javascript. It allows you to create sophisticated [macros](https://mozilla.github.io/nunjucks/templating.html#macro) to render clean and easy-to-read html.
+
+[Read the Documentation here](https://mozilla.github.io/nunjucks/templating.html)
+
+### Example ###
+
+__Macro definition__
+```
+{% macro inputText(name, value='', type='text') %}
+<div class="input__holder">
+    <label for="{{ name }}"></label>
+    <input class="input--{{ type }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
+</div>
+{% endmacro %}
+```
+
+__Usage__
+
+```
+{{ inputText('username', false, 'text') }}
+```
+
+__Result__
+```
+<div class="input__holder">
+    <label for="username"></label>
+    <input class="input--text" type="text" name="username" id="username" placeholder="" />
+</div>
+```
+
+------
