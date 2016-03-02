@@ -217,18 +217,18 @@ This object can be used as followed.
 ```
 
 > _The used macro_
-    ```
-    {% macro input(name, value='', type='text') %}
-        <div class="input__holder">
-            {% if type != 'textarea' %}
-                <label for="{{ name }}"></label>
-                <input class="input--{{ type }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
-            {% else %}
-                <textarea class="input--{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
-            {% endif %}
-        </div>
-    {% endmacro %}
-    ```
+```
+{% macro input(name, value='', type='text') %}
+    <div class="input__holder">
+        {% if type != 'textarea' %}
+            <label for="{{ name }}"></label>
+            <input class="input--{{ type }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
+        {% else %}
+            <textarea class="input--{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
+        {% endif %}
+    </div>
+{% endmacro %}
+```
 
 __Final output__
 ```
