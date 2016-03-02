@@ -60,12 +60,15 @@ So let's make this setup as best as we can so every project is setup in no time 
 To use the setup use the following commands.
 
 __1. Install all the npm modules__
+
 `npm install`
 
 __2. Optional: Install bower modules you need__
+
 `bower install`
 
 __3. Start the project__
+
 `gulp`
 
 ------
@@ -99,53 +102,52 @@ __gulp__ clean
 > (Remove and rebuild the build directory)
 
 ## Config ##
-The gulpfile.js has two main files: `config.js` and `index.js`. The `config.js` contains all the paths the tasks rely on. You can change them to suit your needs.
+The gulpfile.js has two main files: `config.js` and `index.js`.
+
+The `config.js` contains all the paths the tasks rely on. You can change them to suit your needs.
 
 The `index.js` file is where all the tasks are defined. Here you can enable certain config variables for each task. For example, minifying when it is running the bamboo task.
 
-The most important thing to know is that you can also include your `bower` or `npm` dependencies that are incompatible with commonJS. This can be found at `config.libs`.
+The most important thing to know is that you can also include your `bower` or `npm` dependancies that are incompatible with commonJS. This can be found at `config.libs`.
 
 
 ------
 
 # Folder Structure #
 
-## Source ##
+>## Source ##
 
-### Assets ###
-Contains fonts, images and SVG files.
+>>### Assets ###
+>>Contains fonts, images and SVG files.
+>>
+>>These will be automaticly copied to the right folders.
 
-These will be automaticly copied to the right folders.
+>>### Data ###
+>>JSON data which is available for your Nunjucks templating. The `.json` files should be named by page or module
 
-### Data ###
-JSON data which is available for your Nunjucks templating.
-The files are sorted per page.
+>>### HTML ###
+>>Modular setup of the HTML files.
+>>
+>>In the root of the folder, the pages are set.
+>>
+>>Folders are used for **elements**, **layout** and **modules**.
 
-### HTML ###
-Modular setup of the HTML files.
-
-In the root of the folder, the pages are set.
-
-Folders are used for **elements**, **layout** and **modules**.
-
-The **_dev** folder is used for development / debug purpose and there's no real need to edit this. These files are not used in the real project, but during local development.
-
-
-### Javascript ###
-CommonJS setup with various sample images to explain how to use, export and reuse the modules.
+>>The **_dev** folder is used for development / debug purpose and there's no real need to edit this. These files are not used in the real project, but during local development.
 
 
-### SASS ###
-Folder which contains all SASS and related files, e.g. configs, mixins and extends.
+>>### Javascript ###
+>>CommonJS setup with various sample images to explain how to use, export and reuse the modules.
+>>
+>>### SASS ###
+>>Folder which contains all SASS and related files, e.g. configs, mixins and extends.
+>>
+>>The **_dev** folder is - *again* - just being used in local development. All other folders and files are split and sorted into elements, layout, modules and utils.
+>>
+>>Files can be rearranges as wished, as long as the main folder structure stays intact.
 
-The **_dev** folder is - *again* - just being used in local development. All other folders and files are split and sorted into elements, layout, modules and utils.
 
-Files can be rearranges as wished, as long as the main folder structure stays intact.
-
-
-
-## Build and Dist ##
-Both folders will be created by the corresponding Gulp task and will include all final files.
+>## Build and Dist ##
+>Both folders will be created by the corresponding Gulp task and will include all final files.
 
 ------
 
@@ -276,6 +278,8 @@ The grid [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/deve
 
 You can also add extra breakpoints or change the prefix in the `$grid-breakpoints` var.
 
+__note__ The difference between mobile first true and false is that when it is true it will use `min-width` if it's false it will use `max-width`.
+
 
 __Original__
 
@@ -301,6 +305,8 @@ The grid, whilst the naming conventions are bootstrap like, the usage is a bit d
 
 
 ### Grid example ###
+
+This example uses the mobile first grid. Meaning that everything is based off `min-width`.
 
 __100% width__
 ```
