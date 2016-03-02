@@ -15,6 +15,8 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
         - [SASS](#markdown-header-sass)
     - [Build and Dist](#markdown-header-build-and-dist)
 6.  [HTML Templating](#markdown-header-html-templating-nunjucks)
+    - [Macro](#markdown-header-macro)
+    - [JSON Data](#markdown-header-json-data)
 7.  [Grid system](#markdown-header-grid-system)
     - [Config](#markdown-header-config)
     - [Usage](#markdown-header-usage)
@@ -141,9 +143,11 @@ Both folders will be created by the corresponding Gulp task and will include all
 # HTML Templating - Nunjucks #
 [What is nunjucks?](https://mozilla.github.io/nunjucks/) Nunjucks is a powerful templating engine, using Javascript. It allows you to create sophisticated [macros](https://mozilla.github.io/nunjucks/templating.html#macro) to render clean and easy-to-read html.
 
-[Read the Documentation here](https://mozilla.github.io/nunjucks/templating.html)
+[Go to the Documentation](https://mozilla.github.io/nunjucks/templating.html)
 
-### Example ###
+### Macro ###
+
+This is a simple example of how a macro can support you in coding for instance forms. You can also generate your html based off [json data](#markdown-header-json-data).
 
 __Macro definition__
 ```
@@ -167,6 +171,80 @@ __Result__
     <label for="username"></label>
     <input class="input--text" type="text" name="username" id="username" placeholder="" />
 </div>
+```
+
+### JSON Data ###
+
+JSON data is a good way to make your life easier whilst developing with Nunjucks. This way you can create complete forms just by reading a json object. The JSON [folder](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/data/) can be found in the `source` folder.
+
+#### Example ####
+
+__JSON object__
+This JSON example has been created in `data/pages/contact.json`
+
+```
+{
+    contactForm : {
+        { 
+            name: "emailaddress",
+            value: "Your emailaddress",
+            type: "email"
+        },
+        { 
+            name: "subject",
+            value: "Subject",
+            type: "text"
+        },
+        { 
+            name: "message",
+            value: "Your message",
+            type: "textarea"
+        }
+    }
+}
+```
+
+
+__Using the JSON as data__
+This object can be used as followed.
+
+```
+<form>
+    {% for input in pages.contact %}
+        {{ input(input.name, input.value, input.type) }}
+    {% endfor %}
+</form>
+```
+
+> _The used macro_
+    ```
+    {% macro input(name, value='', type='text') %}
+        <div class="input__holder">
+            {% if type != 'textarea' %}
+                <label for="{{ name }}"></label>
+                <input class="input--{{ type }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
+            {% else %}
+                <textarea class="input--{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
+            {% endif %}
+        </div>
+    {% endmacro %}
+    ```
+
+__Final output__
+```
+<form>
+    <div class="input__holder">
+        <label for="emailaddress"></label>
+        <input class="input--email" type="email" name="emailaddress" id="emailaddress" placeholder="Your emailaddress" />
+    </div>
+    <div class="input__holder">
+        <label for="subject"></label>
+        <input class="input--text" type="text" name="subject" id="subject" placeholder="Subject" />
+    </div>
+    <div class="input__holder">
+        <textarea class="input--textarea" name="message" id="message" placeholder="Your message" />
+    </div>
+</form>
 ```
 
 ------
@@ -238,15 +316,16 @@ __with container__
 
 ### Column modifiers ###
 
-Below are the modifiers you can use to change the columns.
+Below are the modifier classes you can use to change the columns.
 
 Option              | Description
 -------------       | -------------
-col-{breakpoint}-*  | Creates x amount of columns according to the given breakpoint
-push-*              | Pushes element x amount of columns using `right`
-pull-*              | Pulls element x amount of columns using `left`
-pre-*               | Adds `margin-left` to element x amount of columns
-post-*              | Adds `margin-right` to element x amount of columns
+`col-{breakpoint}-*`  | Creates x amount of columns according to the given `breakpoint`
+`push-*`             | Pushes element x amount of columns using `right`
+`pull-*`              | Pulls element x amount of columns using `left`
+`pre-*`              | Adds `margin-left` to element x amount of columns
+`post-*`              | Adds `margin-right` to element x amount of columns
 
+_* - amount of columns_
 
 ------
