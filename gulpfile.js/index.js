@@ -30,11 +30,15 @@ config.copy = function () {
 }
 
 // Libraries that will be concatenated together on the global scope, used for commonJS incompatible libs & plugins
+// You can user bower or npm getPath by default
+// @example: config.source.getPath('npm', 'jquery/dist/jquery.js' )
+//
+
 config.libs = function () {
 
     return [
         //config.source.getPath('bower', 'jquery/dist/jquery.js' ),
-        //config.source.getPath('bower', 'jquery.cookie/jquery.cookie.js' ),
+        //config.source.getPath('bower', 'jquery.cookie/jquery.cookie.js' )
     ];
 
 }

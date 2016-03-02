@@ -3,20 +3,26 @@
 This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter) and has been modified to an ideal usecase.
 
 # Table of Contents
-1. [Intro](#setup)
-2. [Install](#install)
-3. [Gulp](#gulp)
-4. [Folder structure](#folder-structure)
-    - [Source](#source)
-        - [Assets](#assets)
-        - [Data](#data)
-        - [HTML](#html)
-        - [Javascript](#javascript)
-        - [SASS](#sass)
-    - [Build and Dist](#build-and-dist)
-6.  [HTML Templating](#html-templating-nunjucks)
-7.  [Grid system](#grid-system)
+1. [Intro](#markdown-header-setup)
+2. [Install](#markdown-header-install)
+3. [Gulp](#markdown-header-gulp)
+    - [Config](#markdown-header-config)
+4. [Folder structure](#markdown-header-folder-structure)
+    - [Source](#markdown-header-source)
+        - [Assets](#markdown-header-assets)
+        - [Data](#markdown-header-data)
+        - [HTML](#markdown-header-html)
+        - [Javascript](#markdown-header-javascript)
+        - [SASS](#markdown-header-sass)
+    - [Build and Dist](#markdown-header-build-and-dist)
+6.  [HTML Templating](#markdown-header-html-templating-nunjucks)
+    - [Macro](#markdown-header-macro)
+    - [JSON Data](#markdown-header-json-data)
+7.  [Grid system](#markdown-header-grid-system)
+    - [Config](#markdown-header-config)
+    - [Usage](#markdown-header-usage)
 
+------
 
 # Setup #
 Welcome to the readme of the TamTam frontend setup.
@@ -35,7 +41,7 @@ This way other developers can get their head around your code and your folder wo
 
 The setup is always in progress so if you're having an idea or thought, please share it.
 Send an email to simon@tamtam.nl and we'll take care of it.
-When you're in to optimise code, add a feature or any code whatsoever, please do so and get a pullrequest.
+When you're in to optimising code, add a feature or any code whatsoever, please do so and get a pull request.
 
 We're in this together, as a group of frontend developers.
 So let's make this setup as best as we can so every project is setup in no time !
@@ -51,34 +57,55 @@ So let's make this setup as best as we can so every project is setup in no time 
 ------
 
 # Install #
-Some simple ordered steps to get your project running.
+To use the setup use the following commands.
 
-1. npm install
-1. bower install
-1. gulp
+__1. Install all the npm modules__
+`npm install`
+
+__2. Optional: Install bower modules you need__
+`bower install`
+
+__3. Start the project__
+`gulp`
 
 ------
 
 # Gulp #
 We're using Gulp by default for our project setup.
-All settings are stored in the **gulpfile.js** folder, where **config.js** contains the global Gulp config.
+All settings are stored in the [__gulpfile.js__](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/gulpfile.js/config.js?fileviewer=file-view-default) folder, where [__config.js__](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/gulpfile.js/config.js?fileviewer=file-view-defaultconfig.js) contains the global Gulp config.
 Pro-users could dive deeper into the Gulp setup, but it's not required.
 
-> Please don't use Grunt, it's outdated, not as supported as Gulp and we do not support it at TamTam anymore.
+> *Please don't use Grunt, it's outdated, not as supported as Gulp and we do not support it at TamTam anymore.**
 
 
-**Some default Gulp tasks:**
+**Available gulp tasks for building:**
 
-* gulp 
+__gulp__
 > (default - will run gulp server)
-* gulp bamboo 
+
+__gulp__ bamboo 
 > (build specific for Bamboo)
-* gulp build 
+
+__gulp__ build 
 > (default build for development)
-* gulp dist 
+
+__gulp__ dist 
 > (build for distribution for backend)
-* gulp server 
+
+__gulp__ server 
 > (build including live server)
+
+__gulp__ clean 
+> (Remove and rebuild the build directory)
+
+
+## Config ##
+The gulpfile.js has two main files: `config.js` and `index.js`. The `config.js` contains all the paths the tasks rely on. You can change them to suit your needs.
+
+The `index.js` file is where all the tasks are defined. Here you can enable certain config variables for each task. For example, minifying when it is running the bamboo task.
+
+The most important thing to know is that you can also include your `bower` or `npm` dependancies that are incompatible with commonJS. This can be found at `config.libs`.
+
 
 ------
 
@@ -112,7 +139,7 @@ CommonJS setup with various sample images to explain how to use, export and reus
 ### SASS ###
 Folder which contains all SASS and related files, e.g. configs, mixins and extends.
 
-The **_dev** folder is - again - just being used in local development. All other folders and files are split and sorted into elements, layout, modules and utils.
+The **_dev** folder is - *again* - just being used in local development. All other folders and files are split and sorted into elements, layout, modules and utils.
 
 Files can be rearranges as wished, as long as the main folder structure stays intact.
 
@@ -126,17 +153,19 @@ Both folders will be created by the corresponding Gulp task and will include all
 # HTML Templating - Nunjucks #
 [What is nunjucks?](https://mozilla.github.io/nunjucks/) Nunjucks is a powerful templating engine, using Javascript. It allows you to create sophisticated [macros](https://mozilla.github.io/nunjucks/templating.html#macro) to render clean and easy-to-read html.
 
-[Read the Documentation here](https://mozilla.github.io/nunjucks/templating.html)
+[Go to the Documentation](https://mozilla.github.io/nunjucks/templating.html)
 
-### Example ###
+### Macro ###
+
+This is a simple example of how a macro can support you in coding for instance forms. You can also generate your html based off [json data](#markdown-header-json-data).
 
 __Macro definition__
 ```
 {% macro inputText(name, value='', type='text') %}
-<div class="input__holder">
-    <label for="{{ name }}"></label>
-    <input class="input--{{ type }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
-</div>
+    <div class="input__holder">
+        <label for="{{ name }}"></label>
+        <input class="input--{{ type }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
+    </div>
 {% endmacro %}
 ```
 
@@ -154,6 +183,83 @@ __Result__
 </div>
 ```
 
+### JSON Data ###
+
+JSON data is a good way to make your life easier whilst developing with Nunjucks. This way you can create complete forms just by reading a json object. The JSON [folder](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/data/) can be found in the `source` folder.
+
+#### Example ####
+
+__JSON object__
+
+This JSON example has been created in `data/pages/contact.json`
+
+```
+{
+    contactForm : {
+        { 
+            name: "emailaddress",
+            value: "Your emailaddress",
+            type: "email"
+        },
+        { 
+            name: "subject",
+            value: "Subject",
+            type: "text"
+        },
+        { 
+            name: "message",
+            value: "Your message",
+            type: "textarea"
+        }
+    }
+}
+```
+
+
+__Using the JSON as data__
+
+This object can be used as followed.
+
+```
+<form>
+    {% for input in pages.contact.contactForm %}
+        {{ input(input.name, input.value, input.type) }}
+    {% endfor %}
+</form>
+```
+
+> _The used macro_
+```
+{% macro input(name, value='', type='text') %}
+    <div class="input__holder">
+        {% if type != 'textarea' %}
+            <label for="{{ name }}"></label>
+            <input class="input--{{ type }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
+        {% else %}
+            <textarea class="input--{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
+        {% endif %}
+    </div>
+{% endmacro %}
+```
+
+__Final output__
+
+```
+<form>
+    <div class="input__holder">
+        <label for="emailaddress"></label>
+        <input class="input--email" type="email" name="emailaddress" id="emailaddress" placeholder="Your emailaddress" />
+    </div>
+    <div class="input__holder">
+        <label for="subject"></label>
+        <input class="input--text" type="text" name="subject" id="subject" placeholder="Subject" />
+    </div>
+    <div class="input__holder">
+        <textarea class="input--textarea" name="message" id="message" placeholder="Your message" />
+    </div>
+</form>
+```
+
 ------
 
 # Grid system #
@@ -162,12 +268,12 @@ __Result__
 
 __Breakpoints__
 
-The media query [config](src/develop/source/sass/_vars/_media.scss) can be found in the [_vars](src/develop/source/sass/_vars/) folder. Here you can configure the breakpoints to fit your needs.
+The media query [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/_media.scss) can be found in the [_vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/) folder. Here you can configure the breakpoints to fit your needs.
 
 
 __Grid__
 
-The grid [config](src/develop/source/sass/_vars/_config.scss) can be found in the [_vars](src/develop/source/sass/_vars/) folder. Here you can configure the breakpoints, gutters and max-width for the container and grid.
+The grid [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/_config.scss) can be found in the [_vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/) folder. Here you can configure the breakpoints, gutters and max-width for the container and grid.
 
 You can also add extra breakpoints or change the prefix in the `$grid-breakpoints` var.
 
@@ -188,5 +294,51 @@ $grid-breakpoints   : ( 'sm': $breakpoint-small,
                         'md': $breakpoint-medium,
                         'lg': $breakpoint-large );
 ```
+
+
+## Usage ##
+
+The grid, whilst the naming conventions are bootstrap like, the usage is a bit different. It can be used as 100% fluid, or within a container. The container's max width is set in the global sass [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/_config.scss) `$container-config(max-width)`.
+
+
+### Grid example ###
+
+__100% width__
+```
+<div class="grid-12">
+    <div class="col-6 col-md-12">
+        6 columns
+        12 columns on tablet and up
+    </div>
+</div>
+```
+
+
+__with container__
+```
+<div class="container">
+    <div class="grid-12">
+        <div class="col-6 col-md-12">
+            6 columns
+            12 columns on tablet and up
+        </div>
+    </div>
+</div>
+```
+
+
+### Column modifiers ###
+
+Below are the modifier classes you can use to change the columns.
+
+Option              | Description
+-------------       | -------------
+`col-{breakpoint}-*`  | Creates x amount of columns according to the given `breakpoint`
+`push-*`             | Pushes element x amount of columns using `right`
+`pull-*`              | Pulls element x amount of columns using `left`
+`pre-*`              | Adds `margin-left` to element x amount of columns
+`post-*`              | Adds `margin-right` to element x amount of columns
+
+_* - amount of columns_
 
 ------

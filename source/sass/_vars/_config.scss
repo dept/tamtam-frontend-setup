@@ -39,7 +39,7 @@ $grid-breakpoints						  : (	'sm': $breakpoint-small,
 $grid-config							    : (	columns: 12,
             											gutter: 20px,
             											gutter-small: 15px,
-            											push-pull: true,
-            											pre-post: true	);
+            											add-push-pull: true,
+            											add-pre-post: true	);
 
 

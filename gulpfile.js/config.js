@@ -55,7 +55,8 @@ var source 	= config.source 	= new PathConfig();
 var dest 	  = config.dest    	= new PathConfig();
 
 source.root						        = { path: './source' };
-source.bower                	= { path: './bower_components' };
+source.bower                  = { path: './bower_components' };
+source.npm                	  = { path: './node_modules' };
 source.assets               	= { path: '<%= root %>/assets' };
 source.html                 	= { path: '<%= root %>/html',			files: '*.html' 	};		// entry point files
 source.css                  	= { path: '<%= root %>/sass',			files: '*.scss' 	};		// entry point files

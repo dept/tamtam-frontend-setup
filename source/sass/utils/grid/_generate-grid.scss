@@ -63,10 +63,6 @@ $grid-add-middle                : true              !default;
 $grid-fill-modifier             : 'fill'            !default;
 $grid-middle-modifier           : 'middle'          !default;
 
-
-
-
-
 // -------------------------------- END OF CONFIG -------------------------------- //
 
 //    Reverse map function.
@@ -158,7 +154,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
     }
 
     $columns            : map-get( $grid-config, columns );
-    $push-pull          : map-get( $grid-config, push-pull );
+    $push-pull          : map-get( $grid-config, add-push-pull );
     $pre-post           : map-get( $grid-config, add-pre-post );
     $postfix            : map-get( $grid-config, add-postfix );
 
@@ -316,7 +312,6 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
     @if( $column-span > 0 ) { $column-width: ($column-span / $grid-size ) * 100%; }
     @else { $column-width: 0 }
-
     @if( $pre-post ){
         & > .pre#{$modifier}-#{$column-span}    { margin-left: $column-width; }
         & > .post#{$modifier}-#{$column-span}   { margin-right: $column-width; }
