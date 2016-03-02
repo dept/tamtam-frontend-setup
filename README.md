@@ -69,7 +69,7 @@ __3. Start the project__
 
 # Gulp #
 We're using Gulp by default for our project setup.
-All settings are stored in the [__gulpfile.js__](/develop/gulpfile.js/) folder, where [__config.js__](/develop/gulpfile.js/config.js) contains the global Gulp config.
+All settings are stored in the [__gulpfile.js__](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/gulpfile.js/config.js?fileviewer=file-view-default) folder, where [__config.js__](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/gulpfile.js/config.js?fileviewer=file-view-defaultconfig.js) contains the global Gulp config.
 Pro-users could dive deeper into the Gulp setup, but it's not required.
 
 > *Please don't use Grunt, it's outdated, not as supported as Gulp and we do not support it at TamTam anymore.**
