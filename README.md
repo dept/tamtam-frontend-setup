@@ -102,7 +102,9 @@ __gulp__ clean
 > (Remove and rebuild the build directory)
 
 ## Config ##
-The gulpfile.js has two main files: `config.js` and `index.js`. The `config.js` contains all the paths the tasks rely on. You can change them to suit your needs.
+The gulpfile.js has two main files: `config.js` and `index.js`.
+
+The `config.js` contains all the paths the tasks rely on. You can change them to suit your needs.
 
 The `index.js` file is where all the tasks are defined. Here you can enable certain config variables for each task. For example, minifying when it is running the bamboo task.
 
