@@ -269,7 +269,16 @@ __Final output__
 
 __Breakpoints__
 
-The media query [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/_media.scss) can be found in the [_vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/) folder. Here you can configure the breakpoints to fit your needs.
+The media query [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/_media.scss) can be found in the [_vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/) folder, called `_media.scss`. Here you can configure the breakpoints to fit your needs.
+
+This are the default breakpoints. You can add or change them to suit your needs. When adding them to your grid config the grid will be automatically generated.
+
+Breakpoint    | Viewport width
+------------- | -------------
+`small`       | `480px`
+`medium`      | `768px`
+`large`       | `1024px`
+`extra-large` | `1200px`
 
 
 __Grid__
@@ -285,17 +294,19 @@ __Original__
 
 ```
 $grid-breakpoints   : ( 'sm': $breakpoint-small,
-                        'md': $breakpoint-medium );
+                        'md': $breakpoint-medium,
+                        'lg': $breakpoint-large );
 ```
 
 __Added breakpoints__
 
-This example will add a new breakpoint called large. By default the large breakpoint is `1024px`.
+This example will add a new breakpoint called extra large. By default the extra large breakpoint is `1200px`.
 
 ```
 $grid-breakpoints   : ( 'sm': $breakpoint-small,
                         'md': $breakpoint-medium,
-                        'lg': $breakpoint-large );
+                        'lg': $breakpoint-large,
+                        'xlg': $breakpoint-extra-large );
 ```
 
 
