@@ -16,6 +16,8 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
     - [Build and Dist](#markdown-header-build-and-dist)
 6.  [HTML Templating](#markdown-header-html-templating-nunjucks)
 7.  [Grid system](#markdown-header-grid-system)
+    - [Config](#markdown-header-config)
+    - [Usage](#markdown-header-usage)
 
 ------
 
@@ -67,7 +69,7 @@ __3. Start the project__
 
 # Gulp #
 We're using Gulp by default for our project setup.
-All settings are stored in the [__gulpfile.js__](src/develop/gulpfile.js/) folder, where [__config.js__](src/develop/gulpfile.js/config.js) contains the global Gulp config.
+All settings are stored in the [__gulpfile.js__](/develop/gulpfile.js/) folder, where [__config.js__](/develop/gulpfile.js/config.js) contains the global Gulp config.
 Pro-users could dive deeper into the Gulp setup, but it's not required.
 
 > *Please don't use Grunt, it's outdated, not as supported as Gulp and we do not support it at TamTam anymore.**
