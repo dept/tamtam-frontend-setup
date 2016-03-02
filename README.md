@@ -60,12 +60,15 @@ So let's make this setup as best as we can so every project is setup in no time 
 To use the setup use the following commands.
 
 __1. Install all the npm modules__
+
 `npm install`
 
 __2. Optional: Install bower modules you need__
+
 `bower install`
 
 __3. Start the project__
+
 `gulp`
 
 ------
@@ -110,42 +113,39 @@ The most important thing to know is that you can also include your `bower` or `n
 
 # Folder Structure #
 
-## Source ##
+>## Source ##
 
-### Assets ###
-Contains fonts, images and SVG files.
+>>### Assets ###
+>>Contains fonts, images and SVG files.
+>>
+>>These will be automaticly copied to the right folders.
 
-These will be automaticly copied to the right folders.
+>>### Data ###
+>>JSON data which is available for your Nunjucks templating. The `.json` files should be named by page or module
 
-### Data ###
-JSON data which is available for your Nunjucks templating.
-The files are sorted per page.
+>>### HTML ###
+>>Modular setup of the HTML files.
+>>
+>>In the root of the folder, the pages are set.
+>>
+>>Folders are used for **elements**, **layout** and **modules**.
 
-### HTML ###
-Modular setup of the HTML files.
-
-In the root of the folder, the pages are set.
-
-Folders are used for **elements**, **layout** and **modules**.
-
-The **_dev** folder is used for development / debug purpose and there's no real need to edit this. These files are not used in the real project, but during local development.
-
-
-### Javascript ###
-CommonJS setup with various sample images to explain how to use, export and reuse the modules.
+>>The **_dev** folder is used for development / debug purpose and there's no real need to edit this. These files are not used in the real project, but during local development.
 
 
-### SASS ###
-Folder which contains all SASS and related files, e.g. configs, mixins and extends.
+>>### Javascript ###
+>>CommonJS setup with various sample images to explain how to use, export and reuse the modules.
+>>
+>>### SASS ###
+>>Folder which contains all SASS and related files, e.g. configs, mixins and extends.
+>>
+>>The **_dev** folder is - *again* - just being used in local development. All other folders and files are split and sorted into elements, layout, modules and utils.
+>>
+>>Files can be rearranges as wished, as long as the main folder structure stays intact.
 
-The **_dev** folder is - *again* - just being used in local development. All other folders and files are split and sorted into elements, layout, modules and utils.
 
-Files can be rearranges as wished, as long as the main folder structure stays intact.
-
-
-
-## Build and Dist ##
-Both folders will be created by the corresponding Gulp task and will include all final files.
+>## Build and Dist ##
+>Both folders will be created by the corresponding Gulp task and will include all final files.
 
 ------
 
