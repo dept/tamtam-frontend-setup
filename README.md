@@ -60,12 +60,15 @@ So let's make this setup as best as we can so every project is setup in no time 
 To use the setup use the following commands.
 
 __1. Install all the npm modules__
+
 `npm install`
 
 __2. Optional: Install bower modules you need__
+
 `bower install`
 
 __3. Start the project__
+
 `gulp`
 
 ------
