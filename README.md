@@ -212,7 +212,7 @@ This object can be used as followed.
 
 ```
 <form>
-    {% for input in pages.contact %}
+    {% for input in pages.contact.contactForm %}
         {{ input(input.name, input.value, input.type) }}
     {% endfor %}
 </form>
