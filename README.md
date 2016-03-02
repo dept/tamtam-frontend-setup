@@ -306,6 +306,8 @@ The grid, whilst the naming conventions are bootstrap like, the usage is a bit d
 
 ### Grid example ###
 
+This example uses the mobile first grid. Meaning that everything is based off `min-width`.
+
 __100% width__
 ```
 <div class="grid-12">
