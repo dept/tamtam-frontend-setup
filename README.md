@@ -103,7 +103,7 @@ The gulpfile.js has two main files: `config.js` and `index.js`. The `config.js` 
 
 The `index.js` file is where all the tasks are defined. Here you can enable certain config variables for each task. For example, minifying when it is running the bamboo task.
 
-The most important thing to know is that you can also include your `bower` or `npm` dependancies that are incompatible with commonJS. This can be found at `config.libs`.
+The most important thing to know is that you can also include your `bower` or `npm` dependencies that are incompatible with commonJS. This can be found at `config.libs`.
 
 
 ------
