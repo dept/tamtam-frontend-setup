@@ -180,6 +180,7 @@ JSON data is a good way to make your life easier whilst developing with Nunjucks
 #### Example ####
 
 __JSON object__
+
 This JSON example has been created in `data/pages/contact.json`
 
 ```
@@ -206,6 +207,7 @@ This JSON example has been created in `data/pages/contact.json`
 
 
 __Using the JSON as data__
+
 This object can be used as followed.
 
 ```
@@ -231,6 +233,7 @@ This object can be used as followed.
 ```
 
 __Final output__
+
 ```
 <form>
     <div class="input__holder">
