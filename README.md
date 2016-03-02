@@ -3,19 +3,19 @@
 This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter) and has been modified to an ideal usecase.
 
 # Table of Contents
-1. [Intro](#setup)
-2. [Install](#install)
-3. [Gulp](#gulp)
-4. [Folder structure](#folder-structure)
-    - [Source](#source)
-        - [Assets](#assets)
-        - [Data](#data)
-        - [HTML](#html)
-        - [Javascript](#javascript)
-        - [SASS](#sass)
-    - [Build and Dist](#build-and-dist)
-6.  [HTML Templating](#html-templating-nunjucks)
-7.  [Grid system](#grid-system)
+1. [Intro](#markdown-header-setup)
+2. [Install](#markdown-header-install)
+3. [Gulp](#markdown-header-gulp)
+4. [Folder structure](#markdown-header-folder-structure)
+    - [Source](#markdown-header-source)
+        - [Assets](#markdown-header-assets)
+        - [Data](#markdown-header-data)
+        - [HTML](#markdown-header-html)
+        - [Javascript](#markdown-header-javascript)
+        - [SASS](#markdown-header-sass)
+    - [Build and Dist](#markdown-header-build-and-dist)
+6.  [HTML Templating](#markdown-header-html-templating-nunjucks)
+7.  [Grid system](#markdown-header-grid-system)
 
 ------
 
