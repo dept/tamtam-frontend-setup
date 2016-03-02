@@ -25,9 +25,8 @@ $transition-form-ease					: $ease-in-out-quad;
 $container-padding-small-breakpoint		: $breakpoint-small;
 $container-mobile-first					      : true;
 $container-config						          : (	max-width: $breakpoint-large,
-                                          padding: 40px,
-                    											gutter: 20px,
-                    											padding-small: 20px);
+                                          gutter: 20px,
+                    											gutter-small: 10px );
 
 // 	Grid config(s)
 // 	@see: util/layout/grid.scss for more info
@@ -38,7 +37,7 @@ $grid-breakpoints						  : (	'sm': $breakpoint-small,
 											            'md': $breakpoint-medium	);
 $grid-config							    : (	columns: 12,
             											gutter: 20px,
-            											gutter-small: 15px,
+            											gutter-small: 10px,
             											add-push-pull: true,
             											add-pre-post: true	);
 
