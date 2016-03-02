@@ -278,6 +278,8 @@ The grid [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/deve
 
 You can also add extra breakpoints or change the prefix in the `$grid-breakpoints` var.
 
+__note__ The difference between mobile first true and false is that when it is true it will use `min-width` if it's false it will use `max-width`.
+
 
 __Original__
 
