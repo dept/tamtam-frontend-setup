@@ -6,6 +6,7 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
 1. [Intro](#markdown-header-setup)
 2. [Install](#markdown-header-install)
 3. [Gulp](#markdown-header-gulp)
+    - [Config](#markdown-header-config)
 4. [Folder structure](#markdown-header-folder-structure)
     - [Source](#markdown-header-source)
         - [Assets](#markdown-header-assets)
@@ -96,6 +97,14 @@ __gulp__ server
 
 __gulp__ clean 
 > (Remove and rebuild the build directory)
+
+## Config ##
+The gulpfile.js has two main files: `config.js` and `index.js`. The `config.js` contains all the paths the tasks rely on. You can change them to suit your needs.
+
+The `index.js` file is where all the tasks are defined. Here you can enable certain config variables for each task. For example, minifying when it is running the bamboo task.
+
+The most important thing to know is that you can also include your `bower` or `npm` dependancies that are incompatible with commonJS. This can be found at `config.libs`.
+
 
 ------
 
