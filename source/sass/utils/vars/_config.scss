@@ -24,7 +24,7 @@ $transition-form-ease					: $ease-in-out-quad;
 // 	@see: util/layout/container.scss for more info
 $container-padding-small-breakpoint		: $breakpoint-small;
 $container-mobile-first					      : true;
-$container-config						          : (	max-width: $breakpoint-large,
+$container-config						          : (	max-width: $breakpoint-extra-large,
                                           gutter: 20px,
                     											gutter-small: 10px );
 
@@ -34,7 +34,8 @@ $grid-font-reset						  : $font-stack-body;
 $grid-mobile-first						: true;
 $grid-gutter-small-breakpoint	: $container-padding-small-breakpoint;
 $grid-breakpoints						  : (	'sm': $breakpoint-small,
-											            'md': $breakpoint-medium	);
+											            'md': $breakpoint-medium,
+                                  'lg': $breakpoint-large	);
 $grid-config							    : (	columns: 12,
             											gutter: 20px,
             											gutter-small: 10px,
