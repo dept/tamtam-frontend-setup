@@ -1,5 +1,8 @@
-// Fonts face
-// Never import in css!
+//
+// Looking for @font-face?
+// Font faces are nbeing loaded in sass/layout/_font-face.scss
+// Never use @import in css beacause it blocks fonts.!
+//
 
 
 // Font stacks

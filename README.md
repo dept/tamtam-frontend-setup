@@ -268,7 +268,7 @@ __Final output__
 
 __Breakpoints__
 
-The media query [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/_media.scss) can be found in the [_vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/) folder, called `_media.scss`. Here you can configure the breakpoints to fit your needs.
+The media query [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/_media.scss) can be found in the [vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/) folder, called `_media.scss`. Here you can configure the breakpoints to fit your needs.
 
 This are the default breakpoints. You can add or change them to suit your needs. When adding them to your grid config the grid will be automatically generated.
 
@@ -282,7 +282,7 @@ Breakpoint    | Viewport width
 
 __Grid__
 
-The grid [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/_config.scss) can be found in the [_vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/) folder. Here you can configure the breakpoints, gutters and max-width for the container and grid.
+The grid [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/_config.scss) can be found in the [vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/) folder. Here you can configure the breakpoints, gutters and max-width for the container and grid.
 
 You can also add extra breakpoints or change the prefix in the `$grid-breakpoints` var.
 
@@ -311,7 +311,7 @@ $grid-breakpoints   : ( 'sm': $breakpoint-small,
 
 ## Usage ##
 
-The grid, whilst the naming conventions are bootstrap like, the usage is a bit different. It can be used as 100% fluid, or within a container. The container's max width is set in the global sass [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/_config.scss) `$container-config(max-width)`.
+The grid, whilst the naming conventions are bootstrap like, the usage is a bit different. It can be used as 100% fluid, or within a container. The container's max width is set in the global sass [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/_config.scss) `$container-config(max-width)`.
 
 
 ### Grid example ###
