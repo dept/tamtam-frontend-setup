@@ -2,6 +2,7 @@
 //		Kills all the whitespace within a container
 //
 
+//	Uses a mixin so it can also be used inside of media queries
 @mixin spaceless() {
 
   font-family: monospace;       // kill all whitespace

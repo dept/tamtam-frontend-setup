@@ -4,10 +4,10 @@
 @import "mixins/input-placeholder";
 @import "mixins/triangle";
 @import "mixins/vertical-center-dib";
-@import "mixins/spaceless";
 
 // Extends
 @import "extends/scroll-container";
+@import "extends/spaceless";
 
 
 // Helpers
@@ -18,3 +18,4 @@
 // Layout
 @import "grid/generate-container";
 @import "grid/generate-grid";
+ 
