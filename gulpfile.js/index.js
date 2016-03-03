@@ -23,8 +23,8 @@ config.applyProcessArgs();
 config.copy = function () {
 
     return [
-        {   source: config.source.getPath('assets', '*.*'),   			dest: config.dest.getPath('assets')  },
-        {   source: config.source.getPath('assets', 'fonts/**'),		dest: config.dest.getPath('fonts')  }
+        {   source: config.source.getPath('assets', '*.*'),             dest: config.dest.getPath('assets')  },
+        {   source: config.source.getPath('assets', 'fonts/**'),        dest: config.dest.getPath('fonts')  }
     ];
 
 }
@@ -86,7 +86,7 @@ function registerMainTasks( gulp ){
         runSequence(
             'clean',
             [ 'copy', 'images', 'svg' ],
-            [ 'html', 'libs', 'js', 'css' ],
+            [ 'html', 'libs', 'js', 'css', 'readme' ],
             callback
         );
 

@@ -40,7 +40,7 @@ This way other developers can get their head around your code and your folder wo
 
 
 The setup is always in progress so if you're having an idea or thought, please share it.
-Send an email to simon@tamtam.nl and we'll take care of it.
+<a href="https://tamtam.atlassian.net/secure/RapidBoard.jspa?rapidView=187&view=planning" target="_blank">See the current list of open tickets and add your own on Jira.</a> 
 When you're in to optimising code, add a feature or any code whatsoever, please do so and get a pull request.
 
 We're in this together, as a group of frontend developers.
@@ -49,10 +49,10 @@ So let's make this setup as best as we can so every project is setup in no time 
 
 **Team responsible for this setup:**
 
-* Simon Colijn (simon@tamtam.nl)
-* Adrian Klingen (adrian@tamtam.nl)
-* Geert Fokke (geert@tamtam.nl)
-* All frontend developers within TamTam (frontend@tamtam.nl)
+* Simon Colijn ( [simon@tamtam.nl](mailto:simon@tamtam.nl) )
+* Adrian Klingen ( [adrian@tamtam.nl](mailto:adrian@tamtam.nl) )
+* Geert Fokke ( [geert@tamtam.nl](mailto:geert@tamtam.nl) )
+* All frontend developers within TamTam ( [frontend@tamtam.nl](mailto:frontend@tamtam.nl) )
 
 ------
 
@@ -63,7 +63,7 @@ __1. Install all the npm modules__
 
 `npm install`
 
-__2. Optional: Install bower modules you need__
+__2. Optional: Install bower modules you need__ <br/>(though this will usually be picked up automatically by the `npm postinstall` script)
 
 `bower install`
 
@@ -93,22 +93,34 @@ __gulp__ build
 > (default build for development)
 
 __gulp__ dist 
-> (build for distribution for backend)
+> (builds and pushes the files to the backend environment)
+<br/>only necessary if the project is not setup with bamboo.
 
 __gulp__ server 
 > (build including live server)
 
-__gulp__ clean 
-> (Remove and rebuild the build directory)
+<br/>
+**Available process arguments**
+
+__--clean__
+> (when running the build task, it will remove all content of the build folder first)
+
+__--debug__
+> (will log a lot information about processes, very useful for when debugging gulp issues)
+
+
 
 ## Config ##
 The gulpfile.js has two main files: `config.js` and `index.js`.
 
 The `config.js` contains all the paths the tasks rely on. You can change them to suit your needs.
 
-The `index.js` file is where all the tasks are defined. Here you can enable certain config variables for each task. For example, minifying when it is running the bamboo task.
+The `index.js` file is where all the tasks are defined. Here you can enable certain config variables individually for each task. For example, turn minifying on when running the bamboo task.
 
-The most important thing to know is that you can also include your `bower` or `npm` dependancies that are incompatible with commonJS. This can be found at `config.libs`.
+In the `index.js` you will als find 2 other important settings at the top. 
+- First the `config.copy` setting, here you can define assets that need to be copied to the build folder. And where they need to be copied to.
+- Second: the `config.libs` setting, here you can list JavaScript libraries that will be concatted to a simple libs.js. This is useful for dependancies that are incompatible with commonJS.
+
 
 
 ------
@@ -118,12 +130,12 @@ The most important thing to know is that you can also include your `bower` or `n
 >## Source ##
 
 >>### Assets ###
->>Contains fonts, images and SVG files.
+>>Contains all your project assets such as fonts, images and SVG files.
 >>
->>These will be automaticly copied to the right folders.
+>>Which ones will be copied to the build folder, and where eactly, you can define in the `config.copy` settings.
 
 >>### Data ###
->>JSON data which is available for your Nunjucks templating. The `.json` files should be named by page or module
+>>JSON data which is available for your Nunjucks templating.
 
 >>### HTML ###
 >>Modular setup of the HTML files.
@@ -136,17 +148,18 @@ The most important thing to know is that you can also include your `bower` or `n
 
 
 >>### Javascript ###
->>CommonJS setup with various sample images to explain how to use, export and reuse the modules.
+>>CommonJS setup with various examples to explain how to use, export and reuse the modules.
 >>
 >>### SASS ###
 >>Folder which contains all SASS and related files, e.g. configs, mixins and extends.
 >>
 >>The **_dev** folder is - *again* - just being used in local development. All other folders and files are split and sorted into elements, layout, modules and utils.
 >>
->>Files can be rearranges as wished, as long as the main folder structure stays intact.
+>>Files can be rearranged as needed, as long as the main folder structure stays intact.
 
 >## Build and Dist ##
->Both folders will be created by the corresponding Gulp task and will include all final files.
+>There is no difference anymore, just a single build folder for the output. You can use the `gulp dist` task to specify a specific output to push the files into the BackEnd folder. However if your project is setup with Bamboo, this will not be necessary.
+>If you want to test something that for example is minified, just change your settings in the `index.js` and restart gulp.
 
 ------
 
@@ -186,8 +199,16 @@ __Result__
 ### JSON Data ###
 
 JSON data is a good way to make your life easier whilst developing with Nunjucks. This way you can create complete forms just by reading a json object. The JSON [folder](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/data/) can be found in the `source` folder.
+All of the JSON data found in that folder will be merged into the context of the templates. If you are unsure what data is available inside your template you can use the `debug` tag to print out all of the available data.
 
-#### Example ####
+#### Debug ####
+```
+{% debug %}
+```
+This will inject an HTML formatted string containing all of the available data inside the current template.
+
+
+#### JSON Data example ####
 
 __JSON object__
 
@@ -312,6 +333,8 @@ $grid-breakpoints   : ( 'sm': $breakpoint-small,
 ## Usage ##
 
 The grid, whilst the naming conventions are bootstrap like, the usage is a bit different. It can be used as 100% fluid, or within a container. The container's max width is set in the global sass [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/_grid_.scss) `$container-config(max-width)`.
+<br/><br/>Note that when you change the number of columns, the class name of the grid changes as well. `grid-12` means this is a grid of 12 columns. So when you change the number of columns to f.e. 5, the grid's class name becomes: `grid-5`.
+It is also possible to create multiple grids, instead of a single map assigned to the `$grid-config`, simply assign a list of multiple maps.
 
 
 ### Grid example ###
@@ -322,7 +345,7 @@ __100% width__
 ```
 <div class="grid-12">
     <div class="col-6 col-md-12">
-        6 columns
+        6 columns as the default
         12 columns on tablet and up
     </div>
 </div>
@@ -334,7 +357,7 @@ __with container__
 <div class="container">
     <div class="grid-12">
         <div class="col-6 col-md-12">
-            6 columns
+            6 columns as the default
             12 columns on tablet and up
         </div>
     </div>
@@ -346,13 +369,13 @@ __with container__
 
 Below are the modifier classes you can use to change the columns.
 
-Option              | Description
--------------       | -------------
-`col-{breakpoint}-*`  | Creates x amount of columns according to the given `breakpoint`
-`push-*`             | Pushes element x amount of columns using `right`
-`pull-*`              | Pulls element x amount of columns using `left`
-`pre-*`              | Adds `margin-left` to element x amount of columns
-`post-*`              | Adds `margin-right` to element x amount of columns
+Option                                      | Description
+--------------                              | -------------
+`col-{breakpoint}-*`                        | Creates x amount of columns according to the given `breakpoint`
+`push-*` -or-<br/> `push-{breakpoint}-*`    | Pushes element x amount of columns using `right`
+`pull-*` -or-<br/> `pull-{breakpoint}-*`    | Pulls element x amount of columns using `left`
+`pre-*`  -or-<br/> `pre-{breakpoint}-*`     | Adds `margin-left` to element x amount of columns
+`post-*`  -or-<br/> `post-{breakpoint}-*`   | Adds `margin-right` to element x amount of columns
 
 _* - amount of columns_
 
