@@ -24,7 +24,7 @@
     <title>{{ site.title }}</title>
 
     <!-- Style sheets -->
-    {% if project.debug %} <link rel="stylesheet" href="/css/debug.css"/> {% endif %}
+    {% if project.debug %} <link rel="stylesheet" href="/css/dev.css"/> {% endif %}
 
     <link rel="stylesheet" href="/css/main.css"/>
 
@@ -40,12 +40,12 @@
 
     {% if site.gtm and site.gtm != 'GTM-XXXX' %}
 
-        {% include "modules/common/gtm.html" %}
+        {% include "modules/gtm.html" %}
 
     {% endif %}
 
 
-    {% include "modules/common/header.html" %}
+    {% include "modules/header.html" %}
 
 
 
@@ -61,7 +61,7 @@
 
 
 
-    {% include "modules/common/footer.html" %}
+    {% include "modules/footer.html" %}
 
 
     <script src="/js/main.js" type="text/javascript"></script>

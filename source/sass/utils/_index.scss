@@ -1,19 +1,16 @@
 
 // Misc mixins
-
 @import "mixins/conversion";
 @import "mixins/input-placeholder";
 @import "mixins/triangle";
 @import "mixins/vertical-center-dib";
 @import "mixins/spaceless";
 
-// Common placeholders
+// Extends
+@import "extends/scroll-container";
 
-@import "placeholders/clearfix";
 
-
-// Helper classes
-
+// Helpers
 @import "helpers/spacing";
 @import "helpers/visibility";
 

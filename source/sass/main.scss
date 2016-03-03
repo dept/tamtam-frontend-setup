@@ -9,12 +9,11 @@
 //	Core
 //      - settings
 //      - mixins
-//      - placeholders
-//      - common helper classes
+//      - helpers
 //      - html / body style
 
 @import "utils/mixins/conversion";
-@import "_vars/index";
+@import "utils/vars/index";
 @import "utils/index";
 
 @import "layout/normalize";
@@ -46,9 +45,9 @@
 //		- Re-usable blocks consisting mostly of elements
 
 /* Default */
-@import "modules/common/cookie";
-@import "modules/common/footer";
-@import "modules/common/header";
+@import "modules/cookie";
+@import "modules/footer";
+@import "modules/header";
 
 /* Content  */
 @import "modules/rich-text";
