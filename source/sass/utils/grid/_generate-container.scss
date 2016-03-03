@@ -53,7 +53,7 @@ $_container-created: ();
 			@error 'The unit of the max-width and the gutter setting of a container must be the same type ( currently it is '#{unit( $max-width )}' and '#{unit( $gutter )}' ). This is needed to be able to calculate the mediaquery of when to switch from the gutter to the max-width. Current config: ' + $container-config;
 		}
 
-		$max-width-media: $max-width - $gutter * 2;
+		$max-width-media: $max-width + $gutter * 2;
 	}
 
 	@if ( $gutter == null ) { $gutter: 0; }
@@ -271,7 +271,7 @@ $_container-created: ();
 			@if( $max-width-media ) {
 
 				@media only screen and (min-width: #{$max-width-media}) {
-
+					
 					@include _container_apply_responsive_gutter( $container-config );
 
 				}

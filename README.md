@@ -102,7 +102,9 @@ __gulp__ clean
 > (Remove and rebuild the build directory)
 
 ## Config ##
-The gulpfile.js has two main files: `config.js` and `index.js`. The `config.js` contains all the paths the tasks rely on. You can change them to suit your needs.
+The gulpfile.js has two main files: `config.js` and `index.js`.
+
+The `config.js` contains all the paths the tasks rely on. You can change them to suit your needs.
 
 The `index.js` file is where all the tasks are defined. Here you can enable certain config variables for each task. For example, minifying when it is running the bamboo task.
 
@@ -142,7 +144,6 @@ The most important thing to know is that you can also include your `bower` or `n
 >>The **_dev** folder is - *again* - just being used in local development. All other folders and files are split and sorted into elements, layout, modules and utils.
 >>
 >>Files can be rearranges as wished, as long as the main folder structure stays intact.
-
 
 >## Build and Dist ##
 >Both folders will be created by the corresponding Gulp task and will include all final files.
@@ -267,7 +268,16 @@ __Final output__
 
 __Breakpoints__
 
-The media query [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/_media.scss) can be found in the [_vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/) folder. Here you can configure the breakpoints to fit your needs.
+The media query [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/_media.scss) can be found in the [_vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/_vars/) folder, called `_media.scss`. Here you can configure the breakpoints to fit your needs.
+
+This are the default breakpoints. You can add or change them to suit your needs. When adding them to your grid config the grid will be automatically generated.
+
+Breakpoint    | Viewport width
+------------- | -------------
+`small`       | `480px`
+`medium`      | `768px`
+`large`       | `1024px`
+`extra-large` | `1200px`
 
 
 __Grid__
@@ -276,22 +286,26 @@ The grid [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/deve
 
 You can also add extra breakpoints or change the prefix in the `$grid-breakpoints` var.
 
+__note__ The difference between mobile first true and false is that when it is true it will use `min-width` if it's false it will use `max-width`.
+
 
 __Original__
 
 ```
 $grid-breakpoints   : ( 'sm': $breakpoint-small,
-                        'md': $breakpoint-medium );
+                        'md': $breakpoint-medium,
+                        'lg': $breakpoint-large );
 ```
 
 __Added breakpoints__
 
-This example will add a new breakpoint called large. By default the large breakpoint is `1024px`.
+This example will add a new breakpoint called extra large. By default the extra large breakpoint is `1200px`.
 
 ```
 $grid-breakpoints   : ( 'sm': $breakpoint-small,
                         'md': $breakpoint-medium,
-                        'lg': $breakpoint-large );
+                        'lg': $breakpoint-large,
+                        'xlg': $breakpoint-extra-large );
 ```
 
 
@@ -301,6 +315,8 @@ The grid, whilst the naming conventions are bootstrap like, the usage is a bit d
 
 
 ### Grid example ###
+
+This example uses the mobile first grid. Meaning that everything is based off `min-width`.
 
 __100% width__
 ```
