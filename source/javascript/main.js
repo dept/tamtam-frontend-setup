@@ -7,6 +7,11 @@
 
 // When using AngularJS you can just require the needed module(s) so they get compiled with the JS
 // NOTE: you only need the path to the folder, as the index.js will be automatically grabbed.
+// NOTE: the variable syntax for AngularJS has been modified to work with Nunjucks,
+//  see: ./src/angular/_modules/example/config.js
+//  {{ variable }} = Nunjucks
+//  <% variable %> = AngularJS
+//
 //var exampleAngularModule        = require('./src/angular/_modules/example');
 
 
