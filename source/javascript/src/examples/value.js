@@ -1,3 +1,7 @@
+/**
+ * Some value object
+ * @type {{key: string, key2: string}}
+ */
 var someValue = {
 
 	key: 'some value',

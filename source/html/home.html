@@ -1,0 +1,35 @@
+{% extends 'layouts/default.html' %}
+
+
+
+{% block content %}
+
+
+    <h1>Some page template</h1>
+    <br/>
+    <br/>
+    <h3>All the data available in this template:</h3>
+    {% debug %}
+
+    <br/>
+    <br/>
+
+    <h3>How to inject SVG images:</h3>
+    <br/>
+    {% svg 'brand/google-play' %}
+
+    <br/>
+    <br/>
+
+    <h3>Example modules:</h3>
+    <br/>
+    {% include 'modules/example.html' %}
+    {% include 'modules/example-2.html' %}
+
+
+
+{% endblock %}
+
+
+
+
