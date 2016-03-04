@@ -336,6 +336,10 @@ The grid, whilst the naming conventions are bootstrap like, the usage is a bit d
 <br/><br/>Note that when you change the number of columns, the class name of the grid changes as well. `grid-12` means this is a grid of 12 columns. So when you change the number of columns to f.e. 5, the grid's class name becomes: `grid-5`.
 It is also possible to create multiple grids, instead of a single map assigned to the `$grid-config`, simply assign a list of multiple maps.
 
+__columns__
+ 
+Use column classes to define the columns width. There is a default class you can use such as `col-12` or `col-6`. This will set the width to 12 -or- 6 columns wide. You can override this at breakpoints by using the modifier classes such as `col-md-6`, here the column will switch to 6 columns width when this breakpoint is reached. How wide a `col-6` actually is depends on the grid. If the `col-6` is inside of a `grid-12` it will be 50% wide. But if it were inside of a `grid-6` it would be 100% wide.
+
 
 ### Grid example ###
 
