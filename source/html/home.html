@@ -4,28 +4,56 @@
 
 {% block content %}
 
+    <div class="container">
 
-    <h1>Some page template</h1>
-    <br/>
-    <br/>
-    <h3>All the data available in this template:</h3>
-    {% debug %}
+        <h1>Some page template</h1>
+        <br/><br/>
 
-    <br/>
-    <br/>
+        <h3>All the data available in this template:</h3>
+        {% debug %}
+        <br/><br/>
 
-    <h3>How to inject SVG images:</h3>
-    <br/>
-    {% svg 'brand/google-play' %}
+        <h3>How to use the data:</h3>
+        <br/>
 
-    <br/>
-    <br/>
+        <div>
+            Website's title: {{ site.title }}<br/>
+            Website's description: {{ site.description }}<br/>
+            Project is in debug mode: {{ project.debug }}<br/>
+        </div>
+        <br/><br/>
 
-    <h3>Example modules:</h3>
-    <br/>
-    {% include 'modules/example.html' %}
-    {% include 'modules/example-2.html' %}
 
+        <h3>How to inject SVG images:</h3>
+        <br/>
+        <div>
+            {% svg 'social/facebook' %}
+            {% svg 'social/twitter' %}
+            {% svg 'social/google-plus' %}
+        </div>
+
+
+        <br/><br/>
+
+
+        <h3>Example button macro:</h3>
+        <br/>
+
+        <!-- Include the file containing the macro, but it won't render anything until you call it -->
+        {% include 'elements/button.html' %}
+
+        <!-- Call the macro with optional arguments to create new instances of the button -->
+        {{ button('label here' ) }}
+        {{ button('different label here', 'js-class', 'http://www.tamtam.nl' ) }}
+
+        <br/><br/>
+
+        <h3>Example modules:</h3>
+        <br/>
+        {% include 'modules/example.html' %}
+        {% include 'modules/example-2.html' %}
+
+    </div>
 
 
 {% endblock %}

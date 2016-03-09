@@ -5,7 +5,9 @@
 
 {% block content %}
 
-    <a class="button" href="#"><span>Button</span></a>
+    {% include 'elements/button.html' %}
+
+    {{ button('label here' ) }}
 
 {% endblock %}
 

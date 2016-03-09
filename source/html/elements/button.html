@@ -1,0 +1,23 @@
+{#
+
+    An example button macro.
+
+    Using macro's for buttons is very useful as it keeps the implementation
+    of a button consistent and easily maintainable as you only have a single place where it's defined.
+
+    Usage:
+    <!-- Include the file containing the macro -->
+    {% include 'elements/button.html' %}
+
+     <!-- Call the macro with optional arguments to create new instances of the button -->
+    {{ button('label here' ) }}
+    {{ button('different label here', 'js-class', 'http://www.tamtam.nl' ) }}
+
+#}
+{% macro button( label, classes= '', url= '#', attributes = ''  ) %}
+
+    <a class="button {{ classes }}" href="{{ url }}" {{ attributes }}>
+        <span class="button__label">{{ label }}</span>
+    </a>
+
+{% endmacro %}

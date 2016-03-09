@@ -22,7 +22,7 @@ function Example2 ( element, stringArgs, booleanArg ) {
 	// and not on the document to keep the logic self-contained to this module.
 	var _preElement = element.querySelector( 'pre' );
 
-	_preElement.innerHTML = '{string}:\t' + stringArgs + '<br/>{boolean}:\t' + booleanArg
+	_preElement.innerHTML = '{string}:\t' + stringArgs + '<br/>{boolean}:\t' + booleanArg;
 
 }
 
