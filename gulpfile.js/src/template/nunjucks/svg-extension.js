@@ -21,9 +21,9 @@ function SVGExtension ( nunjucks ) {
 		return new nodes.CallExtension( this, 'run', args );
 	};
 
-	this.run = function ( context, name ) {
+	this.run = function ( context, name, opt_altText ) {
 
-		var svgString = svg( name );
+		var svgString = svg( name, opt_altText );
 		return new nunjucks.runtime.SafeString( svgString );
 
 	};
