@@ -1,6 +1,6 @@
 [frontend-setup](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup)
 ==============
-This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter) and has been modified to an ideal usecase.
+This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter) and has been modified to an ideal use-case.
 
 # Table of Contents
 1. [Intro](#markdown-header-setup)
