@@ -13,7 +13,7 @@ config.debug                    = true;
 config.sourcemaps               = true;
 config.notifyErrors             = true;
 config.minify                   = false
-config.prettyHTML               = true;
+config.prettyHTML               = false;
 
 config.applyProcessArgs();
 
