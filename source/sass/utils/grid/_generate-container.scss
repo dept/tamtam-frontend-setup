@@ -152,7 +152,7 @@ $_container-created: ();
 	$class-name-fill	: map_get( $container-config, class-name-fill );
 	$class-name-break	: map_get( $container-config, class-name-break );
 
-	@if( $gutter != $gutter-small ) {
+	@if( $gutter != $gutter-small or $container-mobile-first == false) {
 
 
 		$combined-selectors: $class-name;

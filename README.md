@@ -15,7 +15,7 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
         - [Javascript](#markdown-header-javascript)
         - [SASS](#markdown-header-sass)
     - [Build and Dist](#markdown-header-build-and-dist)
-6.  [HTML Templating](#markdown-header-html-templating-nunjucks)
+6.  [HTML Templating - Nunjucks](#markdown-header-html-templating-nunjucks)
     - [Macro](#markdown-header-macro)
     - [JSON Data](#markdown-header-json-data)
 7.  [Grid system](#markdown-header-grid-system)
@@ -29,7 +29,7 @@ Welcome to the readme of the TamTam frontend setup.
 
 This is a basic setup for creating (static) html templates.
 Filled with automated tasks and configuration options.
-It enables you to quickly and easily setup your project and get in running in no time.
+It enables you to quickly & easily setup your project and get it running in no time.
 Many things are already predefined, added and sorted out for you to take away some hussle.
 The pro users can dive into settings an tasks, but that's not required to work with it.
 
@@ -40,7 +40,7 @@ This way other developers can get their head around your code and your folder wo
 
 
 The setup is always in progress so if you're having an idea or thought, please share it.
-<a href="https://tamtam.atlassian.net/secure/RapidBoard.jspa?rapidView=187&view=planning" target="_blank">See the current list of open tickets and add your own on Jira.</a> 
+[https://tamtam.atlassian.net/secure/RapidBoard.jspa?rapidView=187&view=planning](See the current list of open tickets and add your own on Jira). 
 When you're in to optimising code, add a feature or any code whatsoever, please do so and get a pull request.
 
 We're in this together, as a group of frontend developers.
@@ -57,13 +57,15 @@ So let's make this setup as best as we can so every project is setup in no time 
 ------
 
 # Install #
-To use the setup use the following commands.
+Use the setup following these commands.
 
 __1. Install all the npm modules__
 
 `npm install`
 
-__2. Optional: Install bower modules you need__ <br/>(though this will usually be picked up automatically by the `npm postinstall` script)
+__2. Optional: Install bower modules you need__
+
+(though this will usually be picked up automatically by the `npm postinstall` script)
 
 `bower install`
 
@@ -76,9 +78,11 @@ __3. Start the project__
 # Gulp #
 We're using Gulp by default for our project setup.
 All settings are stored in the [__gulpfile.js__](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/gulpfile.js/config.js?fileviewer=file-view-default) folder, where [__config.js__](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/gulpfile.js/config.js?fileviewer=file-view-defaultconfig.js) contains the global Gulp config.
+
 Pro-users could dive deeper into the Gulp setup, but it's not required.
 
 > *Please don't use Grunt, it's outdated, not as supported as Gulp and we do not support it at TamTam anymore.**
+
 
 
 **Available gulp tasks for building:**
@@ -94,12 +98,14 @@ __gulp__ build
 
 __gulp__ dist 
 > (builds and pushes the files to the backend environment)
-<br/>only necessary if the project is not setup with bamboo.
+
+only necessary if the project is not setup with bamboo.
 
 __gulp__ server 
 > (build including live server)
 
-<br/>
+
+
 **Available process arguments**
 
 __--clean__
@@ -115,10 +121,14 @@ The gulpfile.js has two main files: `config.js` and `index.js`.
 
 The `config.js` contains all the paths the tasks rely on. You can change them to suit your needs.
 
-The `index.js` file is where all the tasks are defined. Here you can enable certain config variables individually for each task. For example, turn minifying on when running the bamboo task.
+The `index.js` file is where all the tasks are defined. Here you can enable certain config variables individually for each task.
 
-In the `index.js` you will als find 2 other important settings at the top. 
-- First the `config.copy` setting, here you can define assets that need to be copied to the build folder. And where they need to be copied to.
+For example, turn minifying on when running the bamboo task.
+
+In the `index.js` you will also find 2 other important settings at the top.
+
+- First the `config.copy` setting, here you can define assets that need to be copied to a specific build folder
+
 - Second: the `config.libs` setting, here you can list JavaScript libraries that will be concatted to a simple libs.js. This is useful for dependancies that are incompatible with commonJS.
 
 
@@ -144,7 +154,7 @@ In the `index.js` you will als find 2 other important settings at the top.
 >>
 >>Folders are used for **elements**, **layout** and **modules**.
 
->>The **_dev** folder is used for development / debug purpose and there's no real need to edit this. These files are not used in the real project, but during local development.
+>>The **_dev** folder is used for development / debug purpose and there's no real need to edit this. These files are not used in the real project, but only during local development.
 
 
 >>### Javascript ###
@@ -153,9 +163,9 @@ In the `index.js` you will als find 2 other important settings at the top.
 >>### SASS ###
 >>Folder which contains all SASS and related files, e.g. configs, mixins and extends.
 >>
->>The **_dev** folder is - *again* - just being used in local development. All other folders and files are split and sorted into elements, layout, modules and utils.
->>
 >>Files can be rearranged as needed, as long as the main folder structure stays intact.
+>>
+>>The **_dev** folder is - *again* - just being used in local development. All other folders and files are split and sorted into elements, layout, modules and utils.
 
 >## Build and Dist ##
 >There is no difference anymore, just a single build folder for the output. You can use the `gulp dist` task to specify a specific output to push the files into the BackEnd folder. However if your project is setup with Bamboo, this will not be necessary.
@@ -198,8 +208,12 @@ __Result__
 
 ### JSON Data ###
 
-JSON data is a good way to make your life easier whilst developing with Nunjucks. This way you can create complete forms just by reading a json object. The JSON [folder](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/data/) can be found in the `source` folder.
-All of the JSON data found in that folder will be merged into the context of the templates. If you are unsure what data is available inside your template you can use the `debug` tag to print out all of the available data.
+JSON data is a good way to make your life easier whilst developing with Nunjucks. This way you can create complete forms just by reading a json object. 
+
+The JSON [folder](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/data/) can be found in the `source` folder.
+
+
+All of the JSON data found in that folder will be merged into the context of the templates. If you are unsure which data is available inside your template you can use the `debug` tag to print out all of the available data.
 
 #### Debug ####
 ```
@@ -291,7 +305,7 @@ __Breakpoints__
 
 The media query [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/_media.scss) can be found in the [vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/) folder, called `_media.scss`. Here you can configure the breakpoints to fit your needs.
 
-This are the default breakpoints. You can add or change them to suit your needs. When adding them to your grid config the grid will be automatically generated.
+Following are the default breakpoints. You can add or change them to suit your needs. When adding them to your grid config the grid will be automatically generated.
 
 Breakpoint    | Viewport width
 ------------- | -------------
@@ -307,7 +321,7 @@ The grid [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/deve
 
 You can also add extra breakpoints or change the prefix in the `$grid-breakpoints` var.
 
-__note__ The difference between mobile first true and false is that when it is true it will use `min-width` if it's false it will use `max-width`.
+__note:__ The difference between mobile first true and false is that when it is true it will use `min-width` if it's false it will use `max-width`.
 
 
 __Original__
@@ -332,13 +346,20 @@ $grid-breakpoints   : ( 'sm': $breakpoint-small,
 
 ## Usage ##
 
-The grid, whilst the naming conventions are bootstrap like, the usage is a bit different. It can be used as 100% fluid, or within a container. The container's max width is set in the global sass [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/_grid_.scss) `$container-config(max-width)`.
-<br/><br/>Note that when you change the number of columns, the class name of the grid changes as well. `grid-12` means this is a grid of 12 columns. So when you change the number of columns to f.e. 5, the grid's class name becomes: `grid-5`.
-It is also possible to create multiple grids, instead of a single map assigned to the `$grid-config`, simply assign a list of multiple maps.
+The grid, whilst the naming conventions are bootstrap like, is a bit different in use. 
+
+It can be used as 100% fluid, or within a container. The container's max width is set in the global sass [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/_grid_.scss) `$container-config(max-width)`.
+
+__Note that when you change the number of columns, the class name of the grid changes as well. `grid-12` means this is a grid of 12 columns. So when you change the number of columns to f.e. 5, the grid's class name becomes: `grid-5`.
+It is also possible to create multiple grids, instead of a single map assigned to the `$grid-config`, simply assign a list of multiple maps.__
 
 __columns__
  
-Use column classes to define the columns width. There is a default class you can use such as `col-12` or `col-6`. This will set the width to 12 -or- 6 columns wide. You can override this at breakpoints by using the modifier classes such as `col-md-6`, here the column will switch to 6 columns width when this breakpoint is reached. How wide a `col-6` actually is depends on the grid. If the `col-6` is inside of a `grid-12` it will be 50% wide. But if it were inside of a `grid-6` it would be 100% wide.
+Use column classes to define the columns width. There is a default class you can use such as `col-12` or `col-6`. This will set the width to 12 -or- 6 columns wide.
+
+You can override this at breakpoints by using the modifier classes such as `col-md-6`, here the column will switch to 6 columns width when this breakpoint is reached.
+
+How wide a `col-6` actually is depends on the grid. If the `col-6` is inside of a `grid-12` it will be 50% wide. But if it were inside of a `grid-6` it would be 100% wide.
 
 
 ### Grid example ###
