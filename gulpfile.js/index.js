@@ -37,7 +37,7 @@ config.copy = function () {
 config.libs = function () {
 
     return [
-        //config.source.getPath('bower', 'jquery/dist/jquery.js' ),
+        //config.source.getPath('npm', 'jquery/dist/jquery.js' ),
         //config.source.getPath('bower', 'jquery.cookie/jquery.cookie.js' )
     ];
 

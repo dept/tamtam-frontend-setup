@@ -32,10 +32,19 @@
         <!-- Example usage of a for loop in combination with a filter -->
         {% for contributor in content.contributors | sort( false, false, 'name' ) %}
 
-            <a href="mailto:{{ contributor.email }}">{{ contributor.name }} ( {{ contributor.email }} )</a>
+            <span>{{ contributor.name }} ( <a href="mailto:{{ contributor.email }}" class="link">{{ contributor.email }}</a> )</span>
             <br/>
 
         {% endfor %}
+
+        <br/>
+
+        <!-- You can also 'set' data -->
+        {% set someData = { custom: 'Some custom data created inside the template...' } %}
+        {% set someOtherData = 'Other data' %}
+
+        <span>{{ someData.custom }}</span>
+        <span>{{ someOtherData }}</span>
 
         <br/><br/>
 
