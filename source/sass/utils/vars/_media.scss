@@ -25,7 +25,7 @@ $breakpoint-extra-large     : 1200px;
 // Media queries
 
 $screen-small-only          : "only screen and ( min-width : #{$breakpoint-small} ) and ( max-width : #{$breakpoint-medium - 1} )";
-$screen-small-and-down      : "only screen and ( max-width : #{$breakpoint-medium -1} )";
+$screen-small-and-down      : "only screen and ( max-width : #{$breakpoint-medium - 1} )";
 $screen-small-and-up        : "only screen and ( min-width : #{$breakpoint-small} )";
 
 $screen-medium-only         : "only screen and ( min-width : #{$breakpoint-medium} ) and ( max-width : #{$breakpoint-large - 1} )";
