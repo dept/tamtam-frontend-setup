@@ -10,7 +10,7 @@ input[type="text"] {
     font-size: inherit;
     border: 1px solid transparent;
 
-    transition: border-color $transition-form-time $transition-form-time;
+    transition: border-color $form-transition-time $form-transition-time;
 
     &:focus {
 

@@ -12,8 +12,7 @@
 	font-size: 1.6rem;
 	line-height: 1.5;
 
-	transition: $transition-button-time $transition-button-ease;
-	transition-property: background-color;
+	transition: background-color $button-transition-time $button-transition-ease;
 
 	&:focus, &:hover {
 
@@ -32,9 +31,9 @@
 .button-arrow__arrow {
 
 	display: inline-block;
-	transition: $transition-button-time $ease-in-out-circ;
-	transition-property: transform;
 	margin-left: 10px;
+
+	transition: transform $button-transition-time $ease-in-out-circ;
 
 	> svg {
 

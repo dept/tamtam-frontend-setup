@@ -1,47 +1,46 @@
-
+$link-transition-time: 200ms;
+$link-transition-ease: $ease-in-out-quad;
 
 // most basic link style
-%a {
-    color: inherit;
-    cursor: pointer;
-    text-decoration: none;
-    text-overflow: ellipsis;
+%link-base {
+	color: inherit;
+	cursor: pointer;
+	text-decoration: none;
+	text-overflow: ellipsis;
 }
 
-// regular link style
-%regular-link {
-
-    @extend %a;
-
-    color: $color-primary;
-    border-bottom: 2px solid transparent;
-	transition: border-bottom-color $transition-link-time $transition-link-ease;
-
-    &:hover, &:focus {
-        border-bottom-color: $color-primary;
-    }
-
-    &:active {
-        border-bottom-color: darken($color-primary, 10%);
-    }
-
+a {
+	@extend %link-base;
 }
 
-a { @extend %a; } // apply basics
 
-
+%link,
 .link {
 
-	@extend %regular-link;
+	color: $color-primary;
+	padding-bottom: 1px;
+	border-bottom: 2px solid transparent;
+	transition: border-bottom-color $link-transition-time $link-transition-ease;
 
-	&--underline {
-
-		@extend %regular-link;
-
-		padding-bottom: 1px;
-		border-bottom: 2px solid $color-primary;
-
+	&:hover, &:focus {
+		border-bottom-color: $color-primary;
 	}
+
+	&:active {
+		border-bottom-color: darken($color-primary, 10%);
+	}
+
+}
+
+
+.link--underline {
+
+	// This extend is a shortcut so you don't need the base class when applying this style.
+	// So instead of <a class="link link--underline">
+	// you can just do: <a class="link--underline">
+	@extend %link;
+
+	border-bottom-color: $color-primary;
 
 }
 

@@ -8,6 +8,10 @@
 }
 
 
+$button-transition-time		: 200ms;
+$button-transition-ease		: $ease-in-out-quad;
+
+
 .button {
 
 	@extend %button-base;
@@ -24,7 +28,7 @@
 	font-size: 1.5rem;
 	line-height: 1.5;
 
-	transition: $transition-button-time $transition-button-ease;
+	transition: $button-transition-time $button-transition-ease;
 	transition-property: background-color;
 
 	&:focus, &:hover {

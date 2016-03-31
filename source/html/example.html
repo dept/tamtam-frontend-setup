@@ -24,11 +24,23 @@
             Website's description: {{ site.description }}<br/>
             Project is in debug mode: {{ project.debug }}<br/>
         </div>
+
+        <br/>
+
+        <h4>contributors:</h4>
+
+        <!-- Example usage of a for loop in combination with a filter -->
+        {% for contributor in content.contributors | sort( false, false, 'name' ) %}
+
+            <a href="mailto:{{ contributor.email }}">{{ contributor.name }} ( {{ contributor.email }} )</a>
+            <br/>
+
+        {% endfor %}
+
         <br/><br/>
 
 
         <h3>How to inject SVG images:</h3> <br/>
-
 
         <div>
             {% svg 'social/facebook' %}
@@ -41,7 +53,6 @@
 
 
         <h3>Example button macros:</h3> <br/>
-
 
         <!-- Include the file containing the macro, but it won't render anything until you call it -->
         {% include 'elements/button.html' %}

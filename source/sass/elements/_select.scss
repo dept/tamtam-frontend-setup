@@ -9,14 +9,14 @@
     border-radius: 0;
     border: 1px solid $color-grey;
 
-    &::-ms-expand { // remove IE select arrow
-        display: none;
-    }
-
     font-size: inherit;
     font-family: $font-stack-body;
     text-overflow: ellipsis;
     text-transform: capitalize;
+
+	&::-ms-expand { // remove IE select arrow
+		display: none;
+	}
 
 }
 
