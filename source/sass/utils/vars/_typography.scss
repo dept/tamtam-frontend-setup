@@ -1,7 +1,7 @@
 //
 // Looking for @font-face?
-// Font faces are nbeing loaded in sass/layout/_font-face.scss
-// Never use @import in css beacause it blocks fonts.!
+// Font faces are loaded in sass/layout/_font-face.scss
+// Never use @import in css because it blocks fonts.!
 //
 
 
@@ -13,7 +13,7 @@ $font-stack-secondary	: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-se
 
 // Font settings
 
-$font-stack-body		  : $font-stack-primary;
+$font-stack-body		: $font-stack-primary;
 $font-stack-buttons		: $font-stack-secondary;
 
 

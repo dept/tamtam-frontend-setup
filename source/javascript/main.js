@@ -12,7 +12,7 @@
 //  {{ variable }} = Nunjucks
 //  <% variable %> = AngularJS
 //
-//var exampleAngularModule        = require('./src/angular/_modules/example');
+// var exampleAngularModule        = require('./src/angular/_modules/example');
 
 
 

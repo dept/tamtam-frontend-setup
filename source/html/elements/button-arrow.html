@@ -7,22 +7,21 @@
 
     Usage:
     <!-- Include the file containing the macro -->
-    {% include 'elements/button.html' %}
+    {% include 'elements/button-arrow.html' %}
 
      <!-- Call the macro with button data to create new instances of the button -->
-    {{ button( { label: 'Click here' } ) }}
-    {{ button( { label: 'Tam Tam', url: 'http://www.tamtam.nl', class: 'js-tamtam-button' } ) }}
+    {{ buttonArrow( { label: 'Click here' } ) }}
+    {{ buttonArrow( { label: 'Tam Tam', url: 'http://www.tamtam.nl', class: 'js-tamtam-button' } ) }}
 
 #}
-{% macro button( data ) %}
+{% macro buttonArrow( data ) %}
 
-    <a class="button
-    {%- if data.size == 'large' %} button--large{% endif -%}
-    {%- if data.class %} {{ data.class }}{% endif -%}"
+    <a class="button-arrow{%- if data.class %} {{ data.class }}{% endif -%}"
        href="{{ data.url or '#' }}"
             {%- if data.attr or data.attributes %} {{ data.attr or data.attributes }}{% endif -%}>
 
-        <span class="button__label">{{ data.label or 'label' }}</span>
+        <span class="button-arrow__label">{{ data.label or 'label' }}</span>
+        <span class="button-arrow__arrow">{% svg 'icons/chevron-right' %}</span>
 
     </a>
 

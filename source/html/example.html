@@ -6,15 +6,18 @@
 
     <div class="container">
 
-        <h1>Some page template</h1>
+        <h1>Example page template</h1>
+
         <br/><br/>
 
         <h3>All the data available in this template:</h3>
+
         {% debug %}
+
         <br/><br/>
 
-        <h3>How to use the data:</h3>
-        <br/>
+        <h3>How to use the data:</h3> <br/>
+
 
         <div>
             Website's title: {{ site.title }}<br/>
@@ -24,8 +27,9 @@
         <br/><br/>
 
 
-        <h3>How to inject SVG images:</h3>
-        <br/>
+        <h3>How to inject SVG images:</h3> <br/>
+
+
         <div>
             {% svg 'social/facebook' %}
             {% svg 'social/twitter' %}
@@ -36,20 +40,28 @@
         <br/><br/>
 
 
-        <h3>Example button macro:</h3>
-        <br/>
+        <h3>Example button macros:</h3> <br/>
+
 
         <!-- Include the file containing the macro, but it won't render anything until you call it -->
         {% include 'elements/button.html' %}
+        {% include 'elements/button-arrow.html' %}
 
         <!-- Call the macro with optional arguments to create new instances of the button -->
-        {{ button('label here' ) }}
-        {{ button('different label here', 'js-class', 'http://www.tamtam.nl' ) }}
+        {{ button( { label: 'Click here' } ) }}
+        {{ button( { label: 'Click here', size: 'large' } ) }}
+        {{ button( { label: 'Tam Tam', url: 'http://www.tamtam.nl', class: 'js-tamtam-button', attr: 'data-custom=\"custom data attribute\"' } ) }}
 
         <br/><br/>
 
-        <h3>Example modules:</h3>
-        <br/>
+        {{ buttonArrow( { label: 'button with an arrow' } ) }}
+        {{ buttonArrow( ) }}
+
+        <br/><br/>
+
+
+        <h3>Example modules:</h3> <br/>
+
         {% include 'modules/example.html' %}
         {% include 'modules/example-2.html' %}
 
