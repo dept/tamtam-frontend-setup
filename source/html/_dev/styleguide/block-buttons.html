@@ -6,8 +6,13 @@
 {% block content %}
 
     {% include 'elements/button.html' %}
+    {% include 'elements/button-arrow.html' %}
 
-    {{ button('label here' ) }}
+    {{ button( { label: 'regular button' } ) }}
+
+    <br/><br/>
+
+    {{ buttonArrow( { label: 'arrow button' } ) }}
 
 {% endblock %}
 
