@@ -59,6 +59,9 @@ So let's make this setup as best as we can so every project is setup in no time 
 # Install #
 Use the setup following these commands.
 
+_Make sure you are running node version 0.12.*_
+_Else use [nvm](https://github.com/creationix/nvm) to easily switch between node versions_
+
 __1. Install all the npm modules__
 
 `npm install`
