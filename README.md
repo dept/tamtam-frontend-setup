@@ -40,7 +40,7 @@ This way other developers can get their head around your code and your folder wo
 
 
 The setup is always in progress so if you're having an idea or thought, please share it.
-[https://tamtam.atlassian.net/secure/RapidBoard.jspa?rapidView=187&view=planning](See the current list of open tickets and add your own on Jira). 
+[See the current list of open tickets and add your own on Jira](https://tamtam.atlassian.net/secure/RapidBoard.jspa?rapidView=187&view=planning). 
 When you're in to optimising code, add a feature or any code whatsoever, please do so and get a pull request.
 
 We're in this together, as a group of frontend developers.
