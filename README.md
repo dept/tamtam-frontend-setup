@@ -30,17 +30,17 @@ Welcome to the readme of the TamTam frontend setup.
 This is a basic setup for creating (static) html templates.
 Filled with automated tasks and configuration options.
 It enables you to quickly & easily setup your project and get it running in no time.
-Many things are already predefined, added and sorted out for you to take away some hussle.
+Many things are already predefined, added and sorted out for you to take away some hassle.
 The pro users can dive into settings an tasks, but that's not required to work with it.
 
 
 You're always welcome to change settings and reorder things around the project,
-as long as you keep the folder strucute as is. 
+as long as you keep the folder structure as is. 
 This way other developers can get their head around your code and your folder won't become a maze.
 
 
 The setup is always in progress so if you're having an idea or thought, please share it.
-[https://tamtam.atlassian.net/secure/RapidBoard.jspa?rapidView=187&view=planning](See the current list of open tickets and add your own on Jira). 
+[See the current list of open tickets and add your own on Jira](https://tamtam.atlassian.net/secure/RapidBoard.jspa?rapidView=187&view=planning). 
 When you're in to optimising code, add a feature or any code whatsoever, please do so and get a pull request.
 
 We're in this together, as a group of frontend developers.
@@ -132,7 +132,7 @@ In the `index.js` you will also find 2 other important settings at the top.
 
 - First the `config.copy` setting, here you can define assets that need to be copied to a specific build folder
 
-- Second: the `config.libs` setting, here you can list JavaScript libraries that will be concatted to a simple libs.js. This is useful for dependancies that are incompatible with commonJS.
+- Second: the `config.libs` setting, here you can list JavaScript libraries that will be concatted to a simple libs.js. This is useful for dependencies that are incompatible with commonJS.
 
 
 
