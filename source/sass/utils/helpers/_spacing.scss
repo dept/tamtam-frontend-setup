@@ -1,0 +1,16 @@
+// @formatter:off
+//
+//    A collection of some helper classes for tweaking the layout of the elements.
+//
+//
+//    .margin-top-xs      - .margin-top-lg
+//    .margin-bottom-xs   - .margin-bottom-lg
+//
+//
+
+@each $spacing-modifier, $spacing-margin in $spacing-margins {
+
+  .margin-top--#{$spacing-modifier}    {   margin-top: $spacing-margin     !important; }
+  .margin-bottom--#{$spacing-modifier} {   margin-bottom: $spacing-margin  !important; }
+
+}

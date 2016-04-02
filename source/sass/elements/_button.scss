@@ -1,0 +1,48 @@
+%button-base {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    vertical-align: top;
+}
+
+
+$button-transition-time		: 200ms;
+$button-transition-ease		: $ease-in-out-quad;
+
+
+.button {
+
+	@extend %button-base;
+
+	background-color: $color-primary;
+	color: $color-white;
+
+	font-family: $font-stack-buttons;
+	overflow: hidden;
+	text-transform: uppercase;
+	text-align: center;
+
+	padding: .45em 1em .55em 1em;
+	font-size: 1.5rem;
+	line-height: 1.5;
+
+	transition: $button-transition-time $button-transition-ease;
+	transition-property: background-color;
+
+	&:focus, &:hover {
+
+		background-color: darken($color-primary, 7%);
+
+	}
+
+}
+
+.button--large {
+
+	font-size: 2rem;
+
+}
+
+

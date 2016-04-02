@@ -1,0 +1,21 @@
+// @formatter:off
+//
+//    Set the margins for each viewport
+//
+//    @see: helpers/spacing
+//
+//    @example: .offset-top-xs
+//
+//
+
+$margin-large:  100px;
+$margin-medium: 50px;
+$margin-small:  20px;
+$margin-xsmall: 10px;
+
+$spacing-margins: (
+                     'lg': $margin-large,
+                     'md': $margin-medium,
+                     'sm': $margin-small,
+                     'xs': $margin-xsmall
+                  );

@@ -1,0 +1,20 @@
+
+figure {
+
+	overflow: hidden;
+	width: 100%;
+
+	figcaption {
+		text-align: left;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		padding: 10px 20px;
+		background: rgba(#FFF, 0.85);
+		color: $color-text;
+		font-size: 1.5rem;
+		line-height: 2.5rem;
+	}
+
+}

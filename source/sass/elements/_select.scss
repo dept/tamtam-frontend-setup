@@ -1,0 +1,38 @@
+
+%select-reset {
+
+    appearance: none;
+
+    border: none;
+    background-color: $color-white;
+    outline: none;
+    border-radius: 0;
+    border: 1px solid $color-grey;
+
+    font-size: inherit;
+    font-family: $font-stack-body;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+
+	&::-ms-expand { // remove IE select arrow
+		display: none;
+	}
+
+}
+
+
+.select {
+
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+
+    overflow: hidden;
+
+    select {
+
+        @extend %select-reset;
+
+    }
+
+}

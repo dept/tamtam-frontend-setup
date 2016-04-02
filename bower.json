@@ -1,0 +1,10 @@
+{
+  "name": "frontend-setup",
+  "description": "This bower.json is only here for bower dependencies, for actual information on this project see the package.json.",
+  "private": true,
+  "ignore": [
+    "*.log",
+    "node_modules"
+  ],
+  "dependencies": {}
+}

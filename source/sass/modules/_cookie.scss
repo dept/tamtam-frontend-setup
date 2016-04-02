@@ -1,0 +1,29 @@
+.cookie {
+
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 30px;
+    transform: translateY(100%);
+
+    transition: transform 400ms $ease-in-out-quart;
+
+    &.is-shown {
+
+        visibility: visible;
+        transform: translateY(0);
+
+    }
+}
+
+
+.cookie__content {
+
+    color: $color-white;
+    text-align: center;
+    background-color: rgba(#000, .85);
+
+}

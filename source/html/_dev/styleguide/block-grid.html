@@ -1,0 +1,57 @@
+{% set title='Grid' %}
+
+{% extends './block.html' %}
+
+
+{% block content %}
+
+    <style>
+        .grid-test, .grid-test--blue, .grid-test--green  {
+            content: '';
+            display: block;
+            height: 100px;
+            background-color: #333333;
+            padding: 10px;
+            color: white;
+            margin-bottom: 10px;
+        }
+        .grid-test--blue {
+            background-color: #223446;
+        }
+        .grid-test--green {
+            background-color: #2f4631;
+        }
+    </style>
+
+    <p>Small grid example to play with, see the <a href="/readme.html">README</a> for more information.</p><br/>
+
+    <div class="grid-12">
+        <div class="col-2 col-md-4 col-lg-6">
+            <span class="grid-test">col-2 col-md-4 col-lg-6</span>
+        </div>
+        <div class="col-2 col-md-4 col-lg-6">
+            <span class="grid-test">col-2 col-md-4 col-lg-6</span>
+        </div>
+        <div class="col-2 col-md-4 col-lg-6">
+            <span class="grid-test--blue">col-2 col-md-4 col-lg-6</span>
+        </div>
+        <div class="col-2 col-md-4 col-lg-6">
+            <span class="grid-test--blue">col-2 col-md-4 col-lg-6</span>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <span class="grid-test--green">col-12 col-md-6 col-lg-3</span>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <span class="grid-test--green">col-12 col-md-6 col-lg-3</span>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <span class="grid-test--green">col-12 col-md-6 col-lg-3</span>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <span class="grid-test--green">col-12 col-md-6 col-lg-3</span>
+        </div>
+    </div>
+
+
+{% endblock %}
+

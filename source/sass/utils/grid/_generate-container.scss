@@ -1,0 +1,320 @@
+// @formatter:off
+
+// ---- Container ------
+// @author:     Geert Fokke
+// @version:    1.0.0
+// @license:	MIT
+
+$container-config						: (	max-width: 1024px,
+																gutter: 40px,
+																gutter-small: 20px,
+																postfix: '',
+																add-break: true,
+																add-flood: true	) 	!default;
+
+$container-mobile-first							: true			!default;
+$container-padding-small-breakpoint	: 768px			!default;
+$container-base-class								: 'container'	!default;
+$container-flood-modifier						: 'flood'		!default;
+$container-break-modifier						: 'break'		!default;
+
+%container-base {
+
+	overflow: visible;
+	display: block;
+	box-sizing: border-box;
+
+}
+
+
+// -------------------------------- END OF CONFIG -------------------------------- //
+
+
+
+// private variables
+$_container-created: ();
+
+
+@function _container_validate_config($container-config) {
+
+	@if (type-of( $container-config ) != "map") { @error '$container-config is not a valid map. Current config: ' + $container-config; }
+
+	$max-width				: map_get( $container-config, max-width );
+	$gutter						: map_get( $container-config, gutter );
+	$gutter-small			: map_get( $container-config, gutter-small );
+	$postfix					: map_get( $container-config, postfix );
+	$add-break				: map_get( $container-config, add-break );
+	$add-flood				: map_get( $container-config, add-flood );
+	$max-width-media	: null;
+	
+	@if ( $max-width != null and $gutter != null ) {
+
+		@if( unit( $max-width ) != unit( $gutter ) ){
+			@error 'The unit of the max-width and the gutter setting of a container must be the same type ( currently it is '#{unit( $max-width )}' and '#{unit( $gutter )}' ). This is needed to be able to calculate the mediaquery of when to switch from the gutter to the max-width. Current config: ' + $container-config;
+		}
+
+		$max-width-media: $max-width + $gutter * 2;
+	}
+
+	@if ( $gutter == null ) { $gutter: 0; }
+	@if ( $gutter-small == null ) { $gutter: $gutter; }
+
+	$class-name: $container-base-class;
+	@if ( $postfix != null and $postfix != '' ) { $class-name: $class-name + '-' + $postfix; }
+
+	$class-name-break: false;
+	$class-name-fill: false;
+
+	@if ( $add-flood ) { $class-name-fill: #{$class-name + '--' + $container-flood-modifier} }
+	@if ( $add-break ) { $class-name-break: #{$class-name + '--' + $container-break-modifier} }
+
+	@return (	max-width 			: $max-width,
+				max-width-media 	: $max-width-media,
+				gutter 				: $gutter,
+				gutter-small 		: $gutter-small,
+				class-name 			: $class-name,
+				class-name-fill 	: $class-name-fill,
+				class-name-break 	: $class-name-break	);
+
+}
+
+
+
+@mixin _container_create_base( $container-config ) {
+
+	$class-name			: map_get( $container-config, class-name );
+	$class-name-fill	: map_get( $container-config, class-name-fill );
+	$class-name-break	: map_get( $container-config, class-name-break );
+
+	// Check first if this grid hasn't already been created
+	@if ( index( $_container-created, $class-name ) != null ) {
+
+		@error 'A container with the classname '#{$class-name}' has already been created! You will need to add an unique postfix setting to this $container-config to be able to have multiple containers. This is needed to generate an unique classname for this container. 	Current config: ' + $container-config;
+
+	} @else {
+
+		$_container-created: append( $_container-created, $class-name ) !global; // overwrite global variable to save a reference.
+
+	}
+
+								.#{$class-name} 		{ @extend %container-base; }
+	@if ( $class-name-break ) { .#{$class-name-break} 	{ @extend %container-base; } }
+	@if ( $class-name-fill )  { .#{$class-name-fill} 	{ @extend %container-base; } }
+
+}
+
+@mixin _container_apply_small_gutter( $container-config ) {
+
+	$gutter-small		: map_get( $container-config, gutter-small );
+	$class-name			: map_get( $container-config, class-name );
+	$class-name-fill	: map_get( $container-config, class-name-fill );
+	$class-name-break	: map_get( $container-config, class-name-break );
+
+	// The default container
+	.#{$class-name} {
+
+		@extend %container-base;
+
+		margin-left: $gutter-small;
+		margin-right: $gutter-small;
+
+	}
+
+	@if( $class-name-break or $class-name-break ) {
+
+		$selectors: null;
+		@if ( $class-name-fill ) 	{ $selectors: '.#{$class-name-fill}' }
+		@if ( $class-name-break ) 	{
+			@if( $selectors ) { $selectors: $selectors + ', .#{$class-name-break}' }
+			@else { $selectors: '.#{$class-name-break}'  }
+		}
+
+		// The fill and break container
+		#{$selectors} {
+
+			@extend %container-base;
+
+			padding-left: $gutter-small;
+			padding-right: $gutter-small;
+
+		}
+
+	}
+
+}
+
+
+@mixin _container_apply_default_gutter( $container-config ) {
+
+	$gutter				: map_get( $container-config, gutter );
+	$gutter-small		: map_get( $container-config, gutter-small );
+	$class-name			: map_get( $container-config, class-name );
+	$class-name-fill	: map_get( $container-config, class-name-fill );
+	$class-name-break	: map_get( $container-config, class-name-break );
+
+	@if( $gutter != $gutter-small or $container-mobile-first == false) {
+
+
+		$combined-selectors: $class-name;
+		@if( $class-name-break ) { $combined-selectors: $combined-selectors + ', .#{$class-name-break}'; }
+
+		.#{$combined-selectors} {
+
+			margin-left: $gutter;
+			margin-right: $gutter;
+
+		}
+
+
+		@if( $class-name-fill ) {
+
+			.#{$class-name-fill} {
+
+				padding-left: $gutter;
+				padding-right: $gutter;
+
+			}
+
+		}
+
+	}
+
+}
+
+
+@mixin _container_apply_responsive_gutter( $container-config ) {
+
+	$max-width			: map_get( $container-config, max-width );
+	$gutter				: map_get( $container-config, gutter );
+	$class-name			: map_get( $container-config, class-name );
+	$class-name-fill	: map_get( $container-config, class-name-fill );
+	$class-name-break	: map_get( $container-config, class-name-break );
+
+	$combined-selectors: $class-name;
+	@if( $class-name-break ) { $combined-selectors: $combined-selectors + ', .#{$class-name-break}'; }
+
+	.#{$combined-selectors} {
+
+		@if( $max-width ) {
+
+			max-width: $max-width;
+			margin-left: auto;
+			margin-right: auto;
+
+		} @else {
+
+			margin-left: $gutter;
+			margin-right: $gutter;
+
+		}
+
+	}
+
+	@if( $class-name-fill ) {
+
+		.#{$class-name-fill} {
+
+			@if( $max-width ) {
+
+				padding-left: calc((100% - #{$max-width}) / 2);
+				padding-right: calc((100% - #{$max-width}) / 2);
+
+			} @else {
+
+				padding-left: $gutter;
+				padding-right: $gutter;
+
+			}
+
+		}
+
+	}
+
+}
+
+
+
+@mixin _container_create($config) {
+
+	$parsed-config		: ();
+
+	// convert map to a list containing the config map.
+	@if ( type-of( $config ) == 'map' ) { $config: $config, ; }
+
+
+	// Parse container configs
+	@each $container-config in $config { $parsed-config: append( $parsed-config, _container_validate_config( $container-config ) ); }
+
+	// Create container base
+	@each $container-config in $parsed-config { @include _container_create_base( $container-config ); }
+
+
+
+	@if( $container-mobile-first == true ) {
+
+
+		// Apply small gutters
+		@each $container-config in $parsed-config { @include _container_apply_small_gutter( $container-config ); }
+
+		// Update container with regular gutter
+		@media only screen and (min-width: $container-padding-small-breakpoint) {
+
+			@each $container-config in $parsed-config { @include _container_apply_default_gutter( $container-config ); }
+
+		}
+
+		// Update container with large gutter
+		@each $container-config in $parsed-config {
+
+			$max-width-media	: map_get( $container-config, max-width-media );
+
+			@if( $max-width-media ) {
+
+				@media only screen and (min-width: #{$max-width-media}) {
+					
+					@include _container_apply_responsive_gutter( $container-config );
+
+				}
+
+			}
+
+		}
+
+
+	} @else {
+
+
+		// Apply small gutters
+		@each $container-config in $parsed-config { @include _container_apply_responsive_gutter( $container-config ); }
+
+		// apply container with large gutter
+		@each $container-config in $parsed-config {
+
+			$max-width-media	: map_get( $container-config, max-width-media );
+
+			@if( $max-width-media ) {
+
+				@media only screen and (max-width: #{$max-width-media}) {
+
+					@include _container_apply_default_gutter( $container-config );
+
+				}
+
+			}
+
+		}
+
+		// Update container with regular gutter
+		@media only screen and (max-width: $container-padding-small-breakpoint) {
+
+			@each $container-config in $parsed-config { @include _container_apply_small_gutter( $container-config ); }
+
+		}
+
+
+	}
+
+}
+
+
+@include _container_create($container-config);

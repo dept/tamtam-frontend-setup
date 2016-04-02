@@ -1,0 +1,50 @@
+.button-arrow {
+
+	@extend %button-base;
+
+	background-color: $color-secondary;
+	color: $color-white;
+
+	font-family: $font-stack-buttons;
+	text-align: center;
+
+	padding: .45em 1em .55em 1em;
+	font-size: 1.6rem;
+	line-height: 1.5;
+
+	transition: background-color $button-transition-time $button-transition-ease;
+
+	&:focus, &:hover {
+
+		background-color: lighten($color-secondary, 5%);
+
+		.button-arrow__arrow {
+
+			transform: translateX(5px);
+
+		}
+	}
+
+}
+
+
+.button-arrow__arrow {
+
+	display: inline-block;
+	margin-left: 10px;
+
+	transition: transform $button-transition-time $ease-in-out-circ;
+
+	> svg {
+
+		position: relative;
+		top: -1px;
+
+		path {
+			fill: $color-white;
+		}
+	}
+
+}
+
+

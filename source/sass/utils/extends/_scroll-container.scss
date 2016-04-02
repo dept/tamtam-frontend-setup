@@ -1,0 +1,31 @@
+//
+//		Can be used to create a new ( vertical ) scroll container
+//
+
+//	Uses a mixin so it can also be used inside of media queries
+@mixin scroll-container() {
+
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+
+	-webkit-overflow-scrolling: touch;
+	overflow-x: hidden;
+	overflow-y: scroll;
+
+	> div {
+		// apply a translate to the content to prevent IE from losing focus and being unable to scroll the content
+		transform: translateZ(0);
+	}
+
+}
+
+
+%scroll-container {
+
+	@include scroll-container();
+
+}

@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+@import "settings/colors";
+
+
+// Add an extra nested layer to try to make sure the debug style won't be compromised by the css of the project
+html._debug_page_ {
+
+	font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #ECECEC;
+	color: #333333;
+
+	&.dark
+	{
+		background-color: #333333;
+		color: #ECECEC;
+	}
+
+    @import "project/info";
+    @import "project/pages-list";
+    @import "project/directories";
+
+    @import "styleguide/block";
+    @import "styleguide/block-fonts";
+    @import "styleguide/svg-collection";
+
+}
+
+// the debug data panel should be able to be used everywhere
+@import "tools/debug-data";
+
+
+// Move browserSync notification to the bottom right
+#__bs_notify__ {
+    top: auto !important;
+    bottom: 0 !important;
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 0px !important;
+}
+
+
+
+
+
+
+

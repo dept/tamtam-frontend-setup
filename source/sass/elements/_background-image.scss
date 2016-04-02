@@ -1,0 +1,71 @@
+
+%background-image,
+.background-image {
+
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-size: cover;
+	background-position: center center;
+
+}
+
+
+.background-image--top {
+
+	// This extend is a shortcut so you don't need the base class when applying this style.
+	// So instead of: <div class="background-image background-image--top">
+	// you can just do: <div class="background-image--top">
+	@extend %background-image;
+	background-position: center top;
+
+}
+
+
+.background-image--bottom {
+
+	@extend %background-image;
+	background-position: center bottom;
+
+}
+
+
+.background-image--left {
+
+	@extend %background-image;
+	background-position: left center;
+
+}
+
+
+.background-image--right {
+
+	@extend %background-image;
+	background-position: right center;
+
+}
+
+
+.background-image--overlay {
+
+	@extend %background-image;
+
+	// shade overlay with a slight gradient from bottom to half-way point
+	&:after {
+
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		//  Permalink - use to edit and share this gradient:
+		//  http://colorzilla.com/gradient-editor/#2d1f1f+0,2d1f1f+100&amp;0.25+0,0.25+63,0.45+100
+		//  Note: autoprefixer handles the needed prefixes
+		background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 63%, rgba(0, 0, 0, 0.45) 100%);
+
+	}
+}

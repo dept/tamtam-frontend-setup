@@ -1,0 +1,34 @@
+
+%checkbox-reset {
+
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+
+	border: none;
+	background-color: transparent;
+	outline: none;
+
+	font-size: inherit;
+	font-family: $font-stack-body;
+	text-overflow: ellipsis;
+	text-transform: capitalize;
+
+}
+
+
+.checkbox {
+
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+	cursor: pointer;
+	overflow: hidden;
+
+	input[type="checkbox"] {
+
+		@extend %checkbox-reset;
+
+	}
+
+}

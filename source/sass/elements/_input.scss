@@ -1,0 +1,21 @@
+
+
+
+input[type="text"] {
+
+    @include placeholder( $color-form-placeholder );
+
+    padding: 1rem 1rem;
+    background-color: $color-white;
+    font-size: inherit;
+    border: 1px solid transparent;
+
+    transition: border-color $form-transition-time $form-transition-time;
+
+    &:focus {
+
+        border-color: $color-form-focus;
+
+    }
+
+}
