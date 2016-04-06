@@ -133,7 +133,7 @@ gulp.task( 'html', function () {
 	// add custom filters
 	environment.addFilter( assignFilter.name, assignFilter.func );
 
-	return gulp.src( config.source.getFileGlobs( 'html' ) )
+	return gulp.src( config.source.getFileGlobs( 'html' ), { base: config.source.getPath( 'html' ) } )
 
 		.pipe( gulpData( getDataForFile ) )
 		.pipe( gulpNunjucks() )
