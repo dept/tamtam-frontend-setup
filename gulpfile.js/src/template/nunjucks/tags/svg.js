@@ -1,6 +1,6 @@
 // @formatter:off
 
-var svg           = require( '../utils/svg' );
+var svg           = require( '../../utils/svg' );
 
 // @formatter:on
 

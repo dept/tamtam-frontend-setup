@@ -6,8 +6,9 @@ var log                     = require('../src/debug/log');
 var mergeJSONData           = require('../src/data/json/merge');
 var getFileList             = require('../src/node/file/get-list');
 var packageJSON             = require('../../package.json');
-var SvgExtension            = require('../src/template/nunjucks/svg-extension');
-var DebugExtension          = require('../src/template/nunjucks/debug-extension');
+var SvgExtension            = require('../src/template/nunjucks/tags/svg');
+var DebugExtension          = require('../src/template/nunjucks/tags/debug');
+var assignFilter          	= require('../src/template/nunjucks/filters/assign');
 
 var path                    = require('path');
 var mkdirp                  = requireCached('mkdirp');
@@ -22,6 +23,7 @@ var glob                    = requireCached('glob');
 
 
 var RESERVED_DATA_KEYWORDS  = [ 'project', 'ext' ];
+
 
 
 //@formatter:on
@@ -124,9 +126,12 @@ gulp.task( 'html', function () {
 
 	var environment = gulpNunjucks.nunjucks.configure( [ config.source.getPath( 'html' ) ], options.nunjuck );
 
+	// add custom tags
 	environment.addExtension( 'SVGExtension', new SvgExtension( gulpNunjucks.nunjucks ) );
 	environment.addExtension( 'DebugExtension', new DebugExtension( gulpNunjucks.nunjucks ) );
 
+	// add custom filters
+	environment.addFilter( assignFilter.name, assignFilter.func );
 
 	return gulp.src( config.source.getFileGlobs( 'html' ) )
 
