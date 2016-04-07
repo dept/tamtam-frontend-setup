@@ -1,8 +1,18 @@
 //
 //		Kills all the whitespace within a container
+//      - or restores the whitespace within a container
 //
 
 //	Uses a mixin so it can also be used inside of media queries
+
+@mixin spaceless-reset() {
+
+	font-family: $font-normal; // reset font settings
+	letter-spacing: normal;
+
+}
+
+
 @mixin spaceless() {
 
 	font-family: monospace; // kill all whitespace
@@ -10,8 +20,8 @@
 
 	> * {
 
-		font-family: $font-stack-body; // reset font settings
-		letter-spacing: normal;
+		@include spaceless-reset();
+
 		vertical-align: top;
 
 	}
@@ -22,5 +32,12 @@
 %spaceless {
 
 	@include spaceless();
+
+}
+
+
+%spaceless-reset {
+
+	@include spaceless-reset();
 
 }
