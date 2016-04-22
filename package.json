@@ -1,6 +1,6 @@
 {
   "name": "frontend-setup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "A basic project setup for creating (static) html templates. Filled with automated tasks and configuration options.",
   "author": "Tam Tam",
@@ -54,7 +54,8 @@
     "gulp-nunjucks-render": "1.0.0",
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.0.4",
+    "gulp-sass": "2.2.0",
+    "node-sass": "3.4.2",
     "gulp-size": "^2.0.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-svgmin": "^1.2.0",
