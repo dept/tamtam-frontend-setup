@@ -7,6 +7,9 @@ RegExps for converting FileInclude template to NunJucks!
 
 @@include\(\s?'([\w|\-|/|_]*)\.html'(\s*,\s*\{.*\})?\)
 
+@@include\(\s?['"]([\w|\-|/|_]*)\.html['"](\s*,\s*\{.*\})?\)
+
+
 {% include '$1.html' %} $2
 
 
