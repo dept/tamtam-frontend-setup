@@ -54,7 +54,7 @@ function createOptions() {
 
 
 	// Convert entryfiles to valid webpack config object.
-	if( options.webpack.entry.length > 1 ) {
+	if( options.webpack.entry.length ) {
 
 		var webpackEntries = {};
 		_.each( options.webpack.entry, function ( entryPath ) { webpackEntries[ path.parse( entryPath ).name ] = entryPath; } );
