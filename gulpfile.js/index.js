@@ -5,16 +5,6 @@ var runSequence					= require( 'run-sequence' );
 var init                      	= require('./src/gulp/init');
 
 
-
-//---------------      B A S I C    S E T T I N G S      ----------------
-// Check the config.js for all the available settings.
-
-config.debug                    = true;
-config.sourcemaps               = true;
-config.notifyErrors             = true;
-config.minify                   = false
-config.prettyHTML               = false;
-
 config.applyProcessArgs();
 
 
