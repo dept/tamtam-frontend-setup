@@ -7,7 +7,7 @@
 
 @mixin spaceless-reset() {
 
-	font-family: $font-normal; // reset font settings
+	font-family: $font-stack-body; // reset font settings
 	letter-spacing: normal;
 
 }
