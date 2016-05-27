@@ -15,7 +15,7 @@ config.debug              = true;
 config.notifyError        = true;
 config.throwError         = false;    			// Actually throws an (native) error when one occurs, useful for bamboo.
 
-config.checkAccessibility = true;
+config.checkAccessibility = false;
 config.minify             = false;
 config.optimizeImages     = true;
 config.convertWebp        = true;
