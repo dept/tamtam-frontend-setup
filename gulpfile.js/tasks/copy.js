@@ -51,7 +51,7 @@ gulp.task('copy', function () {
 
                 .pipe(changed(dest))            // Ignore unchanged files
                 .pipe(gulp.dest(dest))          // Push the files straight to their destination
-        );
+                );
 
     }
 

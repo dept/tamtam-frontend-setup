@@ -25,7 +25,7 @@ var gulpIgnore                  = requireCached('gulp-ignore');
  * @see: https://github.com/sindresorhus/gulp-size
  */
 gulp.task('css', function () {
-    
+
     var options = {
 
         sass: {
@@ -80,7 +80,7 @@ gulp.task('css', function () {
 
     return gulp.src( config.source.getFileGlobs('css') )
 
-        .pipe( gulpIf( config.sourcemaps, sourcemaps.init() ) )
+    .pipe( gulpIf( config.sourcemaps, sourcemaps.init() ) )
         // sass
         .pipe( sass( options.sass ) )
         // start optimizing...
@@ -112,7 +112,7 @@ gulp.task('css', function () {
         .pipe( browserSync.stream() );
         //.pipe( browserSync.reload( { stream: true } ) );
 
-} );
+    } );
 
 
 

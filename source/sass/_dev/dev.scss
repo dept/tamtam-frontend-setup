@@ -10,22 +10,21 @@
 html._debug_page_ {
 
 	font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: #ECECEC;
-	color: #333333;
+  background-color: #ECECEC;
+  color: #333333;
 
-	&.dark
-	{
-		background-color: #333333;
-		color: #ECECEC;
-	}
+  &.dark{
+    background-color: #333333;
+    color: #ECECEC;
+  }
 
-    @import "project/info";
-    @import "project/pages-list";
-    @import "project/directories";
+  @import "project/info";
+  @import "project/pages-list";
+  @import "project/directories";
 
-    @import "styleguide/block";
-    @import "styleguide/block-fonts";
-    @import "styleguide/svg-collection";
+  @import "styleguide/block";
+  @import "styleguide/block-fonts";
+  @import "styleguide/svg-collection";
 
 }
 
@@ -35,10 +34,10 @@ html._debug_page_ {
 
 // Move browserSync notification to the bottom right
 #__bs_notify__ {
-    top: auto !important;
-    bottom: 0 !important;
-    border-top-left-radius: 5px !important;
-    border-bottom-left-radius: 0px !important;
+  top: auto !important;
+  bottom: 0 !important;
+  border-top-left-radius: 5px !important;
+  border-bottom-left-radius: 0px !important;
 }
 
 

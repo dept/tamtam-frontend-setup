@@ -14,111 +14,111 @@ var webpack                     = requireCached('webpack');
 
 function createOptions() {
 
-	// @formatter:on
-	// @see: http://webpack.github.io/docs/configuration.html
-	var options = {
+// @formatter:on
+// @see: http://webpack.github.io/docs/configuration.html
+var options = {
 
-		webpack: {
+    webpack: {
 
-			bail: config.throwError,
+        bail: config.throwError,
 
-			debug: config.debug,
+        debug: config.debug,
 
-			entry: config.source.getFilePaths( 'javascript', true ),
+        entry: config.source.getFilePaths( 'javascript', true ),
 
-			output: {
-				path: config.dest.getPath( 'javascript' ),
-				filename: "[name].js"
-			},
+        output: {
+            path: config.dest.getPath( 'javascript' ),
+            filename: "[name].js"
+        },
 
-			plugins: [],
+        plugins: [],
 
-			devtool: config.sourcemaps ? 'source-map' : undefined
+        devtool: config.sourcemaps ? 'source-map' : undefined
 
-		},
+    },
 
-		uglify: {
+    uglify: {
 
-			mangle: false, 				// Pass false to skip mangling names.
-			preserveComments: false 	// 'all', 'some', {function}
+mangle: false, 				// Pass false to skip mangling names.
+preserveComments: false 	// 'all', 'some', {function}
 
-		}
+}
 
-	};
-
-
-	if( !options.webpack.entry.length ) log.error( {
-		sender: 'js',
-		message: 'No entry files found for JavaScript?! Check your source config...'
-	} );
+};
 
 
-	// Convert entryfiles to valid webpack config object.
-	if( options.webpack.entry.length ) {
+if( !options.webpack.entry.length ) log.error( {
+    sender: 'js',
+    message: 'No entry files found for JavaScript?! Check your source config...'
+} );
 
-		var webpackEntries = {};
-		_.each( options.webpack.entry, function ( entryPath ) { webpackEntries[ path.parse( entryPath ).name ] = entryPath; } );
-		options.webpack.entry = webpackEntries;
-	}
 
-	if( config.minify ) {
+// Convert entryfiles to valid webpack config object.
+if( options.webpack.entry.length ) {
 
-		options.webpack.plugins.push( new webpack.optimize.DedupePlugin() );
-		options.webpack.plugins.push( new webpack.optimize.UglifyJsPlugin( options.uglify ) );
-		options.webpack.plugins.push( new webpack.NoErrorsPlugin() );
+    var webpackEntries = {};
+    _.each( options.webpack.entry, function ( entryPath ) { webpackEntries[ path.parse( entryPath ).name ] = entryPath; } );
+    options.webpack.entry = webpackEntries;
+}
 
-	}
+if( config.minify ) {
 
-	return options;
+    options.webpack.plugins.push( new webpack.optimize.DedupePlugin() );
+    options.webpack.plugins.push( new webpack.optimize.UglifyJsPlugin( options.uglify ) );
+    options.webpack.plugins.push( new webpack.NoErrorsPlugin() );
+
+}
+
+return options;
 
 }
 
 
 function onWebpackCallback ( error, stats, opt_prevStats ) {
 
-	if( error ) log.error( {
-		sender: 'js',
-		data: [ error ]
-	} );
+    if( error ) log.error( {
+        sender: 'js',
+        data: [ error ]
+    } );
 
-	if( config.verbose ) log.info( {
-		sender: 'js',
-		message: 'compiling...'
-	} );
+        if( config.verbose ) log.info( {
+            sender: 'js',
+            message: 'compiling...'
+        } );
 
-	// log changes
-	if( opt_prevStats ) {
+// log changes
+if( opt_prevStats ) {
 
-		var currentTimestamps = stats.compilation.fileTimestamps;
-		var previousTimestamps = opt_prevStats.compilation.fileTimestamps;
+    var currentTimestamps = stats.compilation.fileTimestamps;
+    var previousTimestamps = opt_prevStats.compilation.fileTimestamps;
 
-		if( previousTimestamps && !_.isEmpty( previousTimestamps ) ) {
+    if( previousTimestamps && !_.isEmpty( previousTimestamps ) ) {
 
-			var difference = objectDiff( previousTimestamps, currentTimestamps );
-			var sourceRoot = path.resolve( config.source.getPath( 'root' ), '../' );
-			var changedFiles = [];
+        var difference = objectDiff( previousTimestamps, currentTimestamps );
+        var sourceRoot = path.resolve( config.source.getPath( 'root' ), '../' );
+        var changedFiles = [];
 
-			for ( var filePath in difference ) changedFiles.push( filePath.replace( sourceRoot, '' ) );
+        for ( var filePath in difference ) changedFiles.push( filePath.replace( sourceRoot, '' ) );
 
-			log.info( {
-				sender: 'js',
-				message: 'changed files:',
-				data: changedFiles.join( '\n\t' )
-			} )
+            log.info( {
+                sender: 'js',
+                message: 'changed files:',
+                data: changedFiles.join( '\n\t' )
+            } )
 
-		}
+    }
 
-	}
+}
 
-	_.each( stats.compilation.errors, function ( compileError ) {
+_.each( stats.compilation.errors, function ( compileError ) {
 
-		log.error( {
-			sender: 'js',
-			name: compileError.name,
-			message: compileError.message
-		} )
+    log.error( {
+        sender: 'js',
+        name: compileError.name,
+        message: compileError.message
+    } )
 
-	} );
+} );
 
 
 }
@@ -126,20 +126,20 @@ function onWebpackCallback ( error, stats, opt_prevStats ) {
 
 gulp.task( 'js', function ( callback ) {
 
-	webpack( createOptions().webpack, function ( error, stats ) {
+    webpack( createOptions().webpack, function ( error, stats ) {
 
-		onWebpackCallback( error, stats );
+        onWebpackCallback( error, stats );
 
-		callback();
+        callback();
 
-	} );
+    } );
 
 } );
 
 module.exports = {
 
-	createOptions: createOptions,
-	onWebpackCallback: onWebpackCallback
+    createOptions: createOptions,
+    onWebpackCallback: onWebpackCallback
 
 }
 

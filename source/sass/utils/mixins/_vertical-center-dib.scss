@@ -34,26 +34,26 @@
 
 @mixin vertical-center-dib($opt_elements...) {
 
-    &:before {
+  &:before {
 
-        content: '';
-        display: inline-block;
-        height: 100%;
-		font-family: monospace;
-        margin-left: -0.25em;
-        vertical-align: middle;
+    content: '';
+    display: inline-block;
+    height: 100%;
+    font-family: monospace;
+    margin-left: -0.25em;
+    vertical-align: middle;
 
-    }
+  }
 
-    @each $element in $opt_elements {
+  @each $element in $opt_elements {
 
-        #{$element} {
+    #{$element} {
 
-            display: inline-block !important;
-            vertical-align: middle;
-
-        }
+      display: inline-block !important;
+      vertical-align: middle;
 
     }
+
+  }
 
 }

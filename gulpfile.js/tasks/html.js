@@ -35,17 +35,17 @@ var RESERVED_DATA_KEYWORDS  = [ 'project', 'ext' ];
  */
 gulp.task( 'html', function () {
 
-	var options = {};
+ 	var options = {};
 
-	options.minify = config.minifyHTML;
+ 	options.minify = config.minifyHTML;
 
 	// @formatter:off
-    options.htmlmin = {
+	options.htmlmin = {
 
-        collapseWhitespace: true,
-        removeComments:     true,
-        minifyJS:           true,
-        minifyCSS:          true,
+		collapseWhitespace: true,
+		removeComments:     true,
+		minifyJS:           true,
+		minifyCSS:          true,
         keepClosingSlash:   true // can break SVG if not set to true!
 
     };
@@ -135,14 +135,14 @@ gulp.task( 'html', function () {
 
 	return gulp.src( config.source.getFileGlobs( 'html' ), { base: config.source.getPath( 'html' ) } )
 
-		.pipe( gulpData( getDataForFile ) )
-		.pipe( gulpNunjucks() )
+	.pipe( gulpData( getDataForFile ) )
+	.pipe( gulpNunjucks() )
 
 
-		.pipe( gulpif( options.pretty, prettify( options.prettyConfig ) ) )
-		.pipe( gulpif( options.minify, htmlmin( options.htmlmin ) ) )
+	.pipe( gulpif( options.pretty, prettify( options.prettyConfig ) ) )
+	.pipe( gulpif( options.minify, htmlmin( options.htmlmin ) ) )
 
-		.pipe( gulp.dest( config.dest.getPath( 'html' ) ) );
+	.pipe( gulp.dest( config.dest.getPath( 'html' ) ) );
 
 	// Browser Sync is reloaded from the watch task for HTML files to bypass a chrome bug.
 	// See the watch task for more info.
