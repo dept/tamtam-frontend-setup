@@ -20,7 +20,7 @@ gulp.task('images', function () {
 
         config: {
             optimizationLevel: 3,   // default 3
-            progressive: false,     // for JPG, default false
+            progressive: true,     // for JPG, default false
             interlaces: false,      // for GIF, default false
             multipass: false        // for SVG, default false
         }
