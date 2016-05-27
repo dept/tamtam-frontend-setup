@@ -62,6 +62,7 @@
     "gulp-uglify": "^1.4.1",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
+    "gulp-webp": "^2.3.0",
     "gulp-wrapper": "^1.0.0",
     "human-size": "^1.1.0",
     "lodash": "^4.0.1",

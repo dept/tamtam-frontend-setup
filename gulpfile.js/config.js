@@ -17,6 +17,7 @@ config.throwError       = false;    			// Actually throws an (native) error when
 
 config.minify           = false;
 config.optimizeImages   = true;
+config.convertWebp      = true;
 config.sourcemaps       = true;
 config.cleanCSS         = false;    			// removes unused CSS, requires 'gulp-uncss' installation.
 config.prettyHTML       = false;
@@ -63,6 +64,7 @@ source.javascript                   = { path: '<%= root %>/javascript',     file
 source.css                          = { path: '<%= root %>/sass',           files: [ '*.scss', '_dev/*.scss']   };      // entry point files
 source.data                         = { path: '<%= root %>/data',           files: [ '*.json', '**/*.json' ] 	};
 source.images                       = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif,svg}', '**/*.{jpg,jpeg,png,gif,svg}' ] };
+source.webp                         = { path: '<%= assets %>/images',     files: [ '*.{jpg,jpeg,png,gif}', '**/*.{jpg,jpeg,png,gif}' ] };
 source.svg                          = { path: '<%= assets %>/svg',          files: [ '*.svg', '**/*.svg' ] };
 
 
@@ -72,6 +74,7 @@ dest.html                           = { path: '<%= root %>' };
 dest.css                            = { path: '<%= assets %>/css' };
 dest.javascript                     = { path: '<%= assets %>/js' };
 dest.images                         = { path: '<%= assets %>/images' };
+dest.webp                           = dest.images;
 dest.fonts                          = { path: '<%= assets %>/fonts' };
 dest.svg                            = { path: '<%= assets %>/svg' };
 

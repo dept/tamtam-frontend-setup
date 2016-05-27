@@ -72,10 +72,11 @@ function registerMainTasks( gulp ){
     gulp.task( 'build', function ( callback ) {
 
         if(config.debug) config.optimizeImages = false;
+        if(config.debug) config.convertWebp    = false;
 
         runSequence(
             'clean',
-            [ 'copy', 'images', 'svg' ],
+            [ 'copy', 'images', 'webp', 'svg' ],
             [ 'html', 'libs', 'js', 'css', 'readme' ],
             callback
         );
@@ -120,7 +121,7 @@ function registerMainTasks( gulp ){
 
         runSequence(
             'clean',
-            [ 'copy', 'images', 'svg' ],
+            [ 'copy', 'images', 'webp', 'svg' ],
             [ 'html', 'libs', 'js', 'css' ],
             callback
         );
