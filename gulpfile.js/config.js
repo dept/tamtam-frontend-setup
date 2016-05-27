@@ -1,33 +1,34 @@
 // @formatter:off
 
-var PathConfig          = require('./src/data/path-config');
-var processArguments    = require( './src/node/process-arguments' );
-var packageJSON         = require('../package.json');
+var PathConfig            = require('./src/data/path-config');
+var processArguments      = require( './src/node/process-arguments' );
+var packageJSON           = require('../package.json');
 
 
 
-var config              = {};
-config.name             = packageJSON.name;
-config.version          = packageJSON.version;
+var config                = {};
+config.name               = packageJSON.name;
+config.version            = packageJSON.version;
 
-config.cleanBuild       = false;
-config.debug            = true;
-config.notifyError      = true;
-config.throwError       = false;    			// Actually throws an (native) error when one occurs, useful for bamboo.
+config.cleanBuild         = false;
+config.debug              = true;
+config.notifyError        = true;
+config.throwError         = false;    			// Actually throws an (native) error when one occurs, useful for bamboo.
 
-config.minify           = false;
-config.optimizeImages   = true;
-config.convertWebp      = true;
-config.sourcemaps       = true;
-config.cleanCSS         = false;    			// removes unused CSS, requires 'gulp-uncss' installation.
-config.prettyHTML       = false;
-config.minifyHTML       = false;    			// requires 'gulp-htmlmin' installation.
+config.checkAccessibility = true;
+config.minify             = false;
+config.optimizeImages     = true;
+config.convertWebp        = true;
+config.sourcemaps         = true;
+config.cleanCSS           = false;    			// removes unused CSS, requires 'gulp-uncss' installation.
+config.prettyHTML         = false;
+config.minifyHTML         = false;    			// requires 'gulp-htmlmin' installation.
 
-config.gulp             = {
-                            debug: false,       // if true, gulp will output a lot of extra information for debugging purposes.
-                            lazy: true,         // will only load the tasks in the 'gulp/tasks' folder, just before they are used.
-                            verbose: false      // Output extra information during the process.
-                        };
+config.gulp               = {
+                              debug: false,       // if true, gulp will output a lot of extra information for debugging purposes.
+                              lazy: true,         // will only load the tasks in the 'gulp/tasks' folder, just before they are used.
+                              verbose: false      // Output extra information during the process.
+                          };
 
 // Assign process arguments.
 // To use process arguments add '--[key] [value]' to the command.

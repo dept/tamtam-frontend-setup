@@ -23,10 +23,10 @@ gulp.task('webp', function () {
         }
 
     };
-  
+
     return gulp.src( config.source.getFileGlobs( 'webp' ) )
-        .pipe( changed( config.dest.getPath( 'webp' ) ) )                    // Ignore unchanged files
-        .pipe( webp() )              // Convert
+        .pipe( changed( config.dest.getPath( 'webp' ) ) )     // Ignore unchanged files
+        .pipe( gulpIf( config.convertWebp, webp()))           // Convert
         .pipe( gulp.dest( config.dest.getPath( 'webp' ) ) );  // Export
 
 } );
