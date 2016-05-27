@@ -72,6 +72,7 @@ function registerMainTasks( gulp ){
     gulp.task( 'build', function ( callback ) {
 
         if(config.debug) config.optimizeImages = false;
+        if(config.debug) config.convertWebp    = false;
 
         runSequence(
             'clean',
