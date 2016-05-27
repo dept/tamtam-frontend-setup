@@ -30,4 +30,3 @@ gulp.task('webp', function () {
         .pipe( gulp.dest( config.dest.getPath( 'webp' ) ) );  // Export
 
 } );
-
