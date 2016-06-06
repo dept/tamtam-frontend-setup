@@ -78,7 +78,6 @@ function registerMainTasks( gulp ){
             'clean',
             [ 'copy', 'images', 'webp', 'svg' ],
             [ 'html', 'libs', 'js', 'css', 'readme' ],
-            'accessibility',
             callback
         );
 

@@ -11,25 +11,22 @@ var rename                      = requireCached('gulp-rename');
 // @formatter:on
 
 /**
- * Task for checking WCAG2AA requirements
+ * Task for checking WCAG2 requirements
  * @see: https://github.com/yargalot/gulp-accessibility
  */
 
-gulp.task('accessibility', function() {
+gulp.task('wcag', function() {
 
     var options = {
-        checkAccessibility : config.checkAccessibility,
-        accessibility : {
-            accessibilityLevel: 'WCAG2AA',
-            reportLevels: {
-                notice: false,
-                warning: false,
-                error: true
-            }
+        accessibilityLevel: 'WCAG2A',
+        reportLevels: {
+            notice: false,
+            warning: false,
+            error: true
         }
     };
 
-    return gulp.src( config.dest.getPath('root')+"/styleguide.html" )
-        .pipe( gulpIf( options.checkAccessibility, gulpAccessibility(options.accessibility) ) );
+    return gulp.src( [config.dest.getPath('root')+"/*.html", '!'+config.dest.getPath('root')+"/README.html", '!'+config.dest.getPath('root')+"/styleguide.html"] )
+        .pipe( gulpAccessibility(options) );
 
 });
