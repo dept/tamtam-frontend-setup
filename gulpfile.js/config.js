@@ -13,15 +13,15 @@ config.version            = packageJSON.version;
 config.cleanBuild         = false;
 config.debug              = true;
 config.notifyError        = true;
-config.throwError         = false;    			// Actually throws an (native) error when one occurs, useful for bamboo.
+config.throwError         = false;              // Actually throws an (native) error when one occurs, useful for bamboo.
 
 config.minify             = false;
 config.optimizeImages     = true;
 config.convertWebp        = true;
 config.sourcemaps         = true;
-config.cleanCSS           = false;    			// removes unused CSS, requires 'gulp-uncss' installation.
+config.cleanCSS           = false;              // removes unused CSS, requires 'gulp-uncss' installation.
 config.prettyHTML         = false;
-config.minifyHTML         = false;    			// requires 'gulp-htmlmin' installation.
+config.minifyHTML         = false;              // requires 'gulp-htmlmin' installation.
 
 config.gulp               = {
                               debug: false,       // if true, gulp will output a lot of extra information for debugging purposes.
@@ -59,10 +59,10 @@ source.root                         = { path: './source' };
 source.bower                        = { path: './bower_components' };
 source.npm                          = { path: './node_modules' };
 source.assets                       = { path: '<%= root %>/assets' };
-source.html                         = { path: '<%= root %>/html',           files: '*.html' 	};		                // entry point files
-source.javascript                   = { path: '<%= root %>/javascript',     files: '*.js' 		};		                // entry point files
-source.css                          = { path: '<%= root %>/sass',           files: [ '*.scss', '_dev/*.scss']   };      // entry point files
-source.data                         = { path: '<%= root %>/data',           files: [ '*.json', '**/*.json' ] 	};
+source.html                         = { path: '<%= root %>/html',           files: [ '*.html' ] };               // entry point files
+source.javascript                   = { path: '<%= root %>/javascript',     files: '*.js' };                     // entry point files
+source.css                          = { path: '<%= root %>/sass',           files: [ '*.scss', '_dev/*.scss'] }; // entry point files
+source.data                         = { path: '<%= root %>/data',           files: [ '*.json', '**/*.json' ] };
 source.images                       = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif,svg}', '**/*.{jpg,jpeg,png,gif,svg}' ] };
 source.webp                         = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif}', '**/*.{jpg,jpeg,png,gif}' ] };
 source.svg                          = { path: '<%= assets %>/svg',          files: [ '*.svg', '**/*.svg' ] };
