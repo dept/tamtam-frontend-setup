@@ -18,27 +18,27 @@ var webpack                     = requireCached('webpack');
 
 gulp.task( 'js-watch', function jsWatch ( callback ) {
 
-	var initialCompile = true;
-	var previousStats;
+    var initialCompile = true;
+    var previousStats;
 
-	webpack( js.createOptions().webpack ).watch( 200, function ( error, stats ) {
+    webpack( js.createOptions().webpack ).watch( 200, function ( error, stats ) {
 
-		js.onWebpackCallback( error, stats, previousStats );
+        js.onWebpackCallback( error, stats, previousStats );
 
-		if( !stats.compilation.errors && stats.compilation.errors.length ) browserSync.reload();
-		
-		if( initialCompile ) {
+        if( !stats.compilation.errors && stats.compilation.errors.length ) browserSync.reload();
 
-			initialCompile = false;
-			callback();
+        if( initialCompile ) {
 
-		}
+            initialCompile = false;
+            callback();
 
-		previousStats = stats;
+        }
 
-		browserSync.reload();
-		
-	} );
+        previousStats = stats;
+
+        browserSync.reload();
+
+    } );
 
 } );
 

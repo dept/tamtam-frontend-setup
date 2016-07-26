@@ -11,7 +11,7 @@ var sass                        = requireCached('gulp-sass');
 var sourcemaps                  = requireCached('gulp-sourcemaps');
 var autoprefixer                = requireCached('gulp-autoprefixer');
 var gulpIf                      = requireCached('gulp-if');
-var gulpMinCss                  = requireCached('gulp-minify-css');
+var gulpCleanCss                = requireCached('gulp-clean-css');
 var gulpSize                    = requireCached('gulp-size');
 var uncss                       = requireCached('gulp-uncss');
 var gulpIgnore                  = requireCached('gulp-ignore');
@@ -25,7 +25,7 @@ var gulpIgnore                  = requireCached('gulp-ignore');
  * @see: https://github.com/sindresorhus/gulp-size
  */
 gulp.task('css', function () {
-    
+
     var options = {
 
         sass: {
@@ -80,13 +80,13 @@ gulp.task('css', function () {
 
     return gulp.src( config.source.getFileGlobs('css') )
 
-        .pipe( gulpIf( config.sourcemaps, sourcemaps.init() ) )
+    .pipe( gulpIf( config.sourcemaps, sourcemaps.init() ) )
         // sass
         .pipe( sass( options.sass ) )
         // start optimizing...
         .pipe( gulpIf( options.minify, sizeBefore ) )
         .pipe( gulpIf( options.removeUnused, uncss( options.uncss ) ) )
-        .pipe( gulpIf( options.minify, gulpMinCss( options.cleanCSS ) ) )
+        .pipe( gulpIf( options.minify, gulpCleanCss( options.cleanCSS ) ) )
 
         .pipe( autoprefixer( options.autoprefixer ) )
 
@@ -112,7 +112,7 @@ gulp.task('css', function () {
         .pipe( browserSync.stream() );
         //.pipe( browserSync.reload( { stream: true } ) );
 
-} );
+    } );
 
 
 

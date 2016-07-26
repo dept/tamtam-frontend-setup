@@ -57,17 +57,17 @@ gulp.task( 'clean', function ( callback ) {
         for ( var i = 0, leni = deletedFiles.length; i < leni; i++ ) filesDeletedString += '\n\t\t' + deletedFiles[ i ];
 
         // remove CWD path of the file names.
-        filesDeletedString = filesDeletedString.replace( new RegExp( currentWorkingDirectory, 'g' ), '' );
+    filesDeletedString = filesDeletedString.replace( new RegExp( currentWorkingDirectory, 'g' ), '' );
 
-        log.info( {
-            sender: 'clean task',
-            message: 'Files deleted during cleanup:',
-            data: [ gulpUtil.colors.yellow( filesDeletedString ) ]
-        } );
+    log.info( {
+        sender: 'clean task',
+        message: 'Files deleted during cleanup:',
+        data: [ gulpUtil.colors.yellow( filesDeletedString ) ]
+    } );
 
-    }
+}
 
-    if( callback ) callback.call( this );
+if( callback ) callback.call( this );
 
 
 } );

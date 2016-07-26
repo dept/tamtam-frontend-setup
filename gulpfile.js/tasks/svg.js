@@ -1,6 +1,6 @@
 // @formatter:off
 
-var requireCached     		= require('../src/gulp/require-cached');
+var requireCached           = require('../src/gulp/require-cached');
 var config                  = require('../config');
 var log                     = require('../src/debug/log');
 
@@ -27,9 +27,10 @@ gulp.task( 'svg', function () {
                 pretty: false // pretty printed svg
             },
             plugins: [
-                { removeTitle: true },
-                { removeComments: true }
-				//{ removeUnknownsAndDefaults: false } Useful for when adding aria-labels / roles to svg tags.
+                { cleanupIDs: false },               //Set to false for WCAG reasons
+                { removeTitle: false },              //Set to false for WCAG reasons
+                { removeComments: true },
+                { removeUnknownsAndDefaults: false } //Useful for when adding aria-labels / roles to svg tags.
             ]
         }
 

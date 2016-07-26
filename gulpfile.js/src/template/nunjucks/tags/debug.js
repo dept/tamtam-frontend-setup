@@ -1,6 +1,6 @@
 // @formatter:off
 
-var debug           = require( '../utils/debug' );
+var debug           = require( '../../utils/debug' );
 var NO_ARGUMENT     = '__no-argument-supplied__';
 
 // @formatter:on

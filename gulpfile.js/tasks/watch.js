@@ -23,6 +23,9 @@ gulp.task( 'watch', [ 'js-watch' ], function ( callback ) {
     watch( config.source.getFileGlobs( 'images' ),
         function ( events, done ) { gulp.start( 'images' ); } );
 
+    watch( config.source.getFileGlobs( 'svg' ),
+        function ( events, done ) { gulp.start( 'svg' ); } );
+
     watch( config.source.getPath( 'css', '**/*.scss' ),
         function ( events, done ) { gulp.start( 'css' ); } );
 
