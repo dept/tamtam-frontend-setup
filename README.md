@@ -21,6 +21,9 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
 7.  [Grid system](#markdown-header-grid-system)
     - [Config](#markdown-header-config)
     - [Usage](#markdown-header-usage)
+8.  [Gulp Accessibility](#markdown-header-gulp-accesibility)
+    - [Config](#markdown-header-config-1)
+    - [Usage](#markdown-header-usage-1)
 
 ------
 
@@ -405,3 +408,18 @@ Option                                      | Description
 _* - amount of columns_
 
 ------
+
+
+# Gulp Accesibility #
+
+[Gulp accessibility](https://github.com/yargalot/gulp-accessibility) checks your html and css by using PhantomJS to create renders of your page and scan them for inconsistencies regarding WCAG2.0 guidelines.
+
+## Config ##
+
+By default the `wcag.js` file checks for an accessibility level of WCAG2.0 A. This is the level we want to offer our customers by default. You can change this level by editing the `accessibilityLevel: 'WCAG2A'` to your desired value. You can find all the values at the authors repository.
+
+## Usage ##
+
+The wcag task is not a watch task, because it uses quite some resources to check your templates every time. It is advised to run this task on demand, when you need it. You can do this by executing `gulp wcag` in your terminal. It will then output all WCAG errors it can find in your console.
+
+
