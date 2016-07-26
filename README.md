@@ -22,8 +22,8 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
     - [Config](#markdown-header-config)
     - [Usage](#markdown-header-usage)
 8.  [Gulp Accessibility](#markdown-header-gulp-accesibility)
-    - [Config](#markdown-header-config)
-    - [Usage](#markdown-header-usage)
+    - [Config](#markdown-header-config-1)
+    - [Usage](#markdown-header-usage-1)
 
 ------
 
