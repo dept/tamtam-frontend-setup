@@ -416,7 +416,7 @@ _* - amount of columns_
 
 ## Config ##
 
-By default the wcag.js file checks for an accessibility level of WCAG2.0 A. This is the level we want to offer our customers by default. You can change this level by editing the `accessibilityLevel: 'WCAG2A'` to your desired value. You can find all the values at the authors repository.
+By default the `wcag.js` file checks for an accessibility level of WCAG2.0 A. This is the level we want to offer our customers by default. You can change this level by editing the `accessibilityLevel: 'WCAG2A'` to your desired value. You can find all the values at the authors repository.
 
 ## Usage ##
 
