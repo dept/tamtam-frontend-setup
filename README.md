@@ -21,6 +21,9 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
 7.  [Grid system](#markdown-header-grid-system)
     - [Config](#markdown-header-config)
     - [Usage](#markdown-header-usage)
+8.  [Gulp Accessibility](#markdown-header-gulp-accesibility)
+    - [Config](#markdown-header-config)
+    - [Usage](#markdown-header-usage)
 
 ------
 
