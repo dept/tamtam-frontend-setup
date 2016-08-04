@@ -55,28 +55,31 @@ config.applyProcessArgs = function  (  ) {
 var source      = config.source     = new PathConfig();
 var dest        = config.dest       = new PathConfig();
 
+
 source.root                         = { path: './source' };
-source.bower                        = { path: './bower_components' };
-source.npm                          = { path: './node_modules' };
+
 source.assets                       = { path: '<%= root %>/assets' };
-source.html                         = { path: '<%= root %>/html',           files: [ '*.html' ] };               // entry point files
-source.javascript                   = { path: '<%= root %>/javascript',     files: '*.js' };                     // entry point files
+source.bower                        = { path: './bower_components' };
 source.css                          = { path: '<%= root %>/sass',           files: [ '*.scss', '_dev/*.scss'] }; // entry point files
 source.data                         = { path: '<%= root %>/data',           files: [ '*.json', '**/*.json' ] };
+source.html                         = { path: '<%= root %>/html',           files: [ '*.html' ] };               // entry point files
 source.images                       = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif,svg}', '**/*.{jpg,jpeg,png,gif,svg}' ] };
-source.webp                         = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif}', '**/*.{jpg,jpeg,png,gif}' ] };
+source.javascript                   = { path: '<%= root %>/javascript',     files: '*.js' };                     // entry point files
+source.npm                          = { path: './node_modules' };
 source.svg                          = { path: '<%= assets %>/svg',          files: [ '*.svg', '**/*.svg' ] };
+source.webp                         = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif}', '**/*.{jpg,jpeg,png,gif}' ] };
 
 
 dest.root                           = { path: './build' };
-dest.assets                         = { path: '<%= root %>' };
-dest.html                           = { path: '<%= root %>' };
+
+dest.assets                         = { path: '<%= root %>/assets' };
 dest.css                            = { path: '<%= assets %>/css' };
-dest.javascript                     = { path: '<%= assets %>/js' };
-dest.images                         = { path: '<%= assets %>/images' };
-dest.webp                           = dest.images;
 dest.fonts                          = { path: '<%= assets %>/fonts' };
+dest.html                           = { path: '<%= root %>' };
+dest.images                         = { path: '<%= assets %>/images' };
+dest.javascript                     = { path: '<%= assets %>/js' };
 dest.svg                            = { path: '<%= assets %>/svg' };
+dest.webp                           = dest.images;
 
 
 module.exports                      = config;
