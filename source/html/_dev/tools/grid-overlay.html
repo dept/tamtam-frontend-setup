@@ -24,21 +24,25 @@
 #}
 
 {% macro gridOverlay( data ) %}
-  <div class="grid-overlay{% if data.defaultvisible == 'true' %} is--default-visible{% endif %}{% if data.ontop == 'true' %} is--on-top{% endif %}">
+  {% if project.debug %}
 
-    <label for="_dev-grid-overlay" class="grid-overlay__toggle button">Toggle grid</label>
-    <input type="checkbox" class="grid-overlay__check" id="_dev-grid-overlay">
+    <div class="grid-overlay{% if data.defaultvisible == 'true' %} is--default-visible{% endif %}{% if data.ontop == 'true' %} is--on-top{% endif %}">
 
-    <div class="grid-overlay__grid grid-{{data.columns}}"
-         {% if data.maxwidth %}style="max-width: {{data.maxwidth}}px"{% endif %}
-    >
+      <label for="_dev-grid-overlay" class="grid-overlay__toggle button">Toggle grid</label>
+      <input type="checkbox" class="grid-overlay__check" id="_dev-grid-overlay">
 
-      {% for i in range(0, data.columns) -%}
-        <div class="col-1"></div>
-      {%- endfor %}
+      <div class="grid-overlay__grid grid-{{data.columns}}"
+           {% if data.maxwidth %}style="max-width: {{data.maxwidth}}px"{% endif %}
+      >
+
+        {% for i in range(0, data.columns) -%}
+          <div class="col-1"></div>
+        {%- endfor %}
+
+      </div>
 
     </div>
 
-  </div>
+  {% endif %}
 
 {% endmacro %}
