@@ -1,0 +1,66 @@
+$color-grid: $color-primary;
+
+.grid-overlay {
+
+  &.is--on-top {
+
+    .grid-overlay__grid[class*="grid-"] {
+      z-index: 99;
+    }
+
+  }
+
+
+  &__toggle.button {
+
+    bottom: 0;
+    font-size: 1.3rem;
+    left: 0;
+    position: fixed;
+    text-transform: none;
+    z-index: 4;
+
+  }
+
+
+  &__grid[class*="grid-"] {
+
+    display: none;
+    max-width: $breakpoint-extra-large;
+    left: 50%;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    transform: translate3d(-50%, 0, 0);
+    width: 100%;
+    z-index: -1;
+
+    .is--default-visible & {
+      display: block;
+    }
+
+  }
+
+
+  &__check {
+    display: none;
+  }
+
+
+  &__check:checked + &__grid {
+    display: block;
+
+    .is--default-visible & {
+      display: none;
+    }
+  }
+
+
+  [class*="col-"] {
+    background: $color-grid;
+    box-shadow: inset 5px -5px 0 5px darken($color-grid, 10%);
+    height: 100vh;
+    opacity: .05;
+  }
+
+}

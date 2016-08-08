@@ -22,6 +22,12 @@
 
 <body>
 
+    {% include '_dev/tools/grid-overlay.html' %}
+    {{ gridOverlay( {
+        columns:          12,
+        maxwidth:         1200,
+        defaultvisible:   "true"
+    } ) }}
 
     <main role="main">
 
