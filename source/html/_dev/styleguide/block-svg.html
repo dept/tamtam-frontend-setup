@@ -5,19 +5,21 @@
 
 {% block content %}
 
-    <div class="_styleguide__svg-collection">
-        <ul>
+    <div class="_styleguide__svg-collection container">
+        <div class="grid-12">
             {% for svg in project.svgs %}
-            <li title="{{ svg }}">
-                <div class="_svg-collection__container">
+            <div class="col-6 col-md-2" title="{{ svg }}">
+                <div class="_svg-collection__tile">
+                    <div class="_svg-collection__container">
 
-                    {% svg svg %}
+                        {% svg svg %}
 
+                    </div>
+                    <h4>{{ svg }}</h4>
                 </div>
-                <h4>{{ svg }}</h4>
-            </li>
+            </div>
             {% endfor %}
-        </ul>
+        </div>
     </div>
 
 {% endblock %}
