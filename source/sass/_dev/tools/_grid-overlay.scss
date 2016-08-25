@@ -1,9 +1,18 @@
 $color-grid: $color-primary;
 $color-grid-padding: darken($color-grid, 50%);
 
+%grid-overlay-box-shadow {
+  background: $color-grid;
+  box-shadow: inset 5px -5px 0 5px $color-grid-padding, inset 5px -5px 0 1px $color-black;
+
+  @media screen and (max-width: $breakpoint-small) {
+    box-shadow: inset 10px -10px 0 10px $color-grid-padding, inset 5px -5px 0 1px $color-black;
+  }
+}
+
 .grid-overlay {
 
-  display: block;
+  display: none;
   height: 100%;
   left: 50%;
   position: fixed;
@@ -13,7 +22,7 @@ $color-grid-padding: darken($color-grid, 50%);
   width: 100%;
   z-index: 99;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: $breakpoint-small) {
     width: calc(100% - 20px);
     left: calc(50% - 10px);
   }
@@ -28,8 +37,8 @@ $color-grid-padding: darken($color-grid, 50%);
 
   }
 
-  .is--default-visible & {
-    display: none;
+  &.is--default-visible {
+    display: block;
   }
 
   &__toggle.button {
@@ -49,23 +58,36 @@ $color-grid-padding: darken($color-grid, 50%);
 
 
   &__check:checked + & {
-    display: none;
+    display: block;
 
-    .is--default-visible & {
-      display: block;
+    &.is--default-visible {
+      display: none;
     }
   }
 
+  &__grid {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 10px;
+      height: 100%;
+      content: "";
+      opacity: .06;
+      @extend %grid-overlay-box-shadow;
+
+      @media screen and (max-width: $breakpoint-small) {
+        width: 20px;
+      }
+    }
+  }
 
   [class*="col-"] {
-    background: $color-grid;
-    box-shadow: inset 5px -5px 0 5px $color-grid-padding, inset 5px -5px 0 1px $color-black;
     height: 100vh;
     opacity: .06;
-
-    @media screen and (max-width: 480px) {
-      box-shadow: inset 10px -10px 0 10px $color-grid-padding, inset 5px -5px 0 1px $color-black;
-    }
+    @extend %grid-overlay-box-shadow;
   }
 
 }
