@@ -66,8 +66,6 @@ $color-grid-padding: darken($color-grid, 50%);
   }
 
   &__grid {
-    position: relative;
-
     &:after {
       position: absolute;
       top: 0;
