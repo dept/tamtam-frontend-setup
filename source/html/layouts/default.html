@@ -33,10 +33,12 @@
 
 <body {% if angularModule %}ng-app="{{ angularModule }}"{% endif %}>
 
-    {% include '_dev/tools/grid-overlay.html' %}
-    {{ gridOverlay( {
-        columns:          12
-    } ) }}
+    {% if project.showGrid %}
+
+      {% include '_dev/tools/grid-overlay.html' %}
+      {{ gridOverlay( { columns: 12 } ) }}
+
+    {% endif %}
 
     {% if site.gtm and site.gtm != 'GTM-XXXX' %}
 

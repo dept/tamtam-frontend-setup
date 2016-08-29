@@ -22,11 +22,12 @@
 
 <body>
 
-    {% include '_dev/tools/grid-overlay.html' %}
-    {{ gridOverlay( {
-        columns:          12,
-        defaultvisible:   "true"
-    } ) }}
+    {% if project.showGrid %}
+
+      {% include '_dev/tools/grid-overlay.html' %}
+      {{ gridOverlay( { columns: 12 } ) }}
+
+    {% endif %}
 
     <main role="main">
 

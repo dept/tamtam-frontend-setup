@@ -111,7 +111,8 @@ gulp.task( 'html', function () {
 		description: packageJSON.description,
 		author: packageJSON.author,
 		version: packageJSON.version,
-		debug: config.debug,
+        debug: config.debug,
+		showGrid: config.showGrid,
 		pages: pagesList,
 		svgs: svgList
 	}
