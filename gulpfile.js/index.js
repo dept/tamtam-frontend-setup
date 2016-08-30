@@ -17,11 +17,12 @@ config.copy = function () {
         {   source: config.source.getPath('assets', 'fonts/**'),        dest: config.dest.getPath('fonts')  }
     ];
 
-}
+};
 
-// Libraries that will be concatenated together on the global scope, used for commonJS incompatible libs & plugins
+// Libraries that will be concatenated into libs.js together on the global scope, used for commonJS incompatible libs & plugins
 // You can user bower or npm getPath by default
 // @example: config.source.getPath('npm', 'jquery/dist/jquery.js' )
+// @note: You need to include /js/libs.js in order to use these libs in your project.
 //
 
 config.libs = function () {
@@ -31,7 +32,7 @@ config.libs = function () {
         //config.source.getPath('bower', 'jquery.cookie/jquery.cookie.js' )
     ];
 
-}
+};
 
 
 
