@@ -8,7 +8,11 @@ var getFileList             = require('../src/node/file/get-list');
 var packageJSON             = require('../../package.json');
 var SvgExtension            = require('../src/template/nunjucks/tags/svg');
 var DebugExtension          = require('../src/template/nunjucks/tags/debug');
-var assignFilter            = require('../src/template/nunjucks/filters/assign');
+
+var assignFilter          	= require('../src/template/nunjucks/filters/assign');
+var mergeFilter          	= require('../src/template/nunjucks/filters/merge');
+var defaultsFilter         	= require('../src/template/nunjucks/filters/defaults');
+
 
 var path                    = require('path');
 var mkdirp                  = requireCached('mkdirp');
@@ -134,6 +138,8 @@ gulp.task( 'html', function () {
 
         // add custom filters
         environment.addFilter( assignFilter.name, assignFilter.func );
+        environment.addFilter( mergeFilter.name, mergeFilter.func );
+        environment.addFilter( defaultsFilter.name, defaultsFilter.func );
 
         // environment.opts = options.nunjuck;
     }
