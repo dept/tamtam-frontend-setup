@@ -4,7 +4,9 @@
 
 {% block content %}
 
+
     <div class="container">
+
 
         <h1>Example page template</h1>
 
@@ -64,8 +66,8 @@
         <h3>How to use button macros:</h3> <br/>
 
         <!-- Include the file containing the macro, but it won't render anything until you call it -->
-        {% include 'elements/button.html' %}
-        {% include 'elements/button-arrow.html' %}
+        {% from 'elements/button.html' import button %}
+        {% from 'elements/button-arrow.html' import buttonArrow %}
 
         <!-- Call the macro with optional arguments to create new instances of the button -->
         {{ button( { label: 'Click here' } ) }}
