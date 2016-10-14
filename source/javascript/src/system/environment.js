@@ -2,10 +2,10 @@
 
 // @formatter:off
 
-var ENVIRONMENT_LOCAL 			= 'local';
-var ENVIRONMENT_TEST 			= 'test';
-var ENVIRONMENT_ACCEPTATION 	= 'acceptation';
-var ENVIRONMENT_PRODUCTION 		= 'production';
+const ENVIRONMENT_LOCAL 		= 'local';
+const ENVIRONMENT_TEST 			= 'test';
+const ENVIRONMENT_ACCEPTATION 	= 'acceptation';
+const ENVIRONMENT_PRODUCTION 	= 'production';
 
 // @formatter:on
 
@@ -18,32 +18,32 @@ function Environment () {
 
 	// @formatter:off
 
-	var _environment;
-	var _environments = {};
+	let _environment;
+	let _environments = {};
 
 	/**
 	 * Function to set the local host name(s)
 	 * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
 	 */
-	this.setLocal 		= function ( hostname ) { set( ENVIRONMENT_LOCAL, 		hostname ) }
+	this.setLocal 		= ( hostname ) => { set( ENVIRONMENT_LOCAL, 	    hostname ) };
 
 	/**
 	 * Function to set the test host name(s)
 	 * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
 	 */
-	this.setTest 		= function ( hostname ) { set( ENVIRONMENT_TEST, 		hostname ) }
+	this.setTest 		= ( hostname ) => { set( ENVIRONMENT_TEST, 		    hostname ) };
 
 	/**
 	 * Function to set the acceptation host name(s)
 	 * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
 	 */
-	this.setAcceptation = function ( hostname ) { set( ENVIRONMENT_ACCEPTATION, hostname ) }
+	this.setAcceptation = ( hostname ) => { set( ENVIRONMENT_ACCEPTATION,   hostname ) };
 
 	/**
 	 * Function to set the production host name(s)
 	 * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
 	 */
-	this.setProduction 	= function ( hostname ) { set( ENVIRONMENT_PRODUCTION, 	hostname ) }
+	this.setProduction 	= ( hostname ) => { set( ENVIRONMENT_PRODUCTION, 	hostname ) };
 
 	// @formatter:on
 
@@ -56,7 +56,7 @@ function Environment () {
 
 		} else {
 
-			for ( var i = 0, leni = hostname.length; i < leni; i++ ) {
+			for ( let i = 0, leni = hostname.length; i < leni; i++ ) {
 				_environments[ hostname[ i ] ] = name;
 			}
 
@@ -68,7 +68,7 @@ function Environment () {
 
 		if( _environment !== undefined ) return _environment;
 
-		for ( var hostname in _environments ) {
+		for ( let hostname in _environments ) {
 
 			if( location.hostname === hostname ) {
 
@@ -82,7 +82,7 @@ function Environment () {
 
 		return _environment;
 
-	}
+	};
 
 	/**
 	 * Returns whether the current environment is local
@@ -90,7 +90,7 @@ function Environment () {
 	 */
 	Object.defineProperty( this, 'isLocal', {
 		enumerable: true,
-		get: function () { return this.get() === ENVIRONMENT_LOCAL; }
+		get: () => { return this.get() === ENVIRONMENT_LOCAL; }
 	} );
 
 	/**
@@ -99,7 +99,7 @@ function Environment () {
 	 */
 	Object.defineProperty( this, 'isTest', {
 		enumerable: true,
-		get: function () { return this.get() === ENVIRONMENT_TEST; }
+		get: () => { return this.get() === ENVIRONMENT_TEST; }
 	} );
 
 	/**
@@ -108,7 +108,7 @@ function Environment () {
 	 */
 	Object.defineProperty( this, 'isAcceptation', {
 		enumerable: true,
-		get: function () { return this.get() === ENVIRONMENT_ACCEPTATION; }
+		get: () => { return this.get() === ENVIRONMENT_ACCEPTATION }
 	} );
 
 	/**
@@ -117,7 +117,7 @@ function Environment () {
 	 */
 	Object.defineProperty( this, 'isProduction', {
 		enumerable: true,
-		get: function () { return this.get() === ENVIRONMENT_PRODUCTION; }
+		get: () => { return this.get() === ENVIRONMENT_PRODUCTION; }
 	} );
 
 }

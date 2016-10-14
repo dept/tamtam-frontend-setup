@@ -33,7 +33,13 @@ var options = {
 
         plugins: [],
 
-        devtool: config.sourcemaps ? 'source-map' : undefined
+        devtool: config.sourcemaps ? 'source-map' : undefined,
+
+        module: {
+            loaders: [{
+                loader: 'babel-loader'
+            }]
+        }
 
     },
 
