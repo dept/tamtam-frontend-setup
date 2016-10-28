@@ -33,9 +33,9 @@
     "bamboo": "gulp bamboo"
   },
   "devDependencies": {
-    "bower": "^1.5.2",
+    "bower": "1.7.9",
     "browser-sync": "2.17.5",
-    "del": "^2.0.2",
+    "del": "^2.2.2",
     "glob": "^5.0.14",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",
