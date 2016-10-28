@@ -1,6 +1,6 @@
 // @formatter:off
 
-var requireCached     		= require('../src/gulp/require-cached');
+var requireCached           = require('../src/gulp/require-cached');
 var config                  = require('../config');
 var log                     = require('../src/debug/log');
 var mergeJSONData           = require('../src/data/json/merge');
@@ -8,7 +8,11 @@ var getFileList             = require('../src/node/file/get-list');
 var packageJSON             = require('../../package.json');
 var SvgExtension            = require('../src/template/nunjucks/tags/svg');
 var DebugExtension          = require('../src/template/nunjucks/tags/debug');
+
 var assignFilter          	= require('../src/template/nunjucks/filters/assign');
+var mergeFilter          	= require('../src/template/nunjucks/filters/merge');
+var defaultsFilter         	= require('../src/template/nunjucks/filters/defaults');
+
 
 var path                    = require('path');
 var mkdirp                  = requireCached('mkdirp');
@@ -35,116 +39,126 @@ var RESERVED_DATA_KEYWORDS  = [ 'project', 'ext' ];
  */
 gulp.task( 'html', function () {
 
- 	var options = {};
+    var options = {};
 
- 	options.minify = config.minifyHTML;
+    options.minify = config.minifyHTML;
 
-	// @formatter:off
-	options.htmlmin = {
+    // @formatter:off
+    options.htmlmin = {
 
-		collapseWhitespace: true,
-		removeComments:     true,
-		minifyJS:           true,
-		minifyCSS:          true,
+        collapseWhitespace: true,
+        removeComments:     true,
+        minifyJS:           true,
+        minifyCSS:          true,
         keepClosingSlash:   true // can break SVG if not set to true!
 
     };
     // @formatter:on
 
 
-	// @see: https://www.npmjs.com/package/gulp-jsbeautifier
-	options.pretty = config.prettyHTML;
-	options.prettyConfig = {
+    // @see: https://www.npmjs.com/package/gulp-jsbeautifier
+    options.pretty = config.prettyHTML;
+    options.prettyConfig = {
 
-		html: {
-			unformatted: [ "sub", "sup", "b", "i", "u", "svg", "pre" ],
-			wrapAttributes: 'auto'
-		}
+        html: {
+            unformatted: [ "sub", "sup", "b", "i", "u", "svg", "pre" ],
+            wrapAttributes: 'auto'
+        }
 
-	};
-
-
-	options.nunjuck = {
-
-		// useful for Angular projects
-		//tags: {
-		//    blockStart: '<%',
-		//    blockEnd: '%>',
-		//    variableStart: '<$',
-		//    variableEnd: '$>',
-		//    commentStart: '<#',
-		//    commentEnd: '#>'
-		//},
-
-		watch: false
+    };
 
 
-	}
+    options.nunjuck = {
+
+        // useful for Angular projects
+        //tags: {
+        //    blockStart: '<%',
+        //    blockEnd: '%>',
+        //    variableStart: '<$',
+        //    variableEnd: '$>',
+        //    commentStart: '<#',
+        //    commentEnd: '#>'
+        //},
+
+        watch: false
 
 
-	var contextData = {};
-	var jsonData = mergeJSONData( config.source.getPath( 'data' ), config.source.getFileGlobs( 'data' ) );
-
-	// merge retrieved data into the context object
-	for ( var key in jsonData ) {
-
-		if( RESERVED_DATA_KEYWORDS.indexOf( key ) >= 0 ) {
-
-			log.error( {
-				sender: 'html',
-				message: 'A data object has been given a reserved keyword as a name, please update the file name : ' + key + '.\nReserved keywords: ' + RESERVED_DATA_KEYWORDS
-			} );
-
-		} else {
-
-			contextData[ key ] = jsonData[ key ];
-
-		}
-
-	}
-
-	var pagesList = getFileList( config.source.getFileGlobs( 'html' ), config.source.getPath( 'html' ) );
-	var svgList = getFileList( config.source.getFileGlobs( 'svg' ), config.source.getPath( 'svg' ), true );
-
-	contextData.project = {
-		name: packageJSON.name,
-		description: packageJSON.description,
-		author: packageJSON.author,
-		version: packageJSON.version,
-		debug: config.debug,
-		pages: pagesList,
-		svgs: svgList
-	}
+    }
 
 
-	function getDataForFile ( file ) {
+    var contextData = {};
+    var jsonData = mergeJSONData( config.source.getPath( 'data' ), config.source.getFileGlobs( 'data' ) );
 
-		return contextData;
+    // merge retrieved data into the context object
+    for ( var key in jsonData ) {
 
-	}
+        if( RESERVED_DATA_KEYWORDS.indexOf( key ) >= 0 ) {
+
+            log.error( {
+                sender: 'html',
+                message: 'A data object has been given a reserved keyword as a name, please update the file name : ' + key + '.\nReserved keywords: ' + RESERVED_DATA_KEYWORDS
+            } );
+
+        } else {
+
+            contextData[ key ] = jsonData[ key ];
+
+        }
+
+    }
+
+    var pagesList = getFileList( config.source.getFileGlobs( 'html' ), config.source.getPath( 'html' ) );
+    var svgList = getFileList( config.source.getFileGlobs( 'svg' ), config.source.getPath( 'svg' ), true );
+
+    contextData.project = {
+        name: packageJSON.name,
+        description: packageJSON.description,
+        author: packageJSON.author,
+        version: packageJSON.version,
+        debug: config.debug,
+        pages: pagesList,
+        svgs: svgList
+    }
 
 
-	var environment = gulpNunjucks.nunjucks.configure( [ config.source.getPath( 'html' ) ], options.nunjuck );
+    function getDataForFile ( file ) {
 
-	// add custom tags
-	environment.addExtension( 'SVGExtension', new SvgExtension( gulpNunjucks.nunjucks ) );
-	environment.addExtension( 'DebugExtension', new DebugExtension( gulpNunjucks.nunjucks ) );
+        return contextData;
 
-	// add custom filters
-	environment.addFilter( assignFilter.name, assignFilter.func );
-
-	return gulp.src( config.source.getFileGlobs( 'html' ), { base: config.source.getPath( 'html' ) } )
-
-	.pipe( gulpData( getDataForFile ) )
-	.pipe( gulpNunjucks() )
+    }
 
 
-	.pipe( gulpif( options.pretty, prettify( options.prettyConfig ) ) )
-	.pipe( gulpif( options.minify, htmlmin( options.htmlmin ) ) )
+    // var environment = gulpNunjucks.nunjucks.configure( [ config.source.getPath( 'html' ) ], options.nunjuck );
 
-	.pipe( gulp.dest( config.dest.getPath( 'html' ) ) );
+    var environment = function(environment) {
 
-	// Browser Sync is reloaded from the watch task for HTML files to bypass a chrome bug.
-	// See the watch task for more info.
+        // add custom tags
+        environment.addExtension( 'SVGExtension', new SvgExtension( gulpNunjucks.nunjucks ) );
+        environment.addExtension( 'DebugExtension', new DebugExtension( gulpNunjucks.nunjucks ) );
+
+        // add custom filters
+        environment.addFilter( assignFilter.name, assignFilter.func );
+        environment.addFilter( mergeFilter.name, mergeFilter.func );
+        environment.addFilter( defaultsFilter.name, defaultsFilter.func );
+
+        // environment.opts = options.nunjuck;
+    }
+
+    return gulp.src( config.source.getFileGlobs( 'html' ), { base: config.source.getPath( 'html' ) } )
+
+    .pipe( gulpData( getDataForFile ) )
+    .pipe( gulpNunjucks( {
+        envOptions: options.nunjuck,
+        manageEnv: environment,
+        path: [config.source.getPath('nunjucks')]
+    } ) )
+
+    .pipe( gulpif( options.pretty, prettify( options.prettyConfig ) ) )
+    .pipe( gulpif( options.minify, htmlmin( options.htmlmin ) ) )
+
+    .pipe( gulp.dest( config.dest.getPath( 'html' ) ) );
+
+    // Browser Sync is reloaded from the watch task for HTML files to bypass a chrome bug.
+    // See the watch task for more info.
 
 } );
