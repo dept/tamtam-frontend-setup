@@ -22,7 +22,7 @@ config.sourcemaps         = true;
 config.cleanCSS           = false;              // removes unused CSS, requires 'gulp-uncss' installation.
 config.prettyHTML         = false;
 config.minifyHTML         = false;              // requires 'gulp-htmlmin' installation.
-config.showGrid           = true;               // Shows the grid overlay
+config.showGrid           = false;              // Shows the grid overlay
 
 config.gulp               = {
                               debug: false,       // if true, gulp will output a lot of extra information for debugging purposes.

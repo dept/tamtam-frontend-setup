@@ -33,9 +33,9 @@
 
 <body {% if angularModule %}ng-app="{{ angularModule }}"{% endif %}>
 
-    {% if project.showGrid %}
+    {% if (project.showGrid == true and project.debug == true) %}
 
-      {% include '_dev/tools/grid-overlay.html' %}
+      {% from '_dev/tools/grid-overlay.html' import gridOverlay %}
       {{ gridOverlay( { columns: 12 } ) }}
 
     {% endif %}
