@@ -19,6 +19,7 @@ gulp.task('wcag', function() {
 
     var options = {
         accessibilityLevel: 'WCAG2A',
+        force: true,
         reportLevels: {
             notice: false,
             warning: false,
@@ -26,7 +27,11 @@ gulp.task('wcag', function() {
         }
     };
 
-    return gulp.src( [config.dest.getPath('root')+"/*.html", '!'+config.dest.getPath('root')+"/README.html", '!'+config.dest.getPath('root')+"/styleguide.html"] )
-        .pipe( gulpAccessibility(options) );
+    return gulp.src( [
+        config.dest.getPath('root')+"/*.html", 
+        '!'+config.dest.getPath('root')+"/README.html", 
+        '!'+config.dest.getPath('root')+"/styleguide.html"
+    ] )
+    .pipe( gulpAccessibility(options) );
 
 });

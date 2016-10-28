@@ -5,8 +5,8 @@
 
 {% block content %}
 
-    {% include 'elements/button.html' %}
-    {% include 'elements/button-arrow.html' %}
+    {% from 'elements/button.html' import button %}
+    {% from 'elements/button-arrow.html' import buttonArrow %}
 
     {{ button( { label: 'regular button' } ) }}
 
