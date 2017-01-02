@@ -6,16 +6,16 @@
   "author": "Tam Tam",
   "contributors": [
     {
-      "name": "Geert Fokke",
-      "email": "geert@tamtam.nl"
-    },
-    {
       "name": "Adrian Klingen",
       "email": "adrian@tamtam.nl"
     },
     {
-      "name": "Simon Colijn",
-      "email": "simon@tamtam.nl"
+      "name": "Gregory Bolkenstijn",
+      "email": "gregory@tamtam.nl"
+    },
+    {
+      "name": "Jeroen Reumkens",
+      "email": "jeroen.reumkens@tamtam.nl"
     }
   ],
   "private": true,
@@ -33,9 +33,9 @@
     "bamboo": "gulp bamboo"
   },
   "devDependencies": {
-    "bower": "1.7.9",
-    "browser-sync": "2.17.5",
-    "del": "^2.2.2",
+    "bower": "^1.5.2",
+    "browser-sync": "~2.9.3",
+    "del": "^2.0.2",
     "glob": "^5.0.14",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",
@@ -51,7 +51,7 @@
     "gulp-jsbeautifier": "1.0.1",
     "gulp-load-plugins": "^1.0.0-rc",
     "gulp-markdown": "^1.2.0",
-    "gulp-nunjucks-render": "2.0.0",
+    "gulp-nunjucks-render": "1.0.0",
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "2.2.0",
@@ -75,6 +75,7 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "~1.1.0",
     "webpack": "^1.12.12",
-    "gulp-accessibility": "^2.0.1"
+    "gulp-accessibility": "^2.0.1",
+    "gulp-rename": "^1.2.2"
   }
 }
