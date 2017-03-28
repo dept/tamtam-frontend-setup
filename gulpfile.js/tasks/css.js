@@ -80,7 +80,7 @@ gulp.task('css', function () {
 
     return gulp.src( config.source.getFileGlobs('css') )
 
-    .pipe( gulpIf( config.sourcemaps, sourcemaps.init() ) )
+        .pipe( gulpIf( config.sourcemaps, sourcemaps.init() ) )
         // sass
         .pipe( sass( options.sass ) )
         // start optimizing...
@@ -108,7 +108,7 @@ gulp.task('css', function () {
         .pipe(browserSync.stream({match: '**/*.css'}) );
         //.pipe( browserSync.reload( { stream: true } ) );
 
-    } );
+} );
 
 
 
