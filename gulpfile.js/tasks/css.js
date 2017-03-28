@@ -80,7 +80,7 @@ gulp.task('css', function () {
 
     return gulp.src( config.source.getFileGlobs('css') )
 
-    .pipe( gulpIf( config.sourcemaps, sourcemaps.init() ) )
+        .pipe( gulpIf( config.sourcemaps, sourcemaps.init() ) )
         // sass
         .pipe( sass( options.sass ) )
         // start optimizing...
@@ -92,10 +92,6 @@ gulp.task('css', function () {
 
         // sourcemaps need a relative path from the output folder
         .pipe( gulpIf( config.sourcemaps, sourcemaps.write( '.' ) ) )
-
-        .pipe( gulp.dest( config.dest.getPath('css') ) )
-        // exclude map files because somehow they break the browserSync flow/connection
-        .pipe( gulpIgnore.exclude( '*.map' ) )
 
         //.pipe( gulpBless() ) TODO: split css for IE9
         .pipe( gulp.dest( config.dest.getPath('css') ) )
@@ -109,10 +105,10 @@ gulp.task('css', function () {
             wrap: true,
             check: options.minify
         } ) )
-        .pipe( browserSync.stream() );
+        .pipe(browserSync.stream({match: '**/*.css'}) );
         //.pipe( browserSync.reload( { stream: true } ) );
 
-    } );
+} );
 
 
 

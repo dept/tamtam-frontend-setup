@@ -22,6 +22,12 @@
 
 <body>
 
+    {% if (project.showGrid == true and project.debug == true) %}
+
+      {% from '_dev/tools/grid-overlay.html' import gridOverlay %}
+      {{ gridOverlay( { columns: 12 } ) }}
+
+    {% endif %}
 
     <main role="main">
 

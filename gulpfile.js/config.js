@@ -22,6 +22,7 @@ config.sourcemaps         = true;
 config.cleanCSS           = false;              // removes unused CSS, requires 'gulp-uncss' installation.
 config.prettyHTML         = false;
 config.minifyHTML         = false;              // requires 'gulp-htmlmin' installation.
+config.showGrid           = false;              // Shows the grid overlay
 
 config.gulp               = {
                               debug: false,       // if true, gulp will output a lot of extra information for debugging purposes.
@@ -63,6 +64,9 @@ source.bower                        = { path: './bower_components' };
 source.css                          = { path: '<%= root %>/sass',           files: [ '*.scss', '_dev/*.scss'] }; // entry point files
 source.data                         = { path: '<%= root %>/data',           files: [ '*.json', '**/*.json' ] };
 source.html                         = { path: '<%= root %>/html',           files: [ '*.html' ] };               // entry point files
+
+source.nunjucks                     = { path: source.root.path.replace('./','')+'/html', files: source.html.files };
+
 source.images                       = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif,svg}', '**/*.{jpg,jpeg,png,gif,svg}' ] };
 source.javascript                   = { path: '<%= root %>/javascript',     files: '*.js' };                     // entry point files
 source.npm                          = { path: './node_modules' };

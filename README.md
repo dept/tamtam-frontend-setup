@@ -24,6 +24,8 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
 8.  [Gulp Accessibility](#markdown-header-gulp-accesibility)
     - [Config](#markdown-header-config-1)
     - [Usage](#markdown-header-usage-1)
+9.  [BrowserSync](#markdown-header-browsersync)
+  
 
 ------
 
@@ -52,9 +54,9 @@ So let's make this setup as best as we can so every project is setup in no time 
 
 **Team responsible for this setup:**
 
-* Simon Colijn ( [simon@tamtam.nl](mailto:simon@tamtam.nl) )
 * Adrian Klingen ( [adrian@tamtam.nl](mailto:adrian@tamtam.nl) )
-* Geert Fokke ( [geert@tamtam.nl](mailto:geert@tamtam.nl) )
+* Gregory Bolkenstijn ( [gregory@tamtam.nl](mailto:gregory@tamtam.nl) )
+* Jeroen Reumkens ( [jeroen.reumkens@tamtam.nl](mailto:jeroen.reumkens@tamtam.nl) )
 * All frontend developers within TamTam ( [frontend@tamtam.nl](mailto:frontend@tamtam.nl) )
 
 ------
@@ -423,3 +425,9 @@ By default the `wcag.js` file checks for an accessibility level of WCAG2.0 A. Th
 The wcag task is not a watch task, because it uses quite some resources to check your templates every time. It is advised to run this task on demand, when you need it. You can do this by executing `gulp wcag` in your terminal. It will then output all WCAG errors it can find in your console.
 
 
+------
+
+
+# BrowserSync #
+
+The Frontend Setup uses BrowserSync to run a server so you can test locally. This server will usually run on port 3000. To change BrowserSync settings like synced form submits or scrolling you can go to: http://localhost:3001 (or whatever your browsersync port is and add 1 at the end; ie. 3004+1 = 3005)

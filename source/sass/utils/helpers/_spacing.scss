@@ -3,14 +3,20 @@
 //    A collection of some helper classes for tweaking the layout of the elements.
 //
 //
-//    .margin-top-xs      - .margin-top-lg
-//    .margin-bottom-xs   - .margin-bottom-lg
+//    .margin-{direction}--xs      - .margin-{direction}--lg
+//    .padding-{direction}--xs     - .padding-{direction}--lg
 //
 //
+
+$spacing-directions: ( 'top', 'left', 'bottom', 'right' );
 
 @each $spacing-modifier, $spacing-margin in $spacing-margins {
 
-  .margin-top--#{$spacing-modifier}    {   margin-top: $spacing-margin     !important; }
-  .margin-bottom--#{$spacing-modifier} {   margin-bottom: $spacing-margin  !important; }
+  @each $spacing-direction in $spacing-directions {
+
+    .margin-#{$spacing-direction}--#{$spacing-modifier}    {   margin-#{$spacing-direction}: $spacing-margin     !important; }
+    .padding-#{$spacing-direction}--#{$spacing-modifier}    {   padding-#{$spacing-direction}: $spacing-margin     !important; }
+
+  }
 
 }

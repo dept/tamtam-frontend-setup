@@ -3,26 +3,30 @@
 
 {% block content %}
 
+<div class="container">
 
-    {% include '_dev/styleguide/block-fonts.html' %}
+  {% include '_dev/styleguide/block-grid.html' %}
 
-    {% include '_dev/styleguide/block-headers.html' %}
-
-    {% include '_dev/styleguide/block-links.html' %}
-
-    {% include '_dev/styleguide/block-buttons.html' %}
-
-    {% include '_dev/styleguide/block-grid.html' %}
-
-    {% include '_dev/styleguide/block-text.html' %}
-
-    {% include '_dev/styleguide/block-svg.html'  %}
-
+  <div class="grid-12">
+    <div class="col-12 col-md-6">
+      {% include '_dev/styleguide/block-fonts.html' %}
+    </div>
+    <div class="col-12 col-md-6">
+      {% include '_dev/styleguide/block-headers.html' %}
+    </div>
+    <div class="col-12 col-md-6">
+      {% include '_dev/styleguide/block-links.html' %}
+    </div>
+    <div class="col-12 col-md-6">
+      {% include '_dev/styleguide/block-buttons.html' %}
+    </div>
+    <div class="col-12 col-md-6">
+      {% include '_dev/styleguide/block-text.html' %}
+    </div>
+    <div class="col-12">
+      {% include '_dev/styleguide/block-svg.html'  %}
+    </div>
+  </div>
+</div>
 
 {% endblock %}
-
-
-
-
-
-

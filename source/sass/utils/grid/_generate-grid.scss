@@ -308,6 +308,8 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 //  A mixin that created the column helpers such as 'pre-2' and 'pull-4'.
 @mixin _grid_column_helpers( $column-span, $grid-size, $pre-post, $push-pull, $modifier: '' ) {
 
+    $column-width: 0;
+
     @if( $modifier != '' ) { $modifier: '-' + $modifier; }
 
     @if( $column-span > 0 ) { $column-width: ($column-span / $grid-size ) * 100%; }

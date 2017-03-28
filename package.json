@@ -6,16 +6,16 @@
   "author": "Tam Tam",
   "contributors": [
     {
-      "name": "Geert Fokke",
-      "email": "geert@tamtam.nl"
-    },
-    {
       "name": "Adrian Klingen",
       "email": "adrian@tamtam.nl"
     },
     {
-      "name": "Simon Colijn",
-      "email": "simon@tamtam.nl"
+      "name": "Gregory Bolkenstijn",
+      "email": "gregory@tamtam.nl"
+  },
+    {
+      "name": "Jeroen Reumkens",
+      "email": "jeroen.reumkens@tamtam.nl"
     }
   ],
   "private": true,
@@ -24,7 +24,7 @@
     "url": "https://bitbucket.org/tamtam-nl/tamtam-frontend-setup"
   },
   "engines": {
-    "node": "^0.12.2",
+    "node": "^4.2",
     "npm": "2.7.4"
   },
   "scripts": {
@@ -54,10 +54,10 @@
     "gulp-jsbeautifier": "1.0.1",
     "gulp-load-plugins": "^1.0.0-rc",
     "gulp-markdown": "^1.2.0",
-    "gulp-nunjucks-render": "1.0.0",
+    "gulp-nunjucks-render": "^2.0.0",
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "2.2.0",
+    "gulp-sass": "3.0.0",
     "gulp-size": "^2.0.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-svgmin": "^1.2.0",
@@ -71,13 +71,14 @@
     "merge-stream": "^1.0.0",
     "mkdirp": "^0.5.1",
     "node-notifier": "^4.2.3",
-    "node-sass": "3.4.2",
+    "node-sass": "4.1.1",
     "pretty-hrtime": "~1.0.0",
     "run-sequence": "^1.1.2",
     "through2": "^2.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "~1.1.0",
     "webpack": "^1.12.12",
-    "gulp-accessibility": "^2.0.1"
+    "gulp-accessibility": "^2.0.1",
+    "gulp-rename": "^1.2.2"
   }
 }
