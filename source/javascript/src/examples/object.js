@@ -41,4 +41,4 @@ function ExampleObject ( opt_message ) {
  *
  *      var someInstance 	= new ExampleObject( 'custom message' );
  */
-module.exports = ExampleObject;
+export default ExampleObject;

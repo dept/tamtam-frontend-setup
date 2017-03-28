@@ -47,4 +47,4 @@ function moduleInit( selector, constructor, opt_arguments ) {
 }
 
 // Export the module init function
-module.exports = moduleInit;
+export default moduleInit;

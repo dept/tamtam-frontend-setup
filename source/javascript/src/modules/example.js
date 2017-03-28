@@ -2,9 +2,7 @@
 
 // List the module dependencies here
 
-var add					= require('../examples/add');
-//var $					= window.jQuery;
-
+import {add} from '../examples/calculations';
 
 // @formatter:on
 
@@ -41,7 +39,7 @@ function Example( element ) {
 
 	// START OF EXAMPLE
 
-	var _value = 0;
+	let _value = 0;
 
 	console.log( 'new example module instantiated!' );
 
@@ -70,5 +68,5 @@ function Example( element ) {
 
 
 // export the constructor function
-module.exports = Example;
+export default Example;
 

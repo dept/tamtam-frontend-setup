@@ -20,6 +20,8 @@ var options = {
 
     webpack: {
 
+        context: path.resolve(__dirname),
+
         bail: config.throwError,
 
         debug: config.debug,
@@ -37,7 +39,9 @@ var options = {
 
         module: {
             loaders: [{
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/
             }]
         }
 

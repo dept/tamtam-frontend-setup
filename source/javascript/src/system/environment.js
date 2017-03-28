@@ -122,10 +122,10 @@ function Environment () {
 
 }
 
-var environment = new Environment();
+let environment = new Environment();
 
 // pre-fill localhost settings
 environment.setLocal( [ 'localhost', '0.0.0.0' ] );
 
 // Returns the object and not a constructor, because there should be only a single instance of this type.
-module.exports = environment;
+export default environment;

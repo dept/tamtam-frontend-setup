@@ -20,7 +20,7 @@ function Example2 ( element, stringArgs, booleanArg ) {
 
 	// NOTE: We use the querySelector on the element,
 	// and not on the document to keep the logic self-contained to this module.
-	var _preElement = element.querySelector( 'pre' );
+	const _preElement = element.querySelector( 'pre' );
 
 	_preElement.innerHTML = '{string}:\t' + stringArgs + '<br/>{boolean}:\t' + booleanArg;
 
@@ -28,4 +28,4 @@ function Example2 ( element, stringArgs, booleanArg ) {
 
 
 // export the constructor function
-module.exports = Example2;
+export default Example2;
