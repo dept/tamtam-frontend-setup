@@ -147,19 +147,19 @@ gulp.task( 'html', function () {
 
     return gulp.src( config.source.getFileGlobs( 'html' ), { base: config.source.getPath( 'html' ) } )
 
-    .pipe( gulpData( getDataForFile ) )
-    .pipe( gulpNunjucks( {
-        envOptions: options.nunjuck,
-        manageEnv: environment,
-        path: [config.source.getPath('nunjucks')]
-    } ) )
+        .pipe( gulpData( getDataForFile ) )
+        .pipe( gulpNunjucks( {
+            envOptions: options.nunjuck,
+            manageEnv: environment,
+            path: [config.source.getPath('nunjucks')]
+        } ) )
 
-    .pipe( gulpif( options.pretty, prettify( options.prettyConfig ) ) )
-    .pipe( gulpif( options.minify, htmlmin( options.htmlmin ) ) )
+        .pipe( gulpif( options.pretty, prettify( options.prettyConfig ) ) )
+        .pipe( gulpif( options.minify, htmlmin( options.htmlmin ) ) )
 
-    .pipe( gulp.dest( config.dest.getPath( 'html' ) ) );
+        .pipe( gulp.dest( config.dest.getPath( 'html' ) ) );
 
-    // Browser Sync is reloaded from the watch task for HTML files to bypass a chrome bug.
+        // Browser Sync is reloaded from the watch task for HTML files to bypass a chrome bug.
     // See the watch task for more info.
 
 } );

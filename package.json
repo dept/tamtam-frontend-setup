@@ -24,7 +24,7 @@
     "url": "https://bitbucket.org/tamtam-nl/tamtam-frontend-setup"
   },
   "engines": {
-    "node": "^0.12.2",
+    "node": "^4.2",
     "npm": "2.7.4"
   },
   "scripts": {
