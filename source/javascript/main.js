@@ -26,6 +26,3 @@ import ExampleArgumentsModule from './src/modules/example-2';
 // A reference to the HTMLElement will be supplied to the constructor (along with extra arguments if supplied).
 moduleInit( '.js-module-example', 	ExampleModule );
 moduleInit( '.js-module-example-2', ExampleArgumentsModule, [ 'some argument', true ] );
-
-// NOTE: this shortcut would work just as well:
-// moduleInit( '.js-module-example', require( './src/modules/example' ) );
