@@ -20,7 +20,7 @@
     {%- if data.size == 'large' %} button--large{% endif -%}
     {%- if data.class %} {{ data.class }}{% endif -%}"
        href="{{ data.url or '#' }}"
-            {%- if data.attr or data.attributes %} {{ data.attr or data.attributes }}{% endif -%}>
+            {%- if data.attr or data.attributes %} {{ data.attr|safe or data.attributes|safe }}{% endif -%}>
 
         <span class="button__label">{{ data.label or 'label' }}</span>
 
