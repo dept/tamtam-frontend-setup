@@ -6,13 +6,12 @@
 {% block content %}
 
     {% from 'components/button.html' import button %}
-    {% from 'components/button-arrow.html' import buttonArrow %}
 
     {{ button( { label: 'regular button' } ) }}
 
     <br/><br/>
 
-    {{ buttonArrow( { label: 'arrow button' } ) }}
+    {{ button( { label: 'arrow button', icon: 'chevron-right' } ) }}
 
 {% endblock %}
 

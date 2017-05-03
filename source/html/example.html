@@ -55,16 +55,13 @@
 
         <!-- Include the file containing the macro, but it won't render anything until you call it -->
         {% from 'components/button.html' import button %}
-        {% from 'components/button-arrow.html' import buttonArrow %}
 
         <!-- Call the macro with optional arguments to create new instances of the button -->
         {{ button( { label: 'Click here' } ) }}
-        {{ button( { label: 'Click here', size: 'large' } ) }}
 
         <br/><br/>
 
-        {{ buttonArrow( { label: 'button with an arrow' } ) }}
-        {{ buttonArrow( ) }}
+        {{ button( { label: 'button with an arrow', icon: 'chevron-right' } ) }}
 
         <br/><br/>
 
