@@ -1,60 +1,88 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
-//	Vendor libs
+/*------------------------------------*\
+  #MAIN
+\*------------------------------------*/
+
+
+/**
+ * CONTENTS
+ *
+ * UTILITIES
+ * Custom..................Custom-specific utilities that are being used by settings.
+ *
+ * SETTINGS
+ * All.....................Because our Settings layer doesn’t actually produce any
+ *                         CSS, we can safely glob all of the files into one import
+ *                         without risk of bloating our compiled stylesheet. This
+ *                         also allows us to easily recycle all of our
+ *                         project-level settings into other Sass file/projects.
+ *                         Please see `00_settings/_all.scss` for a full table of
+ *                         contents.
+ *
+ * TOOLS
+ * All.....................Because our Tools layer doesn’t actually produce any
+ *                         CSS, we can safely glob all of the files into one import
+ *                         without risk of bloating our compiled stylesheet. This
+ *                         also allows us to easily recycle all of our
+ *                         project-level tooling into other Sass file/projects.
+ *                         Please see `01_tools/_all.scss` for a full table of
+ *                         contents.
+ *
+ * GENERIC
+ * Normalize...............A level playing field.
+ * Html....................Default HTML styling
+ *
+ *
+ * ELEMENTS
+ * All.....................Because our Tools layer doesn’t actually produce any
+ *                         CSS, we can safely glob all of the files into one import
+ *                         without risk of bloating our compiled stylesheet. This
+ *                         also allows us to easily recycle all of our
+ *                         project-level tooling into other Sass file/projects.
+ *                         Please see `20_elements/_all.scss` for a full table of
+ *                         contents.
+ *
+ * OBJECTS
+ * Background image........Background position / styling classes
+ * Background..............Background color classes
+ *
+ * COMPONENTS
+ * Button..................Specific styling for Buttons based on classes
+ *
+ * SCOPES
+ * Rich text...............Set up a new styling context for long-format text.
+ *
+ * UTILITIES
+ * Flex....................Flexbox classes
+ *
+ */
+
+
+
+@import '01_tools/tools.conversion';
+
+@import '00_settings/all';
+@import '01_tools/all';
+
+@import '70_utilities/all';
+
+//  Vendor libs
 //      - styles from other sources (bower)
+//[INSERT VENDOR LIBS]
 
-// @import "../../bower_components/example-lib/example";
+@import '10_generic/generic.html';
+@import '10_generic/generic.normalize';
 
+@import '20_elements/all';
 
-//	Core
-//      - settings
-//      - mixins
-//      - helpers
-//      - html / body style
-
-@import "utils/mixins/conversion";
-@import "utils/vars/index";
-@import "utils/index";
-
-@import "layout/font-face";
-@import "layout/normalize";
-@import "layout/html";
+@import '30_objects/objects.grid';
+@import '30_objects/objects.background';
+@import '30_objects/objects.background-image';
 
 
-//  Grid overlay
-//  - Minimum styles for grid overlay used during development
-@import "_dev/tools/_grid-overlay";
+@import '40_components/components.button';
 
+@import '50_scopes/scopes.rich-text';
 
-//	Elements
-// 		- Very small re-usable components used by modules
-
-@import "elements/button";
-@import "elements/button-arrow";
-@import "elements/figure";
-@import "elements/heading";
-@import "elements/link";
-@import "elements/list";
-@import "elements/table";
-
-@import "elements/form";
-@import "elements/input";
-@import "elements/select";
-@import "elements/checkbox";
-
-@import "elements/background-image";
-@import "elements/text";
-
-
-
-//	Modules
-//		- Re-usable blocks consisting mostly of elements
-
-@import "modules/cookie";
-@import "modules/footer";
-@import "modules/header";
-
-@import "modules/example";
-@import "modules/example-2";
-
-@import "modules/rich-text";
+@import '70_utilities/utilities.flex';

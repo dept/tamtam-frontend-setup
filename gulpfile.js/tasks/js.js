@@ -1,11 +1,11 @@
 //@formatter:off
 
-var requireCached     			= require('../src/gulp/require-cached');
+var requireCached               = require('../src/gulp/require-cached');
 var config                      = require('../config');
 var log                         = require('../src/debug/log');
-var objectDiff					= require('../src/object/diff');
+var objectDiff                  = require('../src/object/diff');
 var path                        = require('path');
-var _                       	= require('lodash');
+var _                           = require('lodash');
 
 var gulp                        = requireCached('gulp');
 var webpack                     = requireCached('webpack');
@@ -14,62 +14,77 @@ var webpack                     = requireCached('webpack');
 
 function createOptions() {
 
-// @formatter:on
-// @see: http://webpack.github.io/docs/configuration.html
-var options = {
+    // @formatter:on
+    // @see: http://webpack.github.io/docs/configuration.html
+    var options = {
 
-    webpack: {
+        webpack: {
 
-        bail: config.throwError,
+            bail: config.throwError,
 
-        debug: config.debug,
+            debug: config.debug,
 
-        entry: config.source.getFilePaths( 'javascript', true ),
+            entry: config.source.getFilePaths( 'javascript', true ),
 
-        output: {
-            path: config.dest.getPath( 'javascript' ),
-            filename: "[name].js"
+            output: {
+                path: config.dest.getPath( 'javascript' ),
+                filename: "[name].js"
+            },
+
+            plugins: [],
+
+            devtool: config.sourcemaps ? 'source-map' : undefined,
+
+            module:{
+                preLoaders: [
+                    // Javascript
+                    {
+                        test: /\.js?$/,
+                        loader: 'eslint',
+                        exclude: /node_modules/
+                    }
+                ],
+                eslint: {
+                    failOnWarning: true,
+                    failOnError: true
+                }
+            }
+
         },
 
-        plugins: [],
+        uglify: {
 
-        devtool: config.sourcemaps ? 'source-map' : undefined
+            mangle: false,              // Pass false to skip mangling names.
+            preserveComments: false     // 'all', 'some', {function}
 
-    },
+        }
 
-    uglify: {
-
-mangle: false, 				// Pass false to skip mangling names.
-preserveComments: false 	// 'all', 'some', {function}
-
-}
-
-};
+    };
 
 
-if( !options.webpack.entry.length ) log.error( {
-    sender: 'js',
-    message: 'No entry files found for JavaScript?! Check your source config...'
-} );
+    if( !options.webpack.entry.length ) log.error( {
+        sender: 'js',
+        message: 'No entry files found for JavaScript?! Check your source config...'
+    } );
 
 
-// Convert entryfiles to valid webpack config object.
-if( options.webpack.entry.length ) {
+    // Convert entryfiles to valid webpack config object.
+    if( options.webpack.entry.length ) {
 
-    var webpackEntries = {};
-    _.each( options.webpack.entry, function ( entryPath ) { webpackEntries[ path.parse( entryPath ).name ] = entryPath; } );
-    options.webpack.entry = webpackEntries;
-}
+        var webpackEntries = {};
+        _.each( options.webpack.entry, function ( entryPath ) { webpackEntries[ path.parse( entryPath ).name ] = entryPath; } );
+        options.webpack.entry = webpackEntries;
+    }
 
-if( config.minify ) {
+    if( config.minify ) {
 
-    options.webpack.plugins.push( new webpack.optimize.DedupePlugin() );
-    options.webpack.plugins.push( new webpack.optimize.UglifyJsPlugin( options.uglify ) );
-    options.webpack.plugins.push( new webpack.NoErrorsPlugin() );
+        options.webpack.plugins.push( new webpack.optimize.DedupePlugin() );
+        options.webpack.plugins.push( new webpack.optimize.UglifyJsPlugin( options.uglify ) );
+        options.webpack.plugins.push( new webpack.NoErrorsPlugin() );
 
-}
+    }
 
-return options;
+    return options;
 
 }
 
@@ -81,44 +96,44 @@ function onWebpackCallback ( error, stats, opt_prevStats ) {
         data: [ error ]
     } );
 
-        if( config.verbose ) log.info( {
-            sender: 'js',
-            message: 'compiling...'
-        } );
+    if( config.verbose ) log.info( {
+        sender: 'js',
+        message: 'compiling...'
+    } );
 
-// log changes
-if( opt_prevStats ) {
+    // log changes
+    if( opt_prevStats ) {
 
-    var currentTimestamps = stats.compilation.fileTimestamps;
-    var previousTimestamps = opt_prevStats.compilation.fileTimestamps;
+        var currentTimestamps = stats.compilation.fileTimestamps;
+        var previousTimestamps = opt_prevStats.compilation.fileTimestamps;
 
-    if( previousTimestamps && !_.isEmpty( previousTimestamps ) ) {
+        if( previousTimestamps && !_.isEmpty( previousTimestamps ) ) {
 
-        var difference = objectDiff( previousTimestamps, currentTimestamps );
-        var sourceRoot = path.resolve( config.source.getPath( 'root' ), '../' );
-        var changedFiles = [];
+            var difference = objectDiff( previousTimestamps, currentTimestamps );
+            var sourceRoot = path.resolve( config.source.getPath( 'root' ), '../' );
+            var changedFiles = [];
 
-        for ( var filePath in difference ) changedFiles.push( filePath.replace( sourceRoot, '' ) );
+            for ( var filePath in difference ) changedFiles.push( filePath.replace( sourceRoot, '' ) );
 
-            log.info( {
-                sender: 'js',
-                message: 'changed files:',
-                data: changedFiles.join( '\n\t' )
-            } )
+                log.info( {
+                    sender: 'js',
+                    message: 'changed files:',
+                    data: changedFiles.join( '\n\t' )
+                } )
+
+        }
 
     }
 
-}
+    _.each( stats.compilation.errors, function ( compileError ) {
 
-_.each( stats.compilation.errors, function ( compileError ) {
+        log.error( {
+            sender: 'js',
+            name: compileError.name,
+            message: compileError.message
+        } )
 
-    log.error( {
-        sender: 'js',
-        name: compileError.name,
-        message: compileError.message
-    } )
-
-} );
+    } );
 
 
 }

@@ -1,0 +1,12 @@
+@mixin p{
+    margin-bottom: 1em;
+    font-size:$font-size-body;
+
+    &:last-child{
+        margin-bottom:0;
+    }
+}
+
+p{
+    @include p;
+}

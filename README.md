@@ -157,7 +157,7 @@ In the `index.js` you will also find 2 other important settings at the top.
 >>
 >>In the root of the folder, the pages are set.
 >>
->>Folders are used for **elements**, **layout** and **modules**.
+>>Folders are used for **layout** and **components**.
 
 >>The **_dev** folder is used for development / debug purpose and there's no real need to edit this. These files are not used in the real project, but only during local development.
 
@@ -190,7 +190,7 @@ This is a simple example of how a macro can support you in coding for instance f
 __Macro definition__
 ```
 {% macro inputText(name, value='', type='text') %}
-    <div class="input__holder">
+    <div class="c-input-holder">
         <label for="{{ name }}"></label>
         <input class="input--{{ type }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
     </div>
@@ -205,7 +205,7 @@ __Usage__
 
 __Result__
 ```
-<div class="input__holder">
+<div class="c-input-holder">
     <label for="username"></label>
     <input class="input--text" type="text" name="username" id="username" placeholder="" />
 </div>
@@ -271,7 +271,7 @@ This object can be used as followed.
 > _The used macro_
 ```
 {% macro input(name, value='', type='text') %}
-    <div class="input__holder">
+    <div class="c-input-holder">
         {% if type != 'textarea' %}
             <label for="{{ name }}"></label>
             <input class="input--{{ type }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ value | escape }}" />
@@ -286,15 +286,15 @@ __Final output__
 
 ```
 <form>
-    <div class="input__holder">
+    <div class="c-input-holder">
         <label for="emailaddress"></label>
         <input class="input--email" type="email" name="emailaddress" id="emailaddress" placeholder="Your emailaddress" />
     </div>
-    <div class="input__holder">
+    <div class="c-input-holder">
         <label for="subject"></label>
         <input class="input--text" type="text" name="subject" id="subject" placeholder="Subject" />
     </div>
-    <div class="input__holder">
+    <div class="c-input-holder">
         <textarea class="input--textarea" name="message" id="message" placeholder="Your message" />
     </div>
 </form>
@@ -308,7 +308,7 @@ __Final output__
 
 __Breakpoints__
 
-The media query [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/_media.scss) can be found in the [vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/) folder, called `_media.scss`. Here you can configure the breakpoints to fit your needs.
+The media query [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/00_settings/_settings.media.scss) can be found in the [vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/00_settings/.) folder, called `_settings.media.scss`. Here you can configure the breakpoints to fit your needs.
 
 Following are the default breakpoints. You can add or change them to suit your needs. When adding them to your grid config the grid will be automatically generated.
 
@@ -322,7 +322,7 @@ Breakpoint    | Viewport width
 
 __Grid__
 
-The grid [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/_grid.scss) can be found in the [vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/) folder. Here you can configure the breakpoints, gutters and max-width for the container and grid.
+The grid [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/00_settings/_settings.grid.scss) can be found in the [vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/00_settings/) folder. Here you can configure the breakpoints, gutters and max-width for the container and grid.
 
 You can also add extra breakpoints or change the prefix in the `$grid-breakpoints` var.
 
@@ -353,18 +353,18 @@ $grid-breakpoints   : ( 'sm': $breakpoint-small,
 
 The grid, whilst the naming conventions are bootstrap like, is a bit different in use. 
 
-It can be used as 100% fluid, or within a container. The container's max width is set in the global sass [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/vars/_grid_.scss) `$container-config(max-width)`.
+It can be used as 100% fluid, or within a container. The container's max width is set in the global sass [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/00_settings/_settings.grid.scss) `$container-config(max-width)`.
 
-__Note that when you change the number of columns, the class name of the grid changes as well. `grid-12` means this is a grid of 12 columns. So when you change the number of columns to f.e. 5, the grid's class name becomes: `grid-5`.
+__Note that when you change the number of columns, the class name of the grid changes as well. `o-grid-12` means this is a grid of 12 columns. So when you change the number of columns to f.e. 5, the grid's class name becomes: `o-grid-5`.
 It is also possible to create multiple grids, instead of a single map assigned to the `$grid-config`, simply assign a list of multiple maps.__
 
 __columns__
  
-Use column classes to define the columns width. There is a default class you can use such as `col-12` or `col-6`. This will set the width to 12 -or- 6 columns wide.
+Use column classes to define the columns width. There is a default class you can use such as `u-col-12` or `u-col-6`. This will set the width to 12 -or- 6 columns wide.
 
-You can override this at breakpoints by using the modifier classes such as `col-md-6`, here the column will switch to 6 columns width when this breakpoint is reached.
+You can override this at breakpoints by using the modifier classes such as `u-col-6@md`, here the column will switch to 6 columns width when this breakpoint is reached.
 
-How wide a `col-6` actually is depends on the grid. If the `col-6` is inside of a `grid-12` it will be 50% wide. But if it were inside of a `grid-6` it would be 100% wide.
+How wide a `u-col-6` actually is depends on the grid. If the `u-col-6` is inside of a `o-grid-12` it will be 50% wide. But if it were inside of a `o-grid-6` it would be 100% wide.
 
 
 ### Grid example ###
@@ -373,8 +373,8 @@ This example uses the mobile first grid. Meaning that everything is based off `m
 
 __100% width__
 ```
-<div class="grid-12">
-    <div class="col-6 col-md-12">
+<div class="o-grid-12">
+    <div class="u-col-6 u-col-12@md">
         6 columns as the default
         12 columns on tablet and up
     </div>
@@ -384,9 +384,9 @@ __100% width__
 
 __with container__
 ```
-<div class="container">
-    <div class="grid-12">
-        <div class="col-6 col-md-12">
+<div class="o-container">
+    <div class="o-grid-12">
+        <div class="u-col-6 u-col-12@md">
             6 columns as the default
             12 columns on tablet and up
         </div>
@@ -401,11 +401,11 @@ Below are the modifier classes you can use to change the columns.
 
 Option                                      | Description
 --------------                              | -------------
-`col-{breakpoint}-*`                        | Creates x amount of columns according to the given `breakpoint`
-`push-*` -or-<br/> `push-{breakpoint}-*`    | Pushes element x amount of columns using `right`
-`pull-*` -or-<br/> `pull-{breakpoint}-*`    | Pulls element x amount of columns using `left`
-`pre-*`  -or-<br/> `pre-{breakpoint}-*`     | Adds `margin-left` to element x amount of columns
-`post-*`  -or-<br/> `post-{breakpoint}-*`   | Adds `margin-right` to element x amount of columns
+`u-col-*@{breakpoint}`                        | Creates x amount of columns according to the given `breakpoint`
+`u-push-*` -or-<br/> `u-push-{breakpoint}-*`    | Pushes element x amount of columns using `right`
+`u-pull-*` -or-<br/> `u-pull-{breakpoint}-*`    | Pulls element x amount of columns using `left`
+`u-pre-*`  -or-<br/> `u-pre-{breakpoint}-*`     | Adds `margin-left` to element x amount of columns
+`u-post-*`  -or-<br/> `u-post-{breakpoint}-*`   | Adds `margin-right` to element x amount of columns
 
 _* - amount of columns_
 

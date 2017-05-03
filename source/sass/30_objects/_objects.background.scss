@@ -1,0 +1,11 @@
+@mixin background--primary {
+  background-color:$color-primary;
+}
+
+.o-background{
+
+  &--primary{
+    @include background--primary;
+  }
+
+}
