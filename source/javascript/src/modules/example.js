@@ -13,8 +13,6 @@ function Example( element ) {
 
     this.debug = env.isLocal;
 
-    console.log(env.isLocal);
-
 	var _value = 0;
 
 	console.log( 'new example module instantiated!' );
@@ -24,7 +22,7 @@ function Example( element ) {
 	element.addEventListener( 'click', handleClickEvent );
 
 
-	function handleClickEvent ( event ) {
+	function handleClickEvent () {
 
 		_value++;
 		updateUI();

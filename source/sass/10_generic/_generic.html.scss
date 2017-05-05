@@ -1,3 +1,5 @@
+// sass-lint:disable no-vendor-prefixes, no-important
+
 html,
 body {
 
@@ -38,7 +40,9 @@ only screen and (min-device-pixel-ratio: 1.25),
 only screen and (min-resolution: 200dpi),
 only screen and (min-resolution: 1.25dppx) {
 
-  html, body, button{
+  html,
+  body,
+  button {
     -webkit-font-smoothing: subpixel-antialiased;
   }
 }

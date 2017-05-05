@@ -5,7 +5,13 @@ files:
   ignore: 'source/sass/_dev/**/*.scss'
 rules:
   space-after-colon: 0
+  force-pseudo-nesting: 0
+  hex-notation: 0
+  space-before-colon: 0
+  space-between-parens: 0
   property-sort-order: 0
+  indentation: 0
+  no-trailing-zero: 0
   no-css-comments: 0
   clean-import-paths: 0
   pseudo-element: 0

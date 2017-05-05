@@ -11,7 +11,7 @@ $button-border-radius     : 3px;
     vertical-align: top;
 }
 
-button{
+button {
   @include button--base;
   transition: $button-transition-time $button-transition-ease;
   transition-property: color, background-color;

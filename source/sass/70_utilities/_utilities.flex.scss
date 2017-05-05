@@ -1,28 +1,28 @@
-.u-flex{
+.u-flex {
   display:flex;
 }
 
-.u-flex-wrap{
+.u-flex-wrap {
   flex-wrap:wrap;
 }
 
-.u-flex-direction{
+.u-flex-direction {
 
-  &--column{
+  &--column {
     flex-direction:column;
 
-    &\@md{
-      @media #{$screen-medium-and-up}{
+    &\@md {
+      @media #{$screen-medium-and-up} {
         flex-direction:column;
       }
     }
   }
 
-  &--row{
+  &--row {
     flex-direction:row;
 
-    &\@md{
-      @media #{$screen-medium-and-up}{
+    &\@md {
+      @media #{$screen-medium-and-up} {
         flex-direction:row;
       }
     }
@@ -30,43 +30,43 @@
 
 }
 
-.u-flex-align{
+.u-flex-align {
 
-  &--top{
+  &--top {
     align-items:flex-start;
   }
 
-  &--center{
+  &--center {
     align-items:center;
   }
 
-  &--baseline{
+  &--baseline {
     align-items:baseline;
   }
 
-  &--bottom{
+  &--bottom {
     align-items:flex-end;
   }
 
 }
 
-.u-flex-self{
+.u-flex-self {
 
-  &--left{
+  &--left {
     align-self:flex-start;
     margin-right:auto;
   }
 
-  &--center{
+  &--center {
     align-self:center;
   }
 
-  &--right{
+  &--right {
     align-self:flex-end;
     margin-left:auto;
 
-    &\@md{
-      @media #{$screen-medium-and-up}{
+    &\@md {
+      @media #{$screen-medium-and-up} {
         align-self:flex-end;
         margin-left:auto;
       }

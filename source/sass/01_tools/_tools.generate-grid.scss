@@ -1,3 +1,5 @@
+// sass-lint:disable mixin-name-format, no-warn, quotes, function-name-format, brace-style, trailing-semicolon
+
 // @formatter:off
 
 // ---- DIB Grid ------
@@ -71,7 +73,7 @@ $grid-middle-modifier           : 'middle'          !default;
 @function grid-map-reverse ($map) {
     $result: null;
 
-    @if type-of($map) == "map" {
+    @if type-of($map) == 'map' {
         $keys: map-keys($map);
         $grid-map-reversed: ();
 
@@ -82,7 +84,7 @@ $grid-middle-modifier           : 'middle'          !default;
             );
         }
 
-        @if type-of($grid-map-reversed) == "map" {
+        @if type-of($grid-map-reversed) == 'map' {
             $result: $grid-map-reversed;
         } @else {
             @warn 'There was an error reversing the order of "#{$map}"';
@@ -115,7 +117,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
     text-align: left;
     box-sizing: border-box;
 
-    & > [class*="#{$grid-column-base-class}-"] { @extend %grid-column-base; }
+    & > [class*='#{$grid-column-base-class}-'] { @extend %grid-column-base; }
 
     &.#{$grid-base-class}--center   { text-align: center; };
     &.#{$grid-base-class}--right    { text-align: right;  };
@@ -141,7 +143,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 //  A function that validates a grid config and will return a validated and parsed config map.
 @function _grid_validate_config( $grid-config ) {
 
-    @if( type-of( $grid-config ) != "map" ) {
+    @if( type-of( $grid-config ) != 'map' ) {
 
         @error '$grid-config is not a valid map. Current config: ' + $grid-config;
 
@@ -203,7 +205,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
                 display: block;
 
-                 & > [class*="#{$grid-column-base-class}-"] {
+                 & > [class*='#{$grid-column-base-class}-'] {
 
                     display: inline-block;
 
@@ -221,7 +223,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
                 display: table;
 
-                & > [class*="#{$grid-column-base-class}-"] {
+                & > [class*='#{$grid-column-base-class}-'] {
 
                     display: table-cell;
 
@@ -247,7 +249,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
         @if( $reset == true ) {
 
-            .#{$grid-base-class}#{$modifier}--#{$grid-middle-modifier} > [class*="#{$grid-column-base-class}-"] {
+            .#{$grid-base-class}#{$modifier}--#{$grid-middle-modifier} > [class*='#{$grid-column-base-class}-'] {
 
                 vertical-align: top;
 
@@ -255,7 +257,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
         } @else {
 
-            .#{$grid-base-class}#{$modifier}--#{$grid-middle-modifier} > [class*="#{$grid-column-base-class}-"] {
+            .#{$grid-base-class}#{$modifier}--#{$grid-middle-modifier} > [class*='#{$grid-column-base-class}-'] {
 
                 vertical-align: middle;
 
@@ -275,13 +277,19 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
         margin-left: -$gutter-size;
 
-        & > [class*="#{$grid-column-base-class}-"] { padding-left:   $gutter-size; }
+        & > [class*='#{$grid-column-base-class}-'] {
+            padding-left: $gutter-size;
+        }
 
     }
     @else {
 
         margin-left: 0;
-        & > [class*="#{$grid-column-base-class}-"] { padding-left:   0; padding-right:   0;}
+
+        & > [class*='#{$grid-column-base-class}-'] {
+            padding-left: 0;
+            padding-right: 0;
+        }
 
     }
 
@@ -313,7 +321,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
     @if( $modifier != '' ) { $modifier: '-' + $modifier; }
 
     @if( $column-span > 0 ) { $column-width: ($column-span / $grid-size ) * 100%; }
-    @else { $column-width: 0 }
+    @else { $column-width: 0; }
     @if( $pre-post ){
         & > .u-pre#{$modifier}-#{$column-span}    { margin-left: $column-width; }
         & > .u-post#{$modifier}-#{$column-span}   { margin-right: $column-width; }
@@ -394,6 +402,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
         @include _grid_update_gutter( $gutter-size );
 
         $breakpoints: $grid-breakpoints;
+
         @if( $grid-mobile-first == true ){ $breakpoints: $_grid-breakpoints-large-to-small } // switch order of breakpoints if not mobile first.
 
         // Use the reversed order of the size modifiers so we get the right priority order.
@@ -442,8 +451,8 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
 
 
-    @include _grid_create_fill_helper();
-    @include _grid_create_middle_helper();
+    @include _grid_create_fill_helper;
+    @include _grid_create_middle_helper;
 
 
     // Run through each breakpoint setting specified in the grid-breakpoints and generate the breakpoint specific column classes.

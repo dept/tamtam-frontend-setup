@@ -1,11 +1,11 @@
-@mixin button{
+@mixin button {
 
   background-color:$color-primary;
   color:$color-white;
 
   padding:10px 12px;
 
-  svg{
+  svg {
     fill:$color-white;
   }
 

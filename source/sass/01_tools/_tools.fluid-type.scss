@@ -17,7 +17,7 @@
 // =========================================================================
 
 @mixin fluid-type($max-value, $min-value, $properties: font-size, $max-vw: $breakpoint-extra-large, $min-vw: $breakpoint-small) {
-  
+
   @each $property in $properties {
     #{$property}: $min-value;
   }

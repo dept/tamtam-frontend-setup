@@ -1,5 +1,5 @@
-@import "button/mixin.button";
+@import 'button/mixin.button';
 
-.c-button{
+.c-button {
   @include button;
 }

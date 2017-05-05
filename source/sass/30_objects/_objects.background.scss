@@ -2,9 +2,9 @@
   background-color:$color-primary;
 }
 
-.o-background{
+.o-background {
 
-  &--primary{
+  &--primary {
     @include background--primary;
   }
 

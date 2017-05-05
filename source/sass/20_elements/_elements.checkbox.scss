@@ -1,10 +1,12 @@
+// sass-lint:disable no-vendor-prefixes
+
 @mixin checkbox--reset {
 
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
 
-  border: none;
+  border: 0;
   background-color: transparent;
   outline: none;
 
