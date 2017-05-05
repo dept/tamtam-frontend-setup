@@ -36,6 +36,7 @@
     "bower": "^1.5.2",
     "browser-sync": "~2.9.3",
     "del": "^2.0.2",
+    "eslint-loader": "1.7.1",
     "glob": "^5.0.14",
     "gulp": "^3.9.0",
     "gulp-accessibility": "^2.0.1",
