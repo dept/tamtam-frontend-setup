@@ -1,9 +1,3 @@
-// List the module dependencies here
-
-import {add} from '../examples/calculations';
-
-// @formatter:on
-
 
 /**
  * Example module, this represent a single instance of a module
@@ -25,7 +19,7 @@ function Example( element ) {
 
 	function handleClickEvent () {
 
-		_value = add( _value, 1 );
+		_value++;
 
 		updateUI();
 
