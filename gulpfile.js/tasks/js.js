@@ -20,7 +20,9 @@ function createOptions() {
 
         webpack: {
 
-            bail: config.throwError,
+        context: path.resolve(__dirname),
+
+        bail: config.throwError,
 
             debug: config.debug,
 
@@ -44,6 +46,11 @@ function createOptions() {
                         exclude: /node_modules/
                     }
                 ],
+                loaders: [{
+                    loader: 'babel-loader',
+                    test: /\.js$/,
+                    exclude: /(node_modules|bower_components)/
+                }],
                 eslint: {
                     failOnWarning: true,
                     failOnError: true

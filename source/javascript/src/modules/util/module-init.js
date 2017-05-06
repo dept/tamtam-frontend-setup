@@ -7,13 +7,13 @@
 function moduleInit( selector, constructor, opt_arguments ) {
 
 	// grab all the module elements
-	var moduleElements = document.querySelectorAll( selector );
-	var moduleInstances = [];
+	const   moduleElements = document.querySelectorAll( selector );
+	let     moduleInstances = [];
 
 	// loop through all the elements and instantiate the module
-	for ( var i = 0, leni = moduleElements.length; i < leni; i++ ) {
+	for ( let i = 0, leni = moduleElements.length; i < leni; i++ ) {
 
-		var element = moduleElements[ i ];
+		let element = moduleElements[ i ];
 
 		// check if the module has not already been instantiated on this element
 		if( element._isInitialized ) continue;
@@ -30,7 +30,7 @@ function moduleInit( selector, constructor, opt_arguments ) {
 			// if an Array with extra arguments have been given, push them into an arguments array
 			// the first argument will the context for the function, can be null because the context will be reset by the new operator
 			// the seconds argument is actually the first argument to be passed onto the constructor, so in this case the HTMLElement.
-			var constructorArguments = [ null, element ];
+			let constructorArguments = [ null, element ];
 			Array.prototype.push.apply( constructorArguments, opt_arguments );
 
 			// create new module with the arguments and save it into the Array
@@ -47,4 +47,4 @@ function moduleInit( selector, constructor, opt_arguments ) {
 }
 
 // Export the module init function
-module.exports = moduleInit;
+export default moduleInit;

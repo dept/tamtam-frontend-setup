@@ -1,5 +1,8 @@
 // List the module dependencies here
-var env  = require('../system/environment');
+
+import {add} from '../examples/calculations';
+
+// @formatter:on
 
 
 /**
@@ -11,9 +14,7 @@ var env  = require('../system/environment');
  */
 function Example( element ) {
 
-    this.debug = env.isLocal;
-
-	var _value = 0;
+	let _value = 0;
 
 	console.log( 'new example module instantiated!' );
 
@@ -24,7 +25,8 @@ function Example( element ) {
 
 	function handleClickEvent () {
 
-		_value++;
+		_value = add( _value, 1 );
+
 		updateUI();
 
 	}
@@ -40,5 +42,5 @@ function Example( element ) {
 
 
 // export the constructor function
-module.exports = Example;
+export default Example;
 
