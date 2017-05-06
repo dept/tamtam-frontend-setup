@@ -14,8 +14,6 @@ import {add} from '../examples/calculations';
  */
 function Example( element ) {
 
-    this.debug = env.isLocal;
-
 	let _value = 0;
 
 	console.log( 'new example module instantiated!' );
