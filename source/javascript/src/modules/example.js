@@ -1,5 +1,3 @@
-// @formatter:off
-
 // List the module dependencies here
 
 import {add} from '../examples/calculations';
@@ -16,28 +14,7 @@ import {add} from '../examples/calculations';
  */
 function Example( element ) {
 
-	// If you are using jQuery you can wrap the element into a jQuery Selection
-	// var _$element = $( element );
-
-	// To interact with components of this module make sure to ONLY USE elements from within this module element.
-	// This makes sure each instance of this module is self-contained and can co-exist next to each other.
-	// example:
-
-	// var _button = _$element.find( '.js-button' );
-
-    // -or- without jQuery:
-
-    // var _button = element.querySelector( '.js-button' )
-
-	// The ONLY elements you could sometimes use that are not contained within the module's element are
-	// global ones such as: window, document, <html> and <body>
-
-
-	// Here is just some example code
-	// Feel free to roll your own logic...
-
-
-	// START OF EXAMPLE
+    this.debug = env.isLocal;
 
 	let _value = 0;
 
@@ -48,7 +25,7 @@ function Example( element ) {
 	element.addEventListener( 'click', handleClickEvent );
 
 
-	function handleClickEvent ( event ) {
+	function handleClickEvent () {
 
 		_value = add( _value, 1 );
 
@@ -63,7 +40,6 @@ function Example( element ) {
 
 	}
 
-	// END OF EXAMPLE
 }
 
 
