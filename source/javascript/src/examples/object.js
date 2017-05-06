@@ -1,7 +1,7 @@
 
 // Note that this variable will be only accessible within this file
 // and that it's value will remain the same for all ExampleClass instances created.
-var notGlobal = 'This variable is not global because this file is wrapped into its own scope by browserify.';
+const notGlobal = 'This variable is not global because this file is wrapped into its own scope by browserify.';
 
 
 /**
