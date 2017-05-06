@@ -25,7 +25,7 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
     - [Config](#markdown-header-config-1)
     - [Usage](#markdown-header-usage-1)
 9.  [BrowserSync](#markdown-header-browsersync)
-10. [Javascript](#markdown-header-javascript)
+10. [Javascript](#markdown-header-javascript_1)
   
 
 ------
