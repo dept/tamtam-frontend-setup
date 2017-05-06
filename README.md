@@ -25,6 +25,7 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
     - [Config](#markdown-header-config-1)
     - [Usage](#markdown-header-usage-1)
 9.  [BrowserSync](#markdown-header-browsersync)
+10. [Javascript](#markdown-header-javascript)
   
 
 ------
@@ -163,7 +164,7 @@ In the `index.js` you will also find 2 other important settings at the top.
 
 
 >>### Javascript ###
->>CommonJS setup with various examples to explain how to use, export and reuse the modules.
+>>ES6 setup with Babel for transpiling back to ES5.
 >>
 >>### SASS ###
 >>Folder which contains all SASS and related files, e.g. configs, mixins and extends.
@@ -431,3 +432,59 @@ The wcag task is not a watch task, because it uses quite some resources to check
 # BrowserSync #
 
 The Frontend Setup uses BrowserSync to run a server so you can test locally. This server will usually run on port 3000. To change BrowserSync settings like synced form submits or scrolling you can go to: http://localhost:3001 (or whatever your browsersync port is and add 1 at the end; ie. 3004+1 = 3005)
+
+# Javascript #
+
+## Setup ##
+For importing modules we use the ES6 syntax, transpiled back to ES5 by Babel. 
+
+## Usage ##
+### Exporting and importing ###
+```javascript
+    /* Main.js file  */
+    // Import other modules:
+    /// You can either import the 'default' export.
+    import Header from './src/modules/header';
+    /// Or import a specific subset if a module has multiple exports.
+    import {add, subtract} from './src/modules/util/calculations';
+    
+    
+    /* module/header.js */
+    function Header () {
+        // All the code here
+        function bindEvents() { /* ... */ };
+        function toggleMenu() { /* ... */ }
+    }
+    
+    // If the import doesn't specify anything specific it wants to import, it always receives the default export.
+    export default Header;
+    
+    
+    /* module/util/calculations.js */
+    const veryImportantVar = 'Everyone wants to import this! <3';
+    function add() { /* ... */ }
+    function subtract() { /* ... */ }
+    function divide() { /* ... */ }
+    
+    // You can export multiple things (functions, lets/conts, objects, etc)
+    // Other modules are able to import specific subsets from the export.
+    export {
+        add,
+        subtract,
+        veryImportantVar
+    }
+```
+
+### moduleInit ###
+To initialize modules and bind them to specific DOMElements, we've created our own utility called moduleInit. It works like this:
+
+```javascript 
+    // main.js
+    
+    import moduleInit from './src/modules/util/module-init';
+    import Header from './src/modules/header';
+    
+    // The .js--header element is then passed to the constructor of Header.
+    moduleInit( '.js--header', 	Header);
+    
+```
