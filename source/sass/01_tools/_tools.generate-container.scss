@@ -20,7 +20,7 @@ $container-base-class               : 'o-container' !default;
 $container-flood-modifier           : 'flood'   !default;
 $container-break-modifier           : 'break'   !default;
 
-%container-base {
+@mixin container-base {
 
   overflow: visible;
   display: block;
@@ -99,9 +99,9 @@ $_container-created: ();
 
   }
 
-  .#{$class-name}                                   { @extend %container-base; }
-  @if ( $class-name-break ) { .#{$class-name-break} { @extend %container-base; } }
-  @if ( $class-name-fill )  { .#{$class-name-fill}  { @extend %container-base; } }
+  .#{$class-name}                                   { @include container-base; }
+  @if ( $class-name-break ) { .#{$class-name-break} { @include container-base; } }
+  @if ( $class-name-fill )  { .#{$class-name-fill}  { @include container-base; } }
 
 }
 
@@ -115,7 +115,7 @@ $_container-created: ();
   // The default container
   .#{$class-name} {
 
-    @extend %container-base;
+    @include container-base;
 
     margin-left: $gutter-small;
     margin-right: $gutter-small;
@@ -134,7 +134,7 @@ $_container-created: ();
     // The fill and break container
     #{$selectors} {
 
-      @extend %container-base;
+      @include container-base;
 
       padding-left: $gutter-small;
       padding-right: $gutter-small;

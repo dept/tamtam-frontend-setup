@@ -43,3 +43,6 @@ $screen-large-and-up        : 'only screen and ( min-width : #{$breakpoint-large
 
 $screen-extra-large-and-up  : 'only screen and ( min-width : #{$breakpoint-extra-large} )';
 $screen-widescreen-and-up   : 'only screen and ( min-width : #{$breakpoint-widescreen} )';
+
+$screen-portrait            : 'screen and (orientation: portrait)';
+$screen-landscape           : 'screen and (orientation: landscape)';
