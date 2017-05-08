@@ -13,4 +13,4 @@ import ExampleModule from './src/modules/example';
 
 
 // Initialize modules.
-moduleInit( '.js-module-example', 	ExampleModule );
+moduleInit( '[data-js-hook="js-module-example"]', 	ExampleModule );

@@ -20,7 +20,6 @@ function Example( element ) {
 	function handleClickEvent () {
 
 		_value++;
-
 		updateUI();
 
 	}
