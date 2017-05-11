@@ -11,6 +11,9 @@ module.exports =
         "parserOptions": {
             "sourceType": "module"
         },
+        "globals": {
+            "dataLayer": true
+        },
         "rules": {
             "no-console": "off"
         }

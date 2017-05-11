@@ -10,12 +10,16 @@
       "email": "adrian@tamtam.nl"
     },
     {
-      "name": "Gregory Bolkenstijn",
-      "email": "gregory@tamtam.nl"
-    },
-    {
       "name": "Jeroen Reumkens",
       "email": "jeroen.reumkens@tamtam.nl"
+    },
+    {
+      "name": "Kees van Lierop",
+      "email": "keesli@tamtam.nl"
+    },
+    {
+      "name": "Daphne Smit",
+    "email": "daphne@tamtam.nl"
     }
   ],
   "private": true,
