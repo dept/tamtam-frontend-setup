@@ -11,9 +11,10 @@
 
      <!-- Call the macro with button data to create new instances of the button -->
     {{ button( { label: 'Click here' } ) }}
-    {{ button( { label: 'Tam Tam', url: 'http://www.tamtam.nl', class: 'js-tamtam-button' } ) }}
+    {{ button( { label: 'Tam Tam', url: 'http://www.tamtam.nl', hook: 'tamtam-button' } ) }}
 
 #}
+
 {% macro button( data ) %}
 
     <a class="c-button

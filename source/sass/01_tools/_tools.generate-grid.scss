@@ -318,18 +318,19 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
     $column-width: 0;
 
-    @if( $modifier != '' ) { $modifier: '-' + $modifier; }
+    @if($modifier != '') { $modifier: '\\@' + $modifier; }
 
     @if( $column-span > 0 ) { $column-width: ($column-span / $grid-size ) * 100%; }
     @else { $column-width: 0; }
+    
     @if( $pre-post ){
-        & > .u-pre#{$modifier}-#{$column-span}    { margin-left: $column-width; }
-        & > .u-post#{$modifier}-#{$column-span}   { margin-right: $column-width; }
+        & > .u-pre-#{$column-span}#{$modifier}    { margin-left: $column-width; }
+        & > .u-post-#{$column-span}#{$modifier}   { margin-right: $column-width; }
     }
 
     @if( $push-pull ){
-        & > .u-pull#{$modifier}-#{$column-span}   { left: -$column-width; }
-        & > .u-push#{$modifier}-#{$column-span}   { right: -$column-width; }
+        & > .u-pull-#{$column-span}#{$modifier}   { left: -$column-width; }
+        & > .u-push-#{$column-span}#{$modifier}   { right: -$column-width; }
     }
 
 }
