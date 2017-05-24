@@ -10,13 +10,13 @@
 html._debug_page_ {
 
 	font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #ECECEC;
+  // background-color: #ECECEC;
   color: #333333;
 
-  &.dark{
-    background-color: #333333;
-    color: #ECECEC;
-  }
+  // &.dark{
+  //   background-color: #333333;
+  //   color: #ECECEC;
+  // }
 
   @import "project/info";
   @import "project/pages-list";

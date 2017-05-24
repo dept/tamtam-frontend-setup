@@ -1,0 +1,18 @@
+$button-transition-time   : 250ms;
+$button-transition-ease   : $ease-in-out-quad;
+$button-border-radius     : 3px;
+
+@mixin button--base {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    vertical-align: top;
+}
+
+button {
+  @include button--base;
+  transition: $button-transition-time $button-transition-ease;
+  transition-property: color, background-color;
+}

@@ -1,0 +1,28 @@
+/*----------------------------------*\
+  #SPACING
+\*----------------------------------*/
+
+//
+//    Set the margins for each viewport
+//
+//    @see: helpers/spacing
+//
+//    @example: .offset-top-xs
+//
+//
+
+$base-spacing : 20px;
+
+$margin-xlg   : $base-spacing*5;
+$margin-lg    : $base-spacing*3;
+$margin-md    : $base-spacing*2;
+$margin-sm    : $base-spacing;
+$margin-xs    : $base-spacing/2;
+
+$spacing-margins: (
+                     'xlg' : $margin-xlg,
+                     'lg'  : $margin-lg,
+                     'md'  : $margin-md,
+                     'sm'  : $margin-sm,
+                     'xs'  : $margin-xs
+                  );
