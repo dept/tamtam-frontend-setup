@@ -68,6 +68,14 @@
 
 @import '70_utilities/all';
 
+@import '_dev/00_settings/all';
+@import '_dev/01_tools/all';
+
+@import '_dev/40_components/components.block-fonts';
+@import '_dev/40_components/components.block';
+@import '_dev/40_components/components.browsersync-notification';
+@import '_dev/40_components/components.svg-collection';
+
 //  Vendor libs
 //      - styles from other sources (bower)
 //[INSERT VENDOR LIBS]

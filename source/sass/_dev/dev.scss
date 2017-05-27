@@ -60,31 +60,10 @@
  */
 
 
-
-@import '01_tools/tools.conversion';
-
 @import '00_settings/all';
 @import '01_tools/all';
 
-@import '70_utilities/all';
-
-//  Vendor libs
-//      - styles from other sources (bower)
-//[INSERT VENDOR LIBS]
-
-@import '10_generic/generic.html';
-@import '10_generic/generic.normalize';
-
-@import '20_elements/all';
-
-@import '30_objects/objects.grid';
-@import '30_objects/objects.background';
-@import '30_objects/objects.background-image';
-
-
-@import '40_components/components.button';
-
-@import '50_scopes/scopes.rich-text';
-
-@import '70_utilities/utilities.flex';
-@import '70_utilities/utilities.text';
+@import '40_components/components.block-fonts';
+@import '40_components/components.block';
+@import '40_components/components.browsersync-notification';
+@import '40_components/components.svg-collection';

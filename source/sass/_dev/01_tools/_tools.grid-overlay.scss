@@ -1,0 +1,91 @@
+$color-grid: $color-primary;
+$color-grid-padding: darken($color-grid, 50%);
+
+%grid-overlay-box-shadow {
+  background: $color-grid;
+  box-shadow: inset 5px -5px 0 5px $color-grid-padding, inset 5px -5px 0 1px $color-black;
+
+  @media screen and (max-width: $breakpoint-small) {
+    box-shadow: inset 10px -10px 0 10px $color-grid-padding, inset 5px -5px 0 1px $color-black;
+  }
+}
+
+.grid-overlay {
+
+  display: none;
+  height: 100%;
+  left: 50%;
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  transform: translate3d(-50%, 0, 0);
+  width: 100%;
+  z-index: 99;
+
+  @media screen and (max-width: $breakpoint-small) {
+    width: calc(100% - 20px);
+    left: calc(50% - 10px);
+  }
+
+  @media screen and
+  (min-width: $breakpoint-small)
+  and (max-width: map_get( $container-config, max-width ) + (map_get( $container-config, gutter ) * 2) ) {
+
+    left: 0;
+    transform: none;
+    width: calc(100% - 40px);
+
+  }
+
+  &.is--default-visible {
+    display: block;
+  }
+
+  &__toggle.button {
+
+    bottom: 0;
+    font-size: 1.3rem;
+    left: 0;
+    position: fixed;
+    text-transform: none;
+    z-index: 4;
+
+  }
+
+  &__check {
+    display: none;
+  }
+
+
+  &__check:checked + & {
+    display: block;
+
+    &.is--default-visible {
+      display: none;
+    }
+  }
+
+  &__grid {
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 10px;
+      height: 100%;
+      content: "";
+      opacity: .06;
+      @extend %grid-overlay-box-shadow;
+
+      @media screen and (max-width: $breakpoint-small) {
+        width: 20px;
+      }
+    }
+  }
+
+  [class*="col-"] {
+    height: 100vh;
+    opacity: .06;
+    @extend %grid-overlay-box-shadow;
+  }
+
+}
