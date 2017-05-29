@@ -1,0 +1,11 @@
+// Add an extra nested layer to try to make sure the debug style won't be compromised by the css of the project
+html._debug_page_ {
+
+  background-color: $color-light-grey;
+  color: $color-dark-grey;
+
+  &.dark{
+    background-color: $color-dark-grey;
+    color: $color-light-grey;
+  }
+}
