@@ -63,6 +63,8 @@
 @import '00_settings/all';
 @import '01_tools/all';
 
+@import '10_generic/_generic.debug-page';
+
 @import '40_components/components.block-fonts';
 @import '40_components/components.block';
 @import '40_components/components.browsersync-notification';

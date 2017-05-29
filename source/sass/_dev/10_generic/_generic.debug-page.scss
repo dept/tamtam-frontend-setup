@@ -8,4 +8,11 @@ html._debug_page_ {
     background-color: $color-dark-grey;
     color: $color-light-grey;
   }
+  @import "30_objects/_objects.info";
+  @import "30_objects/_objects.pages-list";
+  @import "30_objects/_objects.directories";
+
+  @import "40_components/_components.block";
+  @import "40_components/_components.block-fonts";
+  @import "40_components/_components.svg-collection";
 }
