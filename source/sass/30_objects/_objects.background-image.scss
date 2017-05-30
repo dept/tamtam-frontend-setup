@@ -52,8 +52,28 @@
 
 }
 
-
 .o-background-image--overlay {
+
+  @include background-image;
+
+  &:after {
+
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $color-black;
+    opacity: 0.2;
+
+  }
+
+}
+
+
+
+.o-background-image--gradient {
 
   @include background-image;
 
