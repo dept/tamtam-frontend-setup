@@ -61,11 +61,14 @@
 
 @import '../00_settings/all';
 @import '00_settings/all';
-@import '01_tools/all';
 
-@import '10_generic/_generic.debug-page';
-
-@import '40_components/components.block-fonts';
-@import '40_components/components.block';
 @import '40_components/components.browsersync-notification';
+@import '40_components/components.debug-data';
+@import '40_components/components.grid-overlay';
+@import '40_components/components.info';
+@import '40_components/components.pages-list';
 @import '40_components/components.svg-collection';
+@import '40_components/_styleguide/components.block-fonts';
+@import '40_components/_styleguide/components.block';
+
+@import '70_utilities/utilities.debug-page';
