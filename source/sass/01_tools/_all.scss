@@ -12,6 +12,7 @@
 // Fluid type.........Responsive typography
 // Center.............Centers elements
 // Scrollbar..........Custom scrollbar colors
+// Gradient...........Linear and clothoid gradient
 // Container..........Generates grid container
 // Grid...............Generates grid
 //
@@ -23,6 +24,7 @@
 @import 'tools.fluid-type';
 @import 'tools.center';
 @import 'tools.scrollbar';
+@import 'tools.gradient';
 
 @import 'tools.generate-container';
 @import 'tools.generate-grid';
