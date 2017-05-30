@@ -24,11 +24,11 @@
 
 {% macro gridOverlay( data ) %}
 
-  <label for="_dev-grid-overlay" class="grid-overlay__toggle button">Toggle grid</label>
-  <input type="checkbox" class="grid-overlay__check" id="_dev-grid-overlay">
-  <div class="grid-overlay container{% if data.defaultvisible == 'true' %} is--default-visible{% endif %}">
+  <label for="_dev-grid-overlay" class="c-grid-overlay__toggle button">Toggle grid</label>
+  <input type="checkbox" class="c-grid-overlay__check" id="_dev-grid-overlay">
+  <div class="c-grid-overlay container{% if data.defaultvisible == 'true' %} is--default-visible{% endif %}">
 
-    <div class="grid-overlay__grid grid-{{data.columns}}"
+    <div class="c-grid-overlay__grid grid-{{data.columns}}"
          {% if data.maxwidth %}style="max-width: {{data.maxwidth}}px"{% endif %}
     >
 
