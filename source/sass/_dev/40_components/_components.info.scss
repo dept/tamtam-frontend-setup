@@ -15,17 +15,16 @@
     padding-bottom: 1px;
     border-bottom: 1px solid rgba($color-primary, 0);
     transition: border-bottom-color 200ms ease;
+
     &:hover {
       border-bottom-color: $color-primary;
     }
   }
-
 }
 
-
 .c-project-info__directory-list {
-
   list-style: none;
+
   li:before {
     content: "\2015";
     position: relative;
@@ -34,28 +33,16 @@
 
   ul {
     margin-left: 20px;
+
     li:before {
       content: "\2013";
       position: relative;
       left: -5px;
     }
   }
-
 }
-
-
-.c-project-info__directory {
-
-}
-
-
-.c-project-info__directory-info {
-
-}
-
 
 .c-project-info__code-doc {
-
   font-size: 0;
 
   > div {
@@ -68,16 +55,14 @@
   > div:nth-of-type(1) {
     width: 25%;
   }
+
   > div:nth-of-type(2) {
     width: 75%;
     padding-left: 20px;
   }
-
 }
 
-
 .c-project-info__code-samp {
-
   margin-bottom: 40px;
 
   samp {
@@ -92,24 +77,31 @@
   .function {
     color: $color-orange !important;
   }
+
   .string {
     color: $color-lime !important;
   }
+
   .number {
     color: $color-lime !important;
   }
+
   .boolean {
     color: $color-orange !important;
   }
+
   .null {
     color: $color-orange !important;
   }
+
   .key {
     color: $color-yellow-light !important;
   }
+
   .tag {
     color: $color-turquoise !important;
   }
+
   .comment {
     color: $color-grey-light !important;
   }
@@ -124,5 +116,4 @@
       font-size: 10px !important;
     }
   }
-
 }

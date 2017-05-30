@@ -35,7 +35,8 @@
     z-index: 2;
     transition-property: color;
 
-    &, &:before {
+    &,
+    &:before {
       transition: 150ms cubic-bezier(0.250, 0.460, 0.450, 0.940); // ease out quad
     }
 
@@ -79,25 +80,4 @@
       height: auto;
     }
   }
-}
-
-
-.dark .c-project-pages-list {
-
-  a {
-    color: #333;
-
-    &:before {
-      background-color: $color-off-white;
-    }
-
-    &:hover {
-      color: $color-anthracite;
-
-      &:before {
-        background-color: $color-primary;
-      }
-    }
-  }
-
 }

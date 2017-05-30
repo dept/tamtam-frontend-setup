@@ -27,9 +27,7 @@ $color-grid-padding: darken($color-grid, 50%);
     left: calc(50% - 10px);
   }
 
-  @media screen and
-  (min-width: $breakpoint-small)
-  and (max-width: map_get( $container-config, max-width ) + (map_get( $container-config, gutter ) * 2) ) {
+  @media screen and (min-width: $breakpoint-small) and (max-width: map_get( $container-config, max-width ) + (map_get( $container-config, gutter ) * 2) ) {
 
     left: 0;
     transform: none;
