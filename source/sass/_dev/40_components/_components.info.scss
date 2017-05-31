@@ -1,4 +1,4 @@
-._project-info {
+.c-project-info {
   margin: 60px auto;
 
   code {
@@ -15,17 +15,16 @@
     padding-bottom: 1px;
     border-bottom: 1px solid rgba($color-primary, 0);
     transition: border-bottom-color 200ms ease;
+
     &:hover {
       border-bottom-color: $color-primary;
     }
   }
-
 }
 
-
-._project-info__directory-list {
-
+.c-project-info__directory-list {
   list-style: none;
+
   li:before {
     content: "\2015";
     position: relative;
@@ -34,28 +33,16 @@
 
   ul {
     margin-left: 20px;
+
     li:before {
       content: "\2013";
       position: relative;
       left: -5px;
     }
   }
-
 }
 
-
-._project-info__directory {
-
-}
-
-
-._project-info__directory-info {
-
-}
-
-
-._project-info__code-doc {
-
+.c-project-info__code-doc {
   font-size: 0;
 
   > div {
@@ -68,61 +55,65 @@
   > div:nth-of-type(1) {
     width: 25%;
   }
+
   > div:nth-of-type(2) {
     width: 75%;
     padding-left: 20px;
   }
-
 }
 
-
-._project-info__code-samp {
-
+.c-project-info__code-samp {
   margin-bottom: 40px;
 
   samp {
     display: block;
-    background-color: #2B2A27 !important;
+    background-color: $color-anthracite !important;
     font-family: consolas, menlo, monaco, monospace !important;
     font-size: 15px !important;
-    color: #EDE0CE !important;
+    color: $color-yellow-light !important;
     padding: 15px 10px !important;
   }
 
   .function {
-    color: #FF5D38 !important;
+    color: $color-orange !important;
   }
+
   .string {
-    color: #BCD42A !important;
+    color: $color-lime !important;
   }
+
   .number {
-    color: #BCD42A !important;
+    color: $color-lime !important;
   }
+
   .boolean {
-    color: #FF5D38 !important;
+    color: $color-orange !important;
   }
+
   .null {
-    color: #FF5D38 !important;
+    color: $color-orange !important;
   }
+
   .key {
-    color: #EDE0CE !important;
+    color: $color-yellow-light !important;
   }
+
   .tag {
-    color: #26A6A6 !important;
+    color: $color-turquoise !important;
   }
+
   .comment {
-    color: #808080 !important;
+    color: $color-grey-light !important;
   }
 
   p {
     margin-top: 5px;
     margin-left: 5px;
     font-size: 10px !important;
-    color: #a39890;
+    color: $color-grey-light;
 
     code {
       font-size: 10px !important;
     }
   }
-
 }
