@@ -98,7 +98,7 @@ class Environment {
 
 }
 
-let environment = new Environment();
+const environment = new Environment();
 
 // pre-fill localhost settings
 environment.setLocal( [ 'localhost', '0.0.0.0' ] );
