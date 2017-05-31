@@ -27,25 +27,25 @@ class Environment {
 	 * Function to set the local host name(s)
 	 * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
 	 */
-	setLocal( hostname )        { this.set( ENVIRONMENT_LOCAL, 	        hostname ) }
+	setLocal( hostname ) { this.set( ENVIRONMENT_LOCAL, hostname ); }
 
 	/**
 	 * Function to set the test host name(s)
 	 * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
 	 */
-	setTest ( hostname )        { this.set( ENVIRONMENT_TEST,            hostname ) }
+	setTest ( hostname ) { this.set( ENVIRONMENT_TEST, hostname ); }
 
 	/**
 	 * Function to set the acceptation host name(s)
 	 * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
 	 */
-	setAcceptation ( hostname ) { this.set( ENVIRONMENT_ACCEPTATION,     hostname ) }
+	setAcceptation ( hostname ) { this.set( ENVIRONMENT_ACCEPTATION, hostname ); }
 
 	/**
 	 * Function to set the production host name(s)
 	 * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
 	 */
-	setProduction ( hostname )  { this.set( ENVIRONMENT_PRODUCTION, 	    hostname ) }
+	setProduction ( hostname ) { this.set( ENVIRONMENT_PRODUCTION, hostname ); }
 
 	// @formatter:on
 
@@ -88,13 +88,13 @@ class Environment {
 
 	}
 
-	isLocal()           { return this.get() === ENVIRONMENT_LOCAL }
+	isLocal() { return this.get() === ENVIRONMENT_LOCAL; }
 
-    isTest()            { return this.get() === ENVIRONMENT_TEST }
+    isTest() { return this.get() === ENVIRONMENT_TEST; }
 
-    isAcceptation()     { return this.get() === ENVIRONMENT_ACCEPTATION }
+    isAcceptation() { return this.get() === ENVIRONMENT_ACCEPTATION; }
 
-    isProduction()      { return this.get() === ENVIRONMENT_PRODUCTION }
+    isProduction() { return this.get() === ENVIRONMENT_PRODUCTION; }
 
 }
 
