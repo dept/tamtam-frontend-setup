@@ -16,7 +16,10 @@ function moduleInit( selector, constructor, opt_arguments ) {
 		const element = moduleElements[ i ];
 
 		// check if the module has not already been instantiated on this element
-		if( element._isInitialized ) continue;
+		if( element._isInitialized ) {
+			continue;
+		}
+		
 		element._isInitialized = true;
 
 
