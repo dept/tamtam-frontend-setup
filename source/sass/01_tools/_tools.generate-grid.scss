@@ -322,7 +322,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
     @if( $column-span > 0 ) { $column-width: ($column-span / $grid-size ) * 100%; }
     @else { $column-width: 0; }
-    
+
     @if( $pre-post ){
         & > .u-pre-#{$column-span}#{$modifier}    { margin-left: $column-width; }
         & > .u-post-#{$column-span}#{$modifier}   { margin-right: $column-width; }
