@@ -31,7 +31,7 @@ body {
   @include fluid-type($font-size-body, $font-size-body*0.875)
   line-height: $font-line-height-body;
   hyphens:auto;
-  word-break:break-word;
+  word-break: normal;
 
 }
 
