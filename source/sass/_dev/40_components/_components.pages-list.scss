@@ -2,36 +2,36 @@
   position: relative;
   margin: 20px auto;
   text-align: center;
-  padding: 20px 50px !important;
-  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  letter-spacing: .012em !important;
+  padding: 20px 50px;
+  font-family: $font-stack-primary;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: .012em;
 
   .c-project-pages-list__disclaimer {
-    margin: 0 0 20px 0 !important;
+    margin: 0 0 20px 0;
     color: $color-grey-light;
     font-size: .7em;
   }
 
   ul {
-    margin: 0 0 0 40px !important;
-    padding: 0 !important;
+    margin: 0 0 0 40px;
+    padding: 0;
   }
 
   > ul {
     display: inline-block;
     text-align: left;
-    margin: 0 !important;
-    list-style: none !important;
+    margin: 0;
+    list-style: none;
   }
 
   a {
     position: relative;
-    padding: 4px 10px !important;
-    margin: 0 !important;
+    padding: 4px 10px;
+    margin: 0;
     color: $color-off-white;
-    text-decoration: none !important;
+    text-decoration: none;
     z-index: 2;
     transition-property: color;
 
@@ -68,15 +68,15 @@
   li {
     position: relative;
     height: 30px;
-    margin: 0 0 4px 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
+    margin: 0 0 4px 0;
+    padding: 0;
+    list-style: none;
 
     &.pages-list__folder {
-      margin: 0 0 7px 6px !important;
+      margin: 0 0 7px 6px;
       font-size: .8em;
       line-height: 1.4em;
-      padding: 5px 0 0 0 !important;
+      padding: 5px 0 0 0;
       height: auto;
     }
   }
