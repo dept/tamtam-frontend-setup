@@ -4,7 +4,7 @@
  * @param constructor {function} the function to create a new instance of the module
  * @param opt_arguments {=array} extra arguments to pass onto the module constructor, after the element.
  */
-function moduleInit( selector, constructor, opt_arguments ) {
+function ModuleInit( selector, constructor, opt_arguments ) {
 
 	// grab all the module elements
 	const   moduleElements = document.querySelectorAll( selector );
@@ -50,4 +50,4 @@ function moduleInit( selector, constructor, opt_arguments ) {
 }
 
 // Export the module init function
-export default moduleInit;
+export default ModuleInit;
