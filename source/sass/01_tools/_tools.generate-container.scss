@@ -34,7 +34,7 @@ $container-break-modifier           : 'break'   !default;
 
 
 // private variables
-$_container-created: ();
+$container-created: ();
 
 
 @function _container_validate_config($container-config) {
@@ -89,13 +89,13 @@ $_container-created: ();
   $class-name-break : map_get( $container-config, class-name-break );
 
   // Check first if this grid hasn't already been created
-  @if ( index( $_container-created, $class-name ) != null ) {
+  @if ( index( $container-created, $class-name ) != null ) {
 
     @error 'A container with the classname '#{$class-name}' has already been created! You will need to add an unique postfix setting to this $container-config to be able to have multiple containers. This is needed to generate an unique classname for this container.   Current config: ' + $container-config;
 
   } @else {
 
-    $_container-created: append( $_container-created, $class-name ) !global; // overwrite global variable to save a reference.
+    $container-created: append( $container-created, $class-name ) !global; // overwrite global variable to save a reference.
 
   }
 

@@ -53,21 +53,21 @@
 
   }
 
-  if ($direction == right) {
+  @if ($direction == right) {
 
     border-width: $height/2 0 $height/2 $width;
     border-color: transparent transparent transparent $color;
 
   }
 
-  if ($direction == bottom) {
+  @if ($direction == bottom) {
 
     border-width: $height $width/2 0;
     border-color: $color transparent transparent;
 
   }
 
-  if ($direction == left) {
+  @if ($direction == left) {
 
     border-width: $height/2 $width $height/2 0;
     border-color: transparent $color;

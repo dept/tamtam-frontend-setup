@@ -103,9 +103,9 @@ $grid-middle-modifier           : 'middle'          !default;
 
 //  @private variables
 //  These variables are used for generating the grids and should not be touched!
-$_grid-created                      : ();
-$_grid-small-gutters-created        : false;
-$_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
+$grid-created                      : ();
+$grid-small-gutters-created        : false;
+$grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
 
 %grid-base {
@@ -349,7 +349,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
     $update-gutter          : false;
 
-    @if ( $_grid-small-gutters-created == false and $grid-breakpoint <= $grid-gutter-small-breakpoint and $gutter-size != $gutter-size-small ) {
+    @if ( $grid-small-gutters-created == false and $grid-breakpoint <= $grid-gutter-small-breakpoint and $gutter-size != $gutter-size-small ) {
 
         $gutter-size        : $gutter-size-small;
         $update-gutter      : true;
@@ -385,13 +385,13 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
     $push-pull              : map_get( $grid-config, add-push-pull );
     $pre-post               : map_get( $grid-config, add-pre-post );
 
-     @if ( index($_grid-created, $grid-class ) != null ) {     // Check first if this grid hasn't already been created
+     @if ( index($grid-created, $grid-class ) != null ) {     // Check first if this grid hasn't already been created
 
          @error 'A grid with the classname \'' + #{$grid-class} + '\' has already been created! You will need to add an unique postfix setting to this $grid-config to be able to have multiple grids with the same amount of columns. This is needed to generate an unique classname for th grid.  Current config: ' + $grid-config;
 
      } @else {
 
-        $_grids-created: append( $_grid-created, $grid-class ) !global;     // overwrite global variable to save a reference.
+        $_grids-created: append( $grid-created, $grid-class ) !global;     // overwrite global variable to save a reference.
 
     }
 
@@ -404,7 +404,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
         $breakpoints: $grid-breakpoints;
 
-        @if( $grid-mobile-first == true ){ $breakpoints: $_grid-breakpoints-large-to-small } // switch order of breakpoints if not mobile first.
+        @if( $grid-mobile-first == true ){ $breakpoints: $grid-breakpoints-large-to-small } // switch order of breakpoints if not mobile first.
 
         // Use the reversed order of the size modifiers so we get the right priority order.
         @each $size-modifier, $grid-breakpoint in $breakpoints {
@@ -458,7 +458,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
     // Run through each breakpoint setting specified in the grid-breakpoints and generate the breakpoint specific column classes.
     $previous-modifier: '';
-    $breakpoints: $_grid-breakpoints-large-to-small;
+    $breakpoints: $grid-breakpoints-large-to-small;
     @if( $grid-mobile-first == true ){ $breakpoints: $grid-breakpoints } // switch order of breakpoints if not mobile first.
     @each $size-modifier, $grid-breakpoint in $breakpoints {
 
@@ -475,7 +475,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
             $previous-modifier: $size-modifier;
 
             // Save a reference that we updated the gutters
-            @if ( $grid-breakpoint <= $grid-gutter-small-breakpoint ) { $_grid-small-gutters-created: true !global; }
+            @if ( $grid-breakpoint <= $grid-gutter-small-breakpoint ) { $grid-small-gutters-created: true !global; }
 
         }
 
