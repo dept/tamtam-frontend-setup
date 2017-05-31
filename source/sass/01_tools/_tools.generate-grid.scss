@@ -141,7 +141,7 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
 
 //  A function that validates a grid config and will return a validated and parsed config map.
-@function _grid_validate_config( $grid-config ) {
+@function grid_validate_config( $grid-config ) {
 
     @if( type-of( $grid-config ) != 'map' ) {
 
@@ -177,18 +177,18 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 }
 
 
-@mixin _grid_create_media_query( $breakpoint ) {
+@mixin grid_create_media_query( $breakpoint ) {
 
     @if( $grid-mobile-first == true ) {
 
-        @media only screen and ( min-width : #{$breakpoint} ) { 
-            @content 
+        @media only screen and ( min-width : #{$breakpoint} ) {
+            @content
         }
 
     } @else {
 
-        @media only screen and ( max-width : #{$breakpoint - 1} ) { 
-            @content 
+        @media only screen and ( max-width : #{$breakpoint - 1} ) {
+            @content
         }
 
     }
@@ -197,7 +197,7 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
 
 // A mixin that creates the grid-fill helper
-@mixin _grid_create_fill_helper( $modifier: '', $reset: false ) {
+@mixin grid_create_fill_helper( $modifier: '', $reset: false ) {
 
     @if( $grid-add-fill == true ) {
 
@@ -245,7 +245,7 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 }
 
 // A mixin that creates the grid-middle helper
-@mixin _grid_create_middle_helper( $modifier: '', $reset: false ) {
+@mixin grid_create_middle_helper( $modifier: '', $reset: false ) {
 
     @if( $grid-add-middle == true ) {
 
@@ -342,7 +342,7 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
 
 //  The mixin responsible for creating the responsive columns within the grids.
-@mixin _grid_create_responsive_columns( $grid-breakpoint, $size-modifier, $grid-config ){
+@mixin grid_create_responsive_columns( $grid-breakpoint, $size-modifier, $grid-config ){
 
     $gutter-size            : map_get( $grid-config, gutter );
     $gutter-size-small      : map_get( $grid-config, gutter-small );
@@ -380,7 +380,7 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
 
 //  A mixin that creates the base of the grid. It includes default widths for its columns.
-@mixin _grid_create_base( $grid-config ) {
+@mixin grid_create_base( $grid-config ) {
 
     $grid-class             : map_get( $grid-config, class-name );
     $columns                : map_get( $grid-config, columns );
@@ -439,7 +439,7 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
 
 //  The main mixin that will parse the config and create all the grids.
-@mixin _grid_create( $config ) {
+@mixin grid_create( $config ) {
 
     // check if config is of a valid type
     @if( type-of( $config ) != 'map' and type_of( $config ) != 'list' ) { @error 'Invalid config! $grid-config needs to be a single grid config of type map, or a list holding multiple grid configs!'; }
@@ -449,15 +449,15 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
     $parsed-config      : ();
 
     // Parse grid configs
-    @each $grid-config in $config { $parsed-config: append( $parsed-config, _grid_validate_config( $grid-config ) ); }
+    @each $grid-config in $config { $parsed-config: append( $parsed-config, grid_validate_config( $grid-config ) ); }
 
     // Create grid base
-    @each $grid-config in $parsed-config { @include _grid_create_base( $grid-config ); }
+    @each $grid-config in $parsed-config { @include grid_create_base( $grid-config ); }
 
 
 
-    @include _grid_create_fill_helper;
-    @include _grid_create_middle_helper;
+    @include grid_create_fill_helper;
+    @include grid_create_middle_helper;
 
 
     // Run through each breakpoint setting specified in the grid-breakpoints and generate the breakpoint specific column classes.
@@ -466,15 +466,15 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
     @if( $grid-mobile-first == true ){ $breakpoints: $grid-breakpoints } // switch order of breakpoints if not mobile first.
     @each $size-modifier, $grid-breakpoint in $breakpoints {
 
-        @include _grid_create_media_query( $grid-breakpoint ) {
+        @include grid_create_media_query( $grid-breakpoint ) {
 
-            @each $grid-config in $parsed-config { @include _grid_create_responsive_columns( $grid-breakpoint, $size-modifier, $grid-config ); }
+            @each $grid-config in $parsed-config { @include grid_create_responsive_columns( $grid-breakpoint, $size-modifier, $grid-config ); }
 
-            @include _grid_create_fill_helper( $previous-modifier, true );
-            @include _grid_create_fill_helper( $size-modifier );
+            @include grid_create_fill_helper( $previous-modifier, true );
+            @include grid_create_fill_helper( $size-modifier );
 
-            @include _grid_create_middle_helper( $previous-modifier, true );
-            @include _grid_create_middle_helper( $size-modifier );
+            @include grid_create_middle_helper( $previous-modifier, true );
+            @include grid_create_middle_helper( $size-modifier );
 
             $previous-modifier: $size-modifier;
 
