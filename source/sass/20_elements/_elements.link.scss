@@ -5,7 +5,6 @@ $link-transition-ease: $ease-in-out-quad;
 @mixin link--base {
   color: inherit;
   cursor: pointer;
-  text-decoration: none;
   text-overflow: ellipsis;
   transition: color $link-transition-time $link-transition-ease,
               border $link-transition-time $link-transition-ease;
