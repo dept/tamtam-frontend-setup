@@ -1,9 +1,9 @@
 @mixin p {
     margin-bottom: 1em;
-    font-size:$font-size-body;
+    font-size: $font-size-body;
 
     &:last-child {
-        margin-bottom:0;
+        margin-bottom: 0;
     }
 }
 

@@ -181,11 +181,15 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
     @if( $grid-mobile-first == true ) {
 
-        @media only screen and ( min-width : #{$breakpoint} ) { @content }
+        @media only screen and ( min-width : #{$breakpoint} ) { 
+            @content 
+        }
 
     } @else {
 
-        @media only screen and ( max-width : #{$breakpoint - 1} ) { @content }
+        @media only screen and ( max-width : #{$breakpoint - 1} ) { 
+            @content 
+        }
 
     }
 
