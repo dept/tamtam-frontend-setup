@@ -119,8 +119,8 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
     & > [class*='#{$grid-column-base-class}-'] { @extend %grid-column-base; }
 
-    &.#{$grid-base-class}--center   { text-align: center; };
-    &.#{$grid-base-class}--right    { text-align: right;  };
+    &.#{$grid-base-class}--center   { text-align: center; }
+    &.#{$grid-base-class}--right    { text-align: right;  }
 
 }
 
@@ -430,7 +430,7 @@ $_grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
     }
 
-};
+}
 
 
 
