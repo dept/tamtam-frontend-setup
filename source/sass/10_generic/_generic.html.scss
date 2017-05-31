@@ -13,9 +13,9 @@ body {
 
 html {
 
-  font-family:$font-stack-primary;
+  font-family: $font-stack-primary;
   font-size: $font-size-root;
-  color:$color-text;
+  color: $color-text;
 
   background-color: $color-white;
   min-height: 100%;
@@ -30,7 +30,7 @@ body {
 
   @include fluid-type($font-size-body, $font-size-body*0.875)
   line-height: $font-line-height-body;
-  hyphens:auto;
+  hyphens: auto;
   word-break: normal;
 
 }
