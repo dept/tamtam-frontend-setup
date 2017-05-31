@@ -14,10 +14,10 @@ $spacing-directions: ( 'top', 'left', 'bottom', 'right' );
 @each $spacing-modifier, $spacing-margin in $spacing-margins {
 
   @each $spacing-direction in $spacing-directions {
-    
+
     .margin--#{$spacing-modifier}                        {   margin:                        $spacing-margin     !important; }
     .margin-#{$spacing-direction}--#{$spacing-modifier}  {   margin-#{$spacing-direction}:  $spacing-margin     !important; }
-    
+
     .padding--#{$spacing-modifier}                       {   padding:                       $spacing-margin     !important; }
     .padding-#{$spacing-direction}--#{$spacing-modifier} {   padding-#{$spacing-direction}: $spacing-margin     !important; }
 
