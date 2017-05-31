@@ -20,7 +20,7 @@ $alpha-to:      0 !default;
 
 @mixin linear-gradient($color: #000000, $alpha-from: 1, $alpha-to: 0) {
     background-image: linear-gradient(
-                    rgba($color, $alpha-from) 0%,
+                    rgba($color, $alpha-from) 0,
                     rgba($color, $alpha-to) 100%
     );
 }
@@ -28,7 +28,7 @@ $alpha-to:      0 !default;
 @mixin clothoid-gradient($color: #000000, $alpha-from: 1, $alpha-to: 0) {
     $diff: $alpha-from - $alpha-to;
     background-image: linear-gradient(
-                    rgba($color, $alpha-from) 0%,
+                    rgba($color, $alpha-from) 0,
                     rgba($color, $alpha-from - $diff*0.7) 50%,
                     rgba($color, $alpha-from - $diff*0.85) 65%,
                     rgba($color, $alpha-from - $diff*0.925) 75.5%,
