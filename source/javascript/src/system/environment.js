@@ -72,7 +72,7 @@ class Environment {
 			return this._environment;
 		}
 
-        for ( let hostname in this._environments ) {
+        for ( const hostname in this._environments ) {
 
             if( location.hostname === hostname ) {
 
