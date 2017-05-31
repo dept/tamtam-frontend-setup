@@ -19,7 +19,7 @@ function moduleInit( selector, constructor, opt_arguments ) {
 		if( element._isInitialized ) {
 			continue;
 		}
-		
+
 		element._isInitialized = true;
 
 
