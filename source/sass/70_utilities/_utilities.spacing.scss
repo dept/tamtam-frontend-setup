@@ -1,0 +1,26 @@
+// sass-lint:disable no-vendor-prefixes, brace-style, no-important, no-trailing-whitespace
+
+//
+//    A collection of some helper classes for tweaking the layout of the elements.
+//
+//
+//    .u-margin-{direction}--xs      - .u-margin-{direction}--lg
+//    .u-padding-{direction}--xs     - .u-padding-{direction}--lg
+//
+//
+
+$spacing-directions: ( 'top', 'left', 'bottom', 'right' );
+
+@each $spacing-modifier, $spacing-margin in $spacing-margins {
+
+  @each $spacing-direction in $spacing-directions {
+
+    .u-margin--#{$spacing-modifier}                        {   margin:                        $spacing-margin     !important; }
+    .u-margin-#{$spacing-direction}--#{$spacing-modifier}  {   margin-#{$spacing-direction}:  $spacing-margin     !important; }
+
+    .u-padding--#{$spacing-modifier}                       {   padding:                       $spacing-margin     !important; }
+    .u-padding-#{$spacing-direction}--#{$spacing-modifier} {   padding-#{$spacing-direction}: $spacing-margin     !important; }
+
+  }
+
+}
