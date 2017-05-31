@@ -68,7 +68,9 @@ class Environment {
 
 	get() {
 
-		if( this._environment !== null ) return this._environment;
+		if( this._environment !== null ) {
+			return this._environment;
+		}
 
         for ( let hostname in this._environments ) {
 
