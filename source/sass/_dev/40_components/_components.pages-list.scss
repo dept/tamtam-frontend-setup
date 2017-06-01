@@ -41,7 +41,7 @@
     }
 
     &:before {
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
       transition-property: background-color, left, right;
       content: ' ';
       display: block;
@@ -57,7 +57,6 @@
     &:hover {
 
       &:before {
-        background-color: $color-yellow-light;
         background-color: $color-primary;
         left: -5px;
         right: -5px;
@@ -67,17 +66,8 @@
 
   li {
     position: relative;
-    height: 30px;
     margin: 0 0 4px 0;
     padding: 0;
     list-style: none;
-
-    &.pages-list__folder {
-      margin: 0 0 7px 6px;
-      font-size: .8em;
-      line-height: 1.4em;
-      padding: 5px 0 0 0;
-      height: auto;
-    }
   }
 }
