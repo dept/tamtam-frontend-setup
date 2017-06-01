@@ -1,4 +1,4 @@
-var DEBUG_CLASS_NAME = '_debug-data-log';
+var DEBUG_CLASS_NAME = 'c-debug-data-log';
 
 
 /**
