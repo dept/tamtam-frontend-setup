@@ -1,11 +1,7 @@
 @mixin background--primary {
-  background-color:$color-primary;
+  background-color: $color-primary;
 }
 
-.o-background {
-
-  &--primary {
+.o-background--primary {
     @include background--primary;
-  }
-
 }

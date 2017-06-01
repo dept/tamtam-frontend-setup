@@ -10,8 +10,6 @@ function Example( element ) {
 
 	let _value = 0;
 
-	console.log( 'new example module instantiated!' );
-
 	updateUI();
 
 	element.addEventListener( 'click', handleClickEvent );

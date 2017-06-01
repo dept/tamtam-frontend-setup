@@ -34,10 +34,10 @@ $container-break-modifier           : 'break'   !default;
 
 
 // private variables
-$_container-created: ();
+$container-created: ();
 
 
-@function _container_validate_config($container-config) {
+@function container-validate-config($container-config) {
 
   @if (type-of( $container-config ) != "map") { @error '$container-config is not a valid map. Current config: ' + $container-config; }
 
@@ -82,20 +82,20 @@ $_container-created: ();
 
 
 
-@mixin _container_create_base( $container-config ) {
+@mixin container-create-base( $container-config ) {
 
   $class-name       : map_get( $container-config, class-name );
   $class-name-fill  : map_get( $container-config, class-name-fill );
   $class-name-break : map_get( $container-config, class-name-break );
 
   // Check first if this grid hasn't already been created
-  @if ( index( $_container-created, $class-name ) != null ) {
+  @if ( index( $container-created, $class-name ) != null ) {
 
     @error 'A container with the classname '#{$class-name}' has already been created! You will need to add an unique postfix setting to this $container-config to be able to have multiple containers. This is needed to generate an unique classname for this container.   Current config: ' + $container-config;
 
   } @else {
 
-    $_container-created: append( $_container-created, $class-name ) !global; // overwrite global variable to save a reference.
+    $container-created: append( $container-created, $class-name ) !global; // overwrite global variable to save a reference.
 
   }
 
@@ -105,7 +105,7 @@ $_container-created: ();
 
 }
 
-@mixin _container_apply_small_gutter( $container-config ) {
+@mixin container-apply-small-gutter( $container-config ) {
 
   $gutter-small     : map_get( $container-config, gutter-small );
   $class-name       : map_get( $container-config, class-name );
@@ -146,7 +146,7 @@ $_container-created: ();
 }
 
 
-@mixin _container_apply_default_gutter( $container-config ) {
+@mixin container-apply-default-gutter( $container-config ) {
 
   $gutter           : map_get( $container-config, gutter );
   $gutter-small     : map_get( $container-config, gutter-small );
@@ -184,7 +184,7 @@ $_container-created: ();
 }
 
 
-@mixin _container_apply_responsive_gutter( $container-config ) {
+@mixin container-apply-responsive-gutter( $container-config ) {
 
   $max-width        : map_get( $container-config, max-width );
   $gutter           : map_get( $container-config, gutter );
@@ -236,7 +236,7 @@ $_container-created: ();
 
 
 
-@mixin _container_create($config) {
+@mixin container-create($config) {
 
   $parsed-config    : ();
 
@@ -245,10 +245,10 @@ $_container-created: ();
 
 
   // Parse container configs
-  @each $container-config in $config { $parsed-config: append( $parsed-config, _container_validate_config( $container-config ) ); }
+  @each $container-config in $config { $parsed-config: append( $parsed-config, container-validate-config( $container-config ) ); }
 
   // Create container base
-  @each $container-config in $parsed-config { @include _container_create_base( $container-config ); }
+  @each $container-config in $parsed-config { @include container-create-base( $container-config ); }
 
 
 
@@ -256,12 +256,12 @@ $_container-created: ();
 
 
     // Apply small gutters
-    @each $container-config in $parsed-config { @include _container_apply_small_gutter( $container-config ); }
+    @each $container-config in $parsed-config { @include container-apply-small-gutter( $container-config ); }
 
     // Update container with regular gutter
     @media only screen and (min-width: $container-padding-small-breakpoint) {
 
-      @each $container-config in $parsed-config { @include _container_apply_default_gutter( $container-config ); }
+      @each $container-config in $parsed-config { @include container-apply-default-gutter( $container-config ); }
 
     }
 
@@ -274,7 +274,7 @@ $_container-created: ();
 
         @media only screen and (min-width: #{$max-width-media}) {
 
-          @include _container_apply_responsive_gutter( $container-config );
+          @include container-apply-responsive-gutter( $container-config );
 
         }
 
@@ -287,7 +287,7 @@ $_container-created: ();
 
 
     // Apply small gutters
-    @each $container-config in $parsed-config { @include _container_apply_responsive_gutter( $container-config ); }
+    @each $container-config in $parsed-config { @include container-apply-responsive-gutter( $container-config ); }
 
     // apply container with large gutter
     @each $container-config in $parsed-config {
@@ -298,7 +298,7 @@ $_container-created: ();
 
         @media only screen and (max-width: #{$max-width-media}) {
 
-          @include _container_apply_default_gutter( $container-config );
+          @include container-apply-default-gutter( $container-config );
 
         }
 
@@ -309,7 +309,7 @@ $_container-created: ();
     // Update container with regular gutter
     @media only screen and (max-width: $container-padding-small-breakpoint) {
 
-      @each $container-config in $parsed-config { @include _container_apply_small_gutter( $container-config ); }
+      @each $container-config in $parsed-config { @include container-apply-small-gutter( $container-config ); }
 
     }
 

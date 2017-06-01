@@ -6,64 +6,60 @@
   flex-wrap: wrap;
 }
 
-.u-flex-direction {
-  &--column {
-    @include generate-mediaquery-rules {
-      flex-direction: column;
-    }
-  }
-
-  &--row {
-    @include generate-mediaquery-rules {
-      flex-direction: row;
-    }
+.u-flex-direction--column {
+  @include generate-mediaquery-rules {
+    flex-direction: column;
   }
 }
 
-.u-flex-align {
-  &--top {
-    @include generate-mediaquery-rules {
-      align-items: flex-start;
-    }
-  }
-
-  &--center {
-    @include generate-mediaquery-rules {
-      align-items: center;
-    }
-  }
-
-  &--baseline {
-    @include generate-mediaquery-rules {
-      align-items: baseline;
-    }
-  }
-
-  &--bottom {
-    @include generate-mediaquery-rules {
-      align-items: flex-end;
-    }
+.u-flex-direction--row {
+  @include generate-mediaquery-rules {
+    flex-direction: row;
   }
 }
 
-.u-flex-self {
-  &--left {
-    @include generate-mediaquery-rules {
-      align-self: flex-start;
-      margin-right: auto;
-    }
+.u-flex-align--top {
+  @include generate-mediaquery-rules {
+    align-items: flex-start;
   }
+}
 
-  &--center {
-    @include generate-mediaquery-rules {
-      align-self: center;
-    }
+.u-flex-align--center {
+  @include generate-mediaquery-rules {
+    align-items: center;
   }
+}
 
-  &--right {
-    @include generate-mediaquery-rules {
-      align-self: flex-end;
-      margin-left: auto;
-    }
+.u-flex-align--baseline {
+  @include generate-mediaquery-rules {
+    align-items: baseline;
+  }
+}
+
+.u-flex-align--bottom {
+  @include generate-mediaquery-rules {
+    align-items: flex-end;
+  }
+}
+
+
+
+.u-flex-self--left {
+  @include generate-mediaquery-rules {
+    align-self: flex-start;
+    margin-right: auto;
+  }
+}
+
+.u-flex-self--center {
+  @include generate-mediaquery-rules {
+    align-self: center;
+  }
+}
+
+.u-flex-self--right {
+  @include generate-mediaquery-rules {
+    align-self: flex-end;
+    margin-left: auto;
   }
 }
