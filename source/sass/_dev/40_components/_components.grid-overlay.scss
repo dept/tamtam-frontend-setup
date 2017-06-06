@@ -12,7 +12,7 @@ $color-grid-padding: darken($color-grid, 50%);
 
 .c-grid-overlay {
 
-  display: none;
+  display: none !important;
   height: 100%;
   left: 50%;
   position: fixed;
@@ -36,7 +36,7 @@ $color-grid-padding: darken($color-grid, 50%);
   }
 
   &.is--default-visible {
-    display: block;
+    display: block !important;
   }
 
   [class*="col-"] {
@@ -47,25 +47,31 @@ $color-grid-padding: darken($color-grid, 50%);
 
 }
 
+
 .grid-overlay__toggle.button {
+
   bottom: 0;
   font-size: 1.3rem;
   left: 0;
   position: fixed;
   text-transform: none;
   z-index: 4;
+
 }
 
 .grid-overlay__check {
-  display: none;
+  position: absolute;
+  height: 0;
+  width: 0;
+  visibility: hidden;
 }
 
 
-.grid-overlay__check:checked + .grid-overlay {
-  display: block;
+.grid-overlay__check:checked + .c-grid-overlay {
+  display: block !important;
 
   &.is--default-visible {
-    display: none;
+    display: none !important;
   }
 }
 
