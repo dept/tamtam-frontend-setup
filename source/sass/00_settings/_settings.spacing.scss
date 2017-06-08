@@ -5,24 +5,39 @@
 //
 //    Set the margins for each viewport
 //
-//    @see: helpers/spacing
+//    @see: utiltiies/spacing
 //
-//    @example: .offset-top-xs
+//    @example: .u-margin-top--xs
 //
 //
 
-$base-spacing : 20px;
+$base-spacing : 12px;
 
-$margin-xlg   : $base-spacing*5;
-$margin-lg    : $base-spacing*3;
-$margin-md    : $base-spacing*2;
-$margin-sm    : $base-spacing;
-$margin-xs    : $base-spacing/2;
-
-$spacing-margins: (
-                     'xlg' : $margin-xlg,
-                     'lg'  : $margin-lg,
-                     'md'  : $margin-md,
-                     'sm'  : $margin-sm,
-                     'xs'  : $margin-xs
-                  );
+$spacing-sizes: (
+                 // Spacing modifier
+                 // .u-margin-top--{ modifier }
+                 'xlg' : (
+                 	 // Breakpoint triggers
+			         'xlg': $base-spacing*8,
+			         'lg': $base-spacing*4,
+			         'md': $base-spacing*3,
+			         'sm': $base-spacing*2,
+			         'xs': $base-spacing*2
+		         ),
+                 'lg'  : (
+			         'xlg': $base-spacing*6,
+			         'lg': $base-spacing*4,
+			         'md': $base-spacing*2,
+			         'sm': $base-spacing*2,
+			         'xs': $base-spacing*2
+		         ),
+                 'md'  : (
+			         'xlg': $base-spacing*4,
+			         'lg': $base-spacing*4,
+			         'md': $base-spacing*2,
+			         'sm': $base-spacing*2,
+			         'xs': $base-spacing*2
+		         ),
+                 'sm'  : $base-spacing*2,
+                 'xs'  : $base-spacing
+              	);

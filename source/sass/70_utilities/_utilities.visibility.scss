@@ -10,17 +10,7 @@
 //    </div>
 //
 
-
-$visibility-breakpoints: (
-                     'xlg': $screen-extra-large-and-up,
-                     'lg': $screen-large-only,
-                     'md': $screen-medium-only,
-                     'sm': $screen-small-only,
-                     'xs': $screen-small-and-down
-                  );
-
-
-@each $visibility-modifier, $visibility-media in $visibility-breakpoints {
+@each $visibility-modifier, $visibility-media in $breakpoint-list {
 
     .u-visible-#{$visibility-modifier},
     .u-visible-#{$visibility-modifier}-block,
