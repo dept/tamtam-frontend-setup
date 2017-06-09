@@ -1,4 +1,4 @@
-// sass-lint:disable mixin-name-format, no-warn, quotes, function-name-format, brace-style, trailing-semicolon
+// sass-lint:disable mixin-name-format, no-warn, quotes, function-name-format, brace-style, trailing-semicolon, indentation
 
 // @formatter:off
 
@@ -126,7 +126,7 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
 %grid-column-base {
 
-    font-family: $grid-font-reset;  // reset whitespace settings
+    @include font-primary-regular;
     letter-spacing: normal;
 
     display: inline-block;
@@ -276,7 +276,7 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
 //  A mixin that updated the gutter size of a grid.
 @mixin grid-update-gutter( $gutter-size ) {
-
+        
     @if( strip-unit( $gutter-size ) > 0) {
 
         margin-left: -$gutter-size;
@@ -353,10 +353,17 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
     $update-gutter          : false;
 
-    @if ( $grid-small-gutters-created == false and $grid-breakpoint <= $grid-gutter-small-breakpoint and $gutter-size != $gutter-size-small ) {
+    @if ($grid-mobile-first == false and $grid-small-gutters-created == false and $grid-breakpoint <= $grid-gutter-small-breakpoint and $gutter-size != $gutter-size-small ) {
 
-        $gutter-size        : $gutter-size-small;
-        $update-gutter      : true;
+        $gutter-size   : $gutter-size-small;
+        $update-gutter : true;
+
+    }
+
+    @if($grid-mobile-first == true and $grid-breakpoint >= $grid-gutter-small-breakpoint and $gutter-size != $gutter-size-small ) {
+
+        $gutter-size   : $gutter-size;
+        $update-gutter : true;
 
     }
 
@@ -389,11 +396,15 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
     $push-pull              : map_get( $grid-config, add-push-pull );
     $pre-post               : map_get( $grid-config, add-pre-post );
 
-     @if ( index($grid-created, $grid-class ) != null ) {     // Check first if this grid hasn't already been created
+    @if ($grid-mobile-first == true) {
+        $gutter-size: $gutter-size-small;
+    }
 
-         @error 'A grid with the classname \'' + #{$grid-class} + '\' has already been created! You will need to add an unique postfix setting to this $grid-config to be able to have multiple grids with the same amount of columns. This is needed to generate an unique classname for th grid.  Current config: ' + $grid-config;
+    @if ( index($grid-created, $grid-class ) != null ) {     // Check first if this grid hasn't already been created
 
-     } @else {
+        @error 'A grid with the classname \'' + #{$grid-class} + '\' has already been created! You will need to add an unique postfix setting to this $grid-config to be able to have multiple grids with the same amount of columns. This is needed to generate an unique classname for th grid.  Current config: ' + $grid-config;
+
+    } @else {
 
         $grids-created: append( $grid-created, $grid-class ) !global;     // overwrite global variable to save a reference.
 
