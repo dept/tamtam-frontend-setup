@@ -402,11 +402,11 @@ Below are the modifier classes you can use to change the columns.
 
 Option                                      | Description
 --------------                              | -------------
-`u-col-*@{breakpoint}`                        | Creates x amount of columns according to the given `breakpoint`
-`u-push-*` -or-<br/> `u-push-{breakpoint}-*`    | Pushes element x amount of columns using `right`
-`u-pull-*` -or-<br/> `u-pull-{breakpoint}-*`    | Pulls element x amount of columns using `left`
-`u-pre-*`  -or-<br/> `u-pre-{breakpoint}-*`     | Adds `margin-left` to element x amount of columns
-`u-post-*`  -or-<br/> `u-post-{breakpoint}-*`   | Adds `margin-right` to element x amount of columns
+`u-col-*--{breakpoint}`                        | Creates x amount of columns according to the given `breakpoint`
+`u-push-*` -or-<br/> `u-push-*--{breakpoint}`    | Pushes element x amount of columns using `right`
+`u-pull-*` -or-<br/> `u-pull-*--{breakpoint}`    | Pulls element x amount of columns using `left`
+`u-pre-*`  -or-<br/> `u-pre-*--{breakpoint}`     | Adds `margin-left` to element x amount of columns
+`u-post-*`  -or-<br/> `u-post-*--{breakpoint}`   | Adds `margin-right` to element x amount of columns
 
 _* - amount of columns_
 
