@@ -3,35 +3,32 @@
 //  PRECISE CONTROL OVER RESPONSIVE TYPOGRAPHY FOR SASS
 //  ---------------------------------------------------
 //  Indrek Paas @indrekpaas
-//
-//  Inspired by Mike Riethmuller's Precise control over responsive typography
-//  http://madebymike.com.au/writing/precise-control-responsive-typography/
-//
-//  `strip-unit()` function by Hugo Giraudel
-//
-//  11.08.2016 Remove redundant `&` self-reference
-//  31.03.2016 Remove redundant parenthesis from output
-//  02.10.2015 Add support for multiple properties
-//  24.04.2015 Initial release
+//  Edited by Adrian Klingen for rem support
 //
 // =========================================================================
 
 @mixin fluid-type($max-value, $min-value, $properties: font-size, $max-vw: $breakpoint-extra-large, $min-vw: $breakpoint-small) {
-
-  @each $property in $properties {
-    #{$property}: $min-value;
-  }
-
-  @media screen and (min-width: $min-vw) {
     @each $property in $properties {
-      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+        #{$property}: rem-to-px($min-value);
     }
-  }
 
-  @media screen and (min-width: $max-vw) {
-    @each $property in $properties {
-      #{$property}: $max-value;
+    @media screen and (min-width: $min-vw) {
+        @each $property in $properties {
+            #{$property}: calc(#{rem-to-px($min-value)} + #{tenfold(strip-unit($max-value - $min-value))} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+        }
     }
-  }
 
+    @media screen and (min-width: $max-vw) {
+        @each $property in $properties {
+            #{$property}: rem-to-px($max-value);
+        }
+    }
+}
+
+@function tenfold($size) {
+    @return (strip-unit($size) * 10);
+}
+
+@function rem-to-px($size) {
+    @return tenfold($size) + px;
 }
