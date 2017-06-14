@@ -126,7 +126,7 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
 %grid-column-base {
 
-    @include font-primary-regular;
+    font-family: $font-stack-primary;
     letter-spacing: normal;
 
     display: inline-block;
@@ -276,7 +276,7 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
 //  A mixin that updated the gutter size of a grid.
 @mixin grid-update-gutter( $gutter-size ) {
-        
+
     @if( strip-unit( $gutter-size ) > 0) {
 
         margin-left: -$gutter-size;
@@ -304,7 +304,7 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 //  The mixin that sets the correct width of a column
 @mixin grid-column( $column-span, $grid-size, $gutter-size, $modifier: '') {
 
-    @if($modifier != '') { $modifier: '\\@' + $modifier; }
+    @if($modifier != '') { $modifier: '--' + $modifier; }
     $column-width: ($column-span / $grid-size ) * 100%;
 
     & > .#{$grid-column-base-class}-#{$column-span}#{$modifier} {
@@ -322,7 +322,7 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
 
     $column-width: 0;
 
-    @if($modifier != '') { $modifier: '\\@' + $modifier; }
+    @if($modifier != '') { $modifier: '--' + $modifier; }
 
     @if( $column-span > 0 ) { $column-width: ($column-span / $grid-size ) * 100%; }
     @else { $column-width: 0; }

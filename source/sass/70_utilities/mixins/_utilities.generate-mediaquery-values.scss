@@ -3,7 +3,7 @@
 
   @each $breakpoint, $size in $grid-breakpoints {
 
-    &\@#{$breakpoint} {
+    &--#{$breakpoint} {
 
       @if($grid-mobile-first) {
 
