@@ -30,3 +30,8 @@ rules:
     - 1
     -
       max-depth: 4
+  no-misspelled-properties:
+    - 1
+    -
+      'extra-properties':
+        - 'overflow-scrolling'
