@@ -17,27 +17,27 @@ $spacing-sizes: (
                  // Spacing modifier
                  // .u-margin-top--{ modifier }
                  'xlg' : (
-                 	 // Breakpoint triggers
-			         'xlg': $base-spacing*8,
-			         'lg': $base-spacing*4,
-			         'md': $base-spacing*3,
-			         'sm': $base-spacing*2,
-			         'xs': $base-spacing*2
-		         ),
+                      // Breakpoint triggers
+                     'xlg': $base-spacing*8,
+                     'lg': $base-spacing*4,
+                     'md': $base-spacing*3,
+                     'sm': $base-spacing*2,
+                     'xs': $base-spacing*2
+                 ),
                  'lg'  : (
-			         'xlg': $base-spacing*6,
-			         'lg': $base-spacing*4,
-			         'md': $base-spacing*2,
-			         'sm': $base-spacing*2,
-			         'xs': $base-spacing*2
-		         ),
+                     'xlg': $base-spacing*6,
+                     'lg': $base-spacing*4,
+                     'md': $base-spacing*2,
+                     'sm': $base-spacing*2,
+                     'xs': $base-spacing*2
+                 ),
                  'md'  : (
-			         'xlg': $base-spacing*4,
-			         'lg': $base-spacing*4,
-			         'md': $base-spacing*2,
-			         'sm': $base-spacing*2,
-			         'xs': $base-spacing*2
-		         ),
+                     'xlg': $base-spacing*4,
+                     'lg': $base-spacing*4,
+                     'md': $base-spacing*2,
+                     'sm': $base-spacing*2,
+                     'xs': $base-spacing*2
+                 ),
                  'sm'  : $base-spacing*2,
                  'xs'  : $base-spacing
-              	);
+                );
