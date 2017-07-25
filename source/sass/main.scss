@@ -8,9 +8,6 @@
 /**
  * CONTENTS
  *
- * UTILITIES
- * Custom..................Custom-specific utilities that are being used by settings.
- *
  * SETTINGS
  * All.....................Because our Settings layer doesn’t actually produce any
  *                         CSS, we can safely glob all of the files into one import
@@ -54,8 +51,7 @@
  * Rich text...............Set up a new styling context for long-format text.
  *
  * UTILITIES
- * Flex....................Flexbox classes
- * Text....................Text classes
+ * All.....................Include all utilities and overrides
  *
  */
 
@@ -65,8 +61,6 @@
 
 @import '00_settings/all';
 @import '01_tools/all';
-
-@import '70_utilities/all';
 
 //  Vendor libs
 //      - styles from other sources (bower)
@@ -86,5 +80,4 @@
 
 @import '50_scopes/scopes.rich-text';
 
-@import '70_utilities/utilities.flex';
-@import '70_utilities/utilities.text';
+@import '70_utilities/all';
