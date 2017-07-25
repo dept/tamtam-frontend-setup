@@ -7,6 +7,8 @@ All notable changes to this project will be documented in this file.
 - Added Babel transpiler for browser support
 - Added SASS linting for code consistency
 - Added JS linting for code consistency
+- Added [.nvmrc](https://github.com/creationix/nvm) for easy node switching
+
 
 ### Changed
 - Upgraded to Nunjucks 2.0
@@ -16,6 +18,9 @@ All notable changes to this project will be documented in this file.
 - Updated multiple
 - Updated deprecated cleanCSS package
 - Updated gulp SASS
+- Fixed some grid issues with mobile first toggling
+- Fixed BrowserSync reload issue in Node 6+
+- Updated readme with new contributors
 
 ### Removed
 - Removed Angular folder because it was redundant
