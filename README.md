@@ -363,7 +363,7 @@ __columns__
  
 Use column classes to define the columns width. There is a default class you can use such as `u-col-12` or `u-col-6`. This will set the width to 12 -or- 6 columns wide.
 
-You can override this at breakpoints by using the modifier classes such as `u-col-6@md`, here the column will switch to 6 columns width when this breakpoint is reached.
+You can override this at breakpoints by using the modifier classes such as `u-col-6--md`, here the column will switch to 6 columns width when this breakpoint is reached.
 
 How wide a `u-col-6` actually is depends on the grid. If the `u-col-6` is inside of a `o-grid-12` it will be 50% wide. But if it were inside of a `o-grid-6` it would be 100% wide.
 
@@ -375,7 +375,7 @@ This example uses the mobile first grid. Meaning that everything is based off `m
 __100% width__
 ```
 <div class="o-grid-12">
-    <div class="u-col-6 u-col-12@md">
+    <div class="u-col-6 u-col-12--md">
         6 columns as the default
         12 columns on tablet and up
     </div>
@@ -387,7 +387,7 @@ __with container__
 ```
 <div class="o-container">
     <div class="o-grid-12">
-        <div class="u-col-6 u-col-12@md">
+        <div class="u-col-6 u-col-12--md">
             6 columns as the default
             12 columns on tablet and up
         </div>
