@@ -26,3 +26,12 @@
 
 @import 'tools.generate-container';
 @import 'tools.generate-grid';
+
+// Misc mixins
+@import 'tools.generate-mediaquery-values';
+@import 'tools.input-placeholder';
+@import 'tools.triangle';
+@import 'tools.vertical-center-dib';
+
+// Extends
+@import 'tools.spaceless';
