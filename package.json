@@ -36,6 +36,29 @@
     "postinstall": "bower install --config.interactive=false",
     "bamboo": "gulp bamboo"
   },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "last 2 versions",
+              "ie >= 11"
+            ]
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "transform-class-properties",
+        {
+          "spec": true
+        }
+      ]
+    ]
+  },
   "devDependencies": {
     "babel-core": "6.24.0",
     "babel-loader": "6.4.1",
