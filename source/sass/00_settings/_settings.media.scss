@@ -18,13 +18,34 @@
 //    }
 
 
-// Breakpoints
+// Breakpoints, used for the grid.
 
 $breakpoint-small             : 480px;
 $breakpoint-medium            : 768px;
 $breakpoint-large             : 1024px;
 $breakpoint-extra-large       : 1200px;
 $breakpoint-widescreen        : 1600px;
+
+
+
+// Device named breakpoints, used for the mixins.
+
+$mobile-end: $breakpoint-small;
+
+$mobile-plus-start: $breakpoint-small + 1;
+$mobile-plus-end: $breakpoint-medium;
+
+$tablet-portrait-start: $breakpoint-medium +1;
+$tablet-portrait-end: $breakpoint-large;
+
+$tablet-landscape-start: $breakpoint-large + 1;
+$tablet-landscape-end: $breakpoint-extra-large;
+
+$laptop-start: $breakpoint-extra-large + 1;
+$laptop-end: $breakpoint-widescreen;
+
+$desktop-start: $breakpoint-widescreen + 1;
+
 
 
 // Media queries
@@ -46,6 +67,10 @@ $screen-widescreen-and-up   : 'only screen and ( min-width : #{$breakpoint-wides
 
 $screen-portrait            : 'screen and (orientation: portrait)';
 $screen-landscape           : 'screen and (orientation: landscape)';
+
+
+
+// Grid breakpoint names mapped to @media values, used for responsive utilities.
 
 $breakpoint-list: (
     'xlg': $screen-extra-large-and-up,
