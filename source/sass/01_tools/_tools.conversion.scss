@@ -21,3 +21,11 @@
 
   @return $number;
 }
+
+
+// Px to em
+@function em($px, $context: 16px) {
+
+    @return ($px / $context) * 1em;
+
+}
