@@ -21,6 +21,8 @@ All notable changes to this project will be documented in this file.
 - Fixed some grid issues with mobile first toggling
 - Fixed BrowserSync reload issue in Node 6+
 - Updated readme with new contributors
+- Moved heading styles to mixins and implemented them in heading elements and heading utilities.
+
 
 ### Removed
 - Removed Angular folder because it was redundant
