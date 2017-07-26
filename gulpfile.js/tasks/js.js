@@ -20,16 +20,14 @@ function createOptions() {
 
         webpack: {
 
-        context: path.resolve(__dirname),
+            context: path.resolve(__dirname),
 
-        bail: config.throwError,
-
-            debug: config.debug,
+            bail: config.throwError,
 
             entry: config.source.getFilePaths( 'javascript', true ),
 
             output: {
-                path: config.dest.getPath( 'javascript' ),
+                path: path.resolve(__dirname, '../../') + '/' +  config.dest.getPath( 'javascript' ),
                 filename: "[name].js"
             },
 
@@ -38,23 +36,20 @@ function createOptions() {
             devtool: config.sourcemaps ? 'source-map' : undefined,
 
             module:{
-                preLoaders: [
+                rules: [
                     // Javascript
                     {
+                        enforce: 'pre',
                         test: /\.js?$/,
-                        loader: 'eslint',
+                        loader: 'eslint-loader',
                         exclude: /node_modules/
-                    }
-                ],
-                loaders: [{
+                    },
+                    {
                     loader: 'babel-loader',
                     test: /\.js$/,
                     exclude: /(node_modules|bower_components)/
-                }],
-                eslint: {
-                    failOnWarning: true,
-                    failOnError: true
-                }
+                    }
+                ]
             }
 
         },
