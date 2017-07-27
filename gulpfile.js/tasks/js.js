@@ -41,11 +41,7 @@ function createOptions() {
                         enforce: 'pre',
                         test: /\.js?$/,
                         loader: 'eslint-loader',
-                        exclude: /node_modules/,
-                        options: {
-                            failOnWarning: true,
-                            failOnError: true
-                        }
+                        exclude: /node_modules/
                     },
                     {
                     loader: 'babel-loader',
