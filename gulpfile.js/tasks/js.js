@@ -79,9 +79,8 @@ function createOptions() {
 
     if( config.minify ) {
 
-        options.webpack.plugins.push( new webpack.optimize.DedupePlugin() );
         options.webpack.plugins.push( new webpack.optimize.UglifyJsPlugin( options.uglify ) );
-        options.webpack.plugins.push( new webpack.NoErrorsPlugin() );
+        options.webpack.plugins.push( new webpack.NoEmitOnErrorsPlugin() );
 
     }
 
