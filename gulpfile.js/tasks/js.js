@@ -79,6 +79,7 @@ function createOptions() {
 
     if( config.minify ) {
 
+        options.webpack.plugins.push( new webpack.LoaderOptionsPlugin({ minimize: true }) );
         options.webpack.plugins.push( new webpack.optimize.UglifyJsPlugin( options.uglify ) );
         options.webpack.plugins.push( new webpack.NoEmitOnErrorsPlugin() );
 
