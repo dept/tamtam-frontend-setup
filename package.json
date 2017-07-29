@@ -49,20 +49,11 @@
           }
         }
       ]
-    ],
-    "plugins": [
-      [
-        "transform-class-properties",
-        {
-          "spec": true
-        }
-      ]
     ]
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "bower": "^1.5.2",
     "browser-sync": "~2.9.3",
