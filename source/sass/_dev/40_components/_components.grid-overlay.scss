@@ -24,14 +24,14 @@ $color-grid-padding: darken($color-grid, 50%);
     z-index: 99;
 
     @include screen-mobile-and-smaller {
-        width: calc(100% - 20px);
-        left: calc(50% - 10px);
+        width: calc(100% - #{map-get($container-config, gutter-small)*2});
+        left: calc(50% - #{map-get($container-config, gutter-small)});
     }
 
     @media screen and (min-width: $breakpoint-mobile-plus) and (max-width: map_get( $container-config, max-width) + (map_get( $container-config, gutter) * 2)) {
         left: 0;
         transform: none;
-        width: calc(100% - 40px);
+        width: calc(100% - #{map-get($container-config, gutter)*2});
     }
 
     &.is--default-visible {
