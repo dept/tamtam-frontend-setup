@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 #### SASS changes
 - Added responsive spacing utility.
 - Added fluid type tool
+- Added media query mixins 🙌
 
 
 ### Changed
