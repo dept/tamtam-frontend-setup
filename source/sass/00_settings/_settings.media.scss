@@ -32,17 +32,17 @@ $breakpoint-widescreen          : 1600px;
 
 $mobile-end                     : $breakpoint-small;
 
-$mobile-plus-start              : $breakpoint-small + 1;
-$mobile-plus-end                : $breakpoint-medium;
+$mobile-plus-start              : $breakpoint-small;
+$mobile-plus-end                : $breakpoint-medium - 1;
 
-$tablet-portrait-start          : $breakpoint-medium +1;
-$tablet-portrait-end            : $breakpoint-large;
+$tablet-portrait-start          : $breakpoint-medium;
+$tablet-portrait-end            : $breakpoint-large - 1;
 
-$tablet-landscape-start         : $breakpoint-large + 1;
-$tablet-landscape-end           : $breakpoint-extra-large;
+$tablet-landscape-start         : $breakpoint-large;
+$tablet-landscape-end           : $breakpoint-extra-large - 1;
 
-$laptop-start                   : $breakpoint-extra-large + 1;
-$laptop-end                     : $breakpoint-widescreen;
+$laptop-start                   : $breakpoint-extra-large;
+$laptop-end                     : $breakpoint-widescreen - 1;
 
 $desktop-start                  : $breakpoint-widescreen + 1;
 
