@@ -2,18 +2,17 @@ $color-grid: $color-primary;
 $color-grid-padding: darken($color-grid, 50%);
 
 %grid-overlay-box-shadow {
-    $breakpoint-gutter: map_get( $container-config, gutter ) / 2;
+    $breakpoint-gutter: map_get($container-config, gutter) / 2;
     background: $color-grid;
     box-shadow: inset $breakpoint-gutter -#{$breakpoint-gutter} 0 $breakpoint-gutter $color-grid-padding, inset $breakpoint-gutter -#{$breakpoint-gutter} 0 1px $color-black;
 
     @include screen-mobile-and-smaller {
-        $breakpoint-gutter: map_get( $container-config, gutter-small ) / 2;
+        $breakpoint-gutter: map_get($container-config, gutter-small) / 2;
         box-shadow: inset $breakpoint-gutter -#{$breakpoint-gutter} 0 $breakpoint-gutter $color-grid-padding, inset $breakpoint-gutter -#{$breakpoint-gutter} 0 1px $color-black;
     }
 }
 
 .c-grid-overlay {
-
     display: none !important;
     height: 100%;
     left: 50%;
@@ -29,12 +28,10 @@ $color-grid-padding: darken($color-grid, 50%);
         left: calc(50% - 10px);
     }
 
-    @media screen and (min-width: $breakpoint-mobile-plus) and (max-width: map_get( $container-config, max-width ) + (map_get( $container-config, gutter ) * 2) ) {
-
+    @media screen and (min-width: $breakpoint-mobile-plus) and (max-width: map_get( $container-config, max-width) + (map_get( $container-config, gutter) * 2)) {
         left: 0;
         transform: none;
         width: calc(100% - 40px);
-
     }
 
     &.is--default-visible {
@@ -46,19 +43,28 @@ $color-grid-padding: darken($color-grid, 50%);
         opacity: .06;
         @extend %grid-overlay-box-shadow;
     }
-
 }
 
+.grid-overlay__current-viewport {
+    bottom: 0;
+    font-size: 1.3rem;
+    right: 0;
+    position: fixed;
+    text-transform: none;
+    z-index: 4;
+    background-color: $color-primary;
+    padding: $global-spacing;
+    color: $color-white;
+    font-weight: bold;
+}
 
 .grid-overlay__toggle.c-button {
-
     bottom: 0;
     font-size: 1.3rem;
     left: 0;
     position: fixed;
     text-transform: none;
     z-index: 4;
-
 }
 
 .grid-overlay__check {
@@ -67,7 +73,6 @@ $color-grid-padding: darken($color-grid, 50%);
     width: 0;
     visibility: hidden;
 }
-
 
 .grid-overlay__check:checked + .c-grid-overlay {
     display: block !important;
@@ -82,14 +87,14 @@ $color-grid-padding: darken($color-grid, 50%);
         position: absolute;
         top: 0;
         left: 100%;
-        width: map_get( $container-config, gutter );
+        width: map_get($container-config, gutter);
         height: 100%;
         content: "";
         opacity: .06;
         @extend %grid-overlay-box-shadow;
 
         @include screen-mobile-and-smaller {
-            width: map_get( $container-config, gutter-small );
+            width: map_get($container-config, gutter-small);
         }
     }
 }
