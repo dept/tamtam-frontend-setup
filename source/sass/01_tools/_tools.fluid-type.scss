@@ -7,7 +7,7 @@
 //
 // =========================================================================
 
-@mixin fluid-type($max-value, $min-value, $properties: font-size, $max-vw: $breakpoint-extra-large, $min-vw: $breakpoint-small) {
+@mixin fluid-type($max-value, $min-value, $properties: font-size, $max-vw: $breakpoint-laptop, $min-vw: $breakpoint-mobile-plus) {
     @each $property in $properties {
         #{$property}: rem-to-px($min-value);
     }
