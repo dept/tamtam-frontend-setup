@@ -3,7 +3,6 @@
 var requireCached               = require('../src/gulp/require-cached');
 var config                      = require('../config');
 var log                         = require('../src/debug/log');
-var objectDiff                  = require('../src/object/diff');
 var path                        = require('path');
 var _                           = require('lodash');
 
@@ -20,16 +19,14 @@ function createOptions() {
 
         webpack: {
 
-        context: path.resolve(__dirname),
+            context: path.resolve(__dirname),
 
-        bail: config.throwError,
-
-            debug: config.debug,
+            bail: config.throwError,
 
             entry: config.source.getFilePaths( 'javascript', true ),
 
             output: {
-                path: config.dest.getPath( 'javascript' ),
+                path: path.resolve(__dirname, '../../') + '/' +  config.dest.getPath( 'javascript' ),
                 filename: "[name].js"
             },
 
@@ -38,23 +35,20 @@ function createOptions() {
             devtool: config.sourcemaps ? 'source-map' : undefined,
 
             module:{
-                preLoaders: [
+                rules: [
                     // Javascript
                     {
+                        enforce: 'pre',
                         test: /\.js?$/,
-                        loader: 'eslint',
+                        loader: 'eslint-loader',
                         exclude: /node_modules/
-                    }
-                ],
-                loaders: [{
+                    },
+                    {
                     loader: 'babel-loader',
                     test: /\.js$/,
                     exclude: /(node_modules|bower_components)/
-                }],
-                eslint: {
-                    failOnWarning: true,
-                    failOnError: true
-                }
+                    }
+                ]
             }
 
         },
@@ -85,9 +79,9 @@ function createOptions() {
 
     if( config.minify ) {
 
-        options.webpack.plugins.push( new webpack.optimize.DedupePlugin() );
+        options.webpack.plugins.push( new webpack.LoaderOptionsPlugin({ minimize: true }) );
         options.webpack.plugins.push( new webpack.optimize.UglifyJsPlugin( options.uglify ) );
-        options.webpack.plugins.push( new webpack.NoErrorsPlugin() );
+        options.webpack.plugins.push( new webpack.NoEmitOnErrorsPlugin() );
 
     }
 
@@ -108,40 +102,7 @@ function onWebpackCallback ( error, stats, opt_prevStats ) {
         message: 'compiling...'
     } );
 
-    // log changes
-    if( opt_prevStats ) {
-
-        var currentTimestamps = stats.compilation.fileTimestamps;
-        var previousTimestamps = opt_prevStats.compilation.fileTimestamps;
-
-        if( previousTimestamps && !_.isEmpty( previousTimestamps ) ) {
-
-            var difference = objectDiff( previousTimestamps, currentTimestamps );
-            var sourceRoot = path.resolve( config.source.getPath( 'root' ), '../' );
-            var changedFiles = [];
-
-            for ( var filePath in difference ) changedFiles.push( filePath.replace( sourceRoot, '' ) );
-
-                log.info( {
-                    sender: 'js',
-                    message: 'changed files:',
-                    data: changedFiles.join( '\n\t' )
-                } )
-
-        }
-
-    }
-
-    _.each( stats.compilation.errors, function ( compileError ) {
-
-        log.error( {
-            sender: 'js',
-            name: compileError.name,
-            message: compileError.message
-        } )
-
-    } );
-
+    console.log(stats.toString({ colors: true }));
 
 }
 
