@@ -1,0 +1,15 @@
+$link-transition-time: 200ms;
+$link-transition-ease: $ease-in-out-quad;
+
+// most basic link style
+@mixin link--base {
+  color: $color-primary;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  transition: color $link-transition-time $link-transition-ease,
+              border $link-transition-time $link-transition-ease;
+}
+
+a {
+  @include link--base;
+}

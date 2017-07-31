@@ -5,87 +5,59 @@
 {% block content %}
 
 
-    <div class="container">
+    <div class="o-container">
 
 
-        <h1>Example page template</h1>
+        <h1 class="u-margin-bottom--lg">Example page template</h1>
 
-        <br/><br/>
 
-        <h3>All the data available in this template:</h3>
+        <h3 class="u-margin-bottom--xs">All the data available in this template:</h3>
 
         {% debug %}
 
-        <br/><br/>
-
-        <h3>How to use the data:</h3> <br/>
+        <h3 class="u-margin-top--md">How to use the data:</h3> <br/>
 
 
-        <div>
+        <div class="u-margin-bottom--xs">
             Website's title: {{ site.title }}<br/>
             Website's description: {{ site.description }}<br/>
             Project is in debug mode: {{ project.debug }}<br/>
         </div>
 
-        <br/>
+        <div class="u-margin-bottom--md">
+            <!-- You can also 'set' data -->
+            {% set someData = { custom: 'Some custom data created inside the template...' } %}
+            {% set someOtherData = 'Other data' %}
 
-        <h4>contributors:</h4>
-
-        <!-- Example usage of a for loop in combination with a filter -->
-        {% for contributor in content.contributors | sort( false, false, 'name' ) %}
-
-            <span>{{ contributor.name }} ( <a href="mailto:{{ contributor.email }}" class="link">{{ contributor.email }}</a> )</span>
-            <br/>
-
-        {% endfor %}
-
-        <br/>
-
-        <!-- You can also 'set' data -->
-        {% set someData = { custom: 'Some custom data created inside the template...' } %}
-        {% set someOtherData = 'Other data' %}
-
-        <span>{{ someData.custom }}</span>
-        <span>{{ someOtherData }}</span>
-
-        <br/><br/>
-
+            <span>{{ someData.custom }}</span>
+            <span>{{ someOtherData }}</span>
+        </div>
 
         <h3>How to inject SVG images:</h3> <br/>
 
-        <div>
+        <div class="u-margin-bottom--md">
             {% svg 'social/facebook' %}
             {% svg 'social/twitter' %}
             {% svg 'social/google-plus' %}
         </div>
 
 
-        <br/><br/>
-
-
         <h3>How to use button macros:</h3> <br/>
 
         <!-- Include the file containing the macro, but it won't render anything until you call it -->
-        {% from 'elements/button.html' import button %}
-        {% from 'elements/button-arrow.html' import buttonArrow %}
+        {% from 'components/button.html' import button %}
 
         <!-- Call the macro with optional arguments to create new instances of the button -->
         {{ button( { label: 'Click here' } ) }}
-        {{ button( { label: 'Click here', size: 'large' } ) }}
-        {{ button( { label: 'Tam Tam', url: 'http://www.tamtam.nl', class: 'js-tamtam-button', attr: 'data-custom=\"custom data attribute\"' } ) }}
 
         <br/><br/>
 
-        {{ buttonArrow( { label: 'button with an arrow' } ) }}
-        {{ buttonArrow( ) }}
-
-        <br/><br/>
+        {{ button( { label: 'button with an arrow', icon: 'chevron-right' } ) }}
 
 
-        <h3>Including modules:</h3> <br/>
+        <h3 class="u-margin-top--md">Including modules:</h3> <br/>
 
-        {% include 'modules/example.html' %}
-        {% include 'modules/example-2.html' %}
+        {% include 'components/example.html' %}
 
     </div>
 

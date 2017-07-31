@@ -1,0 +1,500 @@
+// sass-lint:disable mixin-name-format, no-warn, quotes, function-name-format, brace-style, trailing-semicolon, indentation
+
+// @formatter:off
+
+// ---- DIB Grid ------
+// @author:     Geert Fokke
+// @version:    1.0.0
+// @license:    MIT
+
+//  A SASS mixin that will generate one or multiple inline-block based grids.
+
+
+// ----- How to use:
+
+//  Define a $grid-config holding a map with specific settings for the grid. Or holding a list with multiple maps that contain grid settings.
+//  See below for an example of a $grid-config.
+
+
+// ----- Grid config settings:
+
+//  postfix         {string}        - Will be apended to the grid class name, required when you have multiple grids that have the
+//                                      same amount of columns.
+//  columns         {number}        - Number of columns this grid has, will also be appended to the grid's class name.
+//                                      E.g.: grid-6 contains 6 columns.
+//  gutter          {css value}     - Defines the default gutter size.
+//  gutter-small    {css value}     - Defines the gutter size when the screen is small than the $grid-gutter-small-breakpoint defined.
+//  add-push-pull   {boolean}       - If true, the grid will have push / pull column helper classes. These can be used to offset a column.
+//                                      ( css left / right is used )
+//                                      E.g.:   pull-3, offsets the column by 3 column spans.
+//                                              pull-md-3, offsets the column by 3 column spans only on medium and smaller screens.
+//  add-pre-post    {boolean}       - If true, the grid will have pre / post column helper classes. These are used to fill previous
+//                                      or next columns with empty space. ( css margin-left / margin-right is used )
+//                                      E.g.:   pre-4, will the space of 4 empty columns to the left of the one containing this class.
+//                                      E.g.:   pre-sm-4, will do the same but only on screens small and smaller.
+
+
+
+$grid-config                    : ( postfix         : '',
+                                    columns         : 12,
+                                    gutter          : 30px,
+                                    gutter-small    : 15px,
+                                    add-push-pull   : true,
+                                    add-pre-post    : true  ) !default;
+
+$grid-font-reset                : 'Helvetica Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif   !default;
+$grid-base-class                : 'o-grid'          !default;
+$grid-column-base-class         : 'u-col'           !default;
+$grid-gutter-small-breakpoint   : 768px             !default;   //  Defines when the grid will switch to the smaller gutters.
+$grid-mobile-first              : true              !default;   //  Defines whether min-width or max-width media queries are used.
+
+//  A collection of breakpoints with their corresponding class modifiers. For the breakpoints a media query of (max-width) is used.
+//  Modifiers are used like this: 'md' will create 'col-md-1', 'pre-md-1', 'post-md-1', ...etc.
+//  NOTE:   The breakpoints have to be defined from small to large!
+$grid-breakpoints               : ( 'sm': 480px,
+                                    'md': 768px )   !default;
+
+// Defines whether to add grid--fill and grid--middle helper class
+// .grid--fill and .grid--middle can be set on any grid,
+//      - .grid--fill forces the columns to take equal heights.
+//      - .grid--middle forces the columns to align vertically.
+// Both helpers are automatically reset at every breakpoint as they can only be used on single row grids.
+// E.g.:    <div class="grid-12 grid--fill grid-md--fill"> ...
+$grid-add-fill                  : true              !default;
+$grid-add-middle                : true              !default;
+$grid-fill-modifier             : 'fill'            !default;
+$grid-middle-modifier           : 'middle'          !default;
+
+// -------------------------------- END OF CONFIG -------------------------------- //
+
+//    Reverse map function.
+//
+//    @see: https://gist.github.com/seanislegend/107ccf9c81ec9fd1aae0
+@function grid-map-reverse ($map) {
+    $result: null;
+
+    @if type-of($map) == 'map' {
+        $keys: map-keys($map);
+        $grid-map-reversed: ();
+
+        @for $i from length($keys) through 1 {
+            $grid-map-reversed: map-merge(
+                            $grid-map-reversed,
+                            (nth($keys, $i): map-get($map, nth($keys, $i)))
+            );
+        }
+
+        @if type-of($grid-map-reversed) == 'map' {
+            $result: $grid-map-reversed;
+        } @else {
+            @warn 'There was an error reversing the order of "#{$map}"';
+        }
+    } @else {
+        @warn '"#{$map}" is not a valid map';
+    }
+
+    @return $result;
+}
+
+// Run dependency test
+@if ( function-exists( grid-map-reverse ) == false ) { @error "'grid-map-reverse' function was not found!"; }
+@if ( function-exists( strip-unit ) == false ) { @error "'strip-unit' function was not found!"; }
+
+
+//  @private variables
+//  These variables are used for generating the grids and should not be touched!
+$grid-created                      : ();
+$grid-small-gutters-created        : false;
+$grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
+
+
+%grid-base {
+
+    font-family: monospace;         // removes all whitespace
+    letter-spacing: -.64em;
+
+    display: block;
+    text-align: left;
+    box-sizing: border-box;
+
+    & > [class*='#{$grid-column-base-class}-'] { @extend %grid-column-base; }
+
+    &.#{$grid-base-class}--center   { text-align: center; }
+    &.#{$grid-base-class}--right    { text-align: right;  }
+
+}
+
+%grid-column-base {
+
+    font-family: $font-stack-primary;
+    letter-spacing: normal;
+
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    vertical-align: top;
+    box-sizing: border-box;
+
+}
+
+
+
+
+//  A function that validates a grid config and will return a validated and parsed config map.
+@function grid-validate-config( $grid-config ) {
+
+    @if( type-of( $grid-config ) != 'map' ) {
+
+        @error '$grid-config is not a valid map. Current config: ' + $grid-config;
+
+    }
+
+    @if( map-has_key($grid-config, columns) == false ) {
+
+        @error 'invalid $grid-config: "columns: [ number ]" setting is required! Current config: ' + $grid-config;
+
+    }
+
+    $columns            : map-get( $grid-config, columns );
+    $push-pull          : map-get( $grid-config, add-push-pull );
+    $pre-post           : map-get( $grid-config, add-pre-post );
+    $postfix            : map-get( $grid-config, add-postfix );
+
+    $grid-class         : #{$grid-base-class}-#{$columns};
+    @if ( $postfix and $postfix != '' ) { $grid-class: $grid-class + '-' + $postfix; }
+
+    $gutter-size        : 0;
+    $gutter-small-size  : 0;
+    @if( map-has_key($grid-config, gutter) ) {          $gutter-size: map-get($grid-config, gutter );               }
+    @if( map-has_key($grid-config, gutter-small) ) {    $gutter-small-size: map-get($grid-config, gutter-small );   }
+
+    @return (   class-name      : $grid-class,
+                columns         : $columns,
+                gutter          : $gutter-size,
+                gutter-small    : $gutter-small-size,
+                add-push-pull   : $push-pull,
+                add-pre-post    : $pre-post     );
+}
+
+
+@mixin grid-create-media-query( $breakpoint ) {
+
+    @if( $grid-mobile-first == true ) {
+
+        @media only screen and ( min-width : #{$breakpoint} ) {
+            @content
+        }
+
+    } @else {
+
+        @media only screen and ( max-width : #{$breakpoint - 1} ) {
+            @content
+        }
+
+    }
+
+}
+
+
+// A mixin that creates the grid-fill helper
+@mixin grid-create-fill-helper( $modifier: '', $reset: false ) {
+
+    @if( $grid-add-fill == true ) {
+
+        @if( $modifier != '' ){ $modifier: '-' + $modifier; }
+
+        @if( $reset == true ) {
+
+            .#{$grid-base-class}#{$modifier}--#{$grid-fill-modifier} {
+
+                display: block;
+
+                 & > [class*='#{$grid-column-base-class}-'] {
+
+                    display: inline-block;
+
+                    & > div {
+                        height: auto;
+                        overflow: initial;
+                    }
+
+                }
+            }
+
+        } @else {
+
+            .#{$grid-base-class}#{$modifier}--#{$grid-fill-modifier} {
+
+                display: table;
+
+                & > [class*='#{$grid-column-base-class}-'] {
+
+                    display: table-cell;
+
+                    & > div {
+                        height: 100%;
+                        overflow: auto;
+                    }
+
+                }
+            }
+
+        }
+
+    }
+}
+
+// A mixin that creates the grid-middle helper
+@mixin grid-create-middle-helper( $modifier: '', $reset: false ) {
+
+    @if( $grid-add-middle == true ) {
+
+        @if( $modifier != '' ){ $modifier: '-' + $modifier; }
+
+        @if( $reset == true ) {
+
+            .#{$grid-base-class}#{$modifier}--#{$grid-middle-modifier} > [class*='#{$grid-column-base-class}-'] {
+
+                vertical-align: top;
+
+            }
+
+        } @else {
+
+            .#{$grid-base-class}#{$modifier}--#{$grid-middle-modifier} > [class*='#{$grid-column-base-class}-'] {
+
+                vertical-align: middle;
+
+            }
+
+        }
+
+    }
+}
+
+
+
+//  A mixin that updated the gutter size of a grid.
+@mixin grid-update-gutter( $gutter-size ) {
+
+    @if( strip-unit( $gutter-size ) > 0) {
+
+        margin-left: -$gutter-size;
+
+        & > [class*='#{$grid-column-base-class}-'] {
+            padding-left: $gutter-size;
+        }
+
+    }
+    @else {
+
+        margin-left: 0;
+
+        & > [class*='#{$grid-column-base-class}-'] {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+    }
+
+}
+
+
+
+//  The mixin that sets the correct width of a column
+@mixin grid-column( $column-span, $grid-size, $gutter-size, $modifier: '') {
+
+    @if($modifier != '') { $modifier: '--' + $modifier; }
+    $column-width: ($column-span / $grid-size ) * 100%;
+
+    & > .#{$grid-column-base-class}-#{$column-span}#{$modifier} {
+
+        width: $column-width;
+
+    }
+
+}
+
+
+
+//  A mixin that created the column helpers such as 'pre-2' and 'pull-4'.
+@mixin grid-column-helpers( $column-span, $grid-size, $pre-post, $push-pull, $modifier: '' ) {
+
+    $column-width: 0;
+
+    @if($modifier != '') { $modifier: '--' + $modifier; }
+
+    @if( $column-span > 0 ) { $column-width: ($column-span / $grid-size ) * 100%; }
+    @else { $column-width: 0; }
+
+    @if( $pre-post ){
+        & > .u-pre-#{$column-span}#{$modifier}    { margin-left: $column-width; }
+        & > .u-post-#{$column-span}#{$modifier}   { margin-right: $column-width; }
+    }
+
+    @if( $push-pull ){
+        & > .u-pull-#{$column-span}#{$modifier}   { left: -$column-width; }
+        & > .u-push-#{$column-span}#{$modifier}   { right: -$column-width; }
+    }
+
+}
+
+
+
+//  The mixin responsible for creating the responsive columns within the grids.
+@mixin grid-create-responsive-columns( $grid-breakpoint, $size-modifier, $grid-config ){
+
+    $gutter-size            : map_get( $grid-config, gutter );
+    $gutter-size-small      : map_get( $grid-config, gutter-small );
+    $grid-class             : map_get( $grid-config, class-name );
+    $columns                : map_get( $grid-config, columns );
+    $push-pull              : map_get( $grid-config, add-push-pull );
+    $pre-post               : map_get( $grid-config, add-pre-post );
+
+    $update-gutter          : false;
+
+    @if ($grid-mobile-first == false and $grid-small-gutters-created == false and $grid-breakpoint <= $grid-gutter-small-breakpoint and $gutter-size != $gutter-size-small ) {
+
+        $gutter-size   : $gutter-size-small;
+        $update-gutter : true;
+
+    }
+
+    @if($grid-mobile-first == true and $grid-breakpoint >= $grid-gutter-small-breakpoint and $gutter-size != $gutter-size-small ) {
+
+        $gutter-size   : $gutter-size;
+        $update-gutter : true;
+
+    }
+
+    .#{$grid-class} {
+
+        @if( $update-gutter ) { @include grid-update-gutter( $gutter-size ); }
+
+        @include grid-column-helpers( 0, $columns, $pre-post, $push-pull, $size-modifier );   // add a helper reset possibility
+
+        @for $i from 1 through $columns {
+
+            @include grid-column( $i, $columns, $gutter-size, $size-modifier);                     // set new column width
+            @include grid-column-helpers( $i, $columns, $pre-post, $push-pull, $size-modifier );   // add helpers
+
+        }
+
+    }
+
+}
+
+
+
+//  A mixin that creates the base of the grid. It includes default widths for its columns.
+@mixin grid-create-base( $grid-config ) {
+
+    $grid-class             : map_get( $grid-config, class-name );
+    $columns                : map_get( $grid-config, columns );
+    $gutter-size            : map_get( $grid-config, gutter );
+    $gutter-size-small      : map_get( $grid-config, gutter-small );
+    $push-pull              : map_get( $grid-config, add-push-pull );
+    $pre-post               : map_get( $grid-config, add-pre-post );
+
+    @if ($grid-mobile-first == true) {
+        $gutter-size: $gutter-size-small;
+    }
+
+    @if ( index($grid-created, $grid-class ) != null ) {     // Check first if this grid hasn't already been created
+
+        @error 'A grid with the classname \'' + #{$grid-class} + '\' has already been created! You will need to add an unique postfix setting to this $grid-config to be able to have multiple grids with the same amount of columns. This is needed to generate an unique classname for th grid.  Current config: ' + $grid-config;
+
+    } @else {
+
+        $grids-created: append( $grid-created, $grid-class ) !global;     // overwrite global variable to save a reference.
+
+    }
+
+    // Create base class for the grid
+    .#{$grid-class} {
+
+        @extend %grid-base;
+
+        @include grid-update-gutter( $gutter-size );
+
+        $breakpoints: $grid-breakpoints;
+
+        @if( $grid-mobile-first == true ){ $breakpoints: $grid-breakpoints-large-to-small } // switch order of breakpoints if not mobile first.
+
+        // Use the reversed order of the size modifiers so we get the right priority order.
+        @each $size-modifier, $grid-breakpoint in $breakpoints {
+
+            // set default column width for responsive columns, from small to large
+            @for $i from 1 through $columns {
+
+                @include grid-column( $i, $columns, $gutter-size, $size-modifier );
+
+            }
+
+        }
+
+
+        @for $i from 1 through $columns {
+
+            @include grid-column( $i, $columns, $gutter-size );                    // set default column width
+            @include grid-column-helpers( $i, $columns, $pre-post, $push-pull );   // add helpers
+
+        }
+
+
+
+    }
+
+}
+
+
+
+//  The main mixin that will parse the config and create all the grids.
+@mixin grid-create( $config ) {
+
+    // check if config is of a valid type
+    @if( type-of( $config ) != 'map' and type_of( $config ) != 'list' ) { @error 'Invalid config! $grid-config needs to be a single grid config of type map, or a list holding multiple grid configs!'; }
+
+    @if( type-of( $config ) == 'map' ) { $config: $config, ; } // convert map to a list containing the config map
+
+    $parsed-config      : ();
+
+    // Parse grid configs
+    @each $grid-config in $config { $parsed-config: append( $parsed-config, grid-validate-config( $grid-config ) ); }
+
+    // Create grid base
+    @each $grid-config in $parsed-config { @include grid-create-base( $grid-config ); }
+
+
+
+    @include grid-create-fill-helper;
+    @include grid-create-middle-helper;
+
+
+    // Run through each breakpoint setting specified in the grid-breakpoints and generate the breakpoint specific column classes.
+    $previous-modifier: '';
+    $breakpoints: $grid-breakpoints-large-to-small;
+    @if( $grid-mobile-first == true ){ $breakpoints: $grid-breakpoints } // switch order of breakpoints if not mobile first.
+    @each $size-modifier, $grid-breakpoint in $breakpoints {
+
+        @include grid-create-media-query( $grid-breakpoint ) {
+
+            @each $grid-config in $parsed-config { @include grid-create-responsive-columns( $grid-breakpoint, $size-modifier, $grid-config ); }
+
+            @include grid-create-fill-helper( $previous-modifier, true );
+            @include grid-create-fill-helper( $size-modifier );
+
+            @include grid-create-middle-helper( $previous-modifier, true );
+            @include grid-create-middle-helper( $size-modifier );
+
+            $previous-modifier: $size-modifier;
+
+            // Save a reference that we updated the gutters
+            @if ( $grid-breakpoint <= $grid-gutter-small-breakpoint ) { $grid-small-gutters-created: true !global; }
+
+        }
+
+    }
+
+}
+

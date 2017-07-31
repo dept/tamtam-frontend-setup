@@ -78,7 +78,7 @@ function registerMainTasks( gulp ){
         runSequence(
             'clean',
             [ 'copy', 'images', 'webp', 'svg' ],
-            [ 'html', 'libs', 'js', 'css', 'readme' ],
+            [ 'html', 'libs', 'js', 'css-lint', 'css', 'readme' ],
             callback
         );
 

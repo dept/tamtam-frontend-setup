@@ -1,0 +1,17 @@
+@mixin button--icon {
+    padding-right: $button-padding-right*2 + 10;
+
+    .button__icon {
+        position: absolute;
+        right: $button-padding-right;
+        transform: translateX(10 - $button-padding-right);
+        transition: $button-transition-time $button-transition-ease;
+        transition-property: transform;
+    }
+
+    &:hover {
+        .button__icon {
+            transform: translateX(0);
+        }
+    }
+}
