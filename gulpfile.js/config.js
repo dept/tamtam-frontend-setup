@@ -67,7 +67,7 @@ source.html                         = { path: '<%= root %>/html',           file
 
 source.nunjucks                     = { path: source.root.path.replace('./','')+'/html', files: source.html.files };
 
-source.images                       = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif,svg}', '**/*.{jpg,jpeg,png,gif,svg}' ] };
+source.images                       = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif,svg,json,xml,ico}', '**/*.{jpg,jpeg,png,gif,svg,json,xml,ico}' ] };
 source.javascript                   = { path: '<%= root %>/javascript',     files: '*.js' };                     // entry point files
 source.npm                          = { path: './node_modules' };
 source.svg                          = { path: '<%= assets %>/svg',          files: [ '*.svg', '**/*.svg' ] };
