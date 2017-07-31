@@ -56,6 +56,11 @@ $color-grid-padding: darken($color-grid, 50%);
     padding: $global-spacing;
     color: $color-white;
     font-weight: bold;
+    pointer-events: none;
+
+    &:hover {
+        opacity: 0.3;
+    }
 }
 
 .grid-overlay__toggle.c-button {
@@ -65,6 +70,10 @@ $color-grid-padding: darken($color-grid, 50%);
     position: fixed;
     text-transform: none;
     z-index: 4;
+
+    &:hover {
+        opacity: 0.3;
+    }
 }
 
 .grid-overlay__check {
