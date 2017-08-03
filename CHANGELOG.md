@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.3.0] - 2017-07-30
+## [1.3.0] - 2017-08-03
 ### Added
 #### General
 - Added SonarQube properties to overwrite global JS vars.
