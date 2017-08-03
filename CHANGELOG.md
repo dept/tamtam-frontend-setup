@@ -36,3 +36,4 @@ All notable changes to this project will be documented in this file.
 ### Removed
 - Removed Angular folder because it was redundant
 - Removed a lot of example modules (common question by FE team)
+- Old gulp tasks (Modernizr, Zip, SvgSprite, Readme)

@@ -19,18 +19,18 @@ gulp.task('images', function () {
     var options = {
 
         config: {
-            optimizationLevel: 3,   // default 3
+            optimizationLevel: 3,  // default 3
             progressive: true,     // for JPG, default false
-            interlaces: false,      // for GIF, default false
-            multipass: false        // for SVG, default false
+            interlaces: false,     // for GIF, default false
+            multipass: false       // for SVG, default false
         }
 
     };
 
     return gulp.src( config.source.getFileGlobs( 'images' ) )
 
-        .pipe( changed( config.dest.getPath( 'images' ) ) )                         // Ignore unchanged files
+        .pipe( changed( config.dest.getPath( 'images' ) ) )                    // Ignore unchanged files
         .pipe( gulpIf( config.optimizeImages, imagemin( options.config ) ) )   // Optimize
-        .pipe( gulp.dest( config.dest.getPath( 'images' ) ) );                      // Export
+        .pipe( gulp.dest( config.dest.getPath( 'images' ) ) );                 // Export
 
 } );

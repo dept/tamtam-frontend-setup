@@ -5,7 +5,6 @@ var processArguments      = require( './src/node/process-arguments' );
 var packageJSON           = require('../package.json');
 
 
-
 var config                = {};
 config.name               = packageJSON.name;
 config.version            = packageJSON.version;
@@ -39,7 +38,7 @@ config.applyProcessArgs = function  (  ) {
     if( processArguments.has( 'verbose' ) )     config.verbose     = processArguments.get( 'verbose' );
     if( processArguments.has( 'debug' ) )       config.gulp.debug  = processArguments.get( 'debug' );
 
-}
+};
 
 
 

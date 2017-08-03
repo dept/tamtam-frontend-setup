@@ -21,7 +21,6 @@ var gulpData                = requireCached('gulp-data');
 var gulpNunjucks            = requireCached('gulp-nunjucks-render');
 var htmlmin                 = requireCached('gulp-htmlmin');
 var gulpif                  = requireCached('gulp-if');
-var browserSync             = requireCached('browser-sync');
 var prettify                = requireCached('gulp-jsbeautifier');
 var glob                    = requireCached('glob');
 
@@ -70,20 +69,9 @@ gulp.task( 'html', function () {
 
     options.nunjuck = {
 
-        // useful for Angular projects
-        //tags: {
-        //    blockStart: '<%',
-        //    blockEnd: '%>',
-        //    variableStart: '<$',
-        //    variableEnd: '$>',
-        //    commentStart: '<#',
-        //    commentEnd: '#>'
-        //},
-
         watch: false
 
-
-    }
+    };
 
 
     var contextData = {};
@@ -160,6 +148,6 @@ gulp.task( 'html', function () {
         .pipe( gulp.dest( config.dest.getPath( 'html' ) ) );
 
         // Browser Sync is reloaded from the watch task for HTML files to bypass a chrome bug.
-    // See the watch task for more info.
+        // See the watch task for more info.
 
 } );
