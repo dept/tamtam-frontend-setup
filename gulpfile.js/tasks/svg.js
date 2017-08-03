@@ -3,6 +3,7 @@
 var requireCached           = require('../src/gulp/require-cached');
 var config                  = require('../config');
 var log                     = require('../src/debug/log');
+var fileEmptyCheck          = require('../src/function/file-empty-check');
 
 var path                    = require('path');
 var changed                 = requireCached('gulp-changed');
@@ -40,6 +41,7 @@ gulp.task( 'svg', function () {
     return gulp.src( config.source.getFileGlobs( 'svg' ) )
 
         .pipe( changed( config.dest.getPath( 'svg' ) ) )        // Ignore unchanged files
+        .pipe( fileEmptyCheck() )
         .pipe( svgmin( options.svgmin ) )                       // Optimize
         .pipe( gulp.dest( config.dest.getPath( 'svg' ) ) )      // Export
 
