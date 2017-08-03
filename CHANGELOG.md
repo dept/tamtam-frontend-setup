@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - Added SASS linting for code consistency.
 - Added JS linting for code consistency.
 - Added [.nvmrc](https://github.com/creationix/nvm) for easy node switching.
+- Added gulp to scripts in package.json to run gulp locally
 #### SASS changes
 - Added responsive spacing utility.
 - Added fluid type tool

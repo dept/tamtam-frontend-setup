@@ -33,7 +33,8 @@
   },
   "scripts": {
     "preinstall": "",
-    "bamboo": "gulp bamboo"
+    "bamboo": "gulp bamboo",
+    "gulp": "gulp"
   },
   "babel": {
     "presets": [
