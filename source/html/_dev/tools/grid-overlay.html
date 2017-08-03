@@ -24,6 +24,15 @@
 
 {% macro gridOverlay( data ) %}
 
+  <div class="grid-overlay__current-viewport">
+    <div class="u-visible-xs">Mobile</div>
+    <div class="u-visible-sm">Mobile plus</div> 
+    <div class="u-visible-md">Tablet portrait</div>
+    <div class="u-visible-lg">Tablet landscape</div>
+    <div class="u-visible-xlg">Laptop</div>
+    <div class="u-visible-xxlg">Desktop</div>
+  </div>
+
   <label for="grid-overlay__checkbox" class="c-button grid-overlay__toggle">Toggle grid</label>
   <input type="checkbox" class="grid-overlay__check" id="grid-overlay__checkbox">
   <div class="c-grid-overlay o-container{% if data.defaultvisible == 'true' %} is--default-visible{% endif %}">

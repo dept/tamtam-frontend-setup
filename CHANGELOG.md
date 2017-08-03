@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - Added responsive spacing utility.
 - Added fluid type tool
 - Added media query mixins 🙌
+- Added current viewport indicator to see what viewport you're looking at.
 
 
 ### Changed

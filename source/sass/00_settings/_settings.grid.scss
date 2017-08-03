@@ -2,9 +2,9 @@
   #GRID
 \*----------------------------------*/
 
-$container-padding-small-breakpoint   : $breakpoint-small;
+$container-padding-small-breakpoint   : $breakpoint-mobile-plus;
 $container-mobile-first               : true;
-$container-config                     : ( max-width: $breakpoint-extra-large,
+$container-config                     : ( max-width: $breakpoint-laptop,
                                           gutter: 20px,
                                           gutter-small: 10px );
 
@@ -12,10 +12,11 @@ $container-config                     : ( max-width: $breakpoint-extra-large,
 $grid-font-reset                      : $font-stack-body;
 $grid-mobile-first                    : true;
 $grid-gutter-small-breakpoint         : $container-padding-small-breakpoint;
-$grid-breakpoints                     : ( 'sm': $breakpoint-small,
-                                          'md': $breakpoint-medium,
-                                          'lg': $breakpoint-large,
-                                          'xlg': $breakpoint-extra-large );
+$grid-breakpoints                     : ( 'sm': $breakpoint-mobile-plus,
+                                          'md': $breakpoint-tablet-portrait,
+                                          'lg': $breakpoint-tablet-landscape,
+                                          'xlg': $breakpoint-laptop );
+
 $grid-config                          : ( columns: 12,
                                           gutter: 20px,
                                           gutter-small: 10px,
