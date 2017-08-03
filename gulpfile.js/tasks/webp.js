@@ -16,14 +16,6 @@ var webp                  = requireCached('gulp-webp');
  */
 gulp.task('webp', function () {
 
-    var options = {
-
-        config: {
-            quality: 100
-        }
-
-    };
-
     return gulp.src( config.source.getFileGlobs( 'webp' ) )
         .pipe( changed( config.dest.getPath( 'webp' ) ) )     // Ignore unchanged files
         .pipe( gulpIf( config.convertWebp, webp()))           // Convert

@@ -4,7 +4,6 @@ var requireCached           = require('../src/gulp/require-cached');
 var config                  = require('../config');
 var log                     = require('../src/debug/log');
 
-var path                    = require('path');
 var changed                 = requireCached('gulp-changed');
 var gulp                    = requireCached('gulp');
 var svgmin                  = requireCached('gulp-svgmin');

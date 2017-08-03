@@ -1,8 +1,4 @@
 //@formatter:off
-
-var path                        = require('path');
-var _                        	= require('lodash');
-
 var js							= require('./js');
 
 var config                      = require('../config');

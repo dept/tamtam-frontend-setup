@@ -14,7 +14,6 @@ var gulpIf                      = requireCached('gulp-if');
 var gulpCleanCss                = requireCached('gulp-clean-css');
 var gulpSize                    = requireCached('gulp-size');
 var uncss                       = requireCached('gulp-uncss');
-var gulpIgnore                  = requireCached('gulp-ignore');
 
 /**
  * Task for compiled SASS files back to CSS, uses lib-sass instead of ruby for faster compiling.
@@ -90,7 +89,6 @@ gulp.task('css', function () {
         // sourcemaps need a relative path from the output folder
         .pipe( gulpIf( config.sourcemaps, sourcemaps.write( '.' ) ) )
 
-        //.pipe( gulpBless() ) TODO: split css for IE9
         .pipe( gulp.dest( config.dest.getPath('css') ) )
 
         .pipe( gulpIf( options.minify, sizeAfter ) )
@@ -103,7 +101,6 @@ gulp.task('css', function () {
             check: options.minify
         } ) )
         .pipe(browserSync.stream({match: '**/*.css'}) );
-        //.pipe( browserSync.reload( { stream: true } ) );
 
 } );
 
