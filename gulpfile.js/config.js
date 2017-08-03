@@ -5,7 +5,6 @@ var processArguments      = require( './src/node/process-arguments' );
 var packageJSON           = require('../package.json');
 
 
-
 var config                = {};
 config.name               = packageJSON.name;
 config.version            = packageJSON.version;
@@ -22,7 +21,7 @@ config.sourcemaps         = true;
 config.cleanCSS           = false;              // removes unused CSS, requires 'gulp-uncss' installation.
 config.prettyHTML         = false;
 config.minifyHTML         = false;              // requires 'gulp-htmlmin' installation.
-config.showGrid           = false;              // Shows the grid overlay
+config.showGrid           = true;              // Shows the grid overlay
 
 config.gulp               = {
                               debug: false,       // if true, gulp will output a lot of extra information for debugging purposes.
@@ -39,7 +38,7 @@ config.applyProcessArgs = function  (  ) {
     if( processArguments.has( 'verbose' ) )     config.verbose     = processArguments.get( 'verbose' );
     if( processArguments.has( 'debug' ) )       config.gulp.debug  = processArguments.get( 'debug' );
 
-}
+};
 
 
 
@@ -67,7 +66,7 @@ source.html                         = { path: '<%= root %>/html',           file
 
 source.nunjucks                     = { path: source.root.path.replace('./','')+'/html', files: source.html.files };
 
-source.images                       = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif,svg}', '**/*.{jpg,jpeg,png,gif,svg}' ] };
+source.images                       = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif,svg,json,xml,ico}', '**/*.{jpg,jpeg,png,gif,svg,json,xml,ico}' ] };
 source.javascript                   = { path: '<%= root %>/javascript',     files: '*.js' };                     // entry point files
 source.npm                          = { path: './node_modules' };
 source.svg                          = { path: '<%= assets %>/svg',          files: [ '*.svg', '**/*.svg' ] };

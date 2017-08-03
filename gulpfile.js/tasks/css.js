@@ -14,7 +14,6 @@ var gulpIf                      = requireCached('gulp-if');
 var gulpCleanCss                = requireCached('gulp-clean-css');
 var gulpSize                    = requireCached('gulp-size');
 var uncss                       = requireCached('gulp-uncss');
-var gulpIgnore                  = requireCached('gulp-ignore');
 
 /**
  * Task for compiled SASS files back to CSS, uses lib-sass instead of ruby for faster compiling.
@@ -47,13 +46,10 @@ gulp.task('css', function () {
         // @see: https://github.com/jakubpawlowicz/clean-css
         minify: config.minify,
         cleanCSS: {
-            keepSpecialComments: 0,         // * for keeping all (default), 1 for keeping first one only, 0 for removing all
-            aggressiveMerging: true,        // set to false to disable aggressive merging of properties.
-            mediaMerging: true,             // whether to merge @media blocks (default is true)
-            processImport: false,			// whether to process @import rules
-            rebase: false,                  // set to false to skip URL rebasing
-            relativeTo: undefined,          // path to resolve relative @import rules and URLs
-            root: undefined      			// path to resolve absolute @import rules and rebase relative URLs
+            specialComments: 0,         // * for keeping all (default), 1 for keeping first one only, 0 for removing all
+            mediaMerging: true,         // whether to merge @media blocks (default is true)
+            inline: ['all'],            // Inline all @imports, also external urls
+            rebase: false               // set to false to skip URL rebasing
         },
 
         // UnCSS crawls the HTML and removes any unused CSS selectors and styling.
@@ -93,7 +89,6 @@ gulp.task('css', function () {
         // sourcemaps need a relative path from the output folder
         .pipe( gulpIf( config.sourcemaps, sourcemaps.write( '.' ) ) )
 
-        //.pipe( gulpBless() ) TODO: split css for IE9
         .pipe( gulp.dest( config.dest.getPath('css') ) )
 
         .pipe( gulpIf( options.minify, sizeAfter ) )
@@ -106,7 +101,6 @@ gulp.task('css', function () {
             check: options.minify
         } ) )
         .pipe(browserSync.stream({match: '**/*.css'}) );
-        //.pipe( browserSync.reload( { stream: true } ) );
 
 } );
 

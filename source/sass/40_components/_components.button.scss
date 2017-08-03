@@ -1,0 +1,6 @@
+@import 'button/mixin.button';
+@import 'button/mixin.icon';
+
+.c-button {
+  @include button;
+}

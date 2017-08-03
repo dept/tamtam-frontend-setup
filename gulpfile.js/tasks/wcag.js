@@ -4,7 +4,6 @@ var requireCached     			= require('../src/gulp/require-cached');
 var config                      = require('../config');
 
 var gulp                        = requireCached('gulp');
-var gulpIf                      = requireCached('gulp-if');
 var gulpAccessibility           = requireCached('gulp-accessibility');
 var rename                      = requireCached('gulp-rename');
 
@@ -28,8 +27,8 @@ gulp.task('wcag', function() {
     };
 
     return gulp.src( [
-        config.dest.getPath('root')+"/*.html", 
-        '!'+config.dest.getPath('root')+"/README.html", 
+        config.dest.getPath('root')+"/*.html",
+        '!'+config.dest.getPath('root')+"/README.html",
         '!'+config.dest.getPath('root')+"/styleguide.html"
     ] )
     .pipe( gulpAccessibility(options) );

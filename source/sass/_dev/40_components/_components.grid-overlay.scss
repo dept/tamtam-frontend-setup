@@ -1,0 +1,109 @@
+$color-grid: $color-primary;
+$color-grid-padding: darken($color-grid, 50%);
+
+%grid-overlay-box-shadow {
+    $breakpoint-gutter: map_get($container-config, gutter) / 2;
+    background: $color-grid;
+    box-shadow: inset $breakpoint-gutter -#{$breakpoint-gutter} 0 $breakpoint-gutter $color-grid-padding, inset $breakpoint-gutter -#{$breakpoint-gutter} 0 1px $color-black;
+
+    @include screen-mobile-and-smaller {
+        $breakpoint-gutter: map_get($container-config, gutter-small) / 2;
+        box-shadow: inset $breakpoint-gutter -#{$breakpoint-gutter} 0 $breakpoint-gutter $color-grid-padding, inset $breakpoint-gutter -#{$breakpoint-gutter} 0 1px $color-black;
+    }
+}
+
+.c-grid-overlay {
+    display: none !important;
+    height: 100%;
+    left: 50%;
+    position: fixed;
+    pointer-events: none;
+    top: 0;
+    transform: translate3d(-50%, 0, 0);
+    width: 100%;
+    z-index: 99;
+
+    @include screen-mobile-and-smaller {
+        width: calc(100% - #{map-get($container-config, gutter-small)*2});
+        left: calc(50% - #{map-get($container-config, gutter-small)});
+    }
+
+    @media screen and (min-width: $breakpoint-mobile-plus) and (max-width: map_get( $container-config, max-width) + (map_get( $container-config, gutter) * 2)) {
+        left: 0;
+        transform: none;
+        width: calc(100% - #{map-get($container-config, gutter)*2});
+    }
+
+    &.is--default-visible {
+        display: block !important;
+    }
+
+    [class*="col-"] {
+        height: 100vh;
+        opacity: .06;
+        @extend %grid-overlay-box-shadow;
+    }
+}
+
+.grid-overlay__current-viewport {
+    bottom: 0;
+    font-size: 1.3rem;
+    right: 0;
+    position: fixed;
+    text-transform: none;
+    z-index: 4;
+    background-color: $color-primary;
+    padding: $global-spacing;
+    color: $color-white;
+    font-weight: bold;
+    pointer-events: none;
+
+    &:hover {
+        opacity: 0.3;
+    }
+}
+
+.grid-overlay__toggle.c-button {
+    bottom: 0;
+    font-size: 1.3rem;
+    left: 0;
+    position: fixed;
+    text-transform: none;
+    z-index: 4;
+
+    &:hover {
+        opacity: 0.3;
+    }
+}
+
+.grid-overlay__check {
+    position: absolute;
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.grid-overlay__check:checked + .c-grid-overlay {
+    display: block !important;
+
+    &.is--default-visible {
+        display: none !important;
+    }
+}
+
+.grid-overlay__grid {
+    &:after {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: map_get($container-config, gutter);
+        height: 100%;
+        content: "";
+        opacity: .06;
+        @extend %grid-overlay-box-shadow;
+
+        @include screen-mobile-and-smaller {
+            width: map_get($container-config, gutter-small);
+        }
+    }
+}

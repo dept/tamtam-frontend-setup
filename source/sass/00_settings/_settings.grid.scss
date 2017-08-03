@@ -1,0 +1,24 @@
+/*----------------------------------*\
+  #GRID
+\*----------------------------------*/
+
+$container-padding-small-breakpoint   : $breakpoint-mobile-plus;
+$container-mobile-first               : true;
+$container-config                     : ( max-width: $breakpoint-laptop,
+                                          gutter: 20px,
+                                          gutter-small: 10px );
+
+
+$grid-font-reset                      : $font-stack-body;
+$grid-mobile-first                    : true;
+$grid-gutter-small-breakpoint         : $container-padding-small-breakpoint;
+$grid-breakpoints                     : ( 'sm': $breakpoint-mobile-plus,
+                                          'md': $breakpoint-tablet-portrait,
+                                          'lg': $breakpoint-tablet-landscape,
+                                          'xlg': $breakpoint-laptop );
+
+$grid-config                          : ( columns: 12,
+                                          gutter: 20px,
+                                          gutter-small: 10px,
+                                          add-push-pull: true,
+                                          add-pre-post: true  );
