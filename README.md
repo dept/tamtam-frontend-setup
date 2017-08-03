@@ -56,8 +56,9 @@ So let's make this setup as best as we can so every project is setup in no time 
 **Team responsible for this setup:**
 
 * Adrian Klingen ( [adrian@tamtam.nl](mailto:adrian@tamtam.nl) )
-* Gregory Bolkenstijn ( [gregory@tamtam.nl](mailto:gregory@tamtam.nl) )
 * Jeroen Reumkens ( [jeroen.reumkens@tamtam.nl](mailto:jeroen.reumkens@tamtam.nl) )
+* Daphne Smit ( [daphne@tamtam.nl](mailto:daphne@tamtam.nl) )
+* Kees van Lierop ( [keesli@tamtam.nl](mailto:keesli@tamtam.nl) )
 * All frontend developers within TamTam ( [frontend@tamtam.nl](mailto:frontend@tamtam.nl) )
 
 ------
