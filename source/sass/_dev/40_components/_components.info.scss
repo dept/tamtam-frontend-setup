@@ -11,13 +11,13 @@
   }
 
   a {
-    color: $color-primary;
+    color: $dev-color-primary;
     padding-bottom: 1px;
-    border-bottom: 1px solid rgba($color-primary, 0);
+    border-bottom: 1px solid rgba($dev-color-primary, 0);
     transition: border-bottom-color 200ms ease;
 
     &:hover {
-      border-bottom-color: $color-primary;
+      border-bottom-color: $dev-color-primary;
     }
   }
 }
@@ -67,50 +67,50 @@
 
   samp {
     display: block;
-    background-color: $color-anthracite !important;
+    background-color: $dev-color-anthracite !important;
     font-family: consolas, menlo, monaco, monospace !important;
     font-size: 15px !important;
-    color: $color-yellow-light !important;
+    color: $dev-color-yellow-light !important;
     padding: 15px 10px !important;
   }
 
   .function {
-    color: $color-orange !important;
+    color: $dev-color-orange !important;
   }
 
   .string {
-    color: $color-lime !important;
+    color: $dev-color-lime !important;
   }
 
   .number {
-    color: $color-lime !important;
+    color: $dev-color-lime !important;
   }
 
   .boolean {
-    color: $color-orange !important;
+    color: $dev-color-orange !important;
   }
 
   .null {
-    color: $color-orange !important;
+    color: $dev-color-orange !important;
   }
 
   .key {
-    color: $color-yellow-light !important;
+    color: $dev-color-yellow-light !important;
   }
 
   .tag {
-    color: $color-turquoise !important;
+    color: $dev-color-turquoise !important;
   }
 
   .comment {
-    color: $color-grey-light !important;
+    color: $dev-color-grey-light !important;
   }
 
   p {
     margin-top: 5px;
     margin-left: 5px;
     font-size: 10px !important;
-    color: $color-grey-light;
+    color: $dev-color-grey-light;
 
     code {
       font-size: 10px !important;
