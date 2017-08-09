@@ -11,7 +11,7 @@
   width:      100%                    !important;
   min-width:  600px                   !important;
   max-height: 400px                   !important;
-  background-color: $color-anthracite !important;
+  background-color: $dev-color-anthracite !important;
   font-family: consolas, menlo, monaco, monospace !important;
   font-size:  12px                    !important;
   overflow:   scroll                  !important;
@@ -22,12 +22,12 @@
 
   // json syntax highlighting
 
-  .function { color: $color-orange !important; }
-  .string {   color: $color-turquoise !important; }
-  .number {   color: $color-lime !important; }
-  .boolean {  color: $color-orange !important; }
-  .null {     color: $color-orange !important; }
-  .key {      color: $color-yellow-light !important; }
+  .function { color: $dev-color-orange !important; }
+  .string {   color: $dev-color-turquoise !important; }
+  .number {   color: $dev-color-lime !important; }
+  .boolean {  color: $dev-color-orange !important; }
+  .null {     color: $dev-color-orange !important; }
+  .key {      color: $dev-color-yellow-light !important; }
 
   // @formatter:on
 }

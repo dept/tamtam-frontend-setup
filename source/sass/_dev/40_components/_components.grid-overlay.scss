@@ -1,14 +1,14 @@
-$color-grid: $color-primary;
-$color-grid-padding: darken($color-grid, 50%);
+$dev-color-grid: $dev-color-primary;
+$dev-color-grid-padding: darken($dev-color-grid, 50%);
 
 %grid-overlay-box-shadow {
     $breakpoint-gutter: map_get($container-config, gutter) / 2;
-    background: $color-grid;
-    box-shadow: inset $breakpoint-gutter -#{$breakpoint-gutter} 0 $breakpoint-gutter $color-grid-padding, inset $breakpoint-gutter -#{$breakpoint-gutter} 0 1px $color-black;
+    background: $dev-color-grid;
+    box-shadow: inset $breakpoint-gutter -#{$breakpoint-gutter} 0 $breakpoint-gutter $dev-color-grid-padding, inset $breakpoint-gutter -#{$breakpoint-gutter} 0 1px $dev-color-black;
 
     @include screen-mobile-and-smaller {
         $breakpoint-gutter: map_get($container-config, gutter-small) / 2;
-        box-shadow: inset $breakpoint-gutter -#{$breakpoint-gutter} 0 $breakpoint-gutter $color-grid-padding, inset $breakpoint-gutter -#{$breakpoint-gutter} 0 1px $color-black;
+        box-shadow: inset $breakpoint-gutter -#{$breakpoint-gutter} 0 $breakpoint-gutter $dev-color-grid-padding, inset $breakpoint-gutter -#{$breakpoint-gutter} 0 1px $dev-color-black;
     }
 }
 
@@ -52,9 +52,9 @@ $color-grid-padding: darken($color-grid, 50%);
     position: fixed;
     text-transform: none;
     z-index: 4;
-    background-color: $color-primary;
+    background-color: $dev-color-primary;
     padding: $global-spacing;
-    color: $color-white;
+    color: $dev-color-white;
     font-weight: bold;
     pointer-events: none;
 
