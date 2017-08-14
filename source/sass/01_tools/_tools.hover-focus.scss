@@ -1,0 +1,10 @@
+@mixin hover-focus {
+
+    html:not(.is-touch) & {
+        &:hover,
+        &:focus {
+            @content;
+        }
+    }
+
+}

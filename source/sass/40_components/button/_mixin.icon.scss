@@ -9,7 +9,7 @@
         transition-property: transform;
     }
 
-    &:hover {
+    @include hover-focus {
         .button__icon {
             transform: translateX(0);
         }
