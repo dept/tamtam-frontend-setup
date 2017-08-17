@@ -4,6 +4,10 @@
   color: $color-white;
   padding: 10px 12px;
 
+  @include hover-focus {
+    background-color: darken($color-primary, 10%);
+  }
+
   svg {
     fill: $color-white;
   }

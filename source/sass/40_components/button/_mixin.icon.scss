@@ -1,17 +1,18 @@
 @mixin button--icon {
     padding-right: $button-padding-right*2 + 10;
+    position: relative;
 
     .button__icon {
         position: absolute;
         right: $button-padding-right;
-        transform: translateX(10 - $button-padding-right);
+        transform: translate3d(0, 0, 0);
         transition: $button-transition-time $button-transition-ease;
         transition-property: transform;
     }
 
-    &:hover {
+    @include hover-focus {
         .button__icon {
-            transform: translateX(0);
+            transform: translate3d($button-padding-right / 4, 0, 0);
         }
     }
 }

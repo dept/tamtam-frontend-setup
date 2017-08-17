@@ -6,8 +6,8 @@ $link-transition-ease: $ease-in-out-quad;
   color: $color-primary;
   cursor: pointer;
   text-overflow: ellipsis;
-  transition: color $link-transition-time $link-transition-ease,
-              border $link-transition-time $link-transition-ease;
+  transition: $link-transition-time $link-transition-ease;
+  transition-property: border, color, background-color;
 }
 
 a {
