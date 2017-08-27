@@ -1,9 +1,9 @@
 "use strict";
 
-const ENVIRONMENT_LOCAL 		= 'local';
-const ENVIRONMENT_TEST 			= 'test';
-const ENVIRONMENT_ACCEPTATION 	= 'acceptation';
-const ENVIRONMENT_PRODUCTION 	= 'production';
+const ENVIRONMENT_LOCAL         = 'local';
+const ENVIRONMENT_TEST          = 'test';
+const ENVIRONMENT_ACCEPTATION   = 'acceptation';
+const ENVIRONMENT_PRODUCTION    = 'production';
 
 /**
  * Simple Object to check in which environment we are on based on the hostname
