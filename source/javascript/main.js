@@ -8,6 +8,7 @@
 import moduleInit from './src/modules/util/module-init';
 
 // Import Singletons
+import './src/modules/util/sw-init';
 import './src/modules/util/detect-touch';
 
 // Import modules.

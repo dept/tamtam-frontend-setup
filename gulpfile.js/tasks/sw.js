@@ -1,19 +1,20 @@
 var requireCached     		= require('../src/gulp/require-cached');
 var log                     = require('../src/debug/log');
 var config                  = require('../config');
+var path                    = require('path');
 
 var gulp                    = requireCached('gulp');
 var changed                 = requireCached('gulp-changed');
-var stripDebug              = requireCached('gulp-strip-debug');
+var swPrecache              = requireCached('sw-precache');
 
 /**
- *  Gulp task for copying serviceWorker to backend
+ *  Gulp task for compiling serviceworker
  */
-gulp.task('sw', function () {
+gulp.task('sw', function (callback) {
 
-    return gulp.src( config.source.getFileGlobs('sw'))
-        .pipe( changed( config.source.getPath( 'sw' ) ) )
-        .pipe(stripDebug())
-        .pipe(gulp.dest(config.dest.getPath( 'sw' )));
+    swPrecache.write(path.join(config.dest.getPath('sw'), 'sw.js'), {
+        staticFileGlobs: [config.source.getFileGlobs('sw')],
+        stripPrefix: config.source.getPath('sw')
+    }, callback);
 
 });
