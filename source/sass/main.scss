@@ -9,7 +9,7 @@
  * CONTENTS
  *
  * SETTINGS
- * All.....................Because our Settings layer doesnâ€™t actually produce any
+ * All.....................Because our Settings layer doesn’t actually produce any
  *                         CSS, we can safely glob all of the files into one import
  *                         without risk of bloating our compiled stylesheet. This
  *                         also allows us to easily recycle all of our
@@ -18,7 +18,7 @@
  *                         contents.
  *
  * TOOLS
- * All.....................Because our Tools layer doesnâ€™t actually produce any
+ * All.....................Because our Tools layer doesn’t actually produce any
  *                         CSS, we can safely glob all of the files into one import
  *                         without risk of bloating our compiled stylesheet. This
  *                         also allows us to easily recycle all of our
@@ -32,7 +32,7 @@
  *
  *
  * ELEMENTS
- * All.....................Because our Tools layer doesnâ€™t actually produce any
+ * All.....................Because our Tools layer doesn’t actually produce any
  *                         CSS, we can safely glob all of the files into one import
  *                         without risk of bloating our compiled stylesheet. This
  *                         also allows us to easily recycle all of our
@@ -65,8 +65,8 @@
 //      - styles from other sources (bower)
 //[INSERT VENDOR LIBS]
 
-@import '10_generic/generic.html';
 @import '10_generic/generic.normalize';
+@import '10_generic/generic.html';
 
 @import '20_elements/all';
 
