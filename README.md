@@ -68,7 +68,7 @@ Use the setup following these commands.
 
 __1. Install all the npm modules__
 
-`npm install`
+`npm install gulp -g && npm install`
 
 __2. Optional: Install bower modules you need__
 
