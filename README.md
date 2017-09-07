@@ -70,15 +70,9 @@ __1. Install all the npm modules__
 
 `npm install`
 
-__2. Optional: Install bower modules you need__
+__2. Start the project__
 
-(though this will usually be picked up automatically by the `npm postinstall` script)
-
-`bower install`
-
-__3. Start the project__
-
-`gulp`
+`npm run gulp`
 
 ------
 
