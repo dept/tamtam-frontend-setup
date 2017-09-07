@@ -494,35 +494,8 @@ To initialize modules and bind them to specific DOMElements, we've created our o
 # Serviceworker #
 
 ## Setup ##
-There is a default [Serviceworker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) available in the Frontend Setup which allows you for quicker fetching of static assets and an offline page
+There is a default [Serviceworker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) available in the Frontend Setup which allows you for quicker fetching of static assets.
 
 ## Usage ##
 ### Configure static assets ###
-The file [sw.js](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/sw/sw.js) contains an config option where you can change your default static items such as an offline page, css, js and fonts.
-
-Once the page is loaded all the assets will be cached.
-
-```javascript
-    var config = {
-
-    production: {
-        version: 'v1-frontend-setup',
-        staticCacheItems: [
-            '/offline',
-            '/assets/css/main.css',
-            '/assets/js/main.js'
-        ],
-        offlinePage: '/offline'
-    },
-
-    local: {
-        staticCacheItems: [
-            '/offline.html',
-            '/assets/css/main.css',
-            '/assets/js/main.js'
-        ],
-        offlinePage: '/offline.html'
-    }
-
-};
-```
+The sw task will automatically index all the static files and create a sw.js file in the root accordingly.
