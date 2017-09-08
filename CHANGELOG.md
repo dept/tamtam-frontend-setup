@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 ## Next
 ### Added
 - hover-focus mixin with JS util which prevents sticky hovers on touch devices 📱
+- Renamed all `data-js-hook="name"` to `js-hook-name` to allow multiple hook binding on elements.
 
 ## [1.3.0] - 2017-08-03
 ### Added
