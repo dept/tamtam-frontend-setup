@@ -26,6 +26,7 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
     - [Usage](#markdown-header-usage-1)
 9.  [BrowserSync](#markdown-header-browsersync)
 10. [Javascript](#markdown-header-javascript_1)
+11. [Serviceworker](#markdown-header-serviceworker)
   
 
 ------
@@ -78,7 +79,7 @@ __2. Start the project__
 
 # Gulp #
 We're using Gulp by default for our project setup.
-All settings are stored in the [__gulpfile.js__](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/gulpfile.js/config.js?fileviewer=file-view-default) folder, where [__config.js__](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/gulpfile.js/config.js?fileviewer=file-view-defaultconfig.js) contains the global Gulp config.
+All settings are stored in the [__gulpfile.js__](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/gulpfile.js/config.js?fileviewer=file-view-default) folder, where [__config.js__](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/gulpfile.js/config.js?fileviewer=file-view-defaultconfig.js) contains the global Gulp config.
 
 Pro-users could dive deeper into the Gulp setup, but it's not required.
 
@@ -211,7 +212,7 @@ __Result__
 
 JSON data is a good way to make your life easier whilst developing with Nunjucks. This way you can create complete forms just by reading a json object. 
 
-The JSON [folder](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/data/) can be found in the `source` folder.
+The JSON [folder](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/data/) can be found in the `source` folder.
 
 
 All of the JSON data found in that folder will be merged into the context of the templates. If you are unsure which data is available inside your template you can use the `debug` tag to print out all of the available data.
@@ -304,7 +305,7 @@ __Final output__
 
 __Breakpoints__
 
-The media query [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/utils/00_settings/_settings.media.scss) can be found in the [vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/00_settings/.) folder, called `_settings.media.scss`. Here you can configure the breakpoints to fit your needs.
+The media query [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/sass/utils/00_settings/_settings.media.scss) can be found in the [vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/sass/00_settings/.) folder, called `_settings.media.scss`. Here you can configure the breakpoints to fit your needs.
 
 Following are the default breakpoints. You can add or change them to suit your needs. When adding them to your grid config the grid will be automatically generated.
 
@@ -318,7 +319,7 @@ Breakpoint    | Viewport width
 
 __Grid__
 
-The grid [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/00_settings/_settings.grid.scss) can be found in the [vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/00_settings/) folder. Here you can configure the breakpoints, gutters and max-width for the container and grid.
+The grid [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/sass/00_settings/_settings.grid.scss) can be found in the [vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/sass/00_settings/) folder. Here you can configure the breakpoints, gutters and max-width for the container and grid.
 
 You can also add extra breakpoints or change the prefix in the `$grid-breakpoints` var.
 
@@ -349,7 +350,7 @@ $grid-breakpoints   : ( 'sm': $breakpoint-small,
 
 The grid, whilst the naming conventions are bootstrap like, is a bit different in use. 
 
-It can be used as 100% fluid, or within a container. The container's max width is set in the global sass [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/develop/source/sass/00_settings/_settings.grid.scss) `$container-config(max-width)`.
+It can be used as 100% fluid, or within a container. The container's max width is set in the global sass [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/sass/00_settings/_settings.grid.scss) `$container-config(max-width)`.
 
 __Note that when you change the number of columns, the class name of the grid changes as well. `o-grid-12` means this is a grid of 12 columns. So when you change the number of columns to f.e. 5, the grid's class name becomes: `o-grid-5`.
 It is also possible to create multiple grids, instead of a single map assigned to the `$grid-config`, simply assign a list of multiple maps.__
@@ -483,3 +484,12 @@ To initialize modules and bind them to specific DOMElements, we've created our o
     moduleInit( '.js--header', 	Header);
     
 ```
+
+# Serviceworker #
+
+## Setup ##
+There is a default [Serviceworker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) available in the Frontend Setup which allows you for quicker fetching of static assets.
+
+## Usage ##
+### Configure static assets ###
+The sw task will automatically index all the static files and create a sw.js file in the root accordingly.
