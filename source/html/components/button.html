@@ -23,7 +23,7 @@
     {%- if data.variant %} button-variant--{{ data.variant }}{% endif -%}
     {%- if data.class %} {{ data.class }}{% endif -%}"
     {%- if data.url %} href="{{ data.url }}"{% endif -%}
-    {%- if data.hook %} data-js-hook="{{ data.hook }}"{% endif -%}
+    {%- if data.hook %} js-hook-{{ data.hook }}{% endif -%}
     {%- if data.attr or data.attributes %} {{ data.attr|safe or data.attributes|safe }}{% endif -%}>
 
         <span class="button__label">{{ data.label or 'label' }}</span>

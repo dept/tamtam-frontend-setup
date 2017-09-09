@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 ## Next
 ### Added
 - hover-focus mixin with JS util which prevents sticky hovers on touch devices 📱
+- ModuleInit now can init multiple modules on 1 DOM element. It checks if the constructor is already bound on that element, if not the new constructor is also initiated.
+- Renamed all `data-js-hook="name"` to `js-hook-name` to allow multiple hook binding on elements.
 
 ## [1.3.0] - 2017-08-03
 ### Added
