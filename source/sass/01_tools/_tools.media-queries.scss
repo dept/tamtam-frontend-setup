@@ -165,3 +165,14 @@
 
     }
 }
+
+
+/**
+ * Custom Media queries
+ **/
+
+@mixin screen($size, $width-modifier: 'min-width') {
+    @media only screen and ($width-modifier: em($size)) {
+        @content;
+    }
+}
