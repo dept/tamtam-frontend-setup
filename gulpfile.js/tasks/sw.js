@@ -14,7 +14,7 @@ gulp.task('sw', function (callback) {
 
     swPrecache.write(path.join(config.dest.getPath('sw'), 'sw.js'), {
         staticFileGlobs: [config.source.getFileGlobs('sw')],
-        stripPrefix: config.source.getPath('sw')
+        stripPrefix: config.source.getPath('root')
     }, callback);
 
 });
