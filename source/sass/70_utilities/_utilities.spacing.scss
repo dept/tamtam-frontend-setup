@@ -49,14 +49,18 @@ $spacing-breakpoint-done: false;
             }
             @else {
 
-                @media #{$spacing-media} {
+                @if(map-get($spacing-size, $spacing-breakpoint-modifier) != null){
 
-                    .u-margin-#{$spacing-direction}--#{$spacing-size-modifier} {
-                        margin-#{$spacing-direction}: map-get($spacing-size, $spacing-breakpoint-modifier) !important;
-                    }
+                    @media #{$spacing-media} {
 
-                    .u-padding-#{$spacing-direction}--#{$spacing-size-modifier} {
-                        padding-#{$spacing-direction}: map-get($spacing-size, $spacing-breakpoint-modifier) !important;
+                        .u-margin-#{$spacing-direction}--#{$spacing-size-modifier} {
+                            margin-#{$spacing-direction}: map-get($spacing-size, $spacing-breakpoint-modifier) !important;
+                        }
+
+                        .u-padding-#{$spacing-direction}--#{$spacing-size-modifier} {
+                            padding-#{$spacing-direction}: map-get($spacing-size, $spacing-breakpoint-modifier) !important;
+                        }
+
                     }
 
                 }
