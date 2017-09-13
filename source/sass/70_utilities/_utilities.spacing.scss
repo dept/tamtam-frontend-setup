@@ -8,8 +8,6 @@
 //    .u-padding-{direction}--xs     - .u-padding-{direction}--xlg
 //
 //
-
-
 $spacing-directions: ( 'top', 'left', 'bottom', 'right' );
 
 
@@ -28,11 +26,10 @@ $spacing-breakpoint-done: false;
         @each $spacing-direction in $spacing-directions {
 
             // Check if size is responsive or not
-            @if(length($spacing-size) == 1) {
+            @if (length($spacing-size) == 1) {
 
                 // Check if we should output another margin or skip
-                @if($spacing-direction-done != $spacing-direction and $spacing-size-done != $spacing-size and $spacing-breakpoint-done == false) {
-
+                @if ($spacing-direction-done != $spacing-direction and $spacing-size-done != $spacing-size and $spacing-breakpoint-done == false) {
                     $spacing-direction-done: $spacing-direction;
                     $spacing-size-done: $spacing-size-modifier;
 
@@ -43,16 +40,10 @@ $spacing-breakpoint-done: false;
                     .u-padding-#{$spacing-direction}--#{$spacing-size-modifier} {
                         padding-#{$spacing-direction}: $spacing-size !important;
                     }
-
                 }
-
-            }
-            @else {
-
-                @if(map-get($spacing-size, $spacing-breakpoint-modifier) != null){
-
+            } @else {
+                @if (map-get($spacing-size, $spacing-breakpoint-modifier) != null) {
                     @media #{$spacing-media} {
-
                         .u-margin-#{$spacing-direction}--#{$spacing-size-modifier} {
                             margin-#{$spacing-direction}: map-get($spacing-size, $spacing-breakpoint-modifier) !important;
                         }
@@ -60,19 +51,13 @@ $spacing-breakpoint-done: false;
                         .u-padding-#{$spacing-direction}--#{$spacing-size-modifier} {
                             padding-#{$spacing-direction}: map-get($spacing-size, $spacing-breakpoint-modifier) !important;
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
 
     // Set to true to skip next breakpoints
     // to prevent duplicate classes when no responsive margin present.
     $spacing-breakpoint-done: true;
-
 }
