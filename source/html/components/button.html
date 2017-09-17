@@ -18,9 +18,9 @@
 {% macro button( data ) %}
 
     <a class="c-button
-    {%- if data.size %} button-size--{{ data.size }}{% endif -%}
+    {%- if data.size %} button--{{ data.size }}{% endif -%}
     {%- if data.icon %} button--icon{% endif -%}
-    {%- if data.variant %} button-variant--{{ data.variant }}{% endif -%}
+    {%- if data.variant %} c-button--{{ data.variant }}{% endif -%}
     {%- if data.class %} {{ data.class }}{% endif -%}"
     {%- if data.url %} href="{{ data.url }}"{% endif -%}
     {%- if data.hook %} js-hook-{{ data.hook }}{% endif -%}

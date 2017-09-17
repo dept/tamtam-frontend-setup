@@ -1,4 +1,4 @@
-{% set title='Buttons' %}
+]{% set title='Buttons' %}
 
 {% extends './block.html' %}
 
@@ -7,11 +7,67 @@
 
     {% from 'components/button.html' import button %}
 
-    {{ button( { label: 'regular button' } ) }}
+
+    <h4>Regular</h4>
+    {{ button( { label: 'Regular button' } ) }}
 
     <br/><br/>
 
-    {{ button( { label: 'icon button', icon: 'chevron-right' } ) }}
+    {{ button( { label: 'Regular button icon', icon: 'chevron-right' } ) }}
+
+    <br/><br/>
+
+    {{ button( { label: 'Small button', size: 'small' } ) }}
+
+    <br/><br/>
+    
+    {{ button( { label: 'Small button icon', size: 'small', icon: 'chevron-right' } ) }}
+
+    <br/><br/>
+
+    {{ button( { label: 'Large button', size: 'large' } ) }}
+    
+    <br/><br/>
+
+    {{ button( { label: 'Large button icon', size: 'large', icon: 'chevron-right' } ) }}
+
+    <br/><br/>
+
+    <h4>Primary</h4>
+    {{ button( { label: 'Primary button', variant: 'primary' } ) }}
+
+    <br/><br/>
+
+    {{ button( { label: 'Primary button icon', variant: 'primary', icon: 'chevron-right' } ) }}
+
+    <br/><br/>
+
+
+    <h4>Secondary</h4>
+    {{ button( { label: 'Secondary button', variant: 'secondary' } ) }}
+
+    <br/><br/>
+
+    {{ button( { label: 'Secondary button icon', variant: 'secondary', icon: 'chevron-right' } ) }}
+
+    <br/><br/>
+
+
+    <h4>Ghost</h4>
+
+    {{ button( { label: 'Ghost button', variant: 'ghost' } ) }}
+
+    <br/><br/>
+
+    {{ button( { label: 'Ghost button icon', variant: 'ghost', icon: 'chevron-right' } ) }}
+
+    <br/><br/>
+
+    {{ button( { label: 'Ghost button small', variant: 'ghost', size: 'small' } ) }}
+    
+    <br/><br/>
+
+    {{ button( { label: 'Ghost button large', variant: 'ghost', size: 'large' } ) }}
 
 {% endblock %}
 
