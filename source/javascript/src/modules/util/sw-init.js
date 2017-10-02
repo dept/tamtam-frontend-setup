@@ -4,15 +4,11 @@ function ServiceWorkerInit() {
 
         window.addEventListener('load', function () {
 
-            try {
-
-                navigator.serviceWorker.register('/sw.js');
-
-            } catch (e) {
-
-                console.warn('Serviceworker - Could not find the serviceworker', e);
-
-            }
+            navigator.serviceWorker.register('/sw.js').then(function(reg){
+                console.log(`Serviceworker - Registration succeeded. Scope is ${reg.scope}`);
+            }).catch(function(err){
+                console.error(`Serviceworker - Registration failed with error ${err}`);
+            });
 
         });
 
