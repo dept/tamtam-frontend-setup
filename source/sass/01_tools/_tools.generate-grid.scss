@@ -44,7 +44,7 @@ $grid-config                    : ( postfix         : '',
 
 $grid-font-reset                : 'Helvetica Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif   !default;
 $grid-base-class                : 'o-grid'          !default;
-$grid-column-base-class         : 'u-col'           !default;
+$grid-column-base-class         : 'o-col'           !default;
 $grid-gutter-small-breakpoint   : 768px             !default;   //  Defines when the grid will switch to the smaller gutters.
 $grid-mobile-first              : true              !default;   //  Defines whether min-width or max-width media queries are used.
 
