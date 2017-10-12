@@ -1,4 +1,4 @@
-export function init() {
+export function initServiceWorker() {
 
     if ('serviceWorker' in navigator) {
 
@@ -16,7 +16,7 @@ export function init() {
 
 }
 
-export function remove() {
+export function removeServiceWorker() {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then(registrations => {
             for (const registration of registrations) {

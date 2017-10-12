@@ -6,7 +6,7 @@
 
 // Import utilities.
 import moduleInit from './src/modules/util/module-init';
-import { init, remove } from './src/modules/util/sw'
+import { initServiceWorker, removeServiceWorker } from './src/modules/util/sw'
 import env from './src/system/environment'
 
 // Import Singletons
@@ -16,9 +16,9 @@ import './src/modules/util/detect-touch';
 import ExampleModule from './src/modules/example';
 
 if (!env.isLocal()) {
-    init()
+    initServiceWorker()
 } else {
-    remove()
+    removeServiceWorker()
 }
 
 // Initialize modules.
