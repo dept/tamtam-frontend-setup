@@ -1,4 +1,4 @@
-function ServiceWorkerInit() {
+export function init() {
 
     if ('serviceWorker' in navigator) {
 
@@ -16,4 +16,12 @@ function ServiceWorkerInit() {
 
 }
 
-export default ServiceWorkerInit();
+export function remove() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+            for (const registration of registrations) {
+                registration.unregister()
+            }
+        })
+    }    
+}
