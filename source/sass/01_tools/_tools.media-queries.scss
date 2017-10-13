@@ -171,8 +171,14 @@
  * Custom Media queries
  **/
 
-@mixin screen($size, $width-modifier: 'min-width') {
-    @media only screen and ($width-modifier: em($size)) {
+@mixin screen-min-width($size) {
+    @media only screen and (min-width: em($size)) {
+        @content;
+    }
+}
+
+@mixin screen-max-width($size) {
+    @media only screen and (max-width: em($size)) {
         @content;
     }
 }
