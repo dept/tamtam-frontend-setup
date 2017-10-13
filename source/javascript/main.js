@@ -16,9 +16,9 @@ import './src/modules/util/detect-touch';
 import ExampleModule from './src/modules/example';
 
 if (!env.isLocal()) {
-    initServiceWorker()
+    initServiceWorker();
 } else {
-    removeServiceWorker()
+    removeServiceWorker();
 }
 
 // Initialize modules.
