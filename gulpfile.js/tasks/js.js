@@ -1,128 +1,164 @@
 //@formatter:off
 
-var requireCached               = require('../src/gulp/require-cached');
-var config                      = require('../config');
-var log                         = require('../src/debug/log');
-var path                        = require('path');
-var _                           = require('lodash');
+var requireCached = require('../src/gulp/require-cached');
+var config = require('../config');
+var log = require('../src/debug/log');
+var path = require('path');
+var _ = require('lodash');
 
-var gulp                        = requireCached('gulp');
-var webpack                     = requireCached('webpack');
+var gulp = requireCached('gulp');
+var webpack = requireCached('webpack');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 
+const configurePlugins = (opts = {}) => {
 
-function createOptions() {
+    const plugins = [];
 
-    // @formatter:on
-    // @see: http://webpack.github.io/docs/configuration.html
-    var options = {
+    if (config.minify) {
 
-        webpack: {
-
-            context: path.resolve(__dirname),
-
-            bail: config.throwError,
-
-            entry: config.source.getFilePaths( 'javascript', true ),
-
-            output: {
-                path: path.resolve(__dirname, '../../') + '/' +  config.dest.getPath( 'javascript' ),
-                filename: "[name].js"
-            },
-
-            plugins: [],
-
-            devtool: config.sourcemaps ? 'source-map' : undefined,
-
-            module:{
-                rules: [
-                    // Javascript
-                    {
-                        enforce: 'pre',
-                        test: /\.js?$/,
-                        loader: 'eslint-loader',
-                        exclude: /node_modules/
-                    },
-                    {
-                        loader: 'babel-loader',
-                        test: /\.js$/,
-                        exclude: /(node_modules|bower_components)/
-                    }
-                ]
+        plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
+        plugins.push(new webpack.NoEmitOnErrorsPlugin());
+        plugins.push(new UglifyJSPlugin({
+            uglifyOptions: {
+                mangle: {
+                    // Works around a Safari 10 bug:
+                    // https://github.com/mishoo/UglifyJS2/issues/1753
+                    safari10: true
+                }
             }
+        }));
 
+    }
+
+    return plugins;
+};
+
+const configureBabelLoader = (browserlist) => {
+    return {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: [
+                    ['env', {
+                        modules: false,
+                        useBuiltIns: true,
+                        targets: {
+                            browsers: browserlist,
+                        },
+                    }],
+                ],
+                plugins: ['syntax-dynamic-import'],
+            },
         },
-
-        uglify: {
-
-            mangle: false,              // Pass false to skip mangling names.
-            preserveComments: false     // 'all', 'some', {function}
-
-        }
-
     };
+};
 
-
-    if( !options.webpack.entry.length ) log.error( {
-        sender: 'js',
-        message: 'No entry files found for JavaScript?! Check your source config...'
-    } );
-
-
-    // Convert entryfiles to valid webpack config object.
-    if( options.webpack.entry.length ) {
-
-        var webpackEntries = {};
-        _.each( options.webpack.entry, function ( entryPath ) { webpackEntries[ path.parse( entryPath ).name ] = entryPath; } );
-        options.webpack.entry = webpackEntries;
-    }
-
-    if( config.minify ) {
-
-        options.webpack.plugins.push( new webpack.LoaderOptionsPlugin({ minimize: true }) );
-        options.webpack.plugins.push( new webpack.optimize.UglifyJsPlugin( options.uglify ) );
-        options.webpack.plugins.push( new webpack.NoEmitOnErrorsPlugin() );
-
-    }
-
-    return options;
-
+const esLintConfig = {
+    enforce: 'pre',
+    test: /\.js?$/,
+    loader: 'eslint-loader',
+    exclude: /node_modules/
 }
 
+const baseConfig = {
+    context: path.resolve(__dirname),
+    bail: config.throwError,
+    output: {
+        path: path.resolve(__dirname, '../../') + '/' + config.dest.getPath('javascript'),
+        filename: '[name].js',
+    },
+    cache: {},
+    devtool: config.sourcemaps ? 'source-map' : undefined,
+};
 
-function onWebpackCallback ( error, stats, opt_prevStats ) {
+const modernConfig = Object.assign({}, baseConfig, {
+    entry: {
+        'main': path.resolve(__dirname, '../../source/javascript', 'main.js')
+    },
+    plugins: configurePlugins({ runtimeName: 'runtime' }),
+    module: {
+        rules: [
+            esLintConfig,
+            configureBabelLoader(config.browsers.modern),
+        ],
+    },
+});
 
-    if( error ) log.error( {
+const legacyConfig = Object.assign({}, baseConfig, {
+    entry: {
+        'main-legacy': path.resolve(__dirname, '../../source/javascript', 'main-legacy.js')
+    },
+    plugins: configurePlugins({ runtimeName: 'runtime-legacy' }),
+    module: {
+        rules: [
+            esLintConfig,
+            configureBabelLoader(config.browsers.legacy),
+        ],
+    },
+});
+
+const createCompiler = (config) => {
+    const compiler = webpack(config);
+    return () => {
+        return new Promise((resolve, reject) => {
+            compiler.run((error, stats) => {
+
+                onWebpackCallback(error, stats);
+
+                resolve();
+
+            });
+        });
+    };
+};
+
+const onWebpackCallback = (error, stats, opt_prevStats) => {
+
+    if (stats.stats) {
+
+        stats.stats.forEach(stat => {
+            logStats(stat);
+        });
+
+    } else {
+
+        logStats(stats);
+
+    }
+
+    if (error) log.error({
         sender: 'js',
-        data: [ error ]
-    } );
+        data: [error]
+    });
 
-    if( config.verbose ) log.info( {
+    if (config.verbose) log.info({
         sender: 'js',
         message: 'compiling...'
-    } );
+    });
 
-    console.log(stats.toString({ colors: true }));
 
 }
 
+function logStats(stats) {
 
-gulp.task( 'js', function ( callback ) {
+    console.log(`\n ${stats.toString({ colors: true })} \n`);
 
-    webpack( createOptions().webpack, function ( error, stats ) {
+}
 
-        onWebpackCallback( error, stats );
+gulp.task('js', function (callback) {
 
-        callback();
+    const compileBundle = createCompiler([legacyConfig, modernConfig]);
 
-    } );
+    compileBundle()
+        .then(() => callback());
 
-} );
+});
 
 module.exports = {
-
-    createOptions: createOptions,
-    onWebpackCallback: onWebpackCallback
-
+    onWebpackCallback: onWebpackCallback,
+    config: [legacyConfig, modernConfig]
 }
 
