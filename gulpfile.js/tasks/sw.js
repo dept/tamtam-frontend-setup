@@ -13,8 +13,9 @@ var swPrecache              = requireCached('sw-precache');
 gulp.task('sw', function (callback) {
 
     swPrecache.write(path.join(config.dest.getPath('sw'), 'sw.js'), {
-        staticFileGlobs: [config.source.getFileGlobs('sw')],
-        stripPrefix: config.source.getPath('root')
+        directoryIndex: false,
+        staticFileGlobs: [config.source.getFileGlobs('sw'), config.dest.getPath('manifest', '/manifest.json')],
+        stripPrefix: config.source.sw.strip
     }, callback);
 
 });

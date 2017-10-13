@@ -68,11 +68,11 @@ source.nunjucks                     = { path: source.root.path.replace('./','')+
 
 source.images                       = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif,svg,json,xml,ico}', '**/*.{jpg,jpeg,png,gif,svg,json,xml,ico}' ] };
 source.javascript                   = { path: '<%= root %>/javascript',     files: '*.js' };                     // entry point files
-source.sw                           = { path: '<%= assets %>',              files: '**/*.{js,html,css,jpg,jpeg,png,gif,svg,json,xml,ico,eot,ttf,woff}' };                     // entry point files
 source.npm                          = { path: './node_modules' };
 source.svg                          = { path: '<%= assets %>/svg',          files: [ '*.svg', '**/*.svg' ] };
 source.webp                         = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif}', '**/*.{jpg,jpeg,png,gif}' ] };
-
+source.manifest                     = { path: '<%= assets %>/favicons',     files: [ 'manifest.json' ] };
+source.sw                           = { path: '<%= assets %>',              files: '**/*.{js,html,css,jpg,jpeg,png,gif,svg,xml,ico,eot,ttf,woff}', strip: source.root.path.replace('./','') };  // entry point files
 
 dest.root                           = { path: './build' };
 
@@ -82,9 +82,10 @@ dest.fonts                          = { path: '<%= assets %>/fonts' };
 dest.html                           = { path: '<%= root %>' };
 dest.images                         = { path: '<%= assets %>/images' };
 dest.javascript                     = { path: '<%= assets %>/js' };
-dest.sw                             = { path: '<%= root %>' };
 dest.svg                            = { path: '<%= assets %>/svg' };
 dest.webp                           = dest.images;
+dest.manifest                       = { path: '<%= root %>' };
+dest.sw                             = { path: '<%= root %>' };
 
 
 module.exports                      = config;
