@@ -3,6 +3,7 @@
 /*------------------------------------*\
  * JS Main entry file
  \*------------------------------------*/
+import 'babel-polyfill';
 
 // Import utilities.
 import env from './src/system/environment';
