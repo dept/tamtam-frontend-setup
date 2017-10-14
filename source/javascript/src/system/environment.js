@@ -48,14 +48,6 @@ class Environment {
      */
     setProduction(hostname) { this.set(ENVIRONMENT_PRODUCTION, hostname); }
 
-    // @formatter:on
-
-    /**
-     * Function to set the production host name(s)
-     * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
-     */
-    setProduction(hostname) { this.set(ENVIRONMENT_PRODUCTION, hostname); }
-
     set(name, hostname) {
 
         if (!Array.isArray(hostname)) {

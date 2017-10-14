@@ -67,7 +67,7 @@ const baseConfig = {
 
 const modernConfig = Object.assign({}, baseConfig, {
     entry: {
-        'main': path.resolve(__dirname, '../../source/javascript', 'main.js')
+        'main-es': path.resolve(__dirname, '../../source/javascript', 'main-es.js')
     },
     plugins: configurePlugins({ runtimeName: 'runtime' }),
     module: {
@@ -80,7 +80,7 @@ const modernConfig = Object.assign({}, baseConfig, {
 
 const legacyConfig = Object.assign({}, baseConfig, {
     entry: {
-        'main-legacy': path.resolve(__dirname, '../../source/javascript', 'main-legacy.js')
+        'main': path.resolve(__dirname, '../../source/javascript', 'main.js')
     },
     plugins: configurePlugins({ runtimeName: 'runtime-legacy' }),
     module: {
