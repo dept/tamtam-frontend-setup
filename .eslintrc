@@ -6,12 +6,12 @@
         "jquery": true
     },
     "extends": "eslint:recommended",
+    "ecmaFeatures": {
+        "modules": true
+    },
     "parserOptions": {
         "ecmaVersion": 6,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "modules": true
-        }
+        "sourceType": "module"
     },
     "globals": {
         "dataLayer": true
