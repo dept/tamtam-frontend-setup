@@ -8,7 +8,7 @@ var _ = require('lodash');
 
 var gulp = requireCached('gulp');
 var webpack = requireCached('webpack');
-var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var BabelMinifyWebpackPlugin = requireCached('babel-minify-webpack-plugin');
 
 
 const configurePlugins = (opts = {}) => {
@@ -19,15 +19,7 @@ const configurePlugins = (opts = {}) => {
 
         plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
         plugins.push(new webpack.NoEmitOnErrorsPlugin());
-        plugins.push(new UglifyJSPlugin({
-            uglifyOptions: {
-                mangle: {
-                    // Works around a Safari 10 bug:
-                    // https://github.com/mishoo/UglifyJS2/issues/1753
-                    safari10: true
-                }
-            }
-        }));
+        plugins.push(new BabelMinifyWebpackPlugin());
 
     }
 
@@ -49,7 +41,7 @@ const configureBabelLoader = (browserlist) => {
                             browsers: browserlist,
                         },
                     }],
-                ]
+                ],
             },
         },
     };
@@ -160,4 +152,3 @@ module.exports = {
     onWebpackCallback: onWebpackCallback,
     config: [legacyConfig, modernConfig]
 }
-
