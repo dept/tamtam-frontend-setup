@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 - ModuleInit now can init multiple modules on 1 DOM element. It checks if the constructor is already bound on that element, if not the new constructor is also initiated.
 - Renamed all `data-js-hook="name"` to `js-hook-name` to allow multiple hook binding on elements.
 - Added `screen-min-width($size)` and `screen-max-width($size)` media queries.
+- Added `preconnect` and `preload` macro.
 
 ## [1.3.0] - 2017-08-03
 ### Added
