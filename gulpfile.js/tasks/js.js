@@ -10,8 +10,9 @@ var gulp = requireCached('gulp');
 var webpack = requireCached('webpack');
 var BabelMinifyWebpackPlugin = requireCached('babel-minify-webpack-plugin');
 
+const compilerConfigs = {};
 
-const configurePlugins = (opts = {}) => {
+const configurePlugins = () => {
 
     const plugins = [];
 
@@ -62,14 +63,14 @@ const baseConfig = {
         filename: '[name].js',
     },
     cache: {},
-    devtool: config.sourcemaps ? 'source-map' : undefined,
+    devtool: config.sourcemaps ? 'source-map' : undefined
 };
 
-const modernConfig = Object.assign({}, baseConfig, {
+compilerConfigs.modernConfig = Object.assign({}, baseConfig, {
     entry: {
         'main-es': path.resolve(__dirname, '../../source/javascript', 'main-es.js')
     },
-    plugins: configurePlugins({ runtimeName: 'runtime' }),
+    plugins: configurePlugins(),
     module: {
         rules: [
             esLintConfig,
@@ -78,11 +79,11 @@ const modernConfig = Object.assign({}, baseConfig, {
     },
 });
 
-const legacyConfig = Object.assign({}, baseConfig, {
+compilerConfigs.legacyConfig = Object.assign({}, baseConfig, {
     entry: {
         'main': path.resolve(__dirname, '../../source/javascript', 'main.js')
     },
-    plugins: configurePlugins({ runtimeName: 'runtime-legacy' }),
+    plugins: configurePlugins(),
     module: {
         rules: [
             esLintConfig,
@@ -98,7 +99,6 @@ const createCompiler = (config) => {
             compiler.run((error, stats) => {
 
                 onWebpackCallback(error, stats);
-
                 resolve();
 
             });
@@ -109,15 +109,12 @@ const createCompiler = (config) => {
 const onWebpackCallback = (error, stats, opt_prevStats) => {
 
     if (stats.stats) {
-
         stats.stats.forEach(stat => {
             logStats(stat);
         });
-
     } else {
 
         logStats(stats);
-
     }
 
     if (error) log.error({
@@ -139,16 +136,27 @@ function logStats(stats) {
 
 }
 
+const createCompilerPromise = () => {
+
+    const promises = [];
+
+    Object.keys(compilerConfigs).forEach(configName => {
+        promises.push(createCompiler(compilerConfigs[configName])());
+    });
+
+    return promises;
+
+}
+
 gulp.task('js', function (callback) {
 
-    const compileBundle = createCompiler([legacyConfig, modernConfig]);
+    Promise.all(createCompilerPromise())
+        .then(() => callback())
+        .catch(e => console.warn('Error whilst compiling JS', e));
 
-    compileBundle()
-        .then(() => callback());
 
 });
 
 module.exports = {
-    onWebpackCallback: onWebpackCallback,
-    config: [legacyConfig, modernConfig]
+    createCompilerPromise
 }
