@@ -3,10 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## Next
 ### Added
-- Hover-focus mixin with JS util which prevents sticky hovers on touch devices 📱
+- hover-focus mixin with JS util which prevents sticky hovers on touch devices 📱
 - ModuleInit now can init multiple modules on 1 DOM element. It checks if the constructor is already bound on that element, if not the new constructor is also initiated.
 - Renamed all `data-js-hook="name"` to `js-hook-name` to allow multiple hook binding on elements.
-- Added `screen-min-width($size)` and `screen-max-width($size)` media queries.
+- Added default ServiceWorker task which uses sw-precache to cache static files.
+- Added ServiceWorker task paths.
 
 ## [1.3.0] - 2017-08-03
 ### Added

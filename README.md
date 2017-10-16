@@ -493,3 +493,9 @@ There is a default [Serviceworker](https://developer.mozilla.org/en-US/docs/Web/
 ## Usage ##
 ### Configure static assets ###
 The sw task will automatically index all the static files and create a sw.js file in the root accordingly.
+```javascript
+config.source.sw.path     = config.dest.root.path + '/assets/'; // Path where the ServiceWorker will be looking for the assets
+config.source.sw.strip    = config.dest.root.path; // Path that should be stripped from the cached assets
+config.dest.manifest.path = config.dest.root.path; // Path where the Manifest.json will be placed
+config.dest.sw.path       = config.dest.root.path; // Path where the ServiceWorker will be placed
+```
