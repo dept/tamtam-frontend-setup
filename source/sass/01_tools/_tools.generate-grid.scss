@@ -160,7 +160,7 @@ $grid-breakpoints-large-to-small   : grid-map-reverse( $grid-breakpoints );
     $pre-post           : map-get( $grid-config, add-pre-post );
     $postfix            : map-get( $grid-config, add-postfix );
 
-    $grid-class         : #{$grid-base-class}-#{$columns};
+    $grid-class         : #{$grid-base-class};
     @if ( $postfix and $postfix != '' ) { $grid-class: $grid-class + '-' + $postfix; }
 
     $gutter-size        : 0;

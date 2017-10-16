@@ -352,7 +352,7 @@ The grid, whilst the naming conventions are bootstrap like, is a bit different i
 
 It can be used as 100% fluid, or within a container. The container's max width is set in the global sass [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/sass/00_settings/_settings.grid.scss) `$container-config(max-width)`.
 
-__Note that when you change the number of columns, the class name of the grid changes as well. `o-grid-12` means this is a grid of 12 columns. So when you change the number of columns to f.e. 5, the grid's class name becomes: `o-grid-5`.
+__Note that when you change the number of columns, the class name of the grid changes as well. `o-grid` means this is a grid of 12 columns. So when you change the number of columns to f.e. 5, the grid's class name becomes: `o-grid-5`.
 It is also possible to create multiple grids, instead of a single map assigned to the `$grid-config`, simply assign a list of multiple maps.__
 
 __columns__
@@ -361,7 +361,7 @@ Use column classes to define the columns width. There is a default class you can
 
 You can override this at breakpoints by using the modifier classes such as `o-col-6--md`, here the column will switch to 6 columns width when this breakpoint is reached.
 
-How wide a `o-col-6` actually is depends on the grid. If the `o-col-6` is inside of a `o-grid-12` it will be 50% wide. But if it were inside of a `o-grid-6` it would be 100% wide.
+How wide a `o-col-6` actually is depends on the grid. If the `o-col-6` is inside of a `o-grid` it will be 50% wide. But if it were inside of a `o-grid-6` it would be 100% wide.
 
 
 ### Grid example ###
@@ -370,7 +370,7 @@ This example uses the mobile first grid. Meaning that everything is based off `m
 
 __100% width__
 ```
-<div class="o-grid-12">
+<div class="o-grid">
     <div class="o-col-6 o-col-12--md">
         6 columns as the default
         12 columns on tablet and up
@@ -382,7 +382,7 @@ __100% width__
 __with container__
 ```
 <div class="o-container">
-    <div class="o-grid-12">
+    <div class="o-grid">
         <div class="o-col-6 o-col-12--md">
             6 columns as the default
             12 columns on tablet and up
