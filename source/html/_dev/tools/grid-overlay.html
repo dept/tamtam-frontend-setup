@@ -37,12 +37,12 @@
   <input type="checkbox" class="grid-overlay__check" id="grid-overlay__checkbox">
   <div class="c-grid-overlay o-container{% if data.defaultvisible == 'true' %} is--default-visible{% endif %}">
 
-    <div class="grid-overlay__grid o-grid-{{data.columns}}"
+    <div class="grid-overlay__grid o-grid"
          {% if data.maxwidth %}style="max-width: {{data.maxwidth}}px"{% endif %}
     >
 
       {% for i in range(0, data.columns) -%}
-        <div class="u-col-1"></div>
+        <div class="o-col-1"></div>
       {%- endfor %}
 
     </div>
