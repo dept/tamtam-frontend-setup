@@ -74,7 +74,7 @@ $half-gutter-width: map-get($grid-config, 'gutter') * .5;
 
 }
 
-@mixin sass-col-common {
+@mixin grid-column-base {
     flex-grow: 0;
     flex-shrink: 0;
     padding-right: $half-gutter-width;
@@ -83,7 +83,7 @@ $half-gutter-width: map-get($grid-config, 'gutter') * .5;
 
 @mixin grid-create-base-columns($columns, $pre-post, $push-pull) {
     .#{$grid-column-base-class} {
-        @include sass-col-common;
+        @include grid-column-base;
         flex-basis: auto;
         display: flex;
     }
@@ -92,7 +92,7 @@ $half-gutter-width: map-get($grid-config, 'gutter') * .5;
         $column-width: 100% / $columns * $column;
 
         .#{$grid-column-base-class}-#{$column} {
-            @include sass-col-common;
+            @include grid-column-base;
             flex-basis: $column-width;
             max-width: $column-width;
         }
@@ -118,7 +118,7 @@ $half-gutter-width: map-get($grid-config, 'gutter') * .5;
     @each $size-modifier, $breakpoint in $breakpoints {
         @media only screen and (min-width: $breakpoint) {
             .#{$grid-column-base-class}--#{$size-modifier} {
-                @include sass-col-common;
+                @include grid-column-base;
                 flex-basis: auto;
             }
 
@@ -126,7 +126,7 @@ $half-gutter-width: map-get($grid-config, 'gutter') * .5;
                 $column-width: 100% / $columns * $column;
 
                 .#{$grid-column-base-class}-#{$column}--#{$size-modifier} {
-                    @include sass-col-common;
+                    @include grid-column-base;
                     flex-basis: $column-width;
                     max-width: $column-width;
                 }
