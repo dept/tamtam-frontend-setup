@@ -410,7 +410,7 @@ _* - amount of columns_
 
 ### Grid utilities ###
 
-Below are the modifier classes you can use to change the columns.
+Below are the utility classes you can use to change the grid.
 
 Option                                           | Description
 --------------                                   | -------------
