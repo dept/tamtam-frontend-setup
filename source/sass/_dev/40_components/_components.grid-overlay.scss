@@ -2,12 +2,12 @@ $dev-color-grid: $dev-color-primary;
 $dev-color-grid-padding: darken($dev-color-grid, 50%);
 
 %grid-overlay-box-shadow {
-    $breakpoint-gutter: map_get($container-config, gutter) / 2;
+    $breakpoint-gutter: map_get($grid-config, gutter) / 2;
     background: $dev-color-grid;
     box-shadow: inset $breakpoint-gutter -#{$breakpoint-gutter} 0 $breakpoint-gutter $dev-color-grid-padding, inset $breakpoint-gutter -#{$breakpoint-gutter} 0 1px $dev-color-black;
 
     @include screen-mobile-and-smaller {
-        $breakpoint-gutter: map_get($container-config, gutter-small) / 2;
+        $breakpoint-gutter: map_get($grid-config, gutter-small) / 2;
         box-shadow: inset $breakpoint-gutter -#{$breakpoint-gutter} 0 $breakpoint-gutter $dev-color-grid-padding, inset $breakpoint-gutter -#{$breakpoint-gutter} 0 1px $dev-color-black;
     }
 }
@@ -24,14 +24,14 @@ $dev-color-grid-padding: darken($dev-color-grid, 50%);
     z-index: 99;
 
     @include screen-mobile-and-smaller {
-        width: calc(100% - #{map-get($container-config, gutter-small)*2});
-        left: calc(50% - #{map-get($container-config, gutter-small)});
+        width: calc(100% - #{map-get($grid-config, gutter-small)*2});
+        left: calc(50% - #{map-get($grid-config, gutter-small)});
     }
 
-    @media screen and (min-width: $breakpoint-mobile-plus) and (max-width: map_get( $container-config, max-width) + (map_get( $container-config, gutter) * 2)) {
+    @media screen and (min-width: $breakpoint-mobile-plus) and (max-width: map_get( $grid-config, max-width) + (map_get( $grid-config, gutter) * 2)) {
         left: 0;
         transform: none;
-        width: calc(100% - #{map-get($container-config, gutter)*2});
+        width: calc(100% - #{map-get($grid-config, gutter)*2});
     }
 
     &.is--default-visible {
@@ -96,14 +96,14 @@ $dev-color-grid-padding: darken($dev-color-grid, 50%);
         position: absolute;
         top: 0;
         left: 100%;
-        width: map_get($container-config, gutter);
+        width: map_get($grid-config, gutter);
         height: 100%;
         content: "";
         opacity: .06;
         @extend %grid-overlay-box-shadow;
 
         @include screen-mobile-and-smaller {
-            width: map_get($container-config, gutter-small);
+            width: map_get($grid-config, gutter-small);
         }
     }
 }
