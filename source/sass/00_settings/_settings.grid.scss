@@ -2,8 +2,6 @@
   #GRID
 \*----------------------------------*/
 
-$grid-font-reset                      : $font-stack-body;
-$grid-mobile-first                    : true;
 $grid-gutter-small-breakpoint         : $breakpoint-mobile-plus;
 $grid-breakpoints                     : ( 'sm': $breakpoint-mobile-plus,
                                           'md': $breakpoint-tablet-portrait,
