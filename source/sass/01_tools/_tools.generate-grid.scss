@@ -74,7 +74,7 @@ $half-gutter-width: map-get($grid-config, 'gutter') * .5;
 
 }
 
-@mixin sass-col-common {
+@mixin grid-column-base {
     flex-grow: 0;
     flex-shrink: 0;
     padding-right: $half-gutter-width;
