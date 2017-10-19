@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 - hover-focus mixin with JS util which prevents sticky hovers on touch devices 📱
 - Added default ServiceWorker task which uses sw-precache to cache static files.
 - Added ServiceWorker task paths.
+- Added `screen-min-width($size)` and `screen-max-width($size)` media queries.
+- Added `preconnect` and `preload` macro.
 
 ### Changed
 - ModuleInit now can init multiple modules on 1 DOM element. It checks if the constructor is already bound on that element, if not the new constructor is also initiated.
