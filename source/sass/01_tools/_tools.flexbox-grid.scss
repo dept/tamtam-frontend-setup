@@ -151,13 +151,13 @@ $half-gutter-width: map-get($grid-config, 'gutter') * .5;
 }
 
 @mixin grid-create-push-pull($column, $column-width, $size-modifier: false) {
-    @include grid-create-offset-utilities('push', 'left', $column, $column-width, $size-modifier);
+    @include grid-create-offset-utilities('push', 'right', $column, $column-width, $size-modifier, '-');
     @include grid-create-offset-utilities('pull', 'left', $column, $column-width, $size-modifier, '-');
 }
 
 @mixin grid-create-pre-post($column, $column-width, $size-modifier: false) {
     @include grid-create-offset-utilities('pre', 'margin-left', $column, $column-width, $size-modifier);
-    @include grid-create-offset-utilities('post', 'margin-left', $column, $column-width, $size-modifier, '-');
+    @include grid-create-offset-utilities('post', 'margin-right', $column, $column-width, $size-modifier);
 }
 
 @mixin grid-create-offset-utilities($offset-name, $offset-value, $column, $column-width, $size-modifier: false, $value-prefix: false) {
