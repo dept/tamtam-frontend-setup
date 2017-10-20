@@ -187,14 +187,14 @@ $grid-middle-modifier           : 'middle'          !default;
 
 @mixin grid-create-utilities($size-modifier: '') {
 
-    .u-flex-column#{$size-modifier}{
+    .u-flex-column#{$size-modifier} {
         flex-direction: column;
     }
 
-    .u-flex-row#{$size-modifier}{
+    .u-flex-row#{$size-modifier} {
         flex-direction: row;
     }
-    
+
     .u-flex-start#{$size-modifier} {
         justify-content: flex-start;
     }
