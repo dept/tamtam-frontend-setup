@@ -1,65 +1,85 @@
 .u-flex {
-  display: flex;
+    display: flex;
 }
 
 .u-flex-wrap {
-  flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
-.u-flex-direction--column {
-  @include generate-mediaquery-rules {
-    flex-direction: column;
-  }
+.u-flex-column {
+    @include generate-mediaquery-values {
+        flex-direction: column;
+    }
 }
 
-.u-flex-direction--row {
-  @include generate-mediaquery-rules {
-    flex-direction: row;
-  }
+.u-flex-row {
+    @include generate-mediaquery-values {
+        flex-direction: row;
+    }
 }
 
-.u-flex-align--top {
-  @include generate-mediaquery-rules {
-    align-items: flex-start;
-  }
+.u-flex-start {
+    @include generate-mediaquery-values {
+        justify-content: flex-start;
+    }
 }
 
-.u-flex-align--center {
-  @include generate-mediaquery-rules {
-    align-items: center;
-  }
+.u-flex-center {
+    @include generate-mediaquery-values {
+        justify-content: center;
+    }
 }
 
-.u-flex-align--baseline {
-  @include generate-mediaquery-rules {
-    align-items: baseline;
-  }
+.u-flex-baseline {
+    @include generate-mediaquery-values {
+        align-items: baseline;
+    }
 }
 
-.u-flex-align--bottom {
-  @include generate-mediaquery-rules {
-    align-items: flex-end;
-  }
+.u-flex-end {
+    @include generate-mediaquery-values {
+        justify-content: flex-end;
+    }
 }
 
-
-
-.u-flex-self--left {
-  @include generate-mediaquery-rules {
-    align-self: flex-start;
-    margin-right: auto;
-  }
+.u-flex-top {
+    @include generate-mediaquery-values {
+        align-items: flex-start;
+    }
 }
 
-.u-flex-self--center {
-  @include generate-mediaquery-rules {
-    align-self: center;
-  }
+.u-flex-middle {
+    @include generate-mediaquery-values {
+        align-items: center;
+    }
 }
 
-.u-flex-self--right {
-  @include generate-mediaquery-rules {
-    align-self: flex-end;
-    margin-left: auto;
-  }
+.u-flex-bottom {
+    @include generate-mediaquery-values {
+        align-items: flex-end;
+    }
+}
+
+.u-flex-around {
+    @include generate-mediaquery-values {
+        justify-content: space-around;
+    }
+}
+
+.u-flex-between {
+    @include generate-mediaquery-values {
+        justify-content: space-between;
+    }
+}
+
+.u-flex-first {
+    @include generate-mediaquery-values {
+        order: -1;
+    }
+}
+
+.u-flex-last {
+    @include generate-mediaquery-values {
+        order: 1;
+    }
 }

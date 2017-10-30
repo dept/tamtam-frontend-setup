@@ -108,7 +108,6 @@ $grid-middle-modifier           : 'middle'          !default;
             @include grid-create-pre-post($column, $column-width);
         }
     }
-    @include grid-create-utilities;
 
     .#{$grid-column-base-class} {
         flex-grow: 1;
@@ -148,7 +147,6 @@ $grid-middle-modifier           : 'middle'          !default;
                 flex-basis: 0;
                 max-width: 100%;
             }
-            @include grid-create-utilities(--#{$size-modifier});
         }
     }
 }
@@ -183,61 +181,6 @@ $grid-middle-modifier           : 'middle'          !default;
         } @else {
             #{$offset-value}: $column-width;
         }
-    }
-}
-
-@mixin grid-create-utilities($size-modifier: '') {
-
-    .u-flex-column#{$size-modifier} {
-        flex-direction: column;
-    }
-
-    .u-flex-row#{$size-modifier} {
-        flex-direction: row;
-    }
-
-    .u-flex-start#{$size-modifier} {
-        justify-content: flex-start;
-    }
-
-    .u-flex-center#{$size-modifier} {
-        justify-content: center;
-    }
-
-    .u-flex-baseline#{$size-modifier} {
-        align-items: baseline;
-    }
-
-    .u-flex-end#{$size-modifier} {
-        justify-content: flex-end;
-    }
-
-    .u-flex-top#{$size-modifier} {
-        align-items: flex-start;
-    }
-
-    .u-flex-middle#{$size-modifier} {
-        align-items: center;
-    }
-
-    .u-flex-bottom#{$size-modifier} {
-        align-items: flex-end;
-    }
-
-    .u-flex-around#{$size-modifier} {
-        justify-content: space-around;
-    }
-
-    .u-flex-between#{$size-modifier} {
-        justify-content: space-between;
-    }
-
-    .u-flex-first#{$size-modifier} {
-        order: -1;
-    }
-
-    .u-flex-last#{$size-modifier} {
-        order: 1;
     }
 }
 
