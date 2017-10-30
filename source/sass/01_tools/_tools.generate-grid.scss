@@ -48,6 +48,7 @@ $grid-middle-modifier           : 'middle'          !default;
 
     .#{$grid-class} {
         box-sizing: border-box;
+        width: 100%;
         display: flex;
         flex: 0 1 auto;
         flex-direction: row;
