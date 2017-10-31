@@ -47,20 +47,21 @@ $grid-middle-modifier           : 'middle'          !default;
     }
 
     .#{$grid-class} {
-        box-sizing: border-box;
-        width: 100%;
-        display: flex;
-        flex: 0 1 auto;
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin-right: $grid-gutter-size-small * .5 * -1;
-        margin-left: $grid-gutter-size-small * .5 * -1;
+    box-sizing: border-box;
+    width: calc(100% + #{$grid-gutter-size-small});
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: $grid-gutter-size-small * .5 * -1;
+    margin-left: $grid-gutter-size-small * .5 * -1;
 
-        @media (min-width: $grid-gutter-small-breakpoint) {
-            margin-right: $grid-gutter-size * .5 * -1;
-            margin-left: $grid-gutter-size * .5 * -1;
-        }
+    @media (min-width: $grid-gutter-small-breakpoint) {
+        width: calc(100% + #{$grid-gutter-size});
+        margin-right: $grid-gutter-size * .5 * -1;
+        margin-left: $grid-gutter-size * .5 * -1;
     }
+}
 
     .#{$grid-class}.reverse {
         flex-direction: row-reverse;
