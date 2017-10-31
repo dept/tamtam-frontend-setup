@@ -3,7 +3,15 @@
 }
 
 .u-flex-wrap {
-    flex-wrap: wrap;
+    @include generate-mediaquery-rules {
+        flex-wrap: wrap;
+    }
+}
+
+.u-flex-nowrap {
+    @include generate-mediaquery-rules {
+        flex-wrap: nowrap;
+    }
 }
 
 .u-flex-column {
