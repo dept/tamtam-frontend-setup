@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - Renamed all `data-js-hook="name"` to `js-hook-name` to allow multiple hook binding on elements.
 - Changed `u-col-{$size}` to `o-col-{$size}` since a col is an object.
 - Changed `o-grid-{$columns}` to `o-grid` since multiple grids weren't used. 
+- Changed button macro to cover more usecases. 
 
 ## [1.3.0] - 2017-08-03
 ### Added
