@@ -92,12 +92,17 @@ function registerMainTasks( gulp ){
      */
     gulp.task( 'dist', function ( callback ) {
 
-        config.debug            = false;
-        config.minify           = true;
-        config.sourcemaps       = false;
-        config.prettyHTML       = true;
+        config.debug              = false;
+        config.minify             = true;
+        config.sourcemaps         = false;
+        config.prettyHTML         = true;
 
-        config.dest.root.path   = '../backend';
+        config.dest.root.path       = '../backend';
+        config.dest.html.path     	= config.dest.root.path + '/html';
+        config.source.sw.path       = config.dest.root.path + '/assets/';
+        config.source.sw.strip      = config.dest.root.path;
+        config.dest.manifest.path   = config.dest.root.path;
+        config.dest.sw.path         = config.dest.root.path;
 
         runSequence(
             'build',
@@ -119,7 +124,12 @@ function registerMainTasks( gulp ){
         config.minify               = true;
         config.prettyHTML           = false;
 
-        config.dest.html.path     	= '<%= root %>/html';
+        config.dest.root.path       = '../backend';
+        config.dest.html.path     	= config.dest.root.path + '/html';
+        config.source.sw.path       = config.dest.root.path + '/assets/';
+        config.source.sw.strip      = config.dest.root.path;
+        config.dest.manifest.path   = config.dest.root.path;
+        config.dest.sw.path         = config.dest.root.path;
 
         runSequence(
             'clean',

@@ -1,9 +1,14 @@
 "use strict";
 
-const ENVIRONMENT_LOCAL         = 'local';
-const ENVIRONMENT_TEST          = 'test';
-const ENVIRONMENT_ACCEPTATION   = 'acceptation';
-const ENVIRONMENT_PRODUCTION    = 'production';
+// @formatter:off
+
+const ENVIRONMENT_LOCAL = 'local';
+const ENVIRONMENT_TEST = 'test';
+const ENVIRONMENT_ACCEPTATION = 'acceptation';
+const ENVIRONMENT_PRODUCTION = 'production';
+
+// @formatter:on
+
 
 /**
  * Simple Object to check in which environment we are on based on the hostname
@@ -11,47 +16,48 @@ const ENVIRONMENT_PRODUCTION    = 'production';
  */
 class Environment {
 
+    // @formatter:off
+
     constructor() {
 
         this._environment = null;
         this._environments = {};
-
     }
 
-    /**
+	/**
      * Function to set the local host name(s)
      * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
      */
-    setLocal( hostname ) { this.set( ENVIRONMENT_LOCAL, hostname ); }
+    setLocal(hostname) { this.set(ENVIRONMENT_LOCAL, hostname); }
 
-    /**
+	/**
      * Function to set the test host name(s)
      * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
      */
-    setTest ( hostname ) { this.set( ENVIRONMENT_TEST, hostname ); }
+    setTest(hostname) { this.set(ENVIRONMENT_TEST, hostname); }
 
-    /**
+	/**
      * Function to set the acceptation host name(s)
      * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
      */
-    setAcceptation ( hostname ) { this.set( ENVIRONMENT_ACCEPTATION, hostname ); }
+    setAcceptation(hostname) { this.set(ENVIRONMENT_ACCEPTATION, hostname); }
 
-    /**
+	/**
      * Function to set the production host name(s)
      * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
      */
-    setProduction ( hostname ) { this.set( ENVIRONMENT_PRODUCTION, hostname ); }
+    setProduction(hostname) { this.set(ENVIRONMENT_PRODUCTION, hostname); }
 
-    set ( name, hostname ) {
+    set(name, hostname) {
 
-        if( !Array.isArray( hostname ) ) {
+        if (!Array.isArray(hostname)) {
 
-            this._environments[ hostname ] = name;
+            this._environments[hostname] = name;
 
         } else {
 
-            for ( let i = 0, leni = hostname.length; i < leni; i++ ) {
-                this._environments[ hostname[ i ] ] = name;
+            for (let i = 0, leni = hostname.length; i < leni; i++) {
+                this._environments[hostname[i]] = name;
             }
 
         }
@@ -60,15 +66,15 @@ class Environment {
 
     get() {
 
-        if( this._environment !== null ) {
+        if (this._environment !== null) {
             return this._environment;
         }
 
-        for ( const hostname in this._environments ) {
+        for (const hostname in this._environments) {
 
-            if( location.hostname === hostname ) {
+            if (location.hostname === hostname) {
 
-                this._environment = this._environments[ hostname ];
+                this._environment = this._environments[hostname];
 
                 break;
 
@@ -93,7 +99,7 @@ class Environment {
 const environment = new Environment();
 
 // pre-fill localhost settings
-environment.setLocal( [ 'localhost', '0.0.0.0' ] );
+environment.setLocal(['localhost', '0.0.0.0']);
 
 // Returns the object and not a constructor, because there should be only a single instance of this type.
 export default environment;

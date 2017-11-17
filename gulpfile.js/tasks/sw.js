@@ -13,8 +13,10 @@ var swPrecache              = requireCached('sw-precache');
 gulp.task('sw', function (callback) {
 
     swPrecache.write(path.join(config.dest.getPath('sw'), 'sw.js'), {
+        directoryIndex: false,
         staticFileGlobs: [config.source.getFileGlobs('sw')],
-        stripPrefix: config.source.getPath('root')
+        stripPrefix: config.source.sw.strip,
+        navigateFallback: '/?utm_source=homescreen'
     }, callback);
 
 });
