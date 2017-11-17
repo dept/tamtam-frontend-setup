@@ -12,8 +12,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - ModuleInit now can init multiple modules on 1 DOM element. It checks if the constructor is already bound on that element, if not the new constructor is also initiated.
 - Renamed all `data-js-hook="name"` to `js-hook-name` to allow multiple hook binding on elements.
+- Changed the old `inline-block` grid to a new `flexbox` grid.
 - Changed `u-col-{$size}` to `o-col-{$size}` since a col is an object.
-- Changed `o-grid-{$columns}` to `o-grid` since multiple grids weren't used. 
+- Changed `o-grid-{$columns}` to `o-grid` since multiple grids weren't used.
+- Renamed `spaceless` tool to `inline-children` due to deprecation of the `inline-block` grid.
 
 ## [1.3.0] - 2017-08-03
 ### Added

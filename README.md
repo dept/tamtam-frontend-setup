@@ -415,6 +415,28 @@ _* - amount of columns_
 
 ------
 
+### Grid utilities ###
+
+Below are the utility classes you can use to change the grid.
+
+Option                                           | Description
+--------------                                   | -------------
+`u-flex-column` -or-<br/> `u-flex-column--{breakpoint}`    | Flex direction `column`
+`u-flex-row` -or-<br/> `u-flex-row--{breakpoint}`    | Flex direction `row`
+`u-flex-start` -or-<br/> `u-flex-start--{breakpoint}`    | Horizontal align grid `left`
+`u-flex-center` -or-<br/> `u-flex-center--{breakpoint}`    | Horizontal align grid `center`
+`u-flex-baseline` -or-<br/> `u-flex-baseline--{breakpoint}`    | Horizontal align grid `baseline`
+`u-flex-end` -or-<br/> `u-flex-end--{breakpoint}`    | Horizontal align grid `right`
+`u-flex-top` -or-<br/> `u-flex-top--{breakpoint}`    | Vertical align grid `top`
+`u-flex-middle` -or-<br/> `u-flex-middle--{breakpoint}`    | Vertical align grid `middle`
+`u-flex-bottom` -or-<br/> `u-flex-bottom--{breakpoint}`    | Vertical align grid `bottom`
+`u-flex-around` -or-<br/> `u-flex-around--{breakpoint}`    | Items are evenly distributed in the line with equal space around them.
+`u-flex-between` -or-<br/> `u-flex-between--{breakpoint}`    | Items are evenly distributed in the line; first item is on the start line, last item on the end line
+`u-flex-first` -or-<br/> `u-flex-first--{breakpoint}`    | Item will be first in order
+`u-flex-last` -or-<br/> `u-flex-last--{breakpoint}`    | Item will be last in order
+
+------
+
 
 # Gulp Accesibility #
 
