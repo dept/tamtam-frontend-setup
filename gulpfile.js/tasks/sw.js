@@ -14,8 +14,9 @@ gulp.task('sw', function (callback) {
 
     swPrecache.write(path.join(config.dest.getPath('sw'), 'sw.js'), {
         directoryIndex: false,
-        staticFileGlobs: [config.source.getFileGlobs('sw'), config.dest.getPath('manifest', '/manifest.json')],
-        stripPrefix: config.source.sw.strip
+        staticFileGlobs: [config.source.getFileGlobs('sw')],
+        stripPrefix: config.source.sw.strip,
+        navigateFallback: '/?utm_source=homescreen'
     }, callback);
 
 });
