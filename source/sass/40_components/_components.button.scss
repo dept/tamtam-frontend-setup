@@ -10,15 +10,6 @@
     @include button;
 }
 
-
-/**
-* Button icon modifier
-*/
-.button--icon {
-    @include button--icon;
-}
-
-
 /**
 * Button variants
 */
@@ -34,7 +25,12 @@
     @include button--ghost;
 }
 
-
+/**
+* Button icon modifier
+*/
+.button--icon {
+    @include button--icon;
+}
 
 /**
 * Button sizes

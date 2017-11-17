@@ -16,6 +16,7 @@ $button-ghost-transition-time: $button-transition-time;
 $button-ghost-transition-ease: $button-transition-ease;
 
 @mixin button--ghost {
+    @include button;
     background: transparent;
     box-shadow: 0 0 0 $button-ghost-border-width $button-ghost-font-color inset;
     transition-property: color, background-color, box-shadow;

@@ -15,6 +15,7 @@ $button-secondary-transition-time: 300ms;
 $button-secondary-transition-ease: $ease-in-out-quad;
 
 @mixin button--secondary {
+    @include button;
     background-color: $button-secondary-background-color;
     color: $button-secondary-font-color;
 
