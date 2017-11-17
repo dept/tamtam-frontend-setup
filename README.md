@@ -18,6 +18,7 @@ This setup is based on [Gulp starter](https://github.com/vigetlabs/gulp-starter)
 6.  [HTML Templating - Nunjucks](#markdown-header-html-templating-nunjucks)
     - [Macro](#markdown-header-macro)
     - [JSON Data](#markdown-header-json-data)
+    - [Preloads](#markdown-header-preloads)
 7.  [Grid system](#markdown-header-grid-system)
     - [Config](#markdown-header-config)
     - [Usage](#markdown-header-usage)
@@ -79,7 +80,7 @@ __2. Start the project__
 
 # Gulp #
 We're using Gulp by default for our project setup.
-All settings are stored in the [__gulpfile.js__](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/gulpfile.js/config.js?fileviewer=file-view-default) folder, where [__config.js__](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/gulpfile.js/config.js?fileviewer=file-view-defaultconfig.js) contains the global Gulp config.
+All settings are stored in the [__gulpfile.js__](/gulpfile.js/config.js?fileviewer=file-view-default) folder, where [__config.js__](/gulpfile.js/config.js?fileviewer=file-view-defaultconfig.js) contains the global Gulp config.
 
 Pro-users could dive deeper into the Gulp setup, but it's not required.
 
@@ -212,7 +213,7 @@ __Result__
 
 JSON data is a good way to make your life easier whilst developing with Nunjucks. This way you can create complete forms just by reading a json object. 
 
-The JSON [folder](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/data/) can be found in the `source` folder.
+The JSON [folder](/source/data/) can be found in the `source` folder.
 
 
 All of the JSON data found in that folder will be merged into the context of the templates. If you are unsure which data is available inside your template you can use the `debug` tag to print out all of the available data.
@@ -297,6 +298,12 @@ __Final output__
 </form>
 ```
 
+### Preloads ###
+
+There is a macro available to easily generate your [preconnect](https://www.w3.org/TR/resource-hints/#dfn-preconnect) and [preload](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content) tags.
+
+In your [site](/source/data/site.json) data you will find a `preconnect` and `preload` object. These objects will be used to create the tags you need. You can add more tags based on your needs.
+
 ------
 
 # Grid system #
@@ -305,7 +312,7 @@ __Final output__
 
 __Breakpoints__
 
-The media query [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/sass/utils/00_settings/_settings.media.scss) can be found in the [vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/sass/00_settings/.) folder, called `_settings.media.scss`. Here you can configure the breakpoints to fit your needs.
+The media query [config](/source/sass/utils/00_settings/_settings.media.scss) can be found in the [vars](/source/sass/00_settings/.) folder, called `_settings.media.scss`. Here you can configure the breakpoints to fit your needs.
 
 Following are the default breakpoints. You can add or change them to suit your needs. When adding them to your grid config the grid will be automatically generated.
 
@@ -319,7 +326,7 @@ Breakpoint    | Viewport width
 
 __Grid__
 
-The grid [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/sass/00_settings/_settings.grid.scss) can be found in the [vars](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/sass/00_settings/) folder. Here you can configure the breakpoints, gutters and max-width for the container and grid.
+The grid [config](/source/sass/00_settings/_settings.grid.scss) can be found in the [vars](/source/sass/00_settings/) folder. Here you can configure the breakpoints, gutters and max-width for the container and grid.
 
 You can also add extra breakpoints or change the prefix in the `$grid-breakpoints` var.
 
@@ -350,18 +357,18 @@ $grid-breakpoints   : ( 'sm': $breakpoint-small,
 
 The grid, whilst the naming conventions are bootstrap like, is a bit different in use. 
 
-It can be used as 100% fluid, or within a container. The container's max width is set in the global sass [config](https://bitbucket.org/tamtam-nl/tamtam-frontend-setup/src/master/source/sass/00_settings/_settings.grid.scss) `$container-config(max-width)`.
+It can be used as 100% fluid, or within a container. The container's max width is set in the global sass [config](/source/sass/00_settings/_settings.grid.scss) `$container-config(max-width)`.
 
-__Note that when you change the number of columns, the class name of the grid changes as well. `o-grid-12` means this is a grid of 12 columns. So when you change the number of columns to f.e. 5, the grid's class name becomes: `o-grid-5`.
+__Note that when you change the number of columns, the class name of the grid changes as well. `o-grid` means this is a grid of 12 columns. So when you change the number of columns to f.e. 5, the grid's class name becomes: `o-grid-5`.
 It is also possible to create multiple grids, instead of a single map assigned to the `$grid-config`, simply assign a list of multiple maps.__
 
 __columns__
  
-Use column classes to define the columns width. There is a default class you can use such as `u-col-12` or `u-col-6`. This will set the width to 12 -or- 6 columns wide.
+Use column classes to define the columns width. There is a default class you can use such as `o-col-12` or `o-col-6`. This will set the width to 12 -or- 6 columns wide.
 
-You can override this at breakpoints by using the modifier classes such as `u-col-6--md`, here the column will switch to 6 columns width when this breakpoint is reached.
+You can override this at breakpoints by using the modifier classes such as `o-col-6--md`, here the column will switch to 6 columns width when this breakpoint is reached.
 
-How wide a `u-col-6` actually is depends on the grid. If the `u-col-6` is inside of a `o-grid-12` it will be 50% wide. But if it were inside of a `o-grid-6` it would be 100% wide.
+How wide a `o-col-6` actually is depends on the grid. If the `o-col-6` is inside of a `o-grid` it will be 50% wide. But if it were inside of a `o-grid-6` it would be 100% wide.
 
 
 ### Grid example ###
@@ -370,8 +377,8 @@ This example uses the mobile first grid. Meaning that everything is based off `m
 
 __100% width__
 ```
-<div class="o-grid-12">
-    <div class="u-col-6 u-col-12--md">
+<div class="o-grid">
+    <div class="o-col-6 o-col-12--md">
         6 columns as the default
         12 columns on tablet and up
     </div>
@@ -382,8 +389,8 @@ __100% width__
 __with container__
 ```
 <div class="o-container">
-    <div class="o-grid-12">
-        <div class="u-col-6 u-col-12--md">
+    <div class="o-grid">
+        <div class="o-col-6 o-col-12--md">
             6 columns as the default
             12 columns on tablet and up
         </div>
@@ -398,13 +405,35 @@ Below are the modifier classes you can use to change the columns.
 
 Option                                      | Description
 --------------                              | -------------
-`u-col-*--{breakpoint}`                        | Creates x amount of columns according to the given `breakpoint`
+`o-col-*--{breakpoint}`                        | Creates x amount of columns according to the given `breakpoint`
 `u-push-*` -or-<br/> `u-push-*--{breakpoint}`    | Pushes element x amount of columns using `right`
 `u-pull-*` -or-<br/> `u-pull-*--{breakpoint}`    | Pulls element x amount of columns using `left`
 `u-pre-*`  -or-<br/> `u-pre-*--{breakpoint}`     | Adds `margin-left` to element x amount of columns
 `u-post-*`  -or-<br/> `u-post-*--{breakpoint}`   | Adds `margin-right` to element x amount of columns
 
 _* - amount of columns_
+
+------
+
+### Grid utilities ###
+
+Below are the utility classes you can use to change the grid.
+
+Option                                           | Description
+--------------                                   | -------------
+`u-flex-column` -or-<br/> `u-flex-column--{breakpoint}`    | Flex direction `column`
+`u-flex-row` -or-<br/> `u-flex-row--{breakpoint}`    | Flex direction `row`
+`u-flex-start` -or-<br/> `u-flex-start--{breakpoint}`    | Horizontal align grid `left`
+`u-flex-center` -or-<br/> `u-flex-center--{breakpoint}`    | Horizontal align grid `center`
+`u-flex-baseline` -or-<br/> `u-flex-baseline--{breakpoint}`    | Horizontal align grid `baseline`
+`u-flex-end` -or-<br/> `u-flex-end--{breakpoint}`    | Horizontal align grid `right`
+`u-flex-top` -or-<br/> `u-flex-top--{breakpoint}`    | Vertical align grid `top`
+`u-flex-middle` -or-<br/> `u-flex-middle--{breakpoint}`    | Vertical align grid `middle`
+`u-flex-bottom` -or-<br/> `u-flex-bottom--{breakpoint}`    | Vertical align grid `bottom`
+`u-flex-around` -or-<br/> `u-flex-around--{breakpoint}`    | Items are evenly distributed in the line with equal space around them.
+`u-flex-between` -or-<br/> `u-flex-between--{breakpoint}`    | Items are evenly distributed in the line; first item is on the start line, last item on the end line
+`u-flex-first` -or-<br/> `u-flex-first--{breakpoint}`    | Item will be first in order
+`u-flex-last` -or-<br/> `u-flex-last--{breakpoint}`    | Item will be last in order
 
 ------
 
@@ -493,3 +522,9 @@ There is a default [Serviceworker](https://developer.mozilla.org/en-US/docs/Web/
 ## Usage ##
 ### Configure static assets ###
 The sw task will automatically index all the static files and create a sw.js file in the root accordingly.
+```javascript
+config.source.sw.path     = config.dest.root.path + '/assets/'; // Path where the ServiceWorker will be looking for the assets
+config.source.sw.strip    = config.dest.root.path; // Path that should be stripped from the cached assets
+config.dest.manifest.path = config.dest.root.path; // Path where the Manifest.json will be placed
+config.dest.sw.path       = config.dest.root.path; // Path where the ServiceWorker will be placed
+```

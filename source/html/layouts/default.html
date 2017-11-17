@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <meta name="author" content="{{ project.author }}">
-    <meta name="description" content="{{ project.description }}">
+    <meta name="description" content="{{ site.description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 
@@ -22,7 +22,7 @@
     <title>{{ site.title }}</title>
 
     <!-- Style sheets -->
-    {% if project.debug %} <link rel="stylesheet" href="/assets/css/dev.css"/> {% endif %}
+    {% if project.debug %}<link rel="stylesheet" href="/assets/css/dev.css"/>{% endif %}
     <link rel="stylesheet" href="/assets/css/main.css"/>
 
     <!-- Favicons -->
@@ -35,6 +35,7 @@
     <meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
+    {% include "generic/preloads.html" %}
 
 </head>
 

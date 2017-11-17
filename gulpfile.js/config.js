@@ -90,7 +90,7 @@ source.npm                          = { path: './node_modules' };
 source.svg                          = { path: '<%= assets %>/svg',          files: [ '*.svg', '**/*.svg' ] };
 source.webp                         = { path: '<%= assets %>/images',       files: [ '*.{jpg,jpeg,png,gif}', '**/*.{jpg,jpeg,png,gif}' ] };
 source.manifest                     = { path: '<%= assets %>/favicons',     files: [ 'manifest.json' ] };
-source.sw                           = { path: '<%= assets %>',              files: '**/*.{js,html,css,jpg,jpeg,png,gif,svg,xml,ico,eot,ttf,woff}', strip: source.root.path.replace('./','') };  // entry point files
+source.sw                           = { path: '<%= assets %>',              files: '**/*.{js,html,css,jpg,jpeg,png,gif,svg,xml,ico,eot,ttf,woff,json}', strip: source.root.path.replace('./','') };  // entry point files
 
 dest.root                           = { path: './build' };
 
