@@ -1,0 +1,22 @@
+@mixin hover-focus($only-hover: false) {
+
+    @if $only-hover {
+
+        html:not(.is-touch) & {
+            &:hover {
+                @content;
+            }
+        }
+
+    } @else {
+
+        html:not(.is-touch) & {
+            &:hover,
+            &:focus {
+                @content;
+            }
+        }
+
+    }
+
+}

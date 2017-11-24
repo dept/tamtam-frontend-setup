@@ -1,17 +1,29 @@
+// Style
+$button-icon-spacing: $global-spacing * 4;
+
+// Transitions
+$button-icon-transition-time: 300ms;
+$button-icon-transition-ease: $ease-in-out-quad;
+
 @mixin button--icon {
-    padding-right: $button-padding-right*2 + 10;
+    padding-right: $button-icon-spacing;
+    position: relative;
 
     .button__icon {
+        display: flex;
+        align-items: center;
         position: absolute;
-        right: $button-padding-right;
-        transform: translateX(10 - $button-padding-right);
-        transition: $button-transition-time $button-transition-ease;
+        top: 0;
+        bottom: 0;
+        right: $button-spacing*1.5;
+        transform: translate3d(0, 0, 0);
+        transition: $button-icon-transition-time $button-icon-transition-ease;
         transition-property: transform;
     }
 
-    &:hover {
+    @include hover-focus {
         .button__icon {
-            transform: translateX(0);
+            transform: translateX($global-spacing/2);
         }
     }
 }

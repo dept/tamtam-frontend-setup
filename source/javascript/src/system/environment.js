@@ -2,10 +2,10 @@
 
 // @formatter:off
 
-const ENVIRONMENT_LOCAL 		= 'local';
-const ENVIRONMENT_TEST 			= 'test';
-const ENVIRONMENT_ACCEPTATION 	= 'acceptation';
-const ENVIRONMENT_PRODUCTION 	= 'production';
+const ENVIRONMENT_LOCAL = 'local';
+const ENVIRONMENT_TEST = 'test';
+const ENVIRONMENT_ACCEPTATION = 'acceptation';
+const ENVIRONMENT_PRODUCTION = 'production';
 
 // @formatter:on
 
@@ -16,67 +16,65 @@ const ENVIRONMENT_PRODUCTION 	= 'production';
  */
 class Environment {
 
-	// @formatter:off
+    // @formatter:off
 
     constructor() {
+
         this._environment = null;
         this._environments = {};
     }
 
 	/**
-	 * Function to set the local host name(s)
-	 * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
-	 */
-	setLocal( hostname ) { this.set( ENVIRONMENT_LOCAL, hostname ); }
+     * Function to set the local host name(s)
+     * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
+     */
+    setLocal(hostname) { this.set(ENVIRONMENT_LOCAL, hostname); }
 
 	/**
-	 * Function to set the test host name(s)
-	 * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
-	 */
-	setTest ( hostname ) { this.set( ENVIRONMENT_TEST, hostname ); }
+     * Function to set the test host name(s)
+     * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
+     */
+    setTest(hostname) { this.set(ENVIRONMENT_TEST, hostname); }
 
 	/**
-	 * Function to set the acceptation host name(s)
-	 * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
-	 */
-	setAcceptation ( hostname ) { this.set( ENVIRONMENT_ACCEPTATION, hostname ); }
+     * Function to set the acceptation host name(s)
+     * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
+     */
+    setAcceptation(hostname) { this.set(ENVIRONMENT_ACCEPTATION, hostname); }
 
 	/**
-	 * Function to set the production host name(s)
-	 * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
-	 */
-	setProduction ( hostname ) { this.set( ENVIRONMENT_PRODUCTION, hostname ); }
+     * Function to set the production host name(s)
+     * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
+     */
+    setProduction(hostname) { this.set(ENVIRONMENT_PRODUCTION, hostname); }
 
-	// @formatter:on
+    set(name, hostname) {
 
+        if (!Array.isArray(hostname)) {
 
-	set ( name, hostname ) {
+            this._environments[hostname] = name;
 
-		if( !Array.isArray( hostname ) ) {
+        } else {
 
-			this._environments[ hostname ] = name;
+            for (let i = 0, leni = hostname.length; i < leni; i++) {
+                this._environments[hostname[i]] = name;
+            }
 
-		} else {
+        }
 
-			for ( let i = 0, leni = hostname.length; i < leni; i++ ) {
-				this._environments[ hostname[ i ] ] = name;
-			}
+    }
 
-		}
+    get() {
 
-	}
+        if (this._environment !== null) {
+            return this._environment;
+        }
 
-	get() {
+        for (const hostname in this._environments) {
 
-		if( this._environment !== null ) {
-			return this._environment;
-		}
+            if (location.hostname === hostname) {
 
-        for ( const hostname in this._environments ) {
-
-            if( location.hostname === hostname ) {
-
-                this._environment = this._environments[ hostname ];
+                this._environment = this._environments[hostname];
 
                 break;
 
@@ -86,9 +84,9 @@ class Environment {
 
         return this._environment;
 
-	}
+    }
 
-	isLocal() { return this.get() === ENVIRONMENT_LOCAL; }
+    isLocal() { return this.get() === ENVIRONMENT_LOCAL; }
 
     isTest() { return this.get() === ENVIRONMENT_TEST; }
 
@@ -101,7 +99,7 @@ class Environment {
 const environment = new Environment();
 
 // pre-fill localhost settings
-environment.setLocal( [ 'localhost', '0.0.0.0' ] );
+environment.setLocal(['localhost', '0.0.0.0']);
 
 // Returns the object and not a constructor, because there should be only a single instance of this type.
 export default environment;

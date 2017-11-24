@@ -5,18 +5,8 @@
 
     &--#{$breakpoint} {
 
-      @if($grid-mobile-first) {
-
-        @media only screen and ( min-width : #{$size} ) {
-          @content
-        }
-
-      } @else {
-
-        @media only screen and ( max-width : #{$size - 1} ) {
-          @content
-        }
-
+      @media only screen and ( min-width : #{$size} ) {
+        @content
       }
 
     }

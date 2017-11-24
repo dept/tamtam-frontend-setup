@@ -7,13 +7,11 @@
 //
 // TOOLS
 // Conversion.........Converts units to other units
-// Spacing............Generates spacing classes
-// Visibility.........Generates visibility classes
 // Fluid type.........Responsive typography
 // Center.............Centers elements
 // Scrollbar..........Custom scrollbar colors
 // Gradient...........Linear and clothoid gradient
-// Container..........Generates grid container
+// Hover focus........Will create hover class only for non-touch devices
 // Grid...............Generates grid
 //
 
@@ -23,8 +21,8 @@
 @import 'tools.center';
 @import 'tools.scrollbar';
 @import 'tools.gradient';
+@import 'tools.hover-focus';
 
-@import 'tools.generate-container';
 @import 'tools.generate-grid';
 
 // Misc mixins
@@ -34,6 +32,7 @@
 @import 'tools.heading';
 @import 'tools.vertical-center-dib';
 @import 'tools.media-queries';
+@import 'tools.visibility';
 
 // Extends
-@import 'tools.spaceless';
+@import 'tools.inline-children';
