@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## Next
+## [1.4.0] - 2017-11-24
 ### Added
 - hover-focus mixin with JS util which prevents sticky hovers on touch devices 📱
 - Added default ServiceWorker task which uses sw-precache to cache static files.
