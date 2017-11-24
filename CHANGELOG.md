@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file.
 - Added ServiceWorker task paths.
 - Added `screen-min-width($size)` and `screen-max-width($size)` media queries.
 - Added `preconnect` and `preload` macro.
+- Added `screen-min-width($size)` and `screen-max-width($size)` media queries.
+- Added `main-es.js` for modern browsers. Will run based on `type="module"` support.
 
 ### Changed
 - ModuleInit now can init multiple modules on 1 DOM element. It checks if the constructor is already bound on that element, if not the new constructor is also initiated.
@@ -15,8 +17,9 @@ All notable changes to this project will be documented in this file.
 - Renamed `spaceless` tool to `inline-children` due to deprecation of the `inline-block` grid.
 - Changed the old `inline-block` grid to a new `flexbox` grid.
 - Changed `u-col-{$size}` to `o-col-{$size}` since a col is an object.
-- Changed `o-grid-{$columns}` to `o-grid` since multiple grids weren't used. 
-- Changed button macro to cover more usecases. 
+- Changed `o-grid-{$columns}` to `o-grid` since multiple grids weren't used.
+- Changed `o-grid-{$columns}` to `o-grid` since multiple grids weren't used.
+- Changed button macro to cover more usecases.
 
 ## [1.3.0] - 2017-08-03
 ### Added

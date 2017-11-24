@@ -36,25 +36,11 @@
     "bamboo": "gulp bamboo",
     "gulp": "gulp"
   },
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "browsers": [
-              "last 2 versions",
-              "ie >= 11"
-            ]
-          },
-          "modules": false
-        }
-      ]
-    ]
-  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-minify-webpack-plugin": "0.2.0",
+    "babel-polyfill": "6.26.0",
     "babel-preset-env": "^1.6.0",
     "browser-sync": "~2.9.3",
     "del": "^3.0.0",
