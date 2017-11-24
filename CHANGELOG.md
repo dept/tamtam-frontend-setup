@@ -21,6 +21,9 @@ All notable changes to this project will be documented in this file.
 - Changed `o-grid-{$columns}` to `o-grid` since multiple grids weren't used.
 - Changed button macro to cover more usecases.
 
+### Deleted
+- Bower 🎉🎉🎉🎉🎉🎉🎉
+
 ## [1.3.0] - 2017-08-03
 ### Added
 #### General
