@@ -17,21 +17,24 @@
 
 {% macro button( data ) %}
 
-    <a class="c-button
-    {%- if data.size %} button-size--{{ data.size }}{% endif -%}
+    <{{ data.element or 'a' }} class="
+    {%- if data.variant %}c-button--{{ data.variant }}{% else %}c-button{% endif -%}
+    {%- if data.size %} button--{{ data.size }}{% endif -%}
     {%- if data.icon %} button--icon{% endif -%}
-    {%- if data.variant %} button-variant--{{ data.variant }}{% endif -%}
     {%- if data.class %} {{ data.class }}{% endif -%}"
+    {%- if data.type %} type="{{ data.type }}"{% endif -%}
+    {%- if not data.type and data.element == 'button' %} type="button"{% endif -%}
     {%- if data.url %} href="{{ data.url }}"{% endif -%}
     {%- if data.hook %} js-hook-{{ data.hook }}{% endif -%}
-    {%- if data.attr or data.attributes %} {{ data.attr|safe or data.attributes|safe }}{% endif -%}>
+    {%- if data.controls %} aria-controls="{{ data.controls }}"{% endif -%}
+    {%- if data.attr %} {{ data.attr|safe }}{% endif -%}>
 
-        <span class="button__label">{{ data.label or 'label' }}</span>
+        <span class="button__label">{{ data.label }}</span>
 
         {%- if data.icon %}
-          <span class="button__icon">{% svg "icons/"+data.icon %}</span>
+          <span class="button__icon">{% svg "icons/" + data.icon %}</span>
         {% endif -%}
 
-    </a>
+    </{{ data.element or 'a' }}>
 
 {% endmacro %}
