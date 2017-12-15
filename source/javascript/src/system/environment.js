@@ -1,13 +1,9 @@
-"use strict";
-
-// @formatter:off
+'use strict';
 
 const ENVIRONMENT_LOCAL = 'local';
 const ENVIRONMENT_TEST = 'test';
 const ENVIRONMENT_ACCEPTATION = 'acceptation';
 const ENVIRONMENT_PRODUCTION = 'production';
-
-// @formatter:on
 
 
 /**
@@ -24,25 +20,25 @@ class Environment {
         this._environments = {};
     }
 
-	/**
+    /**
      * Function to set the local host name(s)
      * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
      */
     setLocal(hostname) { this.set(ENVIRONMENT_LOCAL, hostname); }
 
-	/**
+    /**
      * Function to set the test host name(s)
      * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
      */
     setTest(hostname) { this.set(ENVIRONMENT_TEST, hostname); }
 
-	/**
+    /**
      * Function to set the acceptation host name(s)
      * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
      */
     setAcceptation(hostname) { this.set(ENVIRONMENT_ACCEPTATION, hostname); }
 
-	/**
+    /**
      * Function to set the production host name(s)
      * @param hostname {string|Array} a single hostname or Array with multiple hostnames.
      */
