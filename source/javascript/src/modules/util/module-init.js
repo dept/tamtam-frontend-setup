@@ -17,29 +17,29 @@ function ModuleInit(selector, constructor, opt_arguments) {
         element._initializedModules = element._initializedModules || [];
 
         // check if the module has not already been instantiated on this element
-        if (element._initializedModules.indexOf(constructor.name) > -1) {
-            continue;
-        }
+        if (element._initializedModules.indexOf(constructor.name) !== -1) {
 
-        element._initializedModules.push(constructor.name);
+            element._initializedModules.push(constructor.name);
 
 
-        if (!opt_arguments) {
+            if (!opt_arguments) {
 
-            // create new module and save it into the Array
-            moduleInstances.push(new constructor(element));
+                // create new module and save it into the Array
+                moduleInstances.push(new constructor(element));
 
-        } else {
+            } else {
 
-            // if an Array with extra arguments have been given, push them into an arguments array
-            // the first argument will the context for the function, can be null because the context will be reset by the new operator
-            // the seconds argument is actually the first argument to be passed onto the constructor, so in this case the HTMLElement.
-            const constructorArguments = [null, element];
-            Array.prototype.push.apply(constructorArguments, opt_arguments);
+                // if an Array with extra arguments have been given, push them into an arguments array
+                // the first argument will the context for the function, can be null because the context will be reset by the new operator
+                // the seconds argument is actually the first argument to be passed onto the constructor, so in this case the HTMLElement.
+                const constructorArguments = [null, element];
+                Array.prototype.push.apply(constructorArguments, opt_arguments);
 
-            // create new module with the arguments and save it into the Array
-            // @see: http://stackoverflow.com/questions/1606797/use-of-apply-with-new-operator-is-this-possible
-            moduleInstances.push(new ( constructor.bind.apply(constructor, constructorArguments) )());
+                // create new module with the arguments and save it into the Array
+                // @see: http://stackoverflow.com/questions/1606797/use-of-apply-with-new-operator-is-this-possible
+                moduleInstances.push(new (constructor.bind.apply(constructor, constructorArguments))());
+
+            }
 
         }
 
@@ -55,11 +55,12 @@ function ModuleInit(selector, constructor, opt_arguments) {
     if (Function.prototype.name === undefined && Object.defineProperty !== undefined) {
         Object.defineProperty(Function.prototype, 'name', {
             get: function () {
-                var funcNameRegex = /function\s([^(]{1,})\(/;
-                var results = (funcNameRegex).exec((this).toString());
+                const funcNameRegex = /function\s([^(]{1,})\(/;
+                const results = (funcNameRegex).exec((this).toString());
                 return (results && results.length > 1) ? results[1].trim() : "";
             },
             set: function () {
+                // Empty function to prevent set is not a function
             }
         });
     }
