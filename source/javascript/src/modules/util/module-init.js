@@ -17,7 +17,7 @@ function ModuleInit(selector, constructor, opt_arguments) {
         element._initializedModules = element._initializedModules || [];
 
         // check if the module has not already been instantiated on this element
-        if (element._initializedModules.indexOf(constructor.name) !== -1) {
+        if (element._initializedModules.indexOf(constructor.name) === -1) {
 
             element._initializedModules.push(constructor.name);
 
