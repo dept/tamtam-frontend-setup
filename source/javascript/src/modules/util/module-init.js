@@ -54,12 +54,12 @@ function ModuleInit(selector, constructor, opt_arguments) {
 (function () {
     if (Function.prototype.name === undefined && Object.defineProperty !== undefined) {
         Object.defineProperty(Function.prototype, 'name', {
-            get: function () {
+            get () {
                 const funcNameRegex = /function\s([^(]{1,})\(/;
                 const results = (funcNameRegex).exec((this).toString());
-                return (results && results.length > 1) ? results[1].trim() : "";
+                return (results && results.length > 1) ? results[1].trim() : '';
             },
-            set: function () {
+            set () {
                 // Empty function to prevent set is not a function
             }
         });

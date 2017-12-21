@@ -17,7 +17,7 @@
 
 {% macro button( data ) %}
 
-    <{{ data.element or "a" }} class="
+    <{{ data.element or 'a' }} class="
     {%- if data.variant %}c-button--{{ data.variant }}{% else %}c-button{% endif -%}
     {%- if data.size %} button--{{ data.size }}{% endif -%}
     {%- if data.icon %} button--icon{% endif -%}
@@ -32,9 +32,9 @@
         <span class="button__label">{{ data.label }}</span>
 
         {%- if data.icon %}
-          <span class="button__icon">{% svg "icons/" + data.icon %}</span>
+          <span class="button__icon">{% svg 'icons/' + data.icon %}</span>
         {% endif -%}
 
-    </{{ data.element or "a" }}>
+    </{{ data.element or 'a' }}>
 
 {% endmacro %}
