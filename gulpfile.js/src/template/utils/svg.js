@@ -16,7 +16,7 @@ var log                     = require('../../debug/log');
  * @param opt_altText {=string} alt text to inject into the svg
  * @returns {string} svg code
  */
-module.exports = function ( name, opt_altText ) {
+module.exports = function ( name ) {
 
     if( !name ) return '';
 
@@ -38,18 +38,7 @@ module.exports = function ( name, opt_altText ) {
 
     }
 
-    var attributes = '';
-
-    attributes += 'class=\"' + SVG_CLASS_PREFIX + name.replace(/\\|\//g, '-') + '\"';
-
-    if(opt_altText){
-        attributes += ' role=\"img\"';
-        attributes += ' aria-label=\"' + opt_altText + '\"';
-        attributes += ' alt=\"' + opt_altText + '\"';
-    }
-
     svg = svg.toString();
-    svg = svg.replace(/^<svg/, '<svg ' + attributes );
     svg = '\n<!--  '  + name + '.svg  -->\n' + svg + '\n';
 
     return svg;
