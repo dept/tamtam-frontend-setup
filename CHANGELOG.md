@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - TBD
+### Added
+- SVG task will now add `classes` instead of the Nunjucks SVG extension. This way backend also has these classes available.
+
 ## [1.4.0] - 2017-11-24
 ### Added
 - hover-focus mixin with JS util which prevents sticky hovers on touch devices 📱
