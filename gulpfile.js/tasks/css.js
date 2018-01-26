@@ -103,6 +103,3 @@ gulp.task('css', function () {
         .pipe(browserSync.stream({match: '**/*.css'}) );
 
 } );
-
-
-

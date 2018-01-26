@@ -80,6 +80,7 @@ source.assets                       = { path: '<%= root %>/assets' };
 source.bower                        = { path: './bower_components' };
 source.css                          = { path: '<%= root %>/sass',           files: [ '*.scss', '_dev/*.scss'] }; // entry point files
 source.data                         = { path: '<%= root %>/data',           files: [ '*.json', '**/*.json' ] };
+source.components                   = { path: '<%= root %>/components',     files: [ '**/*.html', '**/*.scss', , '**/*.js' ] };               // entry point files
 source.html                         = { path: '<%= root %>/html',           files: [ '*.html' ] };               // entry point files
 
 source.nunjucks                     = { path: source.root.path.replace('./','')+'/html', files: source.html.files };
