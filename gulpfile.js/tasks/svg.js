@@ -2,14 +2,11 @@
 
 var requireCached       = require('../src/gulp/require-cached');
 var config              = require('../config');
-var log                 = require('../src/debug/log');
 var fileEmptyCheck      = require('../src/function/file-empty-check');
 
 var changed             = requireCached('gulp-changed');
 var gulp                = requireCached('gulp');
 var svgmin              = requireCached('gulp-svgmin');
-var glob                = requireCached('glob');
-var mkdirp              = requireCached('mkdirp');
 var through             = requireCached('through2');
 var path                = requireCached('path');
 
