@@ -1,14 +1,31 @@
 //@formatter:off
 
-var requireCached = require('../src/gulp/require-cached');
-var config = require('../config');
-var log = require('../src/debug/log');
-var path = require('path');
-var _ = require('lodash');
+const requireCached = require('../src/gulp/require-cached');
+const config = require('../config');
+const log = require('../src/debug/log');
+const walkFileListSync = require('../src/node/file/walk-file-list-sync');
+const path = require('path');
+const _ = require('lodash');
 
-var gulp = requireCached('gulp');
-var webpack = requireCached('webpack');
-var BabelMinifyWebpackPlugin = requireCached('babel-minify-webpack-plugin');
+const gulp = requireCached('gulp');
+const webpack = requireCached('webpack');
+const BabelMinifyWebpackPlugin = requireCached('babel-minify-webpack-plugin');
+
+const createComponentsObject = (folder) => {
+
+    const components = walkFileListSync(config.source.getPath(folder), 'javascript');
+    const stripPath = path.join(config.source.getPath(folder), '/');
+    return [].reduce.call(components, (data, component) => {
+
+        const moduleName = component.replace(stripPath, '').split('/')[0];
+        data[`components/${moduleName}`] = path.resolve(__dirname, '../../', component, moduleName);
+
+        return data;
+
+    }, {});
+
+
+}
 
 const compilerConfigs = {};
 
@@ -61,6 +78,9 @@ const baseConfig = {
     output: {
         path: path.resolve(__dirname, '../../') + '/' + config.dest.getPath('javascript'),
         filename: '[name].js',
+    },
+    resolve: {
+        alias: createComponentsObject('components')
     },
     cache: {},
     devtool: config.sourcemaps ? 'source-map' : undefined

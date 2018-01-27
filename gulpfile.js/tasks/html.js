@@ -1,10 +1,9 @@
-// @formatter:off
-
 const requireCached = require('../src/gulp/require-cached');
 const config = require('../config');
 const log = require('../src/debug/log');
 const mergeJSONData = require('../src/data/json/merge');
 const getFileList = require('../src/node/file/get-list');
+const walkFileListSync = require('../src/node/file/walk-file-list-sync');
 const packageJSON = require('../../package.json');
 const SvgExtension = require('../src/template/nunjucks/tags/svg');
 const DebugExtension = require('../src/template/nunjucks/tags/debug');
@@ -14,7 +13,7 @@ const mergeFilter = require('../src/template/nunjucks/filters/merge');
 const defaultsFilter = require('../src/template/nunjucks/filters/defaults');
 
 
-const path = require('path');
+const path = requireCached('path');
 const fs = requireCached('fs');
 const mkdirp = requireCached('mkdirp');
 const gulp = requireCached('gulp');
@@ -28,9 +27,6 @@ const glob = requireCached('glob');
 
 const RESERVED_DATA_KEYWORDS = ['project', 'ext'];
 
-
-
-//@formatter:on
 
 /**
  *  Gulp task responsible for compiling the templates into normal HTML using Mozilla nunjucks templates
@@ -123,32 +119,13 @@ gulp.task('html', function () {
 
     }
 
-    const walkSync = function (dir, folderToFind, filelist = []) {
-
-        const files = fs.readdirSync(dir);
-        filelist = filelist || [];
-
-        files.forEach(file => {
-            if (fs.statSync(path.join(dir, file)).isDirectory()) {
-                if (file === folderToFind) {
-                    filelist.push(path.join(dir, file));
-                } else {
-                    filelist = walkSync(path.join(dir, file), folderToFind, filelist);
-                }
-            }
-        });
-
-        return filelist;
-
-    };
-
     return gulp.src(config.source.getFileGlobs('html'))
 
         .pipe(gulpData(getDataForFile))
         .pipe(gulpNunjucks({
             envOptions: options.nunjuck,
             manageEnv: environment,
-            path: [config.source.getPath('nunjucks')].concat(walkSync(config.source.getPath('components'), 'template'))
+            path: [config.source.getPath('nunjucks')].concat(walkFileListSync(config.source.getPath('components'), 'template'))
         }))
 
         .pipe(gulpif(options.pretty, prettify(options.prettyConfig)))
