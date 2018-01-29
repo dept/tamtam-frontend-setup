@@ -35,9 +35,6 @@ gulp.task('watch', ['js-watch'], function (callback) {
     watch(config.source.getFileGlobs('data'),
         function (events, done) { gulp.start('html'); });
 
-    // watch( config.source.getPath( 'javascript', '**/*.js' ),
-    //     function ( events, done ) { gulp.start( 'js-watch' ); } );
-
     watch(config.dest.getPath('html', '**/*.html'), onHTMLChange);
 
 });
