@@ -1,25 +1,28 @@
-//@formatter:off
-var js = require('./js');
+const js = require('./js');
 
-var config = require('../config');
-var log = require('../src/debug/log');
-var requireCached = require('../src/gulp/require-cached');
+const config = require('../config');
+const log = require('../src/debug/log');
+const requireCached = require('../src/gulp/require-cached');
 
-var browserSync = requireCached('browser-sync');
-var gulp = requireCached('gulp');
-var webpack = requireCached('webpack');
-
-// @formatter:on
+const browserSync = requireCached('browser-sync');
+const gulp = requireCached('gulp');
+const webpack = requireCached('webpack');
 
 gulp.task('js-watch', function jsWatch(callback) {
 
-    Promise.all(js.createCompilerPromise())
-        .then(() => {
+    let initialCompile = true;
 
+    webpack(js.compilerConfigs.legacyConfig).watch(200, (error, stats) => {
+
+        js.onWebpackCallback(error, stats)
+
+        if (initialCompile) {
+            initialCompile = false;
             callback();
-            browserSync.reload();
+        }
 
-        })
-        .catch(e => console.warn('Error whilst compiling JS', e));
+        browserSync.reload();
+
+    });
 
 });
