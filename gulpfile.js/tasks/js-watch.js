@@ -14,7 +14,7 @@ gulp.task('js-watch', function jsWatch(callback) {
 
     webpack(js.compilerConfigs.legacyConfig).watch(200, (error, stats) => {
 
-        js.onWebpackCallback(error, stats)
+        js.onWebpackCallback(error, stats);
 
         if (initialCompile) {
             initialCompile = false;
