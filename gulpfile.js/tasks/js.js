@@ -178,5 +178,6 @@ gulp.task('js', function (callback) {
 });
 
 module.exports = {
-    createCompilerPromise
+    compilerConfigs,
+    onWebpackCallback
 }
