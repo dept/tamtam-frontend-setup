@@ -26,6 +26,9 @@ gulp.task('watch', ['js-watch'], function (callback) {
     watch(config.source.getFileGlobs('svg'),
         function (events, done) { gulp.start('svg'); });
 
+    watch(config.source.getPath('components', '**/*.scss'),
+        function (events, done) { gulp.start('inject-component-css'); });
+
     watch(config.source.getPath('css', '**/*.scss'),
         function (events, done) { gulp.start('css'); gulp.start('css-lint'); });
 
