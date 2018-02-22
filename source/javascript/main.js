@@ -7,13 +7,13 @@ import 'babel-polyfill';
 import './src/config';
 
 // Import utilities.
-import moduleInit from './src/modules/util/module-init';
+import moduleInit from './src/util/module-init';
 
 // Import Singletons
-import './src/modules/util/detect-touch';
+import './src/util/detect-touch';
 
 // Import modules.
-import ExampleModule from './src/modules/example';
+import ExampleModule from './src/example';
 
 // Initialize modules.
 moduleInit( '[js-hook-module-example]', ExampleModule );
