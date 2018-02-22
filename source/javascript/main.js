@@ -3,7 +3,6 @@
 /*------------------------------------*\
  * JS Main entry file
  \*------------------------------------*/
-import 'babel-polyfill';
 import './src/config';
 
 // Import utilities.
@@ -17,3 +16,4 @@ import ExampleModule from './src/example';
 
 // Initialize modules.
 moduleInit( '[js-hook-module-example]', ExampleModule );
+
