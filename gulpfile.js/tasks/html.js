@@ -125,7 +125,16 @@ gulp.task('html', function () {
         .pipe(gulpNunjucks({
             envOptions: options.nunjuck,
             manageEnv: environment,
-            path: [config.source.getPath('nunjucks')].concat(walkFileListSync(config.source.getPath('components'), 'template'))
+            path: [
+                // Add HTML root
+                config.source.getPath('nunjucks'),
+                // Add root to include components
+                config.source.getPath('root')
+            ]
+                .concat(
+                    // Make aliases for all available components
+                    walkFileListSync(config.source.getPath('components'), 'template')
+                )
         }))
 
         .pipe(gulpif(options.pretty, prettify(options.prettyConfig)))

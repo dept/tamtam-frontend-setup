@@ -1,5 +1,3 @@
-//@formatter:off
-
 const requireCached = require('../src/gulp/require-cached');
 const config = require('../config');
 const log = require('../src/debug/log');
@@ -11,19 +9,29 @@ const gulp = requireCached('gulp');
 const webpack = requireCached('webpack');
 const BabelMinifyWebpackPlugin = requireCached('babel-minify-webpack-plugin');
 
-const createComponentsObject = (folder) => {
+const createAliasObject = () => {
+
+    const components = getReferences('components');
+    const utilities = getReferences('utilities');
+
+    utilities['utilities'] = path.resolve(__dirname, '../../', path.join(config.source.getPath('utilities'), '/'));
+
+    return { ...components, ...utilities };
+
+}
+
+const getReferences = (folder) => {
 
     const components = walkFileListSync(config.source.getPath(folder), 'javascript');
     const stripPath = path.join(config.source.getPath(folder), '/');
     return [].reduce.call(components, (data, component) => {
 
         const moduleName = component.replace(stripPath, '').split('/')[0];
-        data[`components/${moduleName}`] = path.resolve(__dirname, '../../', component, moduleName);
+        data[`${folder}/${moduleName}`] = path.resolve(__dirname, '../../', component, moduleName);
 
         return data;
 
     }, {});
-
 
 }
 
@@ -80,7 +88,7 @@ const baseConfig = {
         filename: '[name].js',
     },
     resolve: {
-        alias: createComponentsObject('components')
+        alias: createAliasObject()
     },
     cache: {},
     devtool: config.sourcemaps ? 'source-map' : undefined
@@ -101,7 +109,7 @@ compilerConfigs.modernConfig = Object.assign({}, baseConfig, {
 
 compilerConfigs.legacyConfig = Object.assign({}, baseConfig, {
     entry: {
-        'main': path.resolve(__dirname, '../../source/javascript', 'main.js')
+        'main': ['babel-polyfill', path.resolve(__dirname, '../../source/javascript', 'main.js')]
     },
     plugins: configurePlugins(),
     module: {
@@ -173,7 +181,6 @@ gulp.task('js', function (callback) {
     Promise.all(createCompilerPromise())
         .then(() => callback())
         .catch(e => console.warn('Error whilst compiling JS', e));
-
 
 });
 

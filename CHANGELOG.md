@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 ### Added
 - SVG task will now add `classes` instead of the Nunjucks SVG extension. This way backend also has these classes available.
 
+### Changed
+- Moved components folder which contains each components CSS / JS / HTML. Aliases will be generated accordingly in css, js and html tasks. Works out of the box with Shelf components.
+- Moved javascript utilities folder which contains each utilities JS. Aliases will be created accordingly. Works out of the box with Shelf utilities.
+- Migrated all default components to new component structure.
+- Fixed a bug where `main-es.js` would also have all babel-polyfills on compile.
+
+
 ## [1.4.0] - 2017-11-24
 ### Added
 - hover-focus mixin with JS util which prevents sticky hovers on touch devices 📱
