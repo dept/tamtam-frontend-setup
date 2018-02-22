@@ -4,6 +4,7 @@
  * JS Main entry file
  \*------------------------------------*/
 import 'babel-polyfill';
+import './src/config';
 
 // Import utilities.
 import moduleInit from './src/modules/util/module-init';
