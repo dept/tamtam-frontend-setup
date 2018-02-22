@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 - SVG task will now add `classes` instead of the Nunjucks SVG extension. This way backend also has these classes available.
 - Javascript now has a config folder to configurate your singleton modules. That way the main.js stays a lot cleaner.
 
+### Changed
+- Moved styleguide to index.html. That way it is used more often.
+=======
+
 ## [1.4.0] - 2017-11-24
 ### Added
 - hover-focus mixin with JS util which prevents sticky hovers on touch devices 📱
