@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - Moved styleguide to index.html. That way it is used more often.
+=======
 
 ## [1.4.0] - 2017-11-24
 ### Added
