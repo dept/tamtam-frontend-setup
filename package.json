@@ -38,7 +38,8 @@
     "gulp": "cd node_modules/tamtam-frontend-builder && node bin/start.js",
     "start": "cd node_modules/tamtam-frontend-builder && node bin/start.js",
     "build": "cd node_modules/tamtam-frontend-builder && node bin/build.js",
-    "dist": "cd node_modules/tamtam-frontend-builder && node bin/dist.js"
+    "dist": "cd node_modules/tamtam-frontend-builder && node bin/dist.js",
+    "task": "cd node_modules/tamtam-frontend-builder && node bin/run-task.js"
   },
   "devDependencies": {
     "tamtam-frontend-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#develop"
