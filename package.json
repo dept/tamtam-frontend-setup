@@ -41,7 +41,6 @@
     "dist": "cd node_modules/tamtam-frontend-builder && node bin/dist.js"
   },
   "devDependencies": {
-    "tamtam-frontend-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#develop",
-    "babel-preset-env": "^1.6.0"
+    "tamtam-frontend-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#develop"
   }
 }
