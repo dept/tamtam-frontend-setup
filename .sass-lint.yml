@@ -2,9 +2,9 @@ options:
   formatter: stylish
 files:
   include:
-    - '../../source/**/*.scss'
+    - '../**/*.scss'
   ignore:
-    - '../../source/sass/_dev/**/*.scss'
+    - '../**/sass/_dev/**/*.scss'
 rules:
   space-after-colon: 0
   force-pseudo-nesting: 0
