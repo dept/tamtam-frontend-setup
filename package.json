@@ -33,8 +33,8 @@
   },
   "scripts": {
     "preinstall": "",
-    "bamboo": "cd node_modules/tamtam-frontend-builder && node bin/deloy.js",
-    "deloy": "cd node_modules/tamtam-frontend-builder && node bin/deloy.js",
+    "bamboo": "cd node_modules/tamtam-frontend-builder && node bin/deploy.js",
+    "deploy": "cd node_modules/tamtam-frontend-builder && node bin/deploy.js",
     "gulp": "cd node_modules/tamtam-frontend-builder && node bin/start.js",
     "start": "cd node_modules/tamtam-frontend-builder && node bin/start.js",
     "build": "cd node_modules/tamtam-frontend-builder && node bin/build.js",
