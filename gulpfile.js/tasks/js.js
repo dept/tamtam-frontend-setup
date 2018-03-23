@@ -1,14 +1,14 @@
 //@formatter:off
 
-var requireCached = require('../src/gulp/require-cached');
-var config = require('../config');
-var log = require('../src/debug/log');
-var path = require('path');
-var _ = require('lodash');
+const requireCached = require('../src/gulp/require-cached');
+const config = require('../config');
+const log = require('../src/debug/log');
+const path = require('path');
+const _ = require('lodash');
 
-var gulp = requireCached('gulp');
-var webpack = requireCached('webpack');
-var BabelMinifyWebpackPlugin = requireCached('babel-minify-webpack-plugin');
+const gulp = requireCached('gulp');
+const webpack = requireCached('webpack');
+const UglifyJsPlugin = requireCached('uglifyjs-webpack-plugin');
 
 const compilerConfigs = {};
 
@@ -20,7 +20,12 @@ const configurePlugins = () => {
 
         plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
         plugins.push(new webpack.NoEmitOnErrorsPlugin());
-        plugins.push(new BabelMinifyWebpackPlugin());
+        plugins.push(new UglifyJsPlugin({
+            uglifyOptions: {
+                keep_classnames: true,
+                keep_fnames: true
+            }
+        }));
 
     }
 
