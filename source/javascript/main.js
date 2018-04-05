@@ -3,7 +3,6 @@
 /*------------------------------------*\
  * JS Main entry file
  \*------------------------------------*/
-import 'babel-polyfill';
 import './src/config';
 
 // Import utilities.

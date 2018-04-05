@@ -86,7 +86,7 @@ compilerConfigs.modernConfig = Object.assign({}, baseConfig, {
 
 compilerConfigs.legacyConfig = Object.assign({}, baseConfig, {
     entry: {
-        'main': path.resolve(__dirname, '../../source/javascript', 'main.js')
+        'main': ['babel-polyfill', path.resolve(__dirname, '../../source/javascript', 'main.js')]
     },
     plugins: configurePlugins(),
     module: {
