@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.5.0] - TBD
+## [1.5.0] - 2018-20-04
 ### Added
 - SVG task will now add `classes` instead of the Nunjucks SVG extension. This way backend also has these classes available.
 - Javascript now has a config folder to configurate your singleton modules. That way the main.js stays a lot cleaner.
