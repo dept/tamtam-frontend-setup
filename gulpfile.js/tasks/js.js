@@ -1,14 +1,38 @@
-//@formatter:off
+const requireCached = require('../src/gulp/require-cached');
+const config = require('../config');
+const log = require('../src/debug/log');
+const walkFileListSync = require('../src/node/file/walk-file-list-sync');
+const path = require('path');
 
-var requireCached = require('../src/gulp/require-cached');
-var config = require('../config');
-var log = require('../src/debug/log');
-var path = require('path');
-var _ = require('lodash');
+const gulp = requireCached('gulp');
+const webpack = requireCached('webpack');
+const UglifyJsPlugin = requireCached('uglifyjs-webpack-plugin');
 
-var gulp = requireCached('gulp');
-var webpack = requireCached('webpack');
-var BabelMinifyWebpackPlugin = requireCached('babel-minify-webpack-plugin');
+const createAliasObject = () => {
+
+    const components = getReferences('components');
+    const utilities = getReferences('utilities');
+
+    utilities['@utilities'] = path.resolve(__dirname, '../../', path.join(config.source.getPath('utilities'), '/'));
+
+    return { ...components, ...utilities };
+
+}
+
+const getReferences = (folder) => {
+
+    const components = walkFileListSync(config.source.getPath(folder), 'javascript');
+    const stripPath = path.join(config.source.getPath(folder), '/');
+    return [].reduce.call(components, (data, component) => {
+
+        const moduleName = component.replace(stripPath, '').split('/')[0];
+        data[`@${folder}/${moduleName}`] = path.resolve(__dirname, '../../', component, moduleName);
+
+        return data;
+
+    }, {});
+
+}
 
 const compilerConfigs = {};
 
@@ -20,7 +44,12 @@ const configurePlugins = () => {
 
         plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
         plugins.push(new webpack.NoEmitOnErrorsPlugin());
-        plugins.push(new BabelMinifyWebpackPlugin());
+        plugins.push(new UglifyJsPlugin({
+            uglifyOptions: {
+                keep_classnames: true,
+                keep_fnames: true
+            }
+        }));
 
     }
 
@@ -62,6 +91,9 @@ const baseConfig = {
         path: path.resolve(__dirname, '../../') + '/' + config.dest.getPath('javascript'),
         filename: '[name].js',
     },
+    resolve: {
+        alias: createAliasObject()
+    },
     cache: {},
     devtool: config.sourcemaps ? 'source-map' : undefined
 };
@@ -81,7 +113,7 @@ compilerConfigs.modernConfig = Object.assign({}, baseConfig, {
 
 compilerConfigs.legacyConfig = Object.assign({}, baseConfig, {
     entry: {
-        'main': path.resolve(__dirname, '../../source/javascript', 'main.js')
+        'main': ['babel-polyfill', path.resolve(__dirname, '../../source/javascript', 'main.js')]
     },
     plugins: configurePlugins(),
     module: {
@@ -154,9 +186,9 @@ gulp.task('js', function (callback) {
         .then(() => callback())
         .catch(e => console.warn('Error whilst compiling JS', e));
 
-
 });
 
 module.exports = {
-    createCompilerPromise
+    compilerConfigs,
+    onWebpackCallback
 }

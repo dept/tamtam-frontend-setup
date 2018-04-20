@@ -44,12 +44,14 @@ $spacing-breakpoint-done: false;
             } @else {
                 @if (map-get($spacing-size, $spacing-breakpoint-modifier) != null) {
                     @media #{$spacing-media} {
+                        $spacing-px: map-get($spacing-size, $spacing-breakpoint-modifier);
+
                         .u-margin-#{$spacing-direction}--#{$spacing-size-modifier} {
-                            margin-#{$spacing-direction}: map-get($spacing-size, $spacing-breakpoint-modifier) !important;
+                            margin-#{$spacing-direction}: $spacing-px !important;
                         }
 
                         .u-padding-#{$spacing-direction}--#{$spacing-size-modifier} {
-                            padding-#{$spacing-direction}: map-get($spacing-size, $spacing-breakpoint-modifier) !important;
+                            padding-#{$spacing-direction}: $spacing-px !important;
                         }
                     }
                 }

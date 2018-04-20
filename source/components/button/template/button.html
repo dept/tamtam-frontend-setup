@@ -7,7 +7,7 @@
 
     Usage:
     <!-- Include the file containing the macro -->
-    {% include 'components/button.html' %}
+    {% include 'button.html' %}
 
      <!-- Call the macro with button data to create new instances of the button -->
     {{ button( { label: 'Click here' } ) }}
@@ -32,7 +32,7 @@
         <span class="button__label">{{ data.label }}</span>
 
         {%- if data.icon %}
-          <span class="button__icon">{% svg "icons/" + data.icon %}</span>
+          <span class="button__icon">{% svg 'icons/' + data.icon %}</span>
         {% endif -%}
 
     </{{ data.element or 'a' }}>

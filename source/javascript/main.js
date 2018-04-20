@@ -1,26 +1,18 @@
-"use strict";
+'use strict';
 
 /*------------------------------------*\
  * JS Main entry file
  \*------------------------------------*/
-import 'babel-polyfill';
+import './config';
 
 // Import utilities.
-import env from './src/system/environment';
-import moduleInit from './src/modules/util/module-init';
-import { initServiceWorker, removeServiceWorker } from './src/modules/util/sw';
+import moduleInit from '@utilities/module-init';
 
 // Import Singletons
-import './src/modules/util/detect-touch';
+import '@utilities/detect-touch';
 
 // Import modules.
-import ExampleModule from './src/modules/example';
-
-if (!env.isLocal()) {
-    initServiceWorker();
-} else {
-    removeServiceWorker();
-}
+import ExampleModule from '@components/example';
 
 // Initialize modules.
 moduleInit( '[js-hook-module-example]', ExampleModule );
