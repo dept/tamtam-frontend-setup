@@ -6,14 +6,14 @@
 
 // Import utilities.
 import env from './src/system/environment';
-import moduleInit from 'utilities/module-init';
-import { initServiceWorker, removeServiceWorker } from 'utilities/sw';
+import moduleInit from '@utilities/module-init';
+import { initServiceWorker, removeServiceWorker } from '@utilities/sw';
 
 // Import Singletons
-import 'utilities/detect-touch';
+import '@utilities/detect-touch';
 
 // Import modules.
-import ExampleModule from 'components/example';
+import ExampleModule from '@components/example';
 
 if (!env.isLocal()) {
     initServiceWorker();

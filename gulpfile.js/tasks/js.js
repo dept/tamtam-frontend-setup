@@ -3,7 +3,6 @@ const config = require('../config');
 const log = require('../src/debug/log');
 const walkFileListSync = require('../src/node/file/walk-file-list-sync');
 const path = require('path');
-const _ = require('lodash');
 
 const gulp = requireCached('gulp');
 const webpack = requireCached('webpack');
