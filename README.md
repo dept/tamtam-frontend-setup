@@ -469,9 +469,9 @@ For importing modules we use the ES6 syntax, transpiled back to ES5 by Babel.
     /* Main.js file  */
     // Import other modules:
     /// You can either import the 'default' export.
-    import Header from './src/modules/header';
+    import Header from '@components/header';
     /// Or import a specific subset if a module has multiple exports.
-    import {add, subtract} from './src/modules/util/calculations';
+    import { add, subtract } from '@utilities/calculations';
     
     
     /* module/header.js */
@@ -506,8 +506,8 @@ To initialize modules and bind them to specific DOMElements, we've created our o
 ```javascript 
     // main.js
     
-    import moduleInit from './src/modules/util/module-init';
-    import Header from './src/modules/header';
+    import moduleInit from '@utilities/module-init';
+    import Header from '@components/header';
     
     // The .js--header element is then passed to the constructor of Header.
     moduleInit( '.js--header', 	Header);

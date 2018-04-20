@@ -1,14 +1,38 @@
-//@formatter:off
-
 const requireCached = require('../src/gulp/require-cached');
 const config = require('../config');
 const log = require('../src/debug/log');
+const walkFileListSync = require('../src/node/file/walk-file-list-sync');
 const path = require('path');
-const _ = require('lodash');
 
 const gulp = requireCached('gulp');
 const webpack = requireCached('webpack');
-const UglifyJsPlugin = requireCached('uglifyjs-webpack-plugin');
+const BabelMinifyWebpackPlugin = requireCached('babel-minify-webpack-plugin');
+
+const createAliasObject = () => {
+
+    const components = getReferences('components');
+    const utilities = getReferences('utilities');
+
+    utilities['@utilities'] = path.resolve(__dirname, '../../', path.join(config.source.getPath('utilities'), '/'));
+
+    return { ...components, ...utilities };
+
+}
+
+const getReferences = (folder) => {
+
+    const components = walkFileListSync(config.source.getPath(folder), 'javascript');
+    const stripPath = path.join(config.source.getPath(folder), '/');
+    return [].reduce.call(components, (data, component) => {
+
+        const moduleName = component.replace(stripPath, '').split('/')[0];
+        data[`@${folder}/${moduleName}`] = path.resolve(__dirname, '../../', component, moduleName);
+
+        return data;
+
+    }, {});
+
+}
 
 const compilerConfigs = {};
 
@@ -66,6 +90,9 @@ const baseConfig = {
     output: {
         path: path.resolve(__dirname, '../../') + '/' + config.dest.getPath('javascript'),
         filename: '[name].js',
+    },
+    resolve: {
+        alias: createAliasObject()
     },
     cache: {},
     devtool: config.sourcemaps ? 'source-map' : undefined
@@ -158,7 +185,6 @@ gulp.task('js', function (callback) {
     Promise.all(createCompilerPromise())
         .then(() => callback())
         .catch(e => console.warn('Error whilst compiling JS', e));
-
 
 });
 
