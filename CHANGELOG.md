@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - Moved styleguide to index.html. That way it is used more often.
-=======
+- Removed system folder in JS (moved environments to util), and added the modules to the root of JS folder.
 
 ## [1.4.0] - 2017-11-24
 ### Added
