@@ -14,7 +14,7 @@ const createAliasObject = () => {
     const components = getReferences('components');
     const utilities = getReferences('utilities');
 
-    utilities['utilities'] = path.resolve(__dirname, '../../', path.join(config.source.getPath('utilities'), '/'));
+    utilities['@utilities'] = path.resolve(__dirname, '../../', path.join(config.source.getPath('utilities'), '/'));
 
     return { ...components, ...utilities };
 
@@ -27,7 +27,7 @@ const getReferences = (folder) => {
     return [].reduce.call(components, (data, component) => {
 
         const moduleName = component.replace(stripPath, '').split('/')[0];
-        data[`${folder}/${moduleName}`] = path.resolve(__dirname, '../../', component, moduleName);
+        data[`@${folder}/${moduleName}`] = path.resolve(__dirname, '../../', component, moduleName);
 
         return data;
 
