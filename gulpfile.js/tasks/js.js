@@ -6,7 +6,7 @@ const path = require('path');
 
 const gulp = requireCached('gulp');
 const webpack = requireCached('webpack');
-const BabelMinifyWebpackPlugin = requireCached('babel-minify-webpack-plugin');
+const UglifyJsPlugin = requireCached('uglifyjs-webpack-plugin');
 
 const createAliasObject = () => {
 
