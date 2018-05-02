@@ -318,10 +318,12 @@ Following are the default breakpoints. You can add or change them to suit your n
 
 Breakpoint    | Viewport width
 ------------- | -------------
-`small`       | `480px`
-`medium`      | `768px`
-`large`       | `1024px`
-`extra-large` | `1200px`
+`mobile`       | `320px`
+`mobile-plus`       | `480px`
+`tablet-portrait`      | `768px`
+`tablet-landscape`       | `1024px`
+`laptop`       | `1240px`
+`desktop` | `1600px`
 
 
 __Grid__
@@ -336,9 +338,10 @@ __note:__ The difference between mobile first true and false is that when it is 
 __Original__
 
 ```
-$grid-breakpoints   : ( 'sm': $breakpoint-small,
-                        'md': $breakpoint-medium,
-                        'lg': $breakpoint-large );
+$grid-breakpoints : ( 'sm': $breakpoint-mobile-plus,
+                      'md': $breakpoint-tablet-portrait,
+                      'lg': $breakpoint-tablet-landscape,
+                      'xlg': $breakpoint-laptop );
 ```
 
 __Added breakpoints__
@@ -346,10 +349,11 @@ __Added breakpoints__
 This example will add a new breakpoint called extra large. By default the extra large breakpoint is `1200px`.
 
 ```
-$grid-breakpoints   : ( 'sm': $breakpoint-small,
-                        'md': $breakpoint-medium,
-                        'lg': $breakpoint-large,
-                        'xlg': $breakpoint-extra-large );
+$grid-breakpoints : ( 'sm': $breakpoint-mobile-plus,
+                      'md': $breakpoint-tablet-portrait,
+                      'lg': $breakpoint-tablet-landscape,
+                      'xlg': $breakpoint-laptop,
+                      'xxlg': $breakpoint-desktop );
 ```
 
 
