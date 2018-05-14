@@ -31,10 +31,10 @@ config.gulp               = {
 
 config.browsers           = {};
 config.browsers.legacy    = [
-                                '> 1%',
-                                'last 2 versions',
+                                '> 0.25%',
                                 'Firefox ESR',
-                                "ie >= 11"
+                                'not op_mini all',
+                                'ie >= 11'
                             ];
 
                             // The last two versions of each browser, excluding versions
