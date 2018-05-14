@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.5.1] - TBD
+### Added
+- Removed `Last 2` according to: https://jamie.build/last-2-versions
+
 ## [1.5.0] - 2018-20-04
 ### Added
 - SVG task will now add `classes` instead of the Nunjucks SVG extension. This way backend also has these classes available.
