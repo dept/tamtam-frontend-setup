@@ -42,9 +42,9 @@ const configurePlugins = () => {
 
     if (config.minify) {
 
-        plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
-        plugins.push(new webpack.NoEmitOnErrorsPlugin());
         plugins.push(new UglifyJsPlugin({
+            cache: true,
+            parallel: 4,
             uglifyOptions: {
                 keep_classnames: true,
                 keep_fnames: true
@@ -86,6 +86,7 @@ const esLintConfig = {
 
 const baseConfig = {
     context: path.resolve(__dirname),
+    mode: config.debug ? 'development' : 'production',
     bail: config.throwError,
     output: {
         path: path.resolve(__dirname, '../../') + '/' + config.dest.getPath('javascript'),

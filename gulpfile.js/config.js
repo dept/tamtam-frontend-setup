@@ -1,13 +1,15 @@
 // @formatter:off
 
-var PathConfig            = require('./src/data/path-config');
-var processArguments      = require( './src/node/process-arguments' );
-var packageJSON           = require('../package.json');
+const projectDirectory      = process.env.OLDPWD;
+const PathConfig            = require('./src/data/path-config');
+const processArguments      = require( './src/node/process-arguments' );
+const packageJSON           = require('../package.json');
 
 
-var config                = {};
+const config                = {};
 config.name               = packageJSON.name;
 config.version            = packageJSON.version;
+config.projectDirectory = projectDirectory;
 
 config.cleanBuild         = false;
 config.debug              = true;
@@ -70,8 +72,8 @@ config.applyProcessArgs = function  (  ) {
  *
  *  config.dest.getPath('css');
  */
-var source      = config.source     = new PathConfig();
-var dest        = config.dest       = new PathConfig();
+const source      = config.source     = new PathConfig();
+const dest        = config.dest       = new PathConfig();
 
 
 source.root                         = { path: './source' };
