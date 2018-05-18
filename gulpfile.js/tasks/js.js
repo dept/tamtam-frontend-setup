@@ -63,6 +63,7 @@ const configureBabelLoader = (browserlist) => {
         use: {
             loader: 'babel-loader',
             options: {
+                plugins: ['syntax-dynamic-import', 'transform-es2015-arrow-functions'],
                 presets: [
                     ['env', {
                         modules: false,
@@ -71,6 +72,7 @@ const configureBabelLoader = (browserlist) => {
                             browsers: browserlist,
                         },
                     }],
+                    'stage-2'
                 ],
             },
         },
@@ -90,7 +92,9 @@ const baseConfig = {
     bail: config.throwError,
     output: {
         path: path.resolve(__dirname, '../../') + '/' + config.dest.getPath('javascript'),
+        chunkFilename: '[id].bundle.js',
         filename: '[name].js',
+        publicPath: `${config.dest.getPath('javascript').replace(config.dest.getPath('root'), '')}/`
     },
     resolve: {
         alias: createAliasObject()
@@ -106,8 +110,8 @@ compilerConfigs.modernConfig = Object.assign({}, baseConfig, {
     plugins: configurePlugins(),
     module: {
         rules: [
-            esLintConfig,
             configureBabelLoader(config.browsers.modern),
+            esLintConfig,
         ],
     },
 });
@@ -119,8 +123,8 @@ compilerConfigs.legacyConfig = Object.assign({}, baseConfig, {
     plugins: configurePlugins(),
     module: {
         rules: [
-            esLintConfig,
             configureBabelLoader(config.browsers.legacy),
+            esLintConfig,
         ],
     },
 });

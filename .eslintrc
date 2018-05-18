@@ -1,4 +1,5 @@
 {
+    "parser": "babel-eslint",
     "env": {
         "browser": true,
         "commonjs": true,
@@ -7,8 +8,8 @@
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module",
+        "allowImportExportEverywhere": true,
+        "codeFrame": false,
         "ecmaFeatures": {
             "modules": true
         }
