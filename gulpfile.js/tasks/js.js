@@ -71,8 +71,7 @@ const configureBabelLoader = (browserlist) => {
                         targets: {
                             browsers: browserlist,
                         },
-                    }],
-                    'stage-2'
+                    }]
                 ],
             },
         },
