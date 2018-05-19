@@ -112,7 +112,7 @@ compilerConfigs.modernConfig = {
         output: {
             ...baseConfig.output,
             ...{
-                chunkFilename: '[id].bundle-es.js',
+                chunkFilename: '[id].chunk-es.js',
             },
         },
         plugins: configurePlugins(),
@@ -134,7 +134,7 @@ compilerConfigs.legacyConfig = {
         output: {
             ...baseConfig.output,
             ...{
-                chunkFilename: '[id].bundle.js',
+                chunkFilename: '[id].chunk.js',
             },
         },
         plugins: configurePlugins(),
