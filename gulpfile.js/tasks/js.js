@@ -91,7 +91,6 @@ const baseConfig = {
     bail: config.throwError,
     output: {
         path: path.resolve(__dirname, '../../') + '/' + config.dest.getPath('javascript'),
-        chunkFilename: '[id].bundle.js',
         filename: '[name].js',
         publicPath: `${config.dest.getPath('javascript').replace(config.dest.getPath('root'), '')}/`
     },
@@ -99,34 +98,53 @@ const baseConfig = {
         alias: createAliasObject()
     },
     cache: {},
-    devtool: config.sourcemaps ? 'source-map' : undefined
+    devtool: config.sourcemaps ? 'source-map' : false
 };
 
-compilerConfigs.modernConfig = Object.assign({}, baseConfig, {
-    entry: {
-        'main-es': path.resolve(__dirname, '../../source/javascript', 'main-es.js')
-    },
-    plugins: configurePlugins(),
-    module: {
-        rules: [
-            configureBabelLoader(config.browsers.modern),
-            esLintConfig,
-        ],
-    },
-});
 
-compilerConfigs.legacyConfig = Object.assign({}, baseConfig, {
-    entry: {
-        'main': ['babel-polyfill', path.resolve(__dirname, '../../source/javascript', 'main.js')]
+compilerConfigs.modernConfig = {
+    ...baseConfig,
+    ...{
+        entry: {
+            'main-es': path.resolve(__dirname, '../../source/javascript', 'main-es.js')
+        },
+        output: {
+            ...baseConfig.output,
+            ...{
+                chunkFilename: '[id].bundle-es.js',
+            },
+        },
+        plugins: configurePlugins(),
+        module: {
+            rules: [
+                configureBabelLoader(config.browsers.modern),
+                esLintConfig,
+            ],
+        },
     },
-    plugins: configurePlugins(),
-    module: {
-        rules: [
-            configureBabelLoader(config.browsers.legacy),
-            esLintConfig,
-        ],
+};
+
+compilerConfigs.legacyConfig = {
+    ...baseConfig,
+    ...{
+        entry: {
+            'main': ['babel-polyfill', path.resolve(__dirname, '../../source/javascript', 'main.js')]
+        },
+        output: {
+            ...baseConfig.output,
+            ...{
+                chunkFilename: '[id].bundle.js',
+            },
+        },
+        plugins: configurePlugins(),
+        module: {
+            rules: [
+                configureBabelLoader(config.browsers.legacy),
+                esLintConfig,
+            ],
+        },
     },
-});
+};
 
 const createCompiler = (config) => {
     const compiler = webpack(config);

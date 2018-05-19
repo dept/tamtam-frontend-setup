@@ -33,7 +33,8 @@ config.gulp               = {
 
 config.browsers           = {};
 config.browsers.legacy    = [
-                                '> 0.25%',
+                                '> 1%',
+                                'last 2 versions',
                                 'Firefox ESR',
                                 'not op_mini all',
                                 'ie >= 11'
