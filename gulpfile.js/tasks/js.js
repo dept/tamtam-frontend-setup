@@ -44,6 +44,7 @@ const configurePlugins = () => {
 
         plugins.push(new UglifyJsPlugin({
             cache: true,
+            parallel: true,
             uglifyOptions: {
                 keep_classnames: true,
                 keep_fnames: true
