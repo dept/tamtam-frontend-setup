@@ -51,6 +51,8 @@ const configurePlugins = () => {
             }
         }));
 
+        plugins.push(new webpack.NoEmitOnErrorsPlugin())
+
     }
 
     return plugins;
@@ -87,7 +89,7 @@ const esLintConfig = {
 
 const baseConfig = {
     context: path.resolve(__dirname),
-    mode: config.debug ? 'development' : 'production',
+    mode: config.debug ? 'development' : 'none',
     bail: config.throwError,
     output: {
         path: path.resolve(__dirname, '../../') + '/' + config.dest.getPath('javascript'),
@@ -98,7 +100,7 @@ const baseConfig = {
         alias: createAliasObject()
     },
     cache: {},
-    devtool: config.sourcemaps ? 'source-map' : false
+    devtool: config.sourcemaps ? 'source-map' : undefined
 };
 
 
