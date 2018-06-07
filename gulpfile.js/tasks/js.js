@@ -42,6 +42,8 @@ const configurePlugins = () => {
 
     if (config.minify) {
 
+        plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
+        plugins.push(new webpack.NoEmitOnErrorsPlugin());
         plugins.push(new UglifyJsPlugin({
             cache: true,
             parallel: true,
@@ -50,8 +52,6 @@ const configurePlugins = () => {
                 keep_fnames: true
             }
         }));
-
-        plugins.push(new webpack.NoEmitOnErrorsPlugin())
 
     }
 
@@ -89,7 +89,6 @@ const esLintConfig = {
 
 const baseConfig = {
     context: path.resolve(__dirname),
-    mode: config.debug ? 'development' : 'none',
     bail: config.throwError,
     output: {
         path: path.resolve(__dirname, '../../') + '/' + config.dest.getPath('javascript'),
@@ -100,7 +99,7 @@ const baseConfig = {
         alias: createAliasObject()
     },
     cache: {},
-    devtool: config.sourcemaps ? 'source-map' : undefined
+    devtool: config.sourcemaps ? 'source-map' : false
 };
 
 
