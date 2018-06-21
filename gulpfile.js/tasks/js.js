@@ -47,7 +47,10 @@ const configurePlugins = () => {
         plugins.push(new UglifyJsPlugin({
             uglifyOptions: {
                 keep_classnames: true,
-                keep_fnames: true
+                keep_fnames: true,
+                mangle: {
+                    safari10: true
+                }
             }
         }));
 
