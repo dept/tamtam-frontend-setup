@@ -25,7 +25,7 @@ const getReferences = (folder) => {
     const stripPath = path.join(config.source.getPath(folder), '/');
     return [].reduce.call(components, (data, component) => {
 
-        const moduleName = component.replace(stripPath, '').split('/')[0];
+        const moduleName = component.replace(stripPath, '').replace('\\', '/').split('/')[0];
         data[`@${folder}/${moduleName}`] = path.resolve(__dirname, '../../', component, moduleName);
 
         return data;
@@ -49,7 +49,10 @@ const configurePlugins = () => {
             parallel: true,
             uglifyOptions: {
                 keep_classnames: true,
-                keep_fnames: true
+                keep_fnames: true,
+                mangle: {
+                    safari10: true
+                }
             }
         }));
 
