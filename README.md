@@ -318,10 +318,12 @@ Following are the default breakpoints. You can add or change them to suit your n
 
 Breakpoint    | Viewport width
 ------------- | -------------
-`small`       | `480px`
-`medium`      | `768px`
-`large`       | `1024px`
-`extra-large` | `1200px`
+`mobile`       | `320px`
+`mobile-plus`       | `480px`
+`tablet-portrait`      | `768px`
+`tablet-landscape`       | `1024px`
+`laptop`       | `1240px`
+`desktop` | `1600px`
 
 
 __Grid__
@@ -336,9 +338,10 @@ __note:__ The difference between mobile first true and false is that when it is 
 __Original__
 
 ```
-$grid-breakpoints   : ( 'sm': $breakpoint-small,
-                        'md': $breakpoint-medium,
-                        'lg': $breakpoint-large );
+$grid-breakpoints : ( 'sm': $breakpoint-mobile-plus,
+                      'md': $breakpoint-tablet-portrait,
+                      'lg': $breakpoint-tablet-landscape,
+                      'xlg': $breakpoint-laptop );
 ```
 
 __Added breakpoints__
@@ -346,10 +349,11 @@ __Added breakpoints__
 This example will add a new breakpoint called extra large. By default the extra large breakpoint is `1200px`.
 
 ```
-$grid-breakpoints   : ( 'sm': $breakpoint-small,
-                        'md': $breakpoint-medium,
-                        'lg': $breakpoint-large,
-                        'xlg': $breakpoint-extra-large );
+$grid-breakpoints : ( 'sm': $breakpoint-mobile-plus,
+                      'md': $breakpoint-tablet-portrait,
+                      'lg': $breakpoint-tablet-landscape,
+                      'xlg': $breakpoint-laptop,
+                      'xxlg': $breakpoint-desktop );
 ```
 
 
@@ -469,9 +473,9 @@ For importing modules we use the ES6 syntax, transpiled back to ES5 by Babel.
     /* Main.js file  */
     // Import other modules:
     /// You can either import the 'default' export.
-    import Header from './src/modules/header';
+    import Header from '@components/header';
     /// Or import a specific subset if a module has multiple exports.
-    import {add, subtract} from './src/modules/util/calculations';
+    import { add, subtract } from '@utilities/calculations';
     
     
     /* module/header.js */
@@ -506,8 +510,8 @@ To initialize modules and bind them to specific DOMElements, we've created our o
 ```javascript 
     // main.js
     
-    import moduleInit from './src/modules/util/module-init';
-    import Header from './src/modules/header';
+    import moduleInit from '@utilities/module-init';
+    import Header from '@components/header';
     
     // The .js--header element is then passed to the constructor of Header.
     moduleInit( '.js--header', 	Header);

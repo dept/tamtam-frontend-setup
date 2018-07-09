@@ -3,17 +3,21 @@
 /*------------------------------------*\
  * JS Main entry file
  \*------------------------------------*/
-import './src/config';
+import './config';
 
 // Import utilities.
-import moduleInit from './src/util/module-init';
+import moduleInit from '@utilities/module-init';
 
 // Import Singletons
-import './src/util/detect-touch';
+import '@utilities/detect-touch';
 
 // Import modules.
-import ExampleModule from './src/example';
+import Example from '@components/example';
 
 // Initialize modules.
-moduleInit( '[js-hook-module-example]', ExampleModule );
 
+// Sync
+moduleInit.sync('[js-hook-module-example]', Example);
+
+// Async
+// moduleInit.async('[js-hook-module-example]', () => import('@components/example'));

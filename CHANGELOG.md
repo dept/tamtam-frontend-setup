@@ -1,7 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.5.0] - TBD
+## [1.5.1] - TBD
+### Added
+- Removed `Last 2` according to: https://jamie.build/last-2-versions
+
+## [1.5.0] - 2018-20-04
 ### Added
 - SVG task will now add `classes` instead of the Nunjucks SVG extension. This way backend also has these classes available.
 - Javascript now has a config folder to configurate your singleton modules. That way the main.js stays a lot cleaner.
@@ -9,6 +13,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Moved styleguide to index.html. That way it is used more often.
 - Removed system folder in JS (moved environments to util), and added the modules to the root of JS folder.
+
+### Changed
+- Moved components folder which contains each components CSS / JS / HTML. Aliases will be generated accordingly in css, js and html tasks. Works out of the box with Shelf components.
+- Moved javascript utilities folder which contains each utilities JS. Aliases will be created accordingly. Works out of the box with Shelf utilities.
+- Migrated all default components to new component structure.
+- Fixed a bug where `main-es.js` would also have all babel-polyfills on compile.
+
 
 ## [1.4.0] - 2017-11-24
 ### Added

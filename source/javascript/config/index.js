@@ -5,8 +5,8 @@
  * Feel free to create folders inside this directory and import the configs here.
  */
 
-import Environment from '../util/environment';
-import { initServiceWorker, removeServiceWorker } from '../util/sw';
+import Environment from '@utilities/environment';
+import { initServiceWorker, removeServiceWorker } from '@utilities/sw';
 
 
 // Environment
