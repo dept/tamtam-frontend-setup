@@ -15,6 +15,7 @@
         }
     },
     "globals": {
+        "__dirname": true,
         "dataLayer": true
     },
     "rules": {

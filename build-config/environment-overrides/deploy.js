@@ -1,4 +1,3 @@
-const deployConfigOverrides = {
-};
+const deployOverrideConfig = {};
 
-module.exports = deployConfigOverrides;
+module.exports = deployOverrideConfig;

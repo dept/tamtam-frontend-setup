@@ -1,6 +1,8 @@
 const overrideConfig = {
     source: {
-        videos: { path: 'afsdasdfadsf' }
+        videos: {
+            path: 'afsdasdfadsf'
+        }
     }
 };
 

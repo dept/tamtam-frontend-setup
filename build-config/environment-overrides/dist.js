@@ -1,5 +1,10 @@
-const distConfigOverrides = {
-    minify: false
-};
+const distOverrideConfig = {
+    minify: false,
+    dest: {
+        root: {
+            path: './build'
+        }
+    }
+}
 
-module.exports = distConfigOverrides;
+module.exports = distOverrideConfig;

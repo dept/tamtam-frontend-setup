@@ -57,10 +57,10 @@ So let's make this setup as best as we can so every project is setup in no time 
 
 **Team responsible for this setup:**
 
-* Adrian Klingen ( [adrian@tamtam.nl](mailto:adrian@tamtam.nl) )
-* Jeroen Reumkens ( [jeroen.reumkens@tamtam.nl](mailto:jeroen.reumkens@tamtam.nl) )
-* Daphne Smit ( [daphne@tamtam.nl](mailto:daphne@tamtam.nl) )
-* Kees van Lierop ( [keesli@tamtam.nl](mailto:keesli@tamtam.nl) )
+* Adrian Klingen ( [adrian.klingen@deptagency.com](mailto:adrian.klingen@deptagency.com) )
+* Dylan Vens ( [dylan.vens@deptagency.com](mailto:dylan.vens@deptagency.com) )
+* Daphne Smit ( [daphne.smit@deptagency.com](mailto:daphne.smit@deptagency.com) )
+* Kees van Lierop ( [kees.vanlierop@deptagency.com](mailto:kees.vanlierop@deptagency.com) )
 * All frontend developers within TamTam ( [frontend@tamtam.nl](mailto:frontend@tamtam.nl) )
 
 ------
@@ -87,26 +87,22 @@ Pro-users could dive deeper into the Gulp setup, but it's not required.
 > *Please don't use Grunt, it's outdated, not as supported as Gulp and we do not support it at TamTam anymore.**
 
 
-
-**Available gulp tasks for building:**
+**Available npm tasks for building:**
 
 __gulp__
-> (default - will run gulp server)
+> default - will run gulp server
 
-__gulp__ bamboo 
-> (build specific for Bamboo)
+__task__ build 
+> default build for development
 
-__gulp__ build 
-> (default build for development)
+__task__ deploy / bamboo
+> build specific for deployment
 
-__gulp__ dist 
-> (builds and pushes the files to the backend environment)
+__task__ dist 
+> builds and pushes the files to the backend environment
 
-only necessary if the project is not setup with bamboo.
-
-__gulp__ server 
-> (build including live server)
-
+__task__ server 
+> build including live server
 
 
 **Available process arguments**
@@ -120,21 +116,16 @@ __--debug__
 
 
 ## Config ##
-The gulpfile.js has two main files: `config.js` and `index.js`.
+The build-config has three purposes: override configs, environment and tasks.
 
-The `config.js` contains all the paths the tasks rely on. You can change them to suit your needs.
+### override-config.js ###
+The `override-config.js` contains an json object in which you can change the default `config.js`.
 
-The `index.js` file is where all the tasks are defined. Here you can enable certain config variables individually for each task.
+### environment-overrides ###
+The `environment-overrides` contains multiple files in which you can change the default environment configs.
 
-For example, turn minifying on when running the bamboo task.
-
-In the `index.js` you will also find 2 other important settings at the top.
-
-- First the `config.copy` setting, here you can define assets that need to be copied to a specific build folder
-
-- Second: the `config.libs` setting, here you can list JavaScript libraries that will be concatted to a simple libs.js. This is useful for dependencies that are incompatible with commonJS.
-
-
+### task-overrides ###
+The `task-overrides` contains multiple files in which you can change the default task configs.
 
 ------
 
