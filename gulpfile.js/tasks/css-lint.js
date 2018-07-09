@@ -4,11 +4,14 @@ var log                         = require('../src/debug/log');
 var path                        = require('path');
 
 var gulp                        = requireCached('gulp');
-var sassLint                    = requireCached('gulp-sass-lint');    
+var sassLint                    = requireCached('gulp-sass-lint');
 
 gulp.task('css-lint', function () {
-    
-    return gulp.src( path.resolve(config.source.root.path, 'sass', '**/*.scss') )
+
+    return gulp.src([
+        path.resolve(config.source.getPath('root'), 'sass', '**/*.scss'),
+        path.resolve(config.source.getPath('components'), '**/*.scss')
+    ])
         .pipe(sassLint())
         .pipe(sassLint.format())
 
