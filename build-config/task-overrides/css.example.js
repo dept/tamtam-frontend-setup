@@ -1,4 +1,4 @@
-const requireCached = require(process.env.PWD + '/gulpfile.js/src/gulp/require-cached');
+const requireCached = require(`${process.env.PWD}/gulpfile.js/src/gulp/require-cached`);
 
 const gulp = requireCached('gulp');
 
