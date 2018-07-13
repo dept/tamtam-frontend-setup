@@ -1,9 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.5.1] - TBD
+## [2.0.0] - 2018-07-13
 ### Added
-- Removed `Last 2` according to: https://jamie.build/last-2-versions
+- Migrated `gulpfile.js` to external [tamtam-frontend-builder](https://bitbucket.org/tamtam-nl/tamtam-frontend-builder/) respositry.
+
+### Changed
+- Migrated the README to a Wiki for easier access.
+Updated moduleInit to have `sync` and `async` dynamic imports. This allows for native code splitting your modules, and only serving the JS the page needs.
 
 ## [1.5.0] - 2018-20-04
 ### Added
