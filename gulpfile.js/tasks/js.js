@@ -45,6 +45,8 @@ const configurePlugins = () => {
         plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
         plugins.push(new webpack.NoEmitOnErrorsPlugin());
         plugins.push(new UglifyJsPlugin({
+            cache: true,
+            parallel: true,
             uglifyOptions: {
                 keep_classnames: true,
                 keep_fnames: true,
@@ -66,6 +68,7 @@ const configureBabelLoader = (browserlist) => {
         use: {
             loader: 'babel-loader',
             options: {
+                plugins: ['syntax-dynamic-import', 'transform-es2015-arrow-functions'],
                 presets: [
                     ['env', {
                         modules: false,
@@ -73,7 +76,7 @@ const configureBabelLoader = (browserlist) => {
                         targets: {
                             browsers: browserlist,
                         },
-                    }],
+                    }]
                 ],
             },
         },
@@ -93,39 +96,59 @@ const baseConfig = {
     output: {
         path: path.resolve(__dirname, '../../') + '/' + config.dest.getPath('javascript'),
         filename: '[name].js',
+        publicPath: `${config.dest.getPath('javascript').replace(config.dest.getPath('root'), '')}/`
     },
     resolve: {
         alias: createAliasObject()
     },
     cache: {},
-    devtool: config.sourcemaps ? 'source-map' : undefined
+    devtool: config.sourcemaps ? 'source-map' : false
 };
 
-compilerConfigs.modernConfig = Object.assign({}, baseConfig, {
-    entry: {
-        'main-es': path.resolve(__dirname, '../../source/javascript', 'main-es.js')
-    },
-    plugins: configurePlugins(),
-    module: {
-        rules: [
-            esLintConfig,
-            configureBabelLoader(config.browsers.modern),
-        ],
-    },
-});
 
-compilerConfigs.legacyConfig = Object.assign({}, baseConfig, {
-    entry: {
-        'main': ['babel-polyfill', path.resolve(__dirname, '../../source/javascript', 'main.js')]
+compilerConfigs.modernConfig = {
+    ...baseConfig,
+    ...{
+        entry: {
+            'main-es': path.resolve(__dirname, '../../source/javascript', 'main-es.js')
+        },
+        output: {
+            ...baseConfig.output,
+            ...{
+                chunkFilename: '[name].chunk-es.js',
+            },
+        },
+        plugins: configurePlugins(),
+        module: {
+            rules: [
+                configureBabelLoader(config.browsers.modern),
+                esLintConfig,
+            ],
+        },
     },
-    plugins: configurePlugins(),
-    module: {
-        rules: [
-            esLintConfig,
-            configureBabelLoader(config.browsers.legacy),
-        ],
+};
+
+compilerConfigs.legacyConfig = {
+    ...baseConfig,
+    ...{
+        entry: {
+            'main': ['babel-polyfill', path.resolve(__dirname, '../../source/javascript', 'main.js')]
+        },
+        output: {
+            ...baseConfig.output,
+            ...{
+                chunkFilename: '[name].chunk.js',
+            },
+        },
+        plugins: configurePlugins(),
+        module: {
+            rules: [
+                configureBabelLoader(config.browsers.legacy),
+                esLintConfig,
+            ],
+        },
     },
-});
+};
 
 const createCompiler = (config) => {
     const compiler = webpack(config);

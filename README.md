@@ -504,18 +504,33 @@ For importing modules we use the ES6 syntax, transpiled back to ES5 by Babel.
     }
 ```
 
-### moduleInit ###
-To initialize modules and bind them to specific DOMElements, we've created our own utility called moduleInit. It works like this:
 
-```javascript 
-    // main.js
-    
-    import moduleInit from '@utilities/module-init';
-    import Header from '@components/header';
-    
-    // The .js--header element is then passed to the constructor of Header.
-    moduleInit( '.js--header', 	Header);
-    
+### moduleInit ###
+To initialize modules and bind them to specific DOMElements, we've created our own utility called moduleInit. 
+
+ModuleInit has two options; sync and async.
+
+
+#### Async ####
+Async uses dynamic imports and allows for code chunking. This means that only the needed components are being loaded on each page.
+
+```javascript
+// main.js    
+import moduleInit from '@utilities/module-init';
+
+// The [js-hook-header] element is then passed to the constructor of Header.
+moduleInit.async('[js-hook-header]', () => import('@components/header'));
+```
+
+#### Sync ####
+```javascript
+// main.js
+
+import moduleInit from '@utilities/module-init';
+import Header from '@components/header';
+
+// The .js--header element is then passed to the constructor of Header.
+moduleInit.sync('[js-hook-header]', Header);
 ```
 
 # Serviceworker #

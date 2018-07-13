@@ -12,7 +12,12 @@ import moduleInit from '@utilities/module-init';
 import '@utilities/detect-touch';
 
 // Import modules.
-import ExampleModule from '@components/example';
+import Example from '@components/example';
 
 // Initialize modules.
-moduleInit( '[js-hook-module-example]', ExampleModule );
+
+// Sync
+moduleInit.sync('[js-hook-module-example]', Example);
+
+// Async
+// moduleInit.async('[js-hook-module-example]', () => import('@components/example'));
