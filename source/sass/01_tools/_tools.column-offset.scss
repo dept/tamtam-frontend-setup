@@ -2,7 +2,7 @@
 //    Allows offsetting components by an Nth amount of grid columns without using actual grid elements.
 //
 //    @param offset-direction   { value }              - valid values: left right
-//    @param columns            { number }             - amount of columns to be offset
+//    @param column-offset      { number }             - amount of columns to be offset
 //
 //
 //    example usage:
@@ -17,10 +17,10 @@ $grid-max-width: map_get($grid-config, 'max-width');
 $grid-column-count: map_get($grid-config, 'columns');
 $grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter') * 2)}vw;
 
-@mixin columnOffset($offset-direction: 'left', $column-count: '1') {
-    margin-#{$offset-direction}: calc((100vw - #{$grid-container-padding}) / #{12 / $column-count});
+@mixin columnOffset($offset-direction: 'left', $column-offset: '1') {
+    margin-#{$offset-direction}: calc((100vw - #{$grid-container-padding}) / #{$grid-column-count / $column-offset});
 
     @include screen-desktop-and-bigger {
-        margin-#{$offset-direction}: calc((100vw - (100vw - (#{$grid-max-width} - #{$grid-container-padding}))) / #{12 / $column-count});
+        margin-#{$offset-direction}: calc((100vw - (100vw - (#{$grid-max-width} - #{$grid-container-padding}))) / #{$grid-column-count / $column-offset});
     }
 }
