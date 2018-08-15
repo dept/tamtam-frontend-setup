@@ -26,12 +26,13 @@
 @import 'tools.generate-grid';
 
 // Misc mixins
+@import 'tools.column-offset';
 @import 'tools.generate-mediaquery-values';
-@import 'tools.input-placeholder';
-@import 'tools.triangle';
 @import 'tools.heading';
-@import 'tools.vertical-center-dib';
+@import 'tools.input-placeholder';
 @import 'tools.media-queries';
+@import 'tools.triangle';
+@import 'tools.vertical-center-dib';
 @import 'tools.visibility';
 
 // Extends
