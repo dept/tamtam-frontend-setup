@@ -3,8 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [TBD] - TBD
 ### Added
+- Added column-offset tool
 - Added width-override tool
 
+## [TBD] - TBD
+### Added
+- Added column-offset tool
 
 ## [2.0.0] - 2018-07-13
 ### Added
