@@ -6,10 +6,6 @@ All notable changes to this project will be documented in this file.
 - Added column-offset tool
 - Added width-override tool
 
-## [TBD] - TBD
-### Added
-- Added column-offset tool
-
 ## [2.0.0] - 2018-07-13
 ### Added
 - Migrated `gulpfile.js` to external [tamtam-frontend-builder](https://bitbucket.org/tamtam-nl/tamtam-frontend-builder/) respositry.
