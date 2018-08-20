@@ -1,0 +1,31 @@
+//
+//    Allows offsetting components by an Nth amount of grid columns without using actual grid elements.
+//
+//    @param offset-direction   { value }              - valid values: left right
+//    @param column-offset      { number }             - amount of columns to be offset
+//    @param negative-margin    { boolean }            - negative margin value
+//
+//    example usage:
+//    --------------
+//
+//    .foo {
+//      @include column-offset(left, 2)
+//    }
+//
+
+$grid-max-width: map_get($grid-config, 'max-width');
+$grid-column-count: map_get($grid-config, 'columns');
+$grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter') * 2)}vw;
+
+@mixin column-offset($offset-direction: 'left', $column-offset: '1', $negative-margin: false) {
+
+    @if ($negative-margin) {
+        $column-offset: -$column-offset;
+    }
+
+    margin-#{$offset-direction}: calc((100vw - #{$grid-container-padding}) / #{$grid-column-count / $column-offset});
+
+    @include screen-desktop-and-bigger {
+        margin-#{$offset-direction}: calc((100vw - (100vw - (#{$grid-max-width} - #{$grid-container-padding}))) / #{$grid-column-count / $column-offset});
+    }
+}
