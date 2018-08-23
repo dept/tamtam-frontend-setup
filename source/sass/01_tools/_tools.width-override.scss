@@ -1,0 +1,25 @@
+//
+//    Allows setting the width of components by an Nth amount of grid columns without using actual grid elements.
+//
+//    @param columns      { number }             - amount of columns to span
+//
+//
+//    example usage:
+//    --------------
+//
+//    .foo {
+//      @include width-override(2)
+//    }
+//
+
+$grid-max-width: map_get($grid-config, 'max-width');
+$grid-column-count: map_get($grid-config, 'columns');
+$grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter') * 2)}vw;
+
+@mixin width-override($columns: '1') {
+    width: calc((100vw - #{$grid-container-padding}) / #{$grid-column-count / $columns});
+
+    @include screen-desktop-and-bigger {
+        width: calc((100vw - (100vw - (#{$grid-max-width} - #{$grid-container-padding}))) / #{$grid-column-count / $columns});
+    }
+}
