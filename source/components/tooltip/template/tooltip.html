@@ -1,0 +1,25 @@
+{% macro tooltip( data ) %}
+
+    {% if data.position %}
+        {% set tooltipPosition = data.position %}
+    {% else %}
+        {% set tooltipPosition = 'top' %}
+    {% endif %}
+
+    <div class="c-tooltip
+        tooltip--{{ tooltipPosition }}
+        {% if data.class %}{{ data.class }}{% endif %}"
+        {% if not data.javascriptDisabled %}js-hook-tooltip{% endif %}
+        {% if data.id %}id="{{ data.id }}"{% endif %}
+        role="tooltip"
+        aria-hidden="false">
+
+        <div class="tooltip__container">
+
+            {{ caller() }}
+
+        </div>
+
+    </div>
+
+{% endmacro %}

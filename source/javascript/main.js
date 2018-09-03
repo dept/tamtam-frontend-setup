@@ -20,4 +20,4 @@ import Example from '@components/example';
 moduleInit.sync('[js-hook-module-example]', Example);
 
 // Async
-// moduleInit.async('[js-hook-module-example]', () => import('@components/example'));
+moduleInit.async('[js-hook-tooltip]', () => import('@components/tooltip'));

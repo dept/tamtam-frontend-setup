@@ -1,0 +1,97 @@
+$tooltip-background-color: rgba( $color-black, 0.8 );
+$tooltip-text-color: $color-white;
+$tooltip-spacing: $global-spacing;
+$tooltip-border-radius: 3px;
+$tooltip-width: 10px;
+$tooltip-transition-easing: cubic-bezier(.07, .51, .12, 1);
+$tooltip-transition-duration: 250ms;
+$tooltip-transition-delay: 0;
+
+@mixin tooltip( $size: 5px, $dir: left, $bgcolor: #000 ) {
+    background-color: $bgcolor;
+
+    &:before {
+
+        @if ( ($dir == top) or ($dir == bottom) ) {
+            border-color: $bgcolor transparent;
+            left: 50%;
+            margin-left: -$size;
+        } @else {
+            border-color: transparent $bgcolor;
+            margin-top: -$size;
+            top: 50%;
+        }
+
+        @if ( $dir == top ) {
+            border-width: 0 $size $size $size;
+            top: -$size;
+        }
+
+        @if ( $dir == right ) {
+            border-width: $size 0 $size $size;
+            right: -$size;
+        }
+
+        @if ( $dir == bottom ) {
+            border-width: $size $size 0 $size;
+            bottom: -$size;
+        }
+
+        @if ( $dir == left ) {
+            border-width: $size $size $size 0;
+            left: -$size;
+        }
+
+    }
+
+}
+
+.c-tooltip {
+    display: block;
+    position: absolute;
+}
+
+    .tooltip__container {
+        background-color: $tooltip-background-color;
+        border-radius: $tooltip-border-radius;
+        color: $tooltip-text-color;
+        cursor: default;
+        outline: none;
+        padding: $tooltip-spacing $tooltip-spacing*2;
+        opacity: 0;
+        position: relative;
+        transition-property: transform, opacity;
+        transition-timing-function: $tooltip-transition-easing;
+        transition-duration: $tooltip-transition-duration;
+        transition-delay: $tooltip-transition-delay;
+        user-select: none;
+        z-index: 10;
+
+        &:before {
+            border-style: solid;
+            content: '';
+            display: block;
+            position: absolute;
+        }
+
+        .tooltip--is-active & {
+            opacity: 1;
+        }
+
+        .tooltip--top & {
+            @include tooltip( $tooltip-width , top, $tooltip-background-color );
+        }
+
+        .tooltip--bottom & {
+            @include tooltip( $tooltip-width, bottom, $tooltip-background-color );
+        }
+
+        .tooltip--right & {
+            @include tooltip( $tooltip-width, right, $tooltip-background-color );
+        }
+
+        .tooltip--left & {
+            @include tooltip( $tooltip-width, left, $tooltip-background-color );
+        }
+
+    }

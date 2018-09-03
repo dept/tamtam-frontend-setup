@@ -7,6 +7,20 @@
 
     <div class="o-container">
 
+        {% from 'tooltip.html' import tooltip %}
+
+        <div style="position: relative;">
+
+            <p style="display: inline-block; margin: 10px 0; padding: 10px 15px; color: white; background-color: tomato;" aria-labelledby="notifications-label">
+                Tooltip example
+            </p>
+
+            {% call tooltip({ id: 'notifications-label' }) %}
+                <span>Very long example texttttttttt</span>
+            {% endcall %}
+
+        </div>
+
 
         <h1 class="u-margin-bottom--lg">Example page template</h1>
 
