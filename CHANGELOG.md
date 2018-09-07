@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [TBD] - TBD
+## [2.0.1] - 2018-09-07
 ### Added
 - Added column-offset tool
 - Added width-override tool
