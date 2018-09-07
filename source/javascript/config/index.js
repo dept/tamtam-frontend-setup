@@ -8,7 +8,6 @@
 import Environment from '@utilities/environment';
 import { initServiceWorker, removeServiceWorker } from '@utilities/sw';
 
-
 // Service workers
 if (!Environment.isLocal) {
     initServiceWorker();
