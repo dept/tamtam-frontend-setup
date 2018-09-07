@@ -8,17 +8,8 @@
 import Environment from '@utilities/environment';
 import { initServiceWorker, removeServiceWorker } from '@utilities/sw';
 
-
-// Environment
-Environment.setTest([
-    'www.project-x.test.tamtam.nl',
-    'project-x.test.tamtam.nl'
-]);
-// ----
-
-
 // Service workers
-if (!Environment.isLocal()) {
+if (!Environment.isLocal) {
     initServiceWorker();
 } else {
     removeServiceWorker();
