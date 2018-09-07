@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.1] - 2018-09-07
+### Added
+- Added copy and libs override possibility
+
 ## [2.0.0] - 2018-07-13
 ### Added
 - Migrated `gulpfile.js` to external [tamtam-frontend-builder](https://bitbucket.org/tamtam-nl/tamtam-frontend-builder/) respositry.

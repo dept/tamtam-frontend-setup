@@ -1,0 +1,15 @@
+/**
+ * This will overwrite the default config.copy task.
+ * To reference node_modules user: ../module as a path
+ */
+
+// const config = require(process.env.PWD + '/gulpfile.js/config');
+// const path = require('path');
+
+const overrideCopy = [
+    // { source: config.source.getPath('assets', '*.*'), dest: config.dest.getPath('assets') },
+    // { source: config.source.getPath('assets', 'fonts/**'), dest: config.dest.getPath('fonts') }
+    // { source: '../a-random-node-module', dest: config.dest.getPath('javascript') }
+];
+
+module.exports = overrideCopy;
