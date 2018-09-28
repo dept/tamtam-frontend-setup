@@ -28,7 +28,7 @@
 /**
 * Button on keyboard focus
 */
-// .keyboard-focused{
+.keyboard-focused{
     .c-button,
     .c-button--primary,
     .c-button--secondary,
@@ -37,7 +37,7 @@
             @include focus-state-pulse;
         }
     }
-// }
+}
 
 /**
 * Button icon modifier
