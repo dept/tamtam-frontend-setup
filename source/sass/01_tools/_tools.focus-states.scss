@@ -27,6 +27,7 @@
         animation: focus-pulse 1500ms $ease-in-out-circ infinite;
         z-index: -1;
         content: '';
+
         @if ($round) {
             border-radius: 50%;
         }
@@ -37,10 +38,12 @@
             opacity: 0;
             transform: translate3d(-50%, -50%, 0) scale(0.85);
         }
+
         50% {
             opacity: 0.15;
             transform: translate3d(-50%, -50%, 0) scale(1);
         }
+
         100% {
             opacity: 0;
             transform: translate3d(-50%, -50%, 0) scale(0.85);
@@ -53,7 +56,7 @@
         display: block;
         width: 100%;
         height: $height;
-        bottom: -($height /2);
+        bottom: -($height / 2);
         position: absolute;
         background-color: $color;
         content: '';

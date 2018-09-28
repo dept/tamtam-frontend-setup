@@ -28,12 +28,12 @@
 /**
 * Button on keyboard focus
 */
-.keyboard-focused{
+.has--keyboard-focus {
     .c-button,
     .c-button--primary,
     .c-button--secondary,
-    .c-button--ghost{
-        &:focus{
+    .c-button--ghost {
+        &:focus {
             @include focus-state-pulse;
         }
     }
