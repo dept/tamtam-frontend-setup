@@ -10,6 +10,7 @@ import moduleInit from '@utilities/module-init';
 
 // Import Singletons
 import '@utilities/detect-touch';
+import '@utilities/detect-keyboard-focus';
 
 // Import modules.
 import Example from '@components/example';

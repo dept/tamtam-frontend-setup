@@ -12,4 +12,9 @@ $link-transition-ease: $ease-in-out-quad;
 
 a {
   @include link--base;
+
+  &:focus{
+    position: relative;
+    @include focus-state-pulse;
+  }
 }
