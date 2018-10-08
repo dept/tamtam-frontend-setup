@@ -1,4 +1,6 @@
 const IS_TOUCH = 'is-touch';
+const WITH_MOUSE = `${IS_TOUCH}--with-mouse`;
+const html = document.querySelector('html');
 
 class DetectTouch {
 
@@ -8,7 +10,7 @@ class DetectTouch {
 
     constructor() {
         this.hasMouse = false;
-        this.mouseEvent = () => this._handleMouseEvent();
+        this.mouseEvent = () => this.handleMouseEvent();
         this.touch = 'ontouchstart' in document.documentElement
             || navigator.maxTouchPoints > 0
             || navigator.msMaxTouchPoints > 0;
@@ -21,13 +23,13 @@ class DetectTouch {
         document.documentElement.addEventListener('mousemove', this.mouseEvent);
 
         if (this.touch) {
-            document.querySelector('html').classList.add(IS_TOUCH);
+            html.classList.add(IS_TOUCH);
         }
     }
 
-    _handleMouseEvent() {
-        if(!this.hasMouse){
-            document.querySelector('html').classList.remove(IS_TOUCH);
+    handleMouseEvent() {
+        if(!this.hasMouse && html.classList.contains(IS_TOUCH)){
+            html.classList.add(WITH_MOUSE);
             this.hasMouse = true;
         }
     }
