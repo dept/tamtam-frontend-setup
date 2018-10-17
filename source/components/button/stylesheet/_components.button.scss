@@ -26,20 +26,6 @@
 }
 
 /**
-* Button on keyboard focus
-*/
-.has--keyboard-focus {
-    .c-button,
-    .c-button--primary,
-    .c-button--secondary,
-    .c-button--ghost {
-        &:focus {
-            @include focus-state-pulse;
-        }
-    }
-}
-
-/**
 * Button icon modifier
 */
 .button--icon {

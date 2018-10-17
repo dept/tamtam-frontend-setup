@@ -1,4 +1,4 @@
-@mixin hover-focus($only-hover: false) {
+@mixin hover-focus($only-hover: true) {
 
     @if $only-hover {
 

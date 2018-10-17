@@ -62,3 +62,11 @@
         content: '';
     }
 }
+
+@mixin keyboard-focus {
+    .has--keyboard-focus & {
+        &:focus {
+            @content;
+        }
+    }
+}

@@ -27,4 +27,13 @@ $button-secondary-transition-ease: $ease-in-out-quad;
         color: $button-secondary-font-color-hover;
         background-color: $button-secondary-background-color-hover;
     }
+
+    @include keyboard-focus {
+        color: $button-secondary-font-color-hover;
+        background-color: lighten($button-secondary-background-color-hover, 50%);
+
+        svg {
+            fill: $button-secondary-font-color-hover;
+        }
+    }
 }

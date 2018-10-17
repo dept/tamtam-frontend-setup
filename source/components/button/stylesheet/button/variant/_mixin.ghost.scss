@@ -26,4 +26,9 @@ $button-ghost-transition-ease: $button-transition-ease;
         background-color: $button-ghost-background-color-hover;
         box-shadow: 0 0 0 $button-ghost-border-width $button-ghost-background-color-hover inset;
     }
+
+    @include keyboard-focus {
+        background-color: lighten($button-ghost-background-color-hover, 50%);
+        box-shadow: 0 0 0 $button-ghost-border-width lighten($button-ghost-background-color-hover, 50%) inset;
+    }
 }
