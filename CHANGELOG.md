@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.2] - 2018-10-19
+### Added
+- Added focus states
+- Added keyboard focus detect
+- Added is touch with mouse detect
+
 ## [2.0.1] - 2018-09-07
 ### Added
 - Added column-offset tool

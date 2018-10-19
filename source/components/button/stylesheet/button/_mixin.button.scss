@@ -41,4 +41,13 @@ $button-transition-ease: $ease-in-out-quad;
             fill: $button-font-color-hover;
         }
     }
+
+    @include keyboard-focus {
+        color: $button-font-color-hover;
+        background-color: darken($button-background-color-hover, 50%);
+
+        svg {
+            fill: $button-font-color-hover;
+        }
+    }
 }
