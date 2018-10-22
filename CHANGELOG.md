@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.3] - 2018-10-22
+### Changed
+- Fixed linting issues in keyboard focus
+
 ## [2.0.2] - 2018-10-19
 ### Added
 - Added focus states
