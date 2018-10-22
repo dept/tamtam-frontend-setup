@@ -9,7 +9,7 @@ class DetectKeyboardFocus {
         document.addEventListener('keyup', () => this.handleKey(false), true);
         document.addEventListener('mouseleave', () => this.handleKey(false));
         document.addEventListener('focus', () => this.handleFocus(), true);
-        document.addEventListener('blur', () => DetectKeyboardFocus._handleBlur(), true);
+        document.addEventListener('blur', () => DetectKeyboardFocus.handleBlur(), true);
     }
 
     handleKey(pressed) {
