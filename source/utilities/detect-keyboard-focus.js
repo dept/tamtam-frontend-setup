@@ -20,7 +20,7 @@ class DetectKeyboardFocus {
         if (this.keyDown) document.body.classList.add(KEYBOARD_FOCUSED);
     }
 
-    static _handleBlur() {
+    static handleBlur() {
         document.body.classList.remove(KEYBOARD_FOCUSED);
     }
 
