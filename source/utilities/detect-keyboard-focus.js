@@ -5,22 +5,22 @@ class DetectKeyboardFocus {
     constructor() {
         this.keyDown = false;
 
-        document.addEventListener('keydown', () => this._handleKey(true), true);
-        document.addEventListener('keyup', () => this._handleKey(false), true);
-        document.addEventListener('mouseleave', () => this._handleKey(false));
-        document.addEventListener('focus', () => this._handleFocus(), true);
-        document.addEventListener('blur', () => this._handleBlur(), true);
+        document.addEventListener('keydown', () => this.handleKey(true), true);
+        document.addEventListener('keyup', () => this.handleKey(false), true);
+        document.addEventListener('mouseleave', () => this.handleKey(false));
+        document.addEventListener('focus', () => this.handleFocus(), true);
+        document.addEventListener('blur', () => DetectKeyboardFocus.handleBlur(), true);
     }
 
-    _handleKey(pressed) {
+    handleKey(pressed) {
         this.keyDown = pressed;
     }
 
-    _handleFocus() {
+    handleFocus() {
         if (this.keyDown) document.body.classList.add(KEYBOARD_FOCUSED);
     }
 
-    _handleBlur() {
+    static handleBlur() {
         document.body.classList.remove(KEYBOARD_FOCUSED);
     }
 
