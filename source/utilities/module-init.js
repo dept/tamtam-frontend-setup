@@ -2,22 +2,45 @@ class ModuleInit {
 
     async(selector, moduleName, opt_arguments) {
 
-        const elements = this.findElements(selector);
-        if (elements.length) {
-            moduleName()
-                .then(constructor => {
-                    Array.from(this.findElements(selector))
-                        .forEach(element => this.loadConstructor(element, constructor.default, opt_arguments));
-                });
-        }
+        return new Promise((resolve, reject) => {
 
+            const elements = this.findElements(selector);
+
+            if (elements.length) {
+
+
+                moduleName()
+                    .then(constructor => {
+
+                        const constructors = this.findElements(selector)
+                            .map(element => this.loadConstructor(element, constructor.default, opt_arguments));
+
+                        resolve(constructors);
+
+                    });
+
+            } else {
+
+                reject();
+
+            }
+
+        });
 
     }
 
     sync(selector, constructor, opt_arguments) {
 
-        Array.from(this.findElements(selector))
-            .forEach(element => this.loadConstructor(element, constructor, opt_arguments));
+        const elements = this.findElements(selector);
+
+        if (elements.length) {
+
+            this.findElements(selector)
+                .forEach(element => {
+                    this.loadConstructor(element, constructor, opt_arguments);
+                });
+
+        }
 
     }
 
@@ -50,7 +73,7 @@ class ModuleInit {
 
     findElements(selector) {
 
-        return document.querySelectorAll(selector);
+        return [...document.querySelectorAll(selector)];
 
     }
 
