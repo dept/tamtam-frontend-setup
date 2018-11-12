@@ -1,4 +1,5 @@
 const KEYBOARD_FOCUSED = 'has--keyboard-focus';
+const TAB_KEYS = ['Tab', 9];
 
 class DetectKeyboardFocus {
 
@@ -15,7 +16,7 @@ class DetectKeyboardFocus {
     handleKey(pressed, event) {
         const key = event ? event.key || event.keyCode : undefined;
 
-        if (event && !(key === 'Tab' || key === 9)) return;
+        if (event && TAB_KEYS.indexOf(key) === -1) return;
 
         this.keyDown = pressed;
     }
