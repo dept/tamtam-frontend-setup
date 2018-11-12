@@ -5,14 +5,17 @@ class DetectKeyboardFocus {
     constructor() {
         this.keyDown = false;
 
-        document.addEventListener('keydown', () => this.handleKey(true), true);
+        document.addEventListener('keydown', event => this.handleKey(true, event), true);
         document.addEventListener('keyup', () => this.handleKey(false), true);
         document.addEventListener('mouseleave', () => this.handleKey(false));
         document.addEventListener('focus', () => this.handleFocus(), true);
         document.addEventListener('blur', () => DetectKeyboardFocus.handleBlur(), true);
     }
 
-    handleKey(pressed) {
+    handleKey(pressed, event) {
+        const key = event ? event.key || event.keyCode : undefined;
+
+        if (event && (key !== 'Tab' || key !== 9)) return;
         this.keyDown = pressed;
     }
 
