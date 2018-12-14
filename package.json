@@ -1,47 +1,48 @@
 {
-  "name": "frontend-setup",
-  "version": "2.0.3",
-  "license": "MIT",
-  "description": "A basic project setup for creating (static) html templates. Filled with automated tasks and configuration options.",
-  "author": "Tam Tam",
-  "contributors": [
-    {
-      "name": "Adrian Klingen",
-      "email": "adrian.klingen@deptagency.com"
+    "name": "frontend-setup",
+    "version": "2.0.3",
+    "license": "MIT",
+    "description": "A basic project setup for creating (static) html templates. Filled with automated tasks and configuration options.",
+    "author": "Tam Tam",
+    "contributors": [
+        {
+            "name": "Adrian Klingen",
+            "email": "adrian.klingen@deptagency.com"
+        },
+        {
+            "name": "Dylan Vens",
+            "email": "dylan.vens@deptagency.com"
+        },
+        {
+            "name": "Kees van Lierop",
+            "email": "kees.vanlierop@deptagency.com"
+        },
+        {
+            "name": "Daphne Smit",
+            "email": "daphne.smit@deptagency.com"
+        }
+    ],
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://bitbucket.org/tamtam-nl/tamtam-frontend-setup"
     },
-    {
-      "name": "Dylan Vens",
-      "email": "dylan.vens@deptagency.com"
+    "engines": {
+        "node": "8.9",
+        "npm": "5.4.1"
     },
-    {
-      "name": "Kees van Lierop",
-      "email": "kees.vanlierop@deptagency.com"
+    "scripts": {
+        "postinstall": "cd node_modules/tamtam-frontend-builder && node utils/npm-install-recursive.js --dirs source/components,source/utilities --ignore node_modules",
+        "bamboo": "cd node_modules/tamtam-frontend-builder && node bin/deploy.js",
+        "deploy": "cd node_modules/tamtam-frontend-builder && node bin/deploy.js",
+        "gulp": "cd node_modules/tamtam-frontend-builder && node bin/start.js",
+        "start": "cd node_modules/tamtam-frontend-builder && node bin/start.js",
+        "build": "cd node_modules/tamtam-frontend-builder && node bin/build.js",
+        "dist": "cd node_modules/tamtam-frontend-builder && node bin/dist.js",
+        "task": "cd node_modules/tamtam-frontend-builder && node bin/task.js",
+        "create": "cd node_modules/tamtam-frontend-builder && node utils/create.js"
     },
-    {
-      "name": "Daphne Smit",
-      "email": "daphne.smit@deptagency.com"
+    "devDependencies": {
+        "tamtam-frontend-builder": "git+ssh://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#feature/create-component-utility"
     }
-  ],
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://bitbucket.org/tamtam-nl/tamtam-frontend-setup"
-  },
-  "engines": {
-    "node": "8.9",
-    "npm": "5.4.1"
-  },
-  "scripts": {
-    "postinstall": "cd node_modules/tamtam-frontend-builder && node utils/npm-install-recursive.js --dirs source/components,source/utilities --ignore node_modules",
-    "bamboo": "cd node_modules/tamtam-frontend-builder && node bin/deploy.js",
-    "deploy": "cd node_modules/tamtam-frontend-builder && node bin/deploy.js",
-    "gulp": "cd node_modules/tamtam-frontend-builder && node bin/start.js",
-    "start": "cd node_modules/tamtam-frontend-builder && node bin/start.js",
-    "build": "cd node_modules/tamtam-frontend-builder && node bin/build.js",
-    "dist": "cd node_modules/tamtam-frontend-builder && node bin/dist.js",
-    "task": "cd node_modules/tamtam-frontend-builder && node bin/task.js"
-  },
-  "devDependencies": {
-    "tamtam-frontend-builder": "git+ssh://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#2.1.0"
-  }
 }
