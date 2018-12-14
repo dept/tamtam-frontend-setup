@@ -21,7 +21,8 @@
         },
         {
             "url" : "/assets/css/main.css",
-            "as" : "style"
+            "as" : "style",
+            "onload": "onload=\"this.onload=null;this.rel='stylesheet'\""
         }
     ]
 }

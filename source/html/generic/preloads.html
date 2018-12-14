@@ -11,6 +11,7 @@
     {%- for item in site.preload -%}
         <link rel="preload" href="{{ item.url }}" as="{{ item.as }}"
             {%- if item.type %} type="{{ item.type }}"{% endif -%}
+            {%- if item.onload %} {{ item.onload|safe }}{% endif -%}
             {%- if item.crossorigin %} crossorigin{% endif -%}/>
     {% endfor -%}
 {%- endif -%}
