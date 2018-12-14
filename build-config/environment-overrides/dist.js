@@ -2,7 +2,7 @@ const path = require('path');
 const projectDirectory = process.env.OLDPWD || path.normalize(process.env.INIT_CWD);
 const buildFolder = 'build';
 
-const deployOverrideConfig = {
+const distOverrideConfig = {
     minify: false,
     source: {
         sw: {
@@ -26,4 +26,4 @@ const deployOverrideConfig = {
     }
 }
 
-module.exports = deployOverrideConfig;
+module.exports = distOverrideConfig;
