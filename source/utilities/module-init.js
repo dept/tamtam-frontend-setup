@@ -6,23 +6,17 @@ class ModuleInit {
 
             const elements = this.findElements(selector);
 
-            if (elements.length) {
+            if (!elements.length) return resolve([]);
 
-                moduleName()
-                    .then(constructor => {
+            moduleName()
+                .then(constructor => {
 
-                        const constructors = this.findElements(selector)
-                            .map(element => this.loadConstructor(element, constructor.default, opt_arguments));
+                    const constructors = this.findElements(selector)
+                        .map(element => this.loadConstructor(element, constructor.default, opt_arguments));
 
-                        resolve(constructors);
+                    resolve(constructors);
 
-                    });
-
-            } else {
-
-                resolve([]);
-
-            }
+                });
 
         });
 
@@ -39,21 +33,20 @@ class ModuleInit {
 
         element._initializedModules = element._initializedModules || [];
 
-        if (element._initializedModules.indexOf(constructor.name) === -1) {
+        if (element._initializedModules.indexOf(constructor.name) !== -1) return;
 
-            element._initializedModules.push(constructor.name);
+        element._initializedModules.push(constructor.name);
 
-            if (!opt_arguments) {
-                if (typeof constructor === 'object') return constructor;
-                return new constructor(element);
-            }
-
+        if (opt_arguments) {
             const constructorArguments = [null, element];
             Array.prototype.push.apply(constructorArguments, opt_arguments);
-
             return new (constructor.bind.apply(constructor, constructorArguments))();
-
         }
+
+        if (typeof constructor === 'object') return constructor;
+        return new constructor(element);
+
+
     }
 
     findElements(selector) {
