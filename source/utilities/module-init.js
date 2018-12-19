@@ -2,15 +2,29 @@ class ModuleInit {
 
     async(selector, moduleName, opt_arguments) {
 
-        const elements = this.findElements(selector);
-        if (elements.length) {
-            moduleName()
-                .then(constructor => {
-                    this.findElements(selector)
-                        .forEach(element => this.loadConstructor(element, constructor.default, opt_arguments));
-                });
-        }
+        return new Promise(resolve => {
 
+            const elements = this.findElements(selector);
+
+            if (elements.length) {
+
+                moduleName()
+                    .then(constructor => {
+
+                        const constructors = this.findElements(selector)
+                            .map(element => this.loadConstructor(element, constructor.default, opt_arguments));
+
+                        resolve(constructors);
+
+                    });
+
+            } else {
+
+                resolve([]);
+
+            }
+
+        });
 
     }
 

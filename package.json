@@ -32,7 +32,7 @@
     "npm": "5.4.1"
   },
   "scripts": {
-    "preinstall": "",
+    "postinstall": "cd node_modules/tamtam-frontend-builder && node utils/npm-install-recursive.js --dirs source/components,source/utilities --ignore node_modules",
     "bamboo": "cd node_modules/tamtam-frontend-builder && node bin/deploy.js",
     "deploy": "cd node_modules/tamtam-frontend-builder && node bin/deploy.js",
     "gulp": "cd node_modules/tamtam-frontend-builder && node bin/start.js",
@@ -42,6 +42,6 @@
     "task": "cd node_modules/tamtam-frontend-builder && node bin/task.js"
   },
   "devDependencies": {
-    "tamtam-frontend-builder": "git+ssh://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#1.0.1"
+    "tamtam-frontend-builder": "git+ssh://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#2.1.0"
   }
 }
