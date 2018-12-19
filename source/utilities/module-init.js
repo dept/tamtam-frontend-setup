@@ -6,7 +6,7 @@ class ModuleInit {
         if (elements.length) {
             moduleName()
                 .then(constructor => {
-                    Array.from(this.findElements(selector))
+                    this.findElements(selector)
                         .forEach(element => this.loadConstructor(element, constructor.default, opt_arguments));
                 });
         }
@@ -16,7 +16,7 @@ class ModuleInit {
 
     sync(selector, constructor, opt_arguments) {
 
-        Array.from(this.findElements(selector))
+        this.findElements(selector)
             .forEach(element => this.loadConstructor(element, constructor, opt_arguments));
 
     }
@@ -30,27 +30,21 @@ class ModuleInit {
             element._initializedModules.push(constructor.name);
 
             if (!opt_arguments) {
-
-                if (typeof constructor === 'object') {
-                    return constructor;
-                } else {
-                    return new constructor(element);
-                }
-
-            } else {
-
-                const constructorArguments = [null, element];
-                Array.prototype.push.apply(constructorArguments, opt_arguments);
-
-                return new (constructor.bind.apply(constructor, constructorArguments))();
-
+                if (typeof constructor === 'object') return constructor;
+                return new constructor(element);
             }
+
+            const constructorArguments = [null, element];
+            Array.prototype.push.apply(constructorArguments, opt_arguments);
+
+            return new (constructor.bind.apply(constructor, constructorArguments))();
+
         }
     }
 
     findElements(selector) {
 
-        return document.querySelectorAll(selector);
+        return [...document.querySelectorAll(selector)];
 
     }
 
