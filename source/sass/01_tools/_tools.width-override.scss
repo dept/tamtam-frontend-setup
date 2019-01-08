@@ -14,7 +14,7 @@
 
 $grid-max-width: map_get($grid-config, 'max-width');
 $grid-column-count: map_get($grid-config, 'columns');
-$grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter') * 2)}vw;
+$grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter'))}px;
 
 @mixin width-override($columns: '1') {
     width: calc((100vw - #{$grid-container-padding}) / #{$grid-column-count / $columns});
