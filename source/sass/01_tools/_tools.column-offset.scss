@@ -9,13 +9,14 @@
 //    --------------
 //
 //    .foo {
-//      @include column-offset(left, 2)
+//      @include column-offset(left, 2, true)
 //    }
 //
 
 $grid-max-width: map_get($grid-config, 'max-width');
 $grid-column-count: map_get($grid-config, 'columns');
-$grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter') * 2)}vw;
+$grid-container-padding-small: #{strip-unit(map_get($grid-config, 'container-gutter-small'))}px;
+$grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter'))}px;
 
 @mixin column-offset($offset-direction: 'left', $column-offset: '1', $negative-margin: false) {
 
@@ -23,9 +24,13 @@ $grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter') 
         $column-offset: -$column-offset;
     }
 
-    margin-#{$offset-direction}: calc((100vw - #{$grid-container-padding}) / #{$grid-column-count / $column-offset});
+    margin-#{$offset-direction}: calc((100vw - #{$grid-container-padding-small}) / #{$grid-column-count / $column-offset});
 
-    @include screen-desktop-and-bigger {
+    @include screen-tablet-portrait-and-bigger {
+        margin-#{$offset-direction}: calc((100vw - #{$grid-container-padding}) / #{$grid-column-count / $column-offset});
+    }
+
+    @include screen-laptop-and-bigger {
         margin-#{$offset-direction}: calc((100vw - (100vw - (#{$grid-max-width} - #{$grid-container-padding}))) / #{$grid-column-count / $column-offset});
     }
 }
