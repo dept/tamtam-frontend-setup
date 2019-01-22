@@ -42,6 +42,6 @@
     "task": "cd node_modules/tamtam-frontend-builder && node bin/task.js"
   },
   "devDependencies": {
-    "tamtam-frontend-builder": "git+ssh://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#develop"
+    "tamtam-frontend-builder": "git+ssh://git@bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#develop"
   }
 }
