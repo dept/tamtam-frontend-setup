@@ -15,3 +15,9 @@
             {%- if item.crossorigin %} crossorigin{% endif -%}/>
     {% endfor -%}
 {%- endif -%}
+
+{%- if site.modulepreload -%}
+    {%- for item in site.modulepreload -%}
+        <link rel="modulepreload" href="{{ item.url }}"/>
+    {% endfor -%}
+{%- endif -%}
