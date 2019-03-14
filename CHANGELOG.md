@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2019-03-04
+### Added
+- Added critical CSS
+- Added `npm run create` command for easier component/utility creation
+- Added default `tsconfig.json`
+
 ## [2.0.3] - 2018-10-22
 ### Changed
 - Fixed linting issues in keyboard focus

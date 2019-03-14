@@ -2,21 +2,29 @@ class ModuleInit {
 
     async(selector, moduleName, opt_arguments) {
 
-        const elements = this.findElements(selector);
-        if (elements.length) {
+        return new Promise(resolve => {
+
+            const elements = this.findElements(selector);
+
+            if (!elements.length) return resolve([]);
+
             moduleName()
                 .then(constructor => {
-                    Array.from(this.findElements(selector))
-                        .forEach(element => this.loadConstructor(element, constructor.default, opt_arguments));
-                });
-        }
 
+                    const constructors = this.findElements(selector)
+                        .map(element => this.loadConstructor(element, constructor.default, opt_arguments));
+
+                    resolve(constructors);
+
+                });
+
+        });
 
     }
 
     sync(selector, constructor, opt_arguments) {
 
-        Array.from(this.findElements(selector))
+        this.findElements(selector)
             .forEach(element => this.loadConstructor(element, constructor, opt_arguments));
 
     }
@@ -25,32 +33,25 @@ class ModuleInit {
 
         element._initializedModules = element._initializedModules || [];
 
-        if (element._initializedModules.indexOf(constructor.name) === -1) {
+        if (element._initializedModules.indexOf(constructor.name) !== -1) return;
 
-            element._initializedModules.push(constructor.name);
+        element._initializedModules.push(constructor.name);
 
-            if (!opt_arguments) {
-
-                if (typeof constructor === 'object') {
-                    return constructor;
-                } else {
-                    return new constructor(element);
-                }
-
-            } else {
-
-                const constructorArguments = [null, element];
-                Array.prototype.push.apply(constructorArguments, opt_arguments);
-
-                return new (constructor.bind.apply(constructor, constructorArguments))();
-
-            }
+        if (opt_arguments) {
+            const constructorArguments = [null, element];
+            Array.prototype.push.apply(constructorArguments, opt_arguments);
+            return new (constructor.bind.apply(constructor, constructorArguments))();
         }
+
+        if (typeof constructor === 'object') return constructor;
+        return new constructor(element);
+
+
     }
 
     findElements(selector) {
 
-        return document.querySelectorAll(selector);
+        return [...document.querySelectorAll(selector)];
 
     }
 
