@@ -14,12 +14,17 @@
 
 $grid-max-width: map_get($grid-config, 'max-width');
 $grid-column-count: map_get($grid-config, 'columns');
-$grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter') * 2)}vw;
+$grid-container-padding-small: #{strip-unit(map_get($grid-config, 'container-gutter-small'))}px;
+$grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter'))}px;
 
 @mixin width-override($columns: '1') {
-    width: calc((100vw - #{$grid-container-padding}) / #{$grid-column-count / $columns});
+    width: calc((100vw - #{$grid-container-padding-small}) / #{$grid-column-count / $columns});
 
-    @include screen-desktop-and-bigger {
+    @include screen-tablet-portrait-and-bigger {
+        width: calc((100vw - #{$grid-container-padding}) / #{$grid-column-count / $columns});
+    }
+
+    @include screen-laptop-and-bigger {
         width: calc((100vw - (100vw - (#{$grid-max-width} - #{$grid-container-padding}))) / #{$grid-column-count / $columns});
     }
 }

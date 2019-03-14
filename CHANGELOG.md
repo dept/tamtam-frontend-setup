@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.1] - 2010-03-14
+### Changed
+- Fixed calculations for column offset
+
 ## [2.1.0] - 2019-03-04
 ### Added
 - Added critical CSS
