@@ -1,7 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [2.1.1] - 2010-03-14
+## [2.2.0] - 2019-03-27
+### Added
+- Added runtimeCaching override option
+
+## [2.1.1] - 2019-03-14
 ### Changed
 - Fixed calculations for column offset
 
