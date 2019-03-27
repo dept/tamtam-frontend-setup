@@ -6,7 +6,10 @@ const deployOverrideConfig = {
     source: {
         sw: {
             path: path.resolve(projectDirectory, buildFolder, 'assets'),
-            strip: path.resolve(projectDirectory, buildFolder)
+            strip: path.resolve(projectDirectory, buildFolder),
+            runtimeCaching: [
+                { urlPattern: /\/assets\/images\//, handler: 'cacheFirst' } // Change this to your BE/CDN url regex
+            ]
         }
     },
     dest: {
