@@ -6,7 +6,12 @@ const deployOverrideConfig = {
     source: {
         sw: {
             path: path.resolve(projectDirectory, buildFolder, 'assets'),
-            strip: path.resolve(projectDirectory, buildFolder)
+            strip: path.resolve(projectDirectory, buildFolder),
+            runtimeCaching: [
+                // Change this to your BE/CDN url regex
+                // https://github.com/GoogleChromeLabs/sw-precache#runtimecaching-arrayobject
+                { urlPattern: /\/assets\/images\//, handler: 'cacheFirst' }
+            ]
         }
     },
     dest: {
