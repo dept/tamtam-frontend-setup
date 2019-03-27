@@ -8,7 +8,9 @@ const deployOverrideConfig = {
             path: path.resolve(projectDirectory, buildFolder, 'assets'),
             strip: path.resolve(projectDirectory, buildFolder),
             runtimeCaching: [
-                { urlPattern: /\/assets\/images\//, handler: 'cacheFirst' } // Change this to your BE/CDN url regex
+                // Change this to your BE/CDN url regex
+                // https://github.com/GoogleChromeLabs/sw-precache#runtimecaching-arrayobject
+                { urlPattern: /\/assets\/images\//, handler: 'cacheFirst' }
             ]
         }
     },
