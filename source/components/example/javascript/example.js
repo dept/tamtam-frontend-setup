@@ -6,28 +6,34 @@
  * @param element {HTMLElement} the element of the module
  * @constructor
  */
-function Example( element ) {
-
-	let _value = 0;
-
-	updateUI();
-
-	element.addEventListener( 'click', handleClickEvent );
+class Example {
 
 
-	function handleClickEvent () {
+    constructor(element) {
 
-		_value++;
-		updateUI();
+        this.element = element;
+        this._value = 0;
 
-	}
+        this.updateUI();
+
+        this.element.addEventListener('click', () => this.handleClickEvent());
+
+    }
 
 
-	function updateUI () {
 
-		element.innerHTML = '<span>example module clicks:</span> ' + _value;
+    handleClickEvent() {
 
-	}
+        this._value++;
+        this.updateUI();
+
+    }
+
+    updateUI() {
+
+        this.element.innerHTML = `<span>example module clicks:</span> ${this._value}`;
+
+    }
 
 }
 
