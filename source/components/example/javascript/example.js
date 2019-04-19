@@ -12,7 +12,7 @@ class Example {
     constructor(element) {
 
         this.element = element;
-        this._value = 0;
+        this.countValue = 0;
 
         this.updateUI();
 
@@ -24,14 +24,14 @@ class Example {
 
     handleClickEvent() {
 
-        this._value++;
+        this.countValue++;
         this.updateUI();
 
     }
 
     updateUI() {
 
-        this.element.innerHTML = `<span>example module clicks:</span> ${this._value}`;
+        this.element.innerHTML = `<span>example module clicks:</span> ${this.countValue}`;
 
     }
 
