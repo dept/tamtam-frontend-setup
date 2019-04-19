@@ -1,4 +1,3 @@
-
 /**
  * Example module, this represent a single instance of a module
  * - so all of its logic is only about a single HTMLElement and its content.
@@ -7,7 +6,6 @@
  * @constructor
  */
 class Example {
-
 
     constructor(element) {
 
@@ -19,8 +17,6 @@ class Example {
         this.element.addEventListener('click', () => this.handleClickEvent());
 
     }
-
-
 
     handleClickEvent() {
 
@@ -37,7 +33,5 @@ class Example {
 
 }
 
-
 // export the constructor function
 export default Example;
-
