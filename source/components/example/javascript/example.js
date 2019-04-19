@@ -1,4 +1,3 @@
-
 /**
  * Example module, this represent a single instance of a module
  * - so all of its logic is only about a single HTMLElement and its content.
@@ -6,32 +5,33 @@
  * @param element {HTMLElement} the element of the module
  * @constructor
  */
-function Example( element ) {
+class Example {
 
-	let _value = 0;
+    constructor(element) {
 
-	updateUI();
+        this.element = element;
+        this.countValue = 0;
 
-	element.addEventListener( 'click', handleClickEvent );
+        this.updateUI();
 
+        this.element.addEventListener('click', () => this.handleClickEvent());
 
-	function handleClickEvent () {
+    }
 
-		_value++;
-		updateUI();
+    handleClickEvent() {
 
-	}
+        this.countValue++;
+        this.updateUI();
 
+    }
 
-	function updateUI () {
+    updateUI() {
 
-		element.innerHTML = '<span>example module clicks:</span> ' + _value;
+        this.element.innerHTML = `<span>example module clicks:</span> ${this.countValue}`;
 
-	}
+    }
 
 }
 
-
 // export the constructor function
 export default Example;
-

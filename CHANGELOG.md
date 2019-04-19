@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.2.1] - TBD
+### Added
+- 
+### Changed
+- Changed Example JavaScript to `Class`
+
 ## [2.2.0] - 2019-03-27
 ### Added
 - Added runtimeCaching override option
