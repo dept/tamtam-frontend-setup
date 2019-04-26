@@ -1,10 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [2.2.1] - TBD
-### Added
-- 
+## [2.2.1] - 2019-04-26
 ### Changed
+- Updated builder to 1.2.1
 - Changed Example JavaScript to `Class`
 
 ## [2.2.0] - 2019-03-27
