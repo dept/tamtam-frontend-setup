@@ -1,7 +1,8 @@
 //
 //    Allows setting the width of components by an Nth amount of grid columns without using actual grid elements.
 //
-//    @param columns      { number }             - amount of columns to span
+//    @param columns                { number }             - amount of columns to span
+//    @param container-padding      { pixel value }        - option to pass other value than grid padding in case of an element that is positioned absolute and doesnt take grid padding into consideration
 //
 //
 //    example usage:
@@ -14,17 +15,35 @@
 
 $grid-max-width: map_get($grid-config, 'max-width');
 $grid-column-count: map_get($grid-config, 'columns');
-$grid-container-padding-small: #{strip-unit(map_get($grid-config, 'container-gutter-small'))}px;
-$grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter'))}px;
+$grid-container-padding-small: #{strip-unit(map_get($grid-config, 'container-gutter-small') * 2)}px;
+$grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter') * 2)}px;
 
-@mixin width-override($columns: '1') {
-    width: calc((100vw - #{$grid-container-padding-small}) / #{$grid-column-count / $columns});
+@mixin width-override($columns: '1', $container-padding: null) {
+    @if ($container-padding) {
+        $container-padding: $container-padding;
+    } @else {
+        $container-padding: $grid-container-padding-small;
+    }
+
+    width: calc((100vw - #{$container-padding}) / #{$grid-column-count / $columns});
 
     @include screen-tablet-portrait-and-bigger {
+        @if ($container-padding) {
+            $container-padding: $container-padding;
+        } @else {
+            $container-padding: $grid-container-padding;
+        }
+
         width: calc((100vw - #{$grid-container-padding}) / #{$grid-column-count / $columns});
     }
 
-    @include screen-laptop-and-bigger {
-        width: calc((100vw - (100vw - (#{$grid-max-width} - #{$grid-container-padding}))) / #{$grid-column-count / $columns});
+    @include screen-desktop-and-bigger {
+        @if ($container-padding) {
+            $container-padding: $container-padding;
+        } @else {
+            $container-padding: $grid-container-padding;
+        }
+
+        width: calc((100vw - (100vw - (#{$grid-max-width} - #{$container-padding}))) / #{$grid-column-count / $columns});
     }
 }
