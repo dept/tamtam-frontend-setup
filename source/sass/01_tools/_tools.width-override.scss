@@ -25,7 +25,7 @@ $grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter') 
         $container-padding: $grid-container-padding-small;
     }
 
-    width: calc((100vw - #{$container-padding}) / #{$grid-column-count / $columns});
+    width: calc((100vw - #{strip-unit($container-padding)}px) / #{$grid-column-count / $columns});
 
     @include screen-tablet-portrait-and-bigger {
         @if ($container-padding) {
@@ -34,7 +34,7 @@ $grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter') 
             $container-padding: $grid-container-padding;
         }
 
-        width: calc((100vw - #{$grid-container-padding}) / #{$grid-column-count / $columns});
+        width: calc((100vw - #{strip-unit($container-padding)}px) / #{$grid-column-count / $columns});
     }
 
     @include screen-desktop-and-bigger {
@@ -44,6 +44,6 @@ $grid-container-padding: #{strip-unit(map_get($grid-config, 'container-gutter') 
             $container-padding: $grid-container-padding;
         }
 
-        width: calc((100vw - (100vw - (#{$grid-max-width} - #{$container-padding}))) / #{$grid-column-count / $columns});
+        width: calc((100vw - (100vw - (#{$grid-max-width} - #{strip-unit($container-padding)}px))) / #{$grid-column-count / $columns});
     }
 }
