@@ -6,7 +6,7 @@ const distOverrideConfig = {
     minify: false,
     source: {
         sw: {
-            globDirectory: path.resolve(projectDirectory, buildFolder, "assets")
+            globDirectory: path.resolve(projectDirectory, buildFolder, 'assets')
             // Change additional ServiceWorker workbox settigns
             // See https://developers.google.com/web/tools/workbox/modules/workbox-build for all the options
             // globPatterns: ['**/*.{js,css,eot,ttf,woff,json}'],
@@ -18,16 +18,16 @@ const distOverrideConfig = {
     },
     dest: {
         root: {
-            path: "./" + buildFolder
+            path: './' + buildFolder
         },
         html: {
-            path: "<%= root %>/html"
+            path: '<%= root %>/html'
         },
         assets: {
-            path: "<%= root %>/assets"
+            path: '<%= root %>/assets'
         },
         sw: {
-            path: "<%= root %>"
+            path: '<%= root %>'
         }
     }
 };
