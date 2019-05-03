@@ -5,13 +5,14 @@ const buildFolder = 'build';
 const deployOverrideConfig = {
     source: {
         sw: {
-            path: path.resolve(projectDirectory, buildFolder, 'assets'),
-            strip: path.resolve(projectDirectory, buildFolder),
-            runtimeCaching: [
-                // Change this to your BE/CDN url regex
-                // https://github.com/GoogleChromeLabs/sw-precache#runtimecaching-arrayobject
-                { urlPattern: /\/assets\/images\//, handler: 'cacheFirst' }
-            ]
+            globDirectory: path.resolve(projectDirectory, buildFolder, 'assets')
+            // Change additional ServiceWorker workbox settigns
+            // See https://developers.google.com/web/tools/workbox/modules/workbox-build for all the options
+            // globPatterns: ['**/*.{js,css,eot,ttf,woff,json}'],
+            // globIgnores: ['**/dev*', '**/tmp*', 'dev*.*', 'tmp*.*'],
+            // modifyURLPrefix: {
+            //     '': '/path/to/backend/assets/'
+            // }
         }
     },
     dest: {
@@ -28,6 +29,6 @@ const deployOverrideConfig = {
             path: '<%= root %>'
         }
     }
-}
+};
 
 module.exports = deployOverrideConfig;
