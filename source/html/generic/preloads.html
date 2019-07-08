@@ -7,7 +7,7 @@
     {% endfor -%}
 {% endif -%}
 
-{%- if site.preload -%}
+{%- if site.preload and not project.debug -%}
     {%- for item in site.preload -%}
         <link rel="preload" href="{{ item.url }}" as="{{ item.as }}"
             {%- if item.type %} type="{{ item.type }}"{% endif -%}
