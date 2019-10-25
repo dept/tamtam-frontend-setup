@@ -4,7 +4,7 @@
  */
 
 const overrideLibs = [
-    // '../module/file.js'
-];
+  // '../module/file.js'
+]
 
-module.exports = overrideLibs;
+module.exports = overrideLibs

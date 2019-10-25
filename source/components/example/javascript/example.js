@@ -6,32 +6,24 @@
  * @constructor
  */
 class Example {
+  constructor(element) {
+    this.element = element
+    this.countValue = 0
 
-    constructor(element) {
+    this.updateUI()
 
-        this.element = element;
-        this.countValue = 0;
+    this.element.addEventListener('click', () => this.handleClickEvent())
+  }
 
-        this.updateUI();
+  handleClickEvent() {
+    this.countValue++
+    this.updateUI()
+  }
 
-        this.element.addEventListener('click', () => this.handleClickEvent());
-
-    }
-
-    handleClickEvent() {
-
-        this.countValue++;
-        this.updateUI();
-
-    }
-
-    updateUI() {
-
-        this.element.innerHTML = `<span>example module clicks:</span> ${this.countValue}`;
-
-    }
-
+  updateUI() {
+    this.element.innerHTML = `<span>example module clicks:</span> ${this.countValue}`
+  }
 }
 
 // export the constructor function
-export default Example;
+export default Example
