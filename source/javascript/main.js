@@ -1,24 +1,14 @@
-'use strict';
+'use strict'
 
 /*------------------------------------*\
  * JS Main entry file
  \*------------------------------------*/
-import './config';
+import './config'
+import '@utilities/detect-touch'
+import '@utilities/detect-keyboard-focus'
 
-// Import utilities.
-import moduleInit from '@utilities/module-init';
+import moduleInit from '@utilities/module-init'
+// import Example from '@components/example' // Sync
+// moduleInit.sync('[js-hook-module-example]', Example) // Sync
 
-// Import Singletons
-import '@utilities/detect-touch';
-import '@utilities/detect-keyboard-focus';
-
-// Import modules.
-// import Example from '@components/example';
-
-// Initialize modules.
-
-// Sync
-// moduleInit.sync('[js-hook-module-example]', Example);
-
-// Async
-moduleInit.async('[js-hook-module-example]', () => import('@components/example'));
+moduleInit.async('[js-hook-module-example]', () => import('@components/example')) // Async

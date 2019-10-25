@@ -1,2 +1,2 @@
 // Import the main entry file
-import './main.js';
+import './main.js'

@@ -5,13 +5,13 @@
  * Feel free to create folders inside this directory and import the configs here.
  */
 
-import Environment from '@utilities/environment';
-import { initServiceWorker, removeServiceWorker } from '@utilities/sw';
+import Environment from '@utilities/environment'
+import { initServiceWorker, removeServiceWorker } from '@utilities/sw'
 
 // Service workers
 if (!Environment.isLocal) {
-    initServiceWorker();
+  initServiceWorker()
 } else {
-    removeServiceWorker();
+  removeServiceWorker()
 }
 // ----
