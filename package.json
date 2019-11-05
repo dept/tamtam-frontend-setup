@@ -28,8 +28,8 @@
     "url": "https://bitbucket.org/tamtam-nl/tamtam-frontend-setup"
   },
   "engines": {
-    "node": "8.9",
-    "npm": "5.4.1"
+    "node": "8.16.2",
+    "npm": "6.4.1"
   },
   "scripts": {
     "postinstall": "cd node_modules/tamtam-frontend-builder && node utils/npm-install-recursive.js --dirs source/components,source/utilities --ignore node_modules",
