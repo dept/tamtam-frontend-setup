@@ -4,7 +4,7 @@ const runSequence = require('run-sequence')
 let config = require(process.env.PWD + '/gulpfile.js/config')
 const gulp = requireCached('gulp')
 
-gulp.task('dist', callback => {
+gulp.task('dist', () => {
   config.debug = false
   config.minify = true
   config.sourcemaps = false
@@ -20,11 +20,11 @@ gulp.task('dist', callback => {
   // Overwrite config with project specific settings.
   config = Object.assign({}, config.projectConfig.config || {}, config)
 
-  runSequence(
+  return gulp.series(
     'clean',
-    ['copy', 'images', 'webp', 'svg', 'inject-component-css'],
-    ['html', 'libs', 'js', 'css-lint', 'css'],
-    'sw',
-    callback,
-  )
+    gulp.parallel('copy', 'images', 'svg', 'inject-component-css'),
+    gulp.parallel('css-lint', 'css'),
+    gulp.parallel('html', 'libs', 'js'),
+    gulp.parallel('sw'),
+  )()
 })
