@@ -1,10 +1,11 @@
 {
-  "plugins": ["simple-import-sort"],
+  "plugins": ["simple-import-sort", "jest"],
   "parser": "babel-eslint",
   "env": {
     "browser": true,
     "commonjs": true,
-    "es6": true
+    "es6": true,
+    "jest/globals": true
   },
   "extends": [
     "eslint:recommended",
