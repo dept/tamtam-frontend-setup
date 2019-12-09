@@ -4,6 +4,6 @@ module.exports = {
   verbose: true,
   moduleNameMapper: createAliasObject(),
   transform: {
-    '^.+\\.js$': '<rootDir>/node_modules/tamtam-frontend-builder/utils/jest-transformer.js',
+    '^.+\\.(j|t)sx?$': '<rootDir>/node_modules/tamtam-frontend-builder/utils/jest-transformer.js',
   },
 }
