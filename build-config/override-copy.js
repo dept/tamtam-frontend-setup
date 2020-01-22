@@ -6,9 +6,9 @@
 // const config = require(process.env.PWD + '/gulpfile.js/config');
 
 const overrideCopy = [
-    // { source: config.source.getPath('assets', '*.*'), dest: config.dest.getPath('assets') },
-    // { source: config.source.getPath('assets', 'fonts/**'), dest: config.dest.getPath('fonts') },
-    // { source: '../acorn', dest: config.dest.getPath('javascript') }
-];
+  // { source: config.source.getPath('assets', '*.*'), dest: config.dest.getPath('assets') },
+  // { source: config.source.getPath('assets', 'fonts/**'), dest: config.dest.getPath('fonts') },
+  // { source: '../acorn', dest: config.dest.getPath('javascript') }
+]
 
-module.exports = overrideCopy;
+module.exports = overrideCopy
