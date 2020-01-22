@@ -21,8 +21,7 @@ $assets-path: '../' !default;
 
 @import '20_elements/all';
 
-@import '30_objects/objects.grid';
-@import '30_objects/objects.background-image';
+@import '30_objects/all';
 
 /* components:scss */
 @import '../../source/components/button/stylesheet/_components.button';
