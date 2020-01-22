@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.3.0] - 2020-01-23
+### Changed
+- Updated builder to 1.3.0
+- Added stricter linting
+- Added new babel transformers
+
 ## [2.2.1] - 2019-04-26
 ### Changed
 - Updated builder to 1.2.1
