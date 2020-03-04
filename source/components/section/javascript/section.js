@@ -16,33 +16,43 @@ const JS_HOOK_SEQUENCE_CANVAS = '[js-hook-sequence-canvas]'
 class CanvasSequence {
   constructor(element) {
     this.element = element
-    this.sequence = new Map()
     this.firstLoad = true
     this.debug = this.element.hasAttribute('debug')
 
-    this.scrollHeight = this.element.clientHeight
-    this.clientHeight = window.clientHeight
+    this.setRectProperties()
+    this.syncScrollPosition()
+    const hasSequence = this.setupSequence()
+    this.canvas = new Canvas(this.element.querySelector(JS_HOOK_SEQUENCE_CANVAS))
 
+    if (!this.canvas.hasContext() || !hasSequence) return
+
+    // Set initial scroll position
+
+    this.loadCallback = function() {}
+
+    this.loadSequence()
+    this.bindEvents()
+  }
+
+  setRectProperties() {
+    this.scrollHeight = this.element.clientHeight
+    this.offsetTop = this.element.offsetTop
+    this.clientHeight = window.innerHeight
+  }
+
+  setupSequence() {
     const { sequencePath = false, sequenceLength = false, sequenceFiletype = false } =
       this.element.dataset || {}
 
-    this.canvas = new Canvas(this.element.querySelector(JS_HOOK_SEQUENCE_CANVAS))
+    if (!sequencePath || !sequenceLength || !sequenceFiletype) return false
 
-    if (!this.canvas.hasContext() || !sequencePath || !sequenceLength || !sequenceFiletype) return
-
-    if (this.debug) console.log(element)
-
+    this.sequence = new Map()
     this.sequencePath = sequencePath
     this.sequenceStart = 1
     this.sequenceEnd = +sequenceLength
     this.sequenceLength = +sequenceLength
 
     this.fileType = sequenceFiletype || '.png'
-
-    // Set initial scroll position
-    this.syncScrollPosition()
-
-    this.loadCallback = function() {}
 
     // Set startframe to load the sequence frm
     this.startFrame = Math.max(
@@ -53,8 +63,7 @@ class CanvasSequence {
     this.prevFramesLoaded = this.startFrame
     this.nextFramesLoaded = this.startFrame
 
-    this.loadSequence()
-    this.bindEvents()
+    return true
   }
 
   bindEvents() {
@@ -172,8 +181,8 @@ class CanvasSequence {
   }
 
   loadImage(i) {
-    const frameNumber = this.addLeadingZeros(i)
-    const filename = this.sequencePath + frameNumber + this.fileType
+    const fileNumber = this.addLeadingZeros(i)
+    const filename = `${this.sequencePath}${fileNumber}${this.fileType}`
     const img = new Image()
     img.src = filename
 
@@ -182,17 +191,8 @@ class CanvasSequence {
   }
 
   getNextFrameNumber() {
-    this.scrollHeight = this.element.clientHeight
-    this.offsetTop = this.element.offsetTop
-    this.clientHeight = window.innerHeight
-
     const scrollPercentage = ((this.scrollY - this.offsetTop) / this.scrollHeight) * 100
-    const currentFrameNumber = Math.max(
-      Math.round((scrollPercentage * this.sequenceLength) / 100),
-      this.sequenceStart,
-    )
-
-    return currentFrameNumber
+    return Math.max(Math.round((scrollPercentage * this.sequenceLength) / 100), this.sequenceStart)
   }
 
   syncScrollPosition() {
@@ -208,11 +208,26 @@ class CanvasSequence {
   drawImage(frameNumber) {
     if (frameNumber > this.sequenceEnd) return
 
-    console.log('drawImage', frameNumber, this.sequence.has(frameNumber))
     if (this.sequence.has(frameNumber) && this.sequence.get(frameNumber).complete) {
       this.canvas.renderFrame(this.sequence.get(frameNumber))
       Events.$trigger('canvas-sequence::frameupdate', { data: frameNumber })
     }
+  }
+
+  canLoadNext() {
+    return (
+      this.currentFrame > this.previousFrame &&
+      this.currentFrame + MAX_IMAGE_LOAD > this.nextFramesLoaded &&
+      this.sequence.size < this.sequenceEnd
+    )
+  }
+
+  canLoadPrev() {
+    return (
+      this.currentFrame < this.previousFrame &&
+      this.currentFrame - MAX_IMAGE_LOAD < this.prevFramesLoaded &&
+      this.sequence.size < this.sequenceEnd
+    )
   }
 
   renderFrame() {
@@ -221,22 +236,8 @@ class CanvasSequence {
     this.previousFrame = this.currentFrame
     this.currentFrame = this.getNextFrameNumber()
 
-    if (
-      this.currentFrame > this.previousFrame &&
-      this.currentFrame + MAX_IMAGE_LOAD > this.nextFramesLoaded &&
-      this.sequence.size < this.sequenceEnd
-    ) {
-      if (this.debug) console.log(this.currentFrame, this.previousFrame)
-      this.loadSequence()
-    }
-
-    if (
-      this.currentFrame < this.previousFrame &&
-      this.currentFrame - MAX_IMAGE_LOAD < this.prevFramesLoaded &&
-      this.sequence.size < this.sequenceEnd
-    ) {
-      this.loadSequence(1)
-    }
+    if (this.canLoadNext()) this.loadSequence()
+    if (this.canLoadPrev()) this.loadSequence(1)
 
     if (this.currentFrame !== this.previousFrame || this.firstLoad) {
       this.drawImage(this.currentFrame)
