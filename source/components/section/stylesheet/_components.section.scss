@@ -1,0 +1,32 @@
+.c-section {
+  min-height: 300vh;
+  border: 3px dotted #ff0000;
+  position: relative;
+}
+
+.section__sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+
+  .c-section:nth-child(1) & {
+    background-image: url(https://picsum.photos/id/870/1440/900?grayscale&blur=10&random=1)
+  }
+
+  .c-section:nth-child(2) & {
+    background-image: url(https://picsum.photos/id/871/1440/900?grayscale&blur=10&random=2)
+  }
+
+  .c-section:nth-child(3) & {
+    background-image: url(https://picsum.photos/id/872/1440/900?grayscale&blur=10&random=3)
+  }
+}
+
+
+
+.section__content {
+  font-size: 16px;
+}
