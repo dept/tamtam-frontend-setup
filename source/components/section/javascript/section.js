@@ -41,8 +41,13 @@ class CanvasSequence {
   }
 
   setupSequence() {
-    const { sequencePath = false, sequenceLength = false, sequenceFiletype = false } =
-      this.element.dataset || {}
+    const {
+      sequenceStartPosition = false,
+      sequenceEndPosition = false,
+      sequencePath = false,
+      sequenceLength = false,
+      sequenceFiletype = false,
+    } = this.element.dataset || {}
 
     if (!sequencePath || !sequenceLength || !sequenceFiletype) return false
 
@@ -51,8 +56,9 @@ class CanvasSequence {
     this.sequenceStart = 1
     this.sequenceEnd = +sequenceLength
     this.sequenceLength = +sequenceLength
-
     this.fileType = sequenceFiletype || '.png'
+    this.sequenceStartPosition = sequenceStartPosition || 'onTop'
+    this.sequenceEndPosition = sequenceEndPosition || 'onLeave'
 
     // Set startframe to load the sequence frm
     this.startFrame = Math.max(
@@ -191,7 +197,23 @@ class CanvasSequence {
   }
 
   getNextFrameNumber() {
-    const scrollPercentage = ((this.scrollY - this.offsetTop) / this.scrollHeight) * 100
+    let position = this.scrollY - this.offsetTop
+    let distance = this.scrollHeight
+
+    if (this.sequenceStartPosition === 'onEnter') {
+      position += this.clientHeight
+      distance += this.clientHeight
+    }
+
+    if (this.sequenceEndPosition === 'onBottom') {
+      distance -= this.clientHeight
+    }
+
+    if (this.sequenceStartPosition === 'onEnter' && this.sequenceEndPosition === 'onBottom') {
+      distance -= this.clientHeight
+    }
+
+    const scrollPercentage = (position / distance) * 100
     return Math.max(Math.round((scrollPercentage * this.sequenceLength) / 100), this.sequenceStart)
   }
 
