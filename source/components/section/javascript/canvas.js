@@ -1,5 +1,4 @@
-/*eslint max-lines-per-function: */
-
+import RafThrottle from '@utilities/raf-throttle'
 import ScreenDimensions from '@utilities/screen-dimensions'
 
 class Canvas {
@@ -13,6 +12,18 @@ class Canvas {
     if (!this.context) return
 
     this.setSize()
+    this.bindEvents()
+  }
+
+  bindEvents() {
+    RafThrottle.set([
+      {
+        element: window,
+        event: 'resize',
+        namespace: `Sequence-Resize[${Math.random()}]`,
+        fn: () => this.setSize(),
+      },
+    ])
   }
 
   hasContext() {
@@ -24,22 +35,18 @@ class Canvas {
     this.clientHeight = window.innerHeight
     this.size = this.getRenderSize()
     this.scale()
+
+    if (this.frame) this.renderFrame(this.frame)
   }
 
   getRenderSize() {
     // assume the device pixel ratio is 1 if the browser doesn't specify it
     const devicePixelRatio = window.devicePixelRatio || 1
-    const { height } = ScreenDimensions
-    const width = this.wrapper.clientWidth
+    let { height } = ScreenDimensions
+    let width = this.wrapper.clientWidth
 
     // determine the 'backing store ratio' of the canvas context
-    const backingStoreRatio =
-      this.context.webkitBackingStorePixelRatio ||
-      this.context.mozBackingStorePixelRatio ||
-      this.context.msBackingStorePixelRatio ||
-      this.context.oBackingStorePixelRatio ||
-      this.context.backingStorePixelRatio ||
-      1
+    const backingStoreRatio = this.getBackingStoreRatio()
 
     // determine the actual ratio we want to draw at
     const ratio = devicePixelRatio / backingStoreRatio
@@ -51,18 +58,22 @@ class Canvas {
       this.element.style.width = `${width}px`
       this.element.style.height = `${height}px`
 
-      return {
-        ratio,
-        width: newWidth,
-        height: newHeight,
-      }
-    } else {
-      return {
-        ratio,
-        width: width,
-        height: height,
-      }
+      width = newWidth
+      height = newHeight
     }
+
+    return { ratio, width, height }
+  }
+
+  getBackingStoreRatio() {
+    return (
+      this.context.backingStorePixelRatio ||
+      this.context.webkitBackingStorePixelRatio ||
+      this.context.mozBackingStorePixelRatio ||
+      this.context.msBackingStorePixelRatio ||
+      this.context.oBackingStorePixelRatio ||
+      1
+    )
   }
 
   scale() {
@@ -73,6 +84,8 @@ class Canvas {
 
   renderFrame(frame) {
     if (!frame) return
+
+    this.frame = frame
 
     //this.context.clearRect(0, 0, ScreenDimensions.width, ScreenDimensions.height)
 
@@ -139,25 +152,6 @@ function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
 
   // fill image in dest. rectangle
   ctx.drawImage(img, cx, cy, cw, ch, x, y, w, h)
-}
-
-function detectHiddenVisibilityProps() {
-  const obj = { hidden: false, visibilityChange: false }
-
-  // Set the name of the hidden property and the change event for visibility
-  if (typeof document.hidden !== 'undefined') {
-    // Opera 12.10 and Firefox 18 and later support
-    obj.hidden = 'hidden'
-    obj.visibilityChange = 'visibilitychange'
-  } else if (typeof document.msHidden !== 'undefined') {
-    obj.hidden = 'msHidden'
-    obj.visibilityChange = 'msvisibilitychange'
-  } else if (typeof document.webkitHidden !== 'undefined') {
-    obj.hidden = 'webkitHidden'
-    obj.visibilityChange = 'webkitvisibilitychange'
-  }
-
-  return obj
 }
 
 export default Canvas
