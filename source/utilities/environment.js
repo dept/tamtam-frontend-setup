@@ -2,7 +2,7 @@
 
 const ENVIRONMENT_LOCAL = 'local'
 const ENVIRONMENT_TEST = 'test'
-const ENVIRONMENT_ACCEPTATION = 'acceptation'
+const ENVIRONMENT_ACCEPTANCE = 'acceptance'
 const ENVIRONMENT_PRODUCTION = 'production'
 
 const ENVIRONMENT_DEFAULT = ENVIRONMENT_LOCAL
@@ -24,8 +24,8 @@ class Environment {
     return this.get === ENVIRONMENT_TEST
   }
 
-  get isAcceptation() {
-    return this.get === ENVIRONMENT_ACCEPTATION
+  get isAcceptance() {
+    return this.get === ENVIRONMENT_ACCEPTANCE
   }
 
   get isProduction() {
