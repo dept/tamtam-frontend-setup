@@ -1,6 +1,6 @@
 {
   "name": "frontend-setup",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "license": "MIT",
   "description": "A basic project setup for creating (static) html templates. Filled with automated tasks and configuration options.",
   "author": "Dept",
@@ -43,6 +43,6 @@
     "create": "cd node_modules/tamtam-frontend-builder && node utils/create.js"
   },
   "devDependencies": {
-    "tamtam-frontend-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#1.3.0"
+    "tamtam-frontend-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#1.4.0"
   }
 }
