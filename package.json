@@ -32,7 +32,7 @@
     "npm": "6.11.3"
   },
   "scripts": {
-    "postinstall": "cd node_modules/tamtam-frontend-builder && node utils/npm-install-recursive.js --dirs source/components,source/utilities --ignore node_modules",
+    "postinstall": "tamtam-builder npm-install-recursive --dirs source/components,source/utilities --ignore node_modules",
     "bamboo": "tamtam-builder deploy",
     "deploy": "tamtam-builder deploy",
     "gulp": "tamtam-builder start",
@@ -43,6 +43,6 @@
     "create": "cd node_modules/tamtam-frontend-builder && node utils/create.js"
   },
   "devDependencies": {
-    "tamtam-frontend-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#next"
+    "tamtam-frontend-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#1.4.0"
   }
 }
