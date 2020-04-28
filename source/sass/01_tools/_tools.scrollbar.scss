@@ -1,7 +1,6 @@
 // sass-lint:disable no-vendor-prefixes
 
 @mixin scrollbars($track-color, $background-color) {
-
   &::-webkit-scrollbar {
     width: 8px;
   }
@@ -15,5 +14,4 @@
     background-color: $background-color;
     border-radius: 8px;
   }
-
 }

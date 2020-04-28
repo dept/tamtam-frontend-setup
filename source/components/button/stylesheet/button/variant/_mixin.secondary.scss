@@ -15,25 +15,25 @@ $button-secondary-transition-time: 300ms;
 $button-secondary-transition-ease: $ease-in-out-quad;
 
 @mixin button--secondary {
-    @include button;
-    background-color: $button-secondary-background-color;
-    color: $button-secondary-font-color;
+  @include button;
+  background-color: $button-secondary-background-color;
+  color: $button-secondary-font-color;
+
+  svg {
+    fill: $button-secondary-font-color;
+  }
+
+  @include hover-focus {
+    color: $button-secondary-font-color-hover;
+    background-color: $button-secondary-background-color-hover;
+  }
+
+  @include keyboard-focus {
+    color: $button-secondary-font-color-hover;
+    background-color: lighten($button-secondary-background-color-hover, 50%);
 
     svg {
-        fill: $button-secondary-font-color;
+      fill: $button-secondary-font-color-hover;
     }
-
-    @include hover-focus {
-        color: $button-secondary-font-color-hover;
-        background-color: $button-secondary-background-color-hover;
-    }
-
-    @include keyboard-focus {
-        color: $button-secondary-font-color-hover;
-        background-color: lighten($button-secondary-background-color-hover, 50%);
-
-        svg {
-            fill: $button-secondary-font-color-hover;
-        }
-    }
+  }
 }

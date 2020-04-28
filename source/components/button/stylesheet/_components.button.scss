@@ -7,39 +7,38 @@
 @import 'button/variant/mixin.secondary';
 
 .c-button {
-    @include button;
+  @include button;
 }
 
 /**
 * Button variants
 */
 .c-button--primary {
-    @include button--primary;
+  @include button--primary;
 }
 
 .c-button--secondary {
-    @include button--secondary;
+  @include button--secondary;
 }
 
 .c-button--ghost {
-    @include button--ghost;
+  @include button--ghost;
 }
 
 /**
 * Button icon modifier
 */
 .button--icon {
-    @include button--icon;
+  @include button--icon;
 }
 
 /**
 * Button sizes
 */
 .button--small {
-    @include button--small;
+  @include button--small;
 }
 
 .button--large {
-    @include button--large;
+  @include button--large;
 }
-
