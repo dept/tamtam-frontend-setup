@@ -24,15 +24,19 @@
     .u-visible--#{$visibility-modifier}-block {
       display: block !important;
     }
+
     .u-visible--#{$visibility-modifier}-table-cell {
       display: table-cell !important;
     }
+
     .u-visible--#{$visibility-modifier}-inline-block {
       display: inline-block !important;
     }
+
     .u-visible--#{$visibility-modifier}-inline {
       display: inline !important;
     }
+
     .u-hidden--#{$visibility-modifier} {
       display: none !important;
     }
