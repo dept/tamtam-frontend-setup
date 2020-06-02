@@ -32,7 +32,7 @@
     "import/no-unresolved": "off",
     "simple-import-sort/sort": "warn",
     "import/named": "off",
-    "max-lines-per-function": ["warn", { "max": 20, "skipBlankLines": true }],
+    "max-lines-per-function": ["warn", { "max": 20, "skipBlankLines": true, "skipComments": true }],
     "max-params": ["warn", { "max": 4 }]
   }
 }
