@@ -1,7 +1,7 @@
-const requireCached = require(`${process.env.PWD}/gulpfile.js/src/gulp/require-cached`)
+const requireCached = require(`tamtam-frontend-builder/gulpfile.js/src/gulp/require-cached`)
 const runSequence = require('run-sequence')
 
-let config = require(process.env.PWD + '/gulpfile.js/config')
+let config = require('tamtam-frontend-builder/gulpfile.js/config')
 const gulp = requireCached('gulp')
 
 gulp.task('dist', callback => {
