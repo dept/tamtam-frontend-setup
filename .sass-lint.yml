@@ -3,6 +3,7 @@ options:
 files:
   ignore:
     - 'source/sass/_dev/**/*.scss'
+    - 'source/components/**/node_modules/**/*.scss'
 rules:
   space-after-colon: 0
   force-pseudo-nesting: 0
