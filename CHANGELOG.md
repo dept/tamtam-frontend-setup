@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.4.4] - 2020-06-19
+### Changed
+- Fixed error in column offset and width override
+
+## [2.4.3] - 2020-04-28
+### Changed
+- Updated builder to 1.4.2
+
 ## [2.3.0] - 2020-01-23
 ### Changed
 - Updated builder to 1.3.0
