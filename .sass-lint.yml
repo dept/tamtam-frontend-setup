@@ -3,6 +3,7 @@ options:
 files:
   ignore:
     - '../../source/sass/_dev/**/*.scss'
+    - '../../source/**/node_modules/**/*.scss'
 rules:
   space-after-colon: 0
   force-pseudo-nesting: 0
@@ -28,10 +29,8 @@ rules:
   indentation: 0
   nesting-depth:
     - 1
-    -
-      max-depth: 4
+    - max-depth: 4
   no-misspelled-properties:
     - 1
-    -
-      'extra-properties':
+    - 'extra-properties':
         - 'overflow-scrolling'

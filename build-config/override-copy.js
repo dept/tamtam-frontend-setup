@@ -3,7 +3,7 @@
  * To reference node_modules user: ../module as a path
  */
 
-// const config = require(process.env.PWD + '/gulpfile.js/config');
+// const config = require('tamtam-frontend-builder/gulpfile.js/config');
 
 const overrideCopy = [
   // { source: config.source.getPath('assets', '*.*'), dest: config.dest.getPath('assets') },
