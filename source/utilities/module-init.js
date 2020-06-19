@@ -59,5 +59,7 @@ class ModuleInit {
   }
 })()
 
+const moduleInit = new ModuleInit()
+
 // Export the module init function
-export default new ModuleInit()
+export default moduleInit

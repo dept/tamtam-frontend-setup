@@ -1,5 +1,5 @@
 const path = require('path')
-const projectDirectory = process.env.OLDPWD || path.normalize(process.env.INIT_CWD)
+const projectDirectory = process.env.projectDirectory || process.cwd()
 const buildFolder = 'build'
 
 const deployOverrideConfig = {
