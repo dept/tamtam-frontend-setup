@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "allowJs": true,
+    "allowJs": false,
     "alwaysStrict": true,
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": ["dom", "es7", "scripthost", "es2015"],
+    "lib": ["dom", "dom.iterable", "es7", "scripthost", "es2015"],
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": true,
@@ -22,9 +22,10 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "baseUrl": ".",
+    "outDir": "build",
     "paths": {
       "@utilities/*": ["./source/utilities/*"],
-      "@components/*": ["./source/components/#{component}/javascript/*"],
+      "@components/*": ["./source/components/*"],
       "@/*": ["./source/*"]
     }
   },
