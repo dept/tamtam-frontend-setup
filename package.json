@@ -39,6 +39,6 @@
     "create": "dept-builder create"
   },
   "devDependencies": {
-    "tamtam-frontend-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#feature/fix-typescript"
+    "tamtam-frontend-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#dev-2.1.0"
   }
 }
