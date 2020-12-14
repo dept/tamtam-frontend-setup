@@ -6,6 +6,11 @@
     "*.js": "javascript",
     "*.ts": "typescript"
   },
+  "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
   "[javascript]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
