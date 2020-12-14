@@ -1,11 +1,16 @@
+type DynamicImportType = () => Promise<{ default: any }>
+interface ModuleInitHTMLElement extends HTMLElement {
+  _initializedModules?: string[]
+}
+
 class ModuleInit {
-  async(selector, moduleName, opt_arguments) {
+  async(selector: string, moduleFn: DynamicImportType, opt_arguments?: any[]) {
     return new Promise(resolve => {
       const elements = this.findElements(selector)
 
       if (!elements.length) return resolve([])
 
-      moduleName().then(constructor => {
+      moduleFn().then(constructor => {
         const constructors = this.findElements(selector).map(element =>
           this.loadConstructor(element, constructor.default, opt_arguments),
         )
@@ -15,13 +20,13 @@ class ModuleInit {
     })
   }
 
-  sync(selector, constructor, opt_arguments) {
+  sync(selector: string, constructor: any, opt_arguments?: any[]) {
     this.findElements(selector).forEach(element =>
       this.loadConstructor(element, constructor, opt_arguments),
     )
   }
 
-  loadConstructor(element, constructor, opt_arguments) {
+  loadConstructor(element: ModuleInitHTMLElement, constructor: any, opt_arguments?: any[]) {
     element._initializedModules = element._initializedModules || []
 
     if (element._initializedModules.indexOf(constructor.name) !== -1) return
@@ -31,6 +36,7 @@ class ModuleInit {
     if (opt_arguments) {
       const constructorArguments = [null, element]
       Array.prototype.push.apply(constructorArguments, opt_arguments)
+      // eslint-disable-next-line prefer-spread
       return new (constructor.bind.apply(constructor, constructorArguments))()
     }
 
@@ -38,13 +44,13 @@ class ModuleInit {
     return new constructor(element)
   }
 
-  findElements(selector) {
-    return [...document.querySelectorAll(selector)]
+  findElements(selector: string) {
+    return [...document.querySelectorAll<HTMLElement>(selector)]
   }
 }
 
 // IE polyfill for constructor.name
-;(function() {
+(function () {
   if (Function.prototype.name === undefined && Object.defineProperty !== undefined) {
     Object.defineProperty(Function.prototype, 'name', {
       get() {

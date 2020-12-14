@@ -9,24 +9,25 @@ $color-secondary: #333333;
 $color-tertiary: #fafafa;
 
 $color-black: #000000;
-$color-grey-dark: #333333;
-$color-grey: #cacaca;
-$color-grey-light: #808080;
+
+$color-grey-80: #333333;
+$color-grey-50: #7e7e7e;
+$color-grey-20: #c7c7c7;
+$color-grey-5: #ececec;
 
 $color-white: #ffffff;
-$color-off-white: #ececec;
 
 // Core color settings
 
 $color-background-html: $color-white;
 $color-background-primary: $color-white;
 
-$color-text-header: $color-grey-dark;
-$color-text: $color-grey-dark;
+$color-text-header: $color-grey-80;
+$color-text: $color-grey-80;
 
-$color-divider-line: $color-grey-light;
+$color-divider-line: $color-grey-50;
 
-$color-form-placeholder: $color-grey;
+$color-form-placeholder: $color-grey-20;
 $color-form-focus: $color-primary;
 
 // Social color palette

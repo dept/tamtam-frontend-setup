@@ -7,7 +7,7 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": ["dom", "es7", "scripthost", "es2015"],
+    "lib": ["dom", "dom.iterable", "es7", "scripthost", "es2015"],
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": true,
@@ -22,12 +22,13 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "baseUrl": ".",
+    "outDir": "build",
     "paths": {
       "@utilities/*": ["./source/utilities/*"],
-      "@components/*": ["./source/components/#{component}/javascript/*"],
+      "@components/*": ["./source/components/*"],
       "@/*": ["./source/*"]
     }
   },
-  "include": ["./source"],
+  "include": ["./source", "./types"],
   "exclude": ["node_modules", "*/.spec.tsx", "*/.spec.ts"]
 }
