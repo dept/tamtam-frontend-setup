@@ -3,9 +3,9 @@
 /*------------------------------------*\
  * JS Main entry file
  \*------------------------------------*/
+import moduleInit from '@utilities/module-init'
 import '@utilities/detect-touch'
 import './config'
-import moduleInit from '@utilities/module-init'
 import '@utilities/detect-keyboard-focus'
 
 // import Example from '@components/example' // Sync

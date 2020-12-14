@@ -29,6 +29,6 @@
       "@/*": ["./source/*"]
     }
   },
-  "include": ["./source"],
+  "include": ["./source", "./types"],
   "exclude": ["node_modules", "*/.spec.tsx", "*/.spec.ts"]
 }
