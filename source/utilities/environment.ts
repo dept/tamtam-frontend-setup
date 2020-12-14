@@ -1,5 +1,3 @@
-'use strict'
-
 const ENVIRONMENT_LOCAL = 'local'
 const ENVIRONMENT_TEST = 'test'
 const ENVIRONMENT_ACCEPTANCE = 'acceptance'

@@ -1,12 +1,12 @@
 function initServiceWorker() {
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
       navigator.serviceWorker
         .register('/sw.js')
-        .then(function(reg) {
+        .then(function (reg) {
           console.log(`Serviceworker - Registration succeeded. Scope is ${reg.scope}`)
         })
-        .catch(function(err) {
+        .catch(function (err) {
           console.error(`Serviceworker - Registration failed with error ${err}`)
         })
     })

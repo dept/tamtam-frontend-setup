@@ -2,6 +2,7 @@ const KEYBOARD_FOCUSED = 'has--keyboard-focus'
 const TAB_KEYS = ['Tab', 9]
 
 class DetectKeyboardFocus {
+  private keyDown: boolean
   constructor() {
     this.keyDown = false
 
@@ -12,10 +13,10 @@ class DetectKeyboardFocus {
     document.addEventListener('blur', () => DetectKeyboardFocus.handleBlur(), true)
   }
 
-  handleKey(pressed, event) {
-    const key = event ? event.key || event.keyCode : undefined
+  handleKey(pressed: boolean, event?: KeyboardEvent) {
+    const key = event ? event.key || event.code : undefined
 
-    if (event && TAB_KEYS.indexOf(key) === -1) return
+    if (event && key && TAB_KEYS.indexOf(key) === -1) return
 
     this.keyDown = pressed
   }

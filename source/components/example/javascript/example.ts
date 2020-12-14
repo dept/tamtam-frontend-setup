@@ -6,7 +6,10 @@
  * @constructor
  */
 class Example {
-  constructor(element) {
+  public element: HTMLElement
+  public countValue: number
+
+  constructor(element: HTMLElement) {
     this.element = element
     this.countValue = 0
 

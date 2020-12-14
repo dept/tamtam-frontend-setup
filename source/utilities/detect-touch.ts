@@ -3,6 +3,10 @@ const WITH_MOUSE = `${IS_TOUCH}--with-mouse`
 const html = document.documentElement
 
 class DetectTouch {
+  private touch: boolean
+  private hasMouse: boolean
+  private mouseEvent: () => void
+
   get isTouchDevice() {
     return this.touch
   }

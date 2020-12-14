@@ -1,6 +1,6 @@
 {
   "name": "frontend-setup",
-  "version": "2.5.2",
+  "version": "2.6.0",
   "license": "MIT",
   "description": "A basic project setup for creating (static) html templates. Filled with automated tasks and configuration options.",
   "author": "Dept",
@@ -14,12 +14,8 @@
       "email": "dylan.vens@deptagency.com"
     },
     {
-      "name": "Kees van Lierop",
-      "email": "kees.vanlierop@deptagency.com"
-    },
-    {
-      "name": "Daphne Smit",
-      "email": "daphne.smit@deptagency.com"
+      "name": "Tim de Wolf",
+      "email": "tim.dewolf@deptagency.com"
     }
   ],
   "private": true,
@@ -43,6 +39,6 @@
     "create": "dept-builder create"
   },
   "devDependencies": {
-    "tamtam-frontend-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#2.0.2"
+    "tamtam-frontend-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#feature/fix-typescript"
   }
 }
