@@ -39,7 +39,7 @@ class ModuleInit {
       // eslint-disable-next-line prefer-spread
       return new (constructor.bind.apply(constructor, constructorArguments))()
     }
-    console.log(typeof constructor)
+
     if (typeof constructor === 'object') return constructor
     return new constructor(element)
   }
