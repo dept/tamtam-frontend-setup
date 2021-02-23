@@ -27,6 +27,7 @@
 @import 'tools.generate-grid';
 
 // Misc mixins
+@import 'tools.browsers';
 @import 'tools.column-offset';
 @import 'tools.generate-mediaquery-values';
 @import 'tools.heading';
@@ -34,6 +35,7 @@
 @import 'tools.list';
 @import 'tools.media-queries';
 @import 'tools.triangle';
+@import 'tools.truncate-text';
 @import 'tools.vertical-center-dib';
 @import 'tools.visibility';
 @import 'tools.width-override';
