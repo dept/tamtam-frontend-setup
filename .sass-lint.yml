@@ -2,6 +2,7 @@ options:
   formatter: stylish
 files:
   ignore:
+    - '../../node_modules'
     - '../../source/sass/_dev/**/*.scss'
     - '../../source/**/node_modules/**/*.scss'
 rules:

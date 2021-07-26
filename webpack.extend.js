@@ -1,3 +1,3 @@
-module.exports = (config, environment) => {
+module.exports = (config) => {
   return config
 }
