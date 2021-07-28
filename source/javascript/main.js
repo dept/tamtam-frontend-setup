@@ -1,10 +1,8 @@
 'use strict'
 
-// import '@/sass/main.scss';
-// import '@/sass/critical.scss';
 /*------------------------------------*\
  * JS Main entry file
- \*------------------------------------*/
+\*------------------------------------*/
 import './config'
 import '@utilities/detect-touch'
 import '@utilities/detect-keyboard-focus'

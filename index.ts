@@ -1,6 +1,6 @@
-import './source/javascript/main';
-import './source/sass/main.scss';
+import './source/javascript/main'
+import './source/sass/main.scss'
 
 if (module.hot) {
-    module.hot.accept();
+  module.hot.accept()
 }

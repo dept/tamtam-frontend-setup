@@ -1,7 +1,6 @@
-const path = require('path')
+// const path = require('path')
 
-function extendConfig(config) {
-
+const extendConfig = config => {
   // config.copy = [
   //   ...config.copy,
   //   {
