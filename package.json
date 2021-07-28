@@ -34,12 +34,9 @@
   ],
   "scripts": {
     "postinstall": "dept-builder yarn-install-recursive --dirs source/components,source/utilities --ignore node_modules",
-    "bamboo": "dept-builder deploy",
     "deploy": "dept-builder deploy",
     "start": "dept-builder start",
-    "build": "dept-builder build",
-    "dist": "dept-builder dist",
-    "task": "dept-builder task",
+    "favicons": "dept-builder favicons",
     "create": "dept-builder create"
   },
   "devDependencies": {
