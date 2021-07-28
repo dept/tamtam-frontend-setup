@@ -1,5 +1,7 @@
 'use strict'
 
+// import '@/sass/main.scss';
+// import '@/sass/critical.scss';
 /*------------------------------------*\
  * JS Main entry file
  \*------------------------------------*/
