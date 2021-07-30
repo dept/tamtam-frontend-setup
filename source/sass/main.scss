@@ -23,8 +23,8 @@ $assets-path: '../' !default;
 
 /* components:scss */
 @import '@/components/footer/stylesheet/_components.footer';
-@import '@/components/header/stylesheet/_components.header';
 @import '@/components/button/stylesheet/_components.button';
+@import '@/components/header/stylesheet/_components.header';
 /* endinject */
 
 @import '50_scopes/scopes.rich-text';
