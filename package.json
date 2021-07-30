@@ -37,7 +37,7 @@
     "deploy": "dept-builder deploy",
     "start": "dept-builder start",
     "favicons": "dept-builder favicons",
-    "create": "dept-builder create"
+    "generate": "dept-builder generate"
   },
   "devDependencies": {
     "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#2.1.0"
