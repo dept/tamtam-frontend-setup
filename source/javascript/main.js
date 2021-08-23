@@ -6,10 +6,11 @@
 import './config'
 import '@utilities/detect-touch'
 import '@utilities/detect-keyboard-focus'
+import '@utilities/focus-trap'
 
 import moduleInit from '@utilities/module-init'
 
-// import Example from '@components/example' // Sync
+// import Example from '@components/example/javascript/example' // Sync
 // moduleInit.sync('[js-hook-module-example]', Example) // Sync
 
-moduleInit.async('[js-hook-module-example]', () => import('@components/example')) // Async
+moduleInit.async('[js-hook-module-example]', () => import('@components/example/javascript/example')) // Async

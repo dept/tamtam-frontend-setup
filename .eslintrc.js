@@ -1,5 +1,5 @@
-'use strict';
+'use strict'
 
 module.exports = {
-  "extends": ["./node_modules/dept-builder/config/eslint"]
+  extends: ['./node_modules/dept-builder/config/eslint'],
 }
