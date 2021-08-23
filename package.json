@@ -36,17 +36,29 @@
     "messagePattern": "$J: $M",
     "allowEmptyCommitMessage": true
   },
+  "lint-staged": {
+    "**/*.(js|ts|tsx)": [
+      "eslint --fix"
+    ],
+    "**/*.(js|json|ts|tsx)": [
+      "prettier --write"
+    ]
+  },
   "scripts": {
     "postinstall": "dept-builder yarn-install-recursive --dirs source/components,source/utilities --ignore node_modules",
     "deploy": "dept-builder deploy",
     "start": "dept-builder start",
     "favicons": "dept-builder favicons",
     "generate": "dept-builder generate",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint './source/**/*.{js,jsx,ts,tsx}'",
+    "lint-fix": "yarn lint --fix",
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
     "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#2.1.0",
     "husky": "^7.0.0",
-    "jira-prepare-commit-msg": "^1.6.1"
+    "jira-prepare-commit-msg": "^1.6.1",
+    "lint-staged": "^11.1.2"
   }
 }

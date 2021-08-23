@@ -2,26 +2,32 @@
   "eslint.validate": ["javascript", "vue", "typescript"],
   "eslint.nodePath": "./node_modules",
   "eslint.workingDirectories": ["./"],
+  "editor.formatOnSave": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "files.associations": {
     "*.js": "javascript",
     "*.ts": "typescript"
   },
   "[typescript]": {
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
     }
   },
   "[javascript]": {
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
     }
   },
   "[scss]": {
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
     }
   },
   "[html]": {
+    "editor.defaultFormatter": null,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": false
     }
