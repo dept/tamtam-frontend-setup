@@ -9,7 +9,7 @@ pool: Default
 # vmImage: 'ubuntu-latest'
 
 variables:
-  directory.frontend: './'
+  directory.frontend: '.'
   YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
 
 steps:
@@ -35,7 +35,7 @@ steps:
   - task: ArchiveFiles@2
     displayName: 'Archive published files'
     inputs:
-      rootFolderOrFile: '$(directory.frontend)/build/'
+      rootFolderOrFile: '$(directory.frontend)/build'
       includeRootFolder: false
       archiveFile: '$(directory.frontend)/frontend.zip'
 
