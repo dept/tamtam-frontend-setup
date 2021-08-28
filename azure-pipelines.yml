@@ -33,14 +33,14 @@ steps:
     displayName: Build
 
   - task: ArchiveFiles@2
-    displayName: 'Archive published files'
+    displayName: 'Archive build: Frontend'
     inputs:
       rootFolderOrFile: '$(directory.frontend)/build'
       includeRootFolder: false
-      archiveFile: '$(directory.frontend)/frontend.zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/frontend.zip'
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: Frontend'
     inputs:
-      PathtoPublish: '$(directory.frontend)/frontend.zip'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/frontend.zip'
       ArtifactName: frontend
