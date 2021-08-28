@@ -5,7 +5,6 @@ $assets-path: '../' !default;
 \*------------------------------------*/
 
 @import '01_tools/tools.conversion';
-
 @import '00_settings/all';
 @import '01_tools/all';
 
@@ -16,17 +15,14 @@ $assets-path: '../' !default;
 @import '10_generic/generic.font-face';
 @import '10_generic/generic.normalize';
 @import '10_generic/generic.html';
-
 @import '20_elements/all';
-
 @import '30_objects/all';
 
 /* components:scss */
-@import '@/components/footer/stylesheet/_components.footer';
 @import '@/components/button/stylesheet/_components.button';
+@import '@/components/footer/stylesheet/_components.footer';
 @import '@/components/header/stylesheet/_components.header';
 /* endinject */
 
 @import '50_scopes/scopes.rich-text';
-
 @import '70_utilities/all';
