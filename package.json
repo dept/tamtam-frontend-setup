@@ -42,6 +42,9 @@
     ],
     "**/*.(js|json|ts|tsx)": [
       "prettier --write"
+    ],
+    "**/*.scss": [
+      "stylelint --syntax scss"
     ]
   },
   "scripts": {
@@ -50,15 +53,15 @@
     "favicons": "dept-builder favicons",
     "generate": "dept-builder generate",
     "prepare": "husky install",
-    "lint": "eslint './source/**/*.{js,jsx,ts,tsx}'",
-    "lint-fix": "yarn lint --fix",
+    "lint": "yarn lint:js && yarn lint:css",
+    "lint:js": "eslint './source/**/*.{js,jsx,ts,tsx}'",
+    "lint:css": "stylelint **/*.scss",
+    "lint-fix": "yarn lint:js --fix && yarn lint:css --fix",
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#2.1.0",
-    "husky": "^7.0.0",
-    "jira-prepare-commit-msg": "^1.6.1",
-    "lint-staged": "^11.1.2"
+    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#release/webpack",
+    "husky": "^7.0.2"
   },
   "dependencies": {},
   "workspaces": [
