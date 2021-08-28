@@ -20,11 +20,11 @@ $global-spacing-xlg: $global-spacing * 5;
 
 $spacing-sizes: (
   // Spacing modifier
-    // .u-margin-top--{ modifier }
-    'xlg':
+  // .u-margin-top--{ modifier }
+  'xlg':
     (
       // Breakpoint triggers
-        'xxlg': $global-spacing * 8,
+      'xxlg': $global-spacing * 8,
       'xlg': $global-spacing * 8,
       'lg': $global-spacing * 4,
       'md': $global-spacing * 3,

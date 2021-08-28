@@ -4,12 +4,12 @@
 
 @mixin ie-only {
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-      @content;
+    @content;
   }
 }
 
 @mixin edge-only {
   @supports (-ms-ime-align: auto) {
-      @content;
+    @content;
   }
 }

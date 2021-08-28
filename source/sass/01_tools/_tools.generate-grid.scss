@@ -1,4 +1,4 @@
-// sass-lint:disable mixin-name-format, no-warn, quotes, function-name-format, brace-style, trailing-semicolon, indentation
+// stylelint-disable scss/dollar-variable-first-in-block
 
 $grid-config: (
   postfix: '',
@@ -105,8 +105,10 @@ $grid-middle-modifier: 'middle' !default;
 ) {
   .#{$grid-column-base-class} {
     @include grid-column-base($grid-gutter-size, $grid-gutter-size-small);
-    flex-basis: auto;
     display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
   }
 
   @for $column from 0 through $columns {
@@ -126,12 +128,6 @@ $grid-middle-modifier: 'middle' !default;
       @include grid-create-pre-post($column, $column-width);
     }
   }
-
-  .#{$grid-column-base-class} {
-    flex-grow: 1;
-    flex-basis: 0;
-    max-width: 100%;
-  }
 }
 
 @mixin grid-create-responsive-columns(
@@ -146,7 +142,9 @@ $grid-middle-modifier: 'middle' !default;
     @media only screen and (min-width: $breakpoint) {
       .#{$grid-column-base-class}--#{$size-modifier} {
         @include grid-column-base($grid-gutter-size, $grid-gutter-size-small);
-        flex-basis: auto;
+        flex-grow: 1;
+        flex-basis: 0;
+        max-width: 100%;
       }
 
       @for $column from 0 through $columns {
@@ -165,12 +163,6 @@ $grid-middle-modifier: 'middle' !default;
         @if ($pre-post) {
           @include grid-create-pre-post($column, $column-width, $size-modifier);
         }
-      }
-
-      .#{$grid-column-base-class}--#{$size-modifier} {
-        flex-grow: 1;
-        flex-basis: 0;
-        max-width: 100%;
       }
     }
   }
