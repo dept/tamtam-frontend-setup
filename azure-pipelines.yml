@@ -5,15 +5,14 @@ trigger:
   - 'release/*'
 
 name: $(Build.DefinitionName)-$(SourceBranchName)-$(Date:yyyyMMdd)$(Rev:.r)
-pool:
-  vmImage: 'ubuntu-latest'
+pool: Default
+# vmImage: 'ubuntu-latest'
 
 variables:
   directory.frontend: './'
   YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
 
 steps:
-
   - task: NodeTool@0
     inputs:
       versionSpec: '12.x'
