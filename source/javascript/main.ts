@@ -6,9 +6,6 @@
 import './config'
 import '@/utilities/detect-touch'
 import '@/utilities/detect-keyboard-focus'
-import '@/utilities/focus-trap'
-import '@/utilities/history'
-import '@/components/image'
 
 import moduleInit from '@/utilities/module-init'
 
