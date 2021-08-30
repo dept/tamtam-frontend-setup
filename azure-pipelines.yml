@@ -5,8 +5,8 @@ trigger:
   - 'release/*'
 
 name: $(Build.DefinitionName)-$(SourceBranchName)-$(Date:yyyyMMdd)$(Rev:.r)
-pool: Default
-# vmImage: 'ubuntu-latest'
+pool:
+  vmImage: 'ubuntu-latest'
 
 variables:
   directory.frontend: '.'
