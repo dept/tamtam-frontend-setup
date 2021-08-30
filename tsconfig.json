@@ -3,6 +3,11 @@
   "include": ["./source", "./types"],
   "exclude": ["node_modules", "*/.spec.tsx", "*/.spec.ts"],
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@utilities/*": ["./source/utilities/*"],
+      "@components/*": ["./source/components/*"],
+      "@/*": ["./source/*"]
+    }
   }
 }
