@@ -1,12 +1,14 @@
-// Style
-$button-icon-spacing: $global-spacing * 4;
+:root {
+  // Style
+  --button-icon-spacing: #{$global-spacing * 4};
 
-// Transitions
-$button-icon-transition-time: 300ms;
-$button-icon-transition-ease: $ease-in-out-quad;
+  // Transitions
+  --button-icon-transition-time: var(--button-transition-time);
+  --button-icon-transition-ease: var(--button-transition-ease);
+}
 
 @mixin button--icon {
-  padding-right: $button-icon-spacing;
+  padding-right: var(--button-icon-spacing);
   position: relative;
 
   .button__icon {
@@ -15,9 +17,9 @@ $button-icon-transition-ease: $ease-in-out-quad;
     position: absolute;
     top: 0;
     bottom: 0;
-    right: $button-spacing * 1.5;
+    right: var(--button-spacing-x);
     transform: translate3d(0, 0, 0);
-    transition: $button-icon-transition-time $button-icon-transition-ease;
+    transition: var(--button-icon-transition-time) var(--button-icon-transition-ease);
     transition-property: transform;
   }
 

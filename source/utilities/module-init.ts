@@ -1,4 +1,4 @@
-type DynamicImportType = () => Promise<{ default: any }>
+type DynamicImportType = () => Promise<{ default: any } | undefined | null | void>
 interface ModuleInitHTMLElement extends HTMLElement {
   _initializedModules?: string[]
 }
@@ -11,9 +11,10 @@ class ModuleInit {
       if (!elements.length) return resolve([])
 
       moduleFn().then(constructor => {
-        const constructors = this.findElements(selector).map(element =>
-          this.loadConstructor(element, constructor.default, opt_arguments),
-        )
+        const constructors = this.findElements(selector).map(element => {
+          if (constructor) return this.loadConstructor(element, constructor.default, opt_arguments)
+          return moduleFn
+        })
 
         resolve(constructors)
       })
