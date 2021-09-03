@@ -48,11 +48,11 @@
     ]
   },
   "scripts": {
+    "postinstall": "husky install",
     "deploy": "dept-builder deploy",
     "start": "dept-builder start",
     "favicons": "dept-builder favicons",
     "generate": "dept-builder generate",
-    "prepare": "husky install",
     "lint": "yarn lint:js && yarn lint:css",
     "lint:js": "eslint './source/**/*.{js,jsx,ts,tsx}'",
     "lint:css": "stylelint **/*.scss",
