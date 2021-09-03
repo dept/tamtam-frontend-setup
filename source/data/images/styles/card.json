@@ -1,0 +1,28 @@
+{
+  "aspect": [
+    4,
+    3
+  ],
+  "breakpoints": {
+    "mobile": [
+      480,
+      270
+    ],
+    "mobilePlus": [
+      768,
+      432
+    ],
+    "tabletPortrait": [
+      464,
+      261
+    ],
+    "tabletLandscape": [
+      375,
+      281
+    ],
+    "laptop": [
+      500,
+      375
+    ]
+  }
+}

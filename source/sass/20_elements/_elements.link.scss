@@ -17,6 +17,7 @@ a {
 .has--keyboard-focus {
   a:focus {
     position: relative;
+
     @include focus-state-pulse;
   }
 }

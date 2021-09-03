@@ -20,11 +20,5 @@
             "as": "style",
             "onload": "onload=\"this.onload=null;this.rel='stylesheet'\""
         }
-    ],
-    "modulepreload": [
-        {
-            "url": "/assets/js/main-es.js",
-            "as": "script"
-        }
     ]
 }
