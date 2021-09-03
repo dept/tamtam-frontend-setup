@@ -8,8 +8,6 @@
 4. [Dependencies](#markdown-header-dependencies)
 5. [Developers](#markdown-header-developers)
 
-![Video Demo](./_demo/video.gif)
-
 ## What does it do
 
 - Lazyloads images when in view
@@ -176,8 +174,8 @@ These sources breakpoints should still match your `imageStyle` breakpoints.
 
 ## Dependencies
 
-- [In-view libary](/utilities/in-view/)
-- [Events libary](/utilities/events/)
+- In-view libary
+- Events libary
 
 ## Developers
 
