@@ -48,7 +48,7 @@
     ]
   },
   "scripts": {
-    "postinstall": "husky install",
+    "postinstall": "husky install || (cd ../.. && husky install src/frontend/.husky)",
     "deploy": "dept-builder deploy",
     "start": "dept-builder start",
     "favicons": "dept-builder favicons",

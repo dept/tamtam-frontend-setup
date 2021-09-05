@@ -3,7 +3,7 @@ module.exports = config => ({
   source: `${config.images}/logo.png`,
   output: `${config.html}/generic/favicons.html`,
   faviconsPlugin: {
-    path: config.faviconsOutputPath, // Path for overriding default icons path. `string`
+    path: `/${config.faviconsOutputPath}`, // Path for overriding default icons path. `string`
     appName: 'App', // Your application's name. `string`
     appShortName: 'App', // Your application's short_name. `string`. Optional. If not set, appName will be used
     appDescription: 'App starter', // Your application's description. `string`
@@ -19,7 +19,7 @@ module.exports = config => ({
     scope: '/', // set of URLs that the browser considers within your app
     start_url: '/', // Start URL when launching the application from a device. `string`
     version: '1.0', // Your application's version string. `string`
-    logging: false, // Print logs to console? `boolean`
+    logging: true, // Print logs to console? `boolean`
     pixel_art: false, // Keeps pixels "sharp" when scaling up, for pixel art.  Only supported in offline mode.
     loadManifestWithCredentials: false, // Browsers don't send cookies when fetching a manifest, enable this to fix that. `boolean`
     icons: {
