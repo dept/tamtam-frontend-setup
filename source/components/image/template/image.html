@@ -1,0 +1,76 @@
+{#
+  Image macro
+
+  data {
+    classes?: string
+    backgroundColor?: 'hexColor' | 'rgba()'
+    aspect?: number[]
+    hidden?: boolean
+    objectFit?: boolean
+    attr?: 'string
+    caption?: string
+    alt: string
+
+    // Using <picture> element
+    imageStyle?: string // Option in data/images/styles/${style}.json
+
+    // Using legacy <img /> element
+    preload?: string
+    image?: string
+    srcset?: string
+  }
+
+ #}
+
+{% macro image(data) %}
+
+  <figure class="c-image
+    {%- if data.classes %} {{ data.classes }}{% endif -%}"
+    {%- if data.attr %} {{ data.attr|safe }}{% endif -%}
+    {%- if data.hidden %} aria-hidden="true"{% endif %}
+    {%- if data.backgroundColor %} style="--image-skeleton-color: {{ data.backgroundColor }};"{% endif -%}
+    {%- if data.objectFit %} js-hook-objectfit{% endif -%}>
+
+    {% set showPreload = data.showPreload if data.showPreload == false else true %}
+    {% set imageStyle = global.images.styles[(data.imageStyle or 'default')] %}
+    {% set breakpoints = imageStyle.breakpoints %}
+    {% set aspect = imageStyle.aspect or data.aspect or [16, 9] %}
+
+    <div class="image__holder">
+      {% if data.srcset or data.image %}
+        <img class="image__default"
+          {%- if data.preload %} src="{{ data.preload }}" {% endif -%}
+          {%- if showPreload and not data.preload %} src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ aspect[0] }} {{ aspect[1] }}'/%3E" {% endif -%}
+          data-src="{{ data.image }}"
+          {%- if data.srcset %} data-srcset="{{ data.srcset }}" {% endif -%}
+          alt="{{ data.alt or 'Image' }}"
+        >
+      {% else %}
+        <picture>
+          {%- for size, breakpoint in breakpoints -%}
+            {%- set mqStart = ('(min-width: ' + global.images.breakpoints[size].start + 'px)') if global.images.breakpoints[size].start %}
+            {%- set mqEnd = ('(max-width: ' + global.images.breakpoints[size].end + 'px)') if global.images.breakpoints[size].end and not loop.last %}
+            {%- set hasCustomSource = data.sources[size] -%}
+            {%- set placeholderUrl = "https://satyr.dev/" + breakpoint[0] + "x" + (breakpoint[1] if breakpoint[1] else aspect|join(':')) + (('/' + data.backgroundColor|replace("#", "")) if data.backgroundColor) %}
+            <source data-srcset="{{ hasCustomSource or placeholderUrl }} 1x"
+              media="{{- mqStart -}} {{- ' and ' if (mqEnd and mqStart and not loop.last) -}} {{- mqEnd -}}" type="image/jpeg"/>
+          {%- endfor %}
+          <img class="image__default" alt="{{ data.alt or 'Image' }}"
+            {%- if data.preload %} src="{{ data.preload }}" {% endif -%}
+            {%- if showPreload and not data.preload %} src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ aspect[0] }} {{ aspect[1] }}'/%3E" {% endif -%}
+          >
+        </picture>
+      {% endif %}
+    </div>
+
+    {%- if data.caption %}
+    <figcaption class="image__caption">
+      {{ data.caption }}
+    </figcaption>
+    {% endif -%}
+
+  </figure>
+
+{% endmacro %}
+
+

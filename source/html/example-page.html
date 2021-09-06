@@ -13,9 +13,9 @@
         <h3 class="u-margin-top--md">How to use the data:</h3> <br/>
 
         <div class="u-margin-bottom--xs">
-            Website's title: {{ site.title }}<br/>
-            Website's description: {{ site.description }}<br/>
-            Project is in debug mode: {{ project.debug }}<br/>
+            Website's title: {{ global.site.title }}<br/>
+            Website's description: {{ global.site.description }}<br/>
+            Project is in debug mode: {{ global.project.debug }}<br/>
         </div>
 
         <div class="u-margin-bottom--md">
@@ -33,6 +33,30 @@
             {% svg 'social/facebook' %}
             {% svg 'social/twitter' %}
             {% svg 'social/google-plus' %}
+        </div>
+
+        <h3>How to use image macro</h3> <br />
+
+        {% from 'image.html' import image  %}
+
+        <div class="o-grid">
+
+          <div class="o-col-12 o-col-10--md u-pre-1--md u-margin-bottom--sm">
+            {{ image({
+              imageStyle: 'wysiwyg',
+              backgroundColor: '#8894ae',
+              aspect: [16, 5]
+            }) }}
+          </div>
+
+          {% for i in range(0, 3) -%}
+            <div class="o-col-12 o-col-6--md o-col-4--lg u-margin-bottom--sm">
+              {{ image({
+                imageStyle: 'card',
+                backgroundColor: '#8894ae'
+              }) }}
+            </div>
+          {%- endfor %}
         </div>
 
 

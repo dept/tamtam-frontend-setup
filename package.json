@@ -1,6 +1,6 @@
 {
   "name": "frontend-setup",
-  "version": "2.6.1",
+  "version": "3.0.0",
   "license": "MIT",
   "description": "A basic project setup for creating (static) html templates. Filled with automated tasks and configuration options.",
   "author": "Dept",
@@ -48,11 +48,11 @@
     ]
   },
   "scripts": {
+    "postinstall": "husky install",
     "deploy": "dept-builder deploy",
     "start": "dept-builder start",
     "favicons": "dept-builder favicons",
     "generate": "dept-builder generate",
-    "prepare": "husky install",
     "lint": "yarn lint:js && yarn lint:css",
     "lint:js": "eslint './source/**/*.{js,jsx,ts,tsx}'",
     "lint:css": "stylelint **/*.scss",
@@ -60,7 +60,7 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#release/webpack",
+    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#dev-3.0.0",
     "husky": "^7.0.2"
   },
   "dependencies": {},

@@ -22,6 +22,7 @@ $assets-path: '../' !default;
 @import '@/components/button/stylesheet/_components.button';
 @import '@/components/footer/stylesheet/_components.footer';
 @import '@/components/header/stylesheet/_components.header';
+@import '@/components/image/stylesheet/_components.image';
 /* endinject */
 
 @import '50_scopes/scopes.rich-text';
