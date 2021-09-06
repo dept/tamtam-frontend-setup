@@ -20,13 +20,13 @@ steps:
 
   - task: Cache@2
     inputs:
-      key: 'yarn | "$(Agent.OS)" | $(directory.frontend)/yarn.lock'
+      key: 'yarn | "$(Agent.OS)" | $(directory.frontend)/yarn.lock | v1'
       restoreKeys: |
         yarn | "$(Agent.OS)"
       path: $(YARN_CACHE_FOLDER)
     displayName: Load node_modules from cache
 
-  - script: yarn install --frozen-lockfile
+  - script: yarn --frozen-lockfile
     displayName: Install dependencies
 
   - script: yarn deploy
