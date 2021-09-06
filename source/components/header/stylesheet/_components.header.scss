@@ -1,5 +1,7 @@
-$header-transition-time: 400ms;
-$header-transition-ease: $ease-in-out-quad;
+:root {
+  --header-transition-time: 400ms;
+  --header-transition-ease: #{$ease-in-out-quad};
+}
 
 // .c-header {
 // }

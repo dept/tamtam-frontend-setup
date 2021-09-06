@@ -1,26 +1,34 @@
-// Style
-$button-spacing: $global-spacing;
-$button-border-radius: 3px;
+:root {
+  // Style
+  --button-spacing-x: #{$global-spacing * 2};
+  --button-spacing-y: #{$global-spacing};
+  --button-border-radius: 3px;
 
-// Colors
-$button-font-color: $color-black;
-$button-icon-color: $button-font-color;
-$button-background-color: $color-grey-20;
-$button-font-color-hover: $color-white;
-$button-icon-color-hover: $button-font-color-hover;
-$button-background-color-hover: darken($button-background-color, 10%);
+  // Colors
+  --button-font-color: #{$color-black};
+  --button-icon-color: var(--button-font-color);
+  --button-background-color: #{$color-grey-20};
 
-// Transitions
-$button-transition-time: 300ms;
-$button-transition-ease: $ease-in-out-quad;
+  --button-font-color-hover: #{$color-white};
+  --button-icon-color-hover: var(--button-font-color-hover);
+  --button-background-color-hover: #{$color-grey-50};
+
+  --button-font-color-focus: var(--button-font-color-hover);
+  --button-icon-color-focus: var(--button-icon-color-hover);
+  --button-background-color-focus: var(--button-background-color-hover);
+
+  // Transitions
+  --button-transition-time: 300ms;
+  --button-transition-ease: #{$ease-in-out-quad};
+}
 
 @mixin button {
   @include button--base;
-  padding: $button-spacing $button-spacing * 2;
-  border-radius: $button-border-radius;
-  background-color: $button-background-color;
-  color: $button-font-color;
-  transition: $button-transition-time $button-transition-ease;
+  padding: var(--button-spacing-y) var(--button-spacing-x);
+  border-radius: var(--button-border-radius);
+  background-color: var(--button-background-color);
+  color: var(--button-font-color);
+  transition: var(--button-transition-time) var(--button-transition-ease);
   transition-property: color, background-color;
 
   .button__label {
@@ -28,26 +36,26 @@ $button-transition-ease: $ease-in-out-quad;
   }
 
   svg {
-    fill: $button-font-color;
-    transition: $button-transition-time $button-transition-ease;
+    fill: var(--button-font-color);
+    transition: var(--button-transition-time) var(--button-transition-ease);
     transition-property: fill;
   }
 
   @include hover-focus {
-    color: $button-font-color-hover;
-    background-color: $button-background-color-hover;
+    color: var(--button-font-color-hover);
+    background-color: var(--button-background-color-hover);
 
     svg {
-      fill: $button-font-color-hover;
+      fill: var(--button-font-color-hover);
     }
   }
 
   @include keyboard-focus {
-    color: $button-font-color-hover;
-    background-color: darken($button-background-color-hover, 50%);
+    color: var(--button-font-color-focus);
+    background-color: var(--button-background-color-focus);
 
     svg {
-      fill: $button-font-color-hover;
+      fill: var(--button-font-color-focus);
     }
   }
 }

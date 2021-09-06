@@ -55,8 +55,8 @@
   &::before {
     display: block;
     width: 100%;
-    height: $height;
-    bottom: -($height / 2);
+    height: #{$height};
+    bottom: calc(- (#{$height} / 2));
     position: absolute;
     background-color: $color;
     content: '';
