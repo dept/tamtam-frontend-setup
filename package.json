@@ -24,8 +24,8 @@
     "url": "https://bitbucket.org/tamtam-nl/tamtam-frontend-setup"
   },
   "engines": {
-    "node": "^12",
-    "npm": "^6"
+    "node": ">=12",
+    "npm": ">=6"
   },
   "browserslist": [
     "defaults",
@@ -60,7 +60,7 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#dev-3.0.0",
+    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#dev-3.0.1",
     "husky": "^7.0.2"
   },
   "dependencies": {},
