@@ -7,26 +7,32 @@
     "end": 767
   },
   "tabletPortrait": {
+    "priority": 5,
     "start": 768,
     "end": 1023
   },
   "tabletLandscape": {
+    "priority": 4,
     "start": 1024,
     "end": 1239
   },
   "laptop": {
+    "priority": 0,
     "start": 1240,
     "end": 1599
   },
   "desktop": {
+    "priority": 1,
     "start": 1600,
     "end": 1919
   },
   "widescreen": {
+    "priority": 2,
     "start": 1920,
     "end": 2559
   },
   "4k": {
+    "priority": 3,
     "start": 2560
   }
 }

@@ -63,7 +63,9 @@ import '@/components/image'
 The default image crops are defined [here](/source/data/images/styles/default.json)
 The default image breakpoints are defined [here](/source/data/images/breakpoints.json)
 
-You can add new styles by adding them to the styles [folder](/source/data/images/styles/) to easily create and reuse styles across components.
+You can add new styles by adding them to the styles [folder](/source/data/images/styles/) to easily create and reuse styles across components. 
+
+Aspect ratio will be automatically calculated based on the priority of the breakpoints. The skeleton SVG will inherit the width and height of the selected priority breakpoint.
 
 Style generation works as followed:
 
@@ -73,10 +75,6 @@ Filename: `card.json`
 
 ```javascript
 {
-  "aspect": [
-    4,
-    3
-  ],
   "breakpoints": {
     "mobile": [
       480, // width
