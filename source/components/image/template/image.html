@@ -34,7 +34,7 @@
     {% set showPreload = data.showPreload if data.showPreload == false else true %}
     {% set imageStyle = global.images.styles[(data.imageStyle or 'default')] %}
     {% set breakpoints = imageStyle.breakpoints %}
-    {% set aspect = imageStyle.aspect or data.aspect or [16, 9] %}
+    {% set aspect = data.aspect or [16, 9] %}
     {% set priorityBreakpoint = { priority: null, size: null } %}
 
     <div class="image__holder">
