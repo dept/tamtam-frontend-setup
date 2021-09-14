@@ -32,6 +32,7 @@ class LazyImage {
     if (!image) return
 
     if (picture) {
+      image.onload = () => this._renderImage(element)
       const sources = picture.querySelectorAll('source')
       sources.forEach(source => {
         const srcset = source.dataset.srcset
@@ -52,11 +53,11 @@ class LazyImage {
         return
       }
 
+      image.src = ''
+      image.onload = () => this._renderImage(element)
       image.src = src
       if (srcset) image.srcset = srcset
     }
-
-    image.decode().then(() => this._renderImage(element))
   }
   /**
    * Set image source
