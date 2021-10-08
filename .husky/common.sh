@@ -6,3 +6,6 @@ command_exists () {
 if command_exists winpty && test -t 1; then
   exec < /dev/tty
 fi
+
+# Workaround for WSL
+unset GIT_DIR
