@@ -3,7 +3,7 @@ const kebabCasePattern = /^([a-z][a-z0-9]*)(-[a-z0-9]+)*$/
 
 module.exports = {
   plugins: ['stylelint-scss', 'stylelint-prettier'],
-  syntax: 'scss',
+  customSyntax: 'postcss-scss',
   ignoreFiles: [
     './node_modules',
     './source/sass/_dev/**/*.scss',

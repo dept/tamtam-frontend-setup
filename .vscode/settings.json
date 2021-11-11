@@ -4,6 +4,7 @@
   "less.validate": false,
   "scss.validate": false,
   "stylelint.enable": true,
+  "stylelint.validate": ["css", "scss"],
   "eslint.nodePath": "./node_modules",
   "eslint.workingDirectories": ["./"],
   "editor.formatOnSave": false,
