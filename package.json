@@ -44,7 +44,7 @@
       "prettier --write"
     ],
     "**/*.scss": [
-      "stylelint --syntax scss"
+      "stylelint --customSyntax postcss-scss"
     ]
   },
   "scripts": {
