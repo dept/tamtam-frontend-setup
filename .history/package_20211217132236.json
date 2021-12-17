@@ -27,25 +27,15 @@
     "node": ">=12",
     "npm": ">=6"
   },
-  "browserslist": [
-    "defaults",
-    "> 1%",
-    "not IE 11"
-  ],
+  "browserslist": ["defaults", "> 1%", "not IE 11"],
   "jira-prepare-commit-msg": {
     "messagePattern": "$J: $M",
     "allowEmptyCommitMessage": true
   },
   "lint-staged": {
-    "**/*.(js|ts|tsx)": [
-      "eslint --fix"
-    ],
-    "**/*.(js|json|ts|tsx)": [
-      "prettier --write"
-    ],
-    "**/*.scss": [
-      "stylelint --customSyntax postcss-scss"
-    ]
+    "**/*.(js|ts|tsx)": ["eslint --fix"],
+    "**/*.(js|json|ts|tsx)": ["prettier --write"],
+    "**/*.scss": ["stylelint --customSyntax postcss-scss"]
   },
   "scripts": {
     "postinstall": "husky install || (cd ../.. && husky install src/frontend/.husky)",
@@ -64,8 +54,5 @@
     "husky": "^7.0.2"
   },
   "dependencies": {},
-  "workspaces": [
-    "source/components/*",
-    "source/utilities/*"
-  ]
+  "workspaces": ["source/components/*", "source/utilities/*"]
 }
