@@ -48,11 +48,16 @@
       {% else %}
         <picture>
           {%- for size, breakpoint in breakpoints -%}
-            {%- set mqStart = ('(min-width: ' + global.images.breakpoints[size].start + 'px)') if global.images.breakpoints[size].start %}
-            {%- set mqEnd = ('(max-width: ' + global.images.breakpoints[size].end + 'px)') if global.images.breakpoints[size].end and not loop.last %}
+            {%- set breakpointConfig = global.images.breakpoints[size] -%}
+            {%- set pixelDensity = breakpointConfig.pixelDensity or [1] -%}
+            {%- set mqStart = ('(min-width: ' + breakpointConfig.start + 'px)') if breakpointConfig.start %}
+            {%- set mqEnd = ('(max-width: ' + breakpointConfig.end + 'px)') if breakpointConfig.end and not loop.last %}
             {%- set hasCustomSource = data.sources[size] -%}
-            {%- set placeholderUrl = "https://satyr.dev/" + breakpoint[0] + "x" + (breakpoint[1] if breakpoint[1] else aspect|join(':')) + (('/' + data.backgroundColor|replace("#", "")) if data.backgroundColor) %}
-            <source data-srcset="{{ hasCustomSource or placeholderUrl }} 1x"
+            {%- set placeholderUrl = [] %}
+            {% for density in pixelDensity %}
+              {%- set placeholderUrl = (placeholderUrl.push("https://satyr.dev/" + breakpoint[0]*density + "x" + (breakpoint[1]*density if breakpoint[1] else aspect|join(':')) + (('/' + data.backgroundColor|replace("#", "")) if data.backgroundColor) + " " + density + "x"), placeholderUrl) -%}
+            {% endfor  %}
+            <source data-srcset="{{- hasCustomSource or placeholderUrl|join(',') -}}"
               media="{{- mqStart -}} {{- ' and ' if (mqEnd and mqStart and not loop.last) -}} {{- mqEnd -}}" type="image/jpeg"/>
           {%- endfor %}
           <img class="image__default" alt="{{ data.alt or 'Image' }}"

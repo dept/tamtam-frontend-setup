@@ -61,7 +61,7 @@ import '@/components/image'
 ### Custom image crops
 
 The default image crops are defined [here](/source/data/images/styles/default.json)
-The default image breakpoints are defined [here](/source/data/images/breakpoints.json)
+The default image breakpoints and pixel densities are defined [here](/source/data/images/breakpoints.json)
 
 You can add new styles by adding them to the styles [folder](/source/data/images/styles/) to easily create and reuse styles across components.
 
@@ -163,10 +163,10 @@ These sources breakpoints should still match your `imageStyle` breakpoints.
 {{ image({
   imageStyle: 'card',
   sources: {
-    "mobile": '/assets/images/tmp/placeholder.400x250.jpg',
-    "mobilePlus": '/assets/images/tmp/placeholder.400x250.jpg',
-    "tabletPortrait": '/assets/images/tmp/placeholder.400x250.jpg',
-    "tabletLandscape": '/assets/images/tmp/placeholder.400x250.jpg',
+    "mobile": '/assets/images/tmp/placeholder.400x250.jpg 1x',
+    "mobilePlus": '/assets/images/tmp/placeholder.400x250.jpg 1x',
+    "tabletPortrait": '/assets/images/tmp/placeholder.400x250.jpg 1x',
+    "tabletLandscape": '/assets/images/tmp/placeholder.400x250.jpg 1x',
     "laptop": '/assets/images/tmp/placeholder.400x250.jpg'
   }
 }) }}
