@@ -15,7 +15,10 @@ class DetectTouch {
     this.hasMouse = false
     this.mouseEvent = () => this.handleMouseEvent()
     this.touch =
-      'ontouchstart' in html || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0
+      'ontouchstart' in html ||
+      navigator.maxTouchPoints > 0 ||
+      // @ts-ignore Needs ignore due to TS 4.4.x removal of this property
+      navigator.msMaxTouchPoints > 0
 
     html.addEventListener('touchstart', () => {
       html.removeEventListener('mousemove', this.mouseEvent)

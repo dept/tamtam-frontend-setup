@@ -1,11 +1,10 @@
-// sass-lint:disable no-vendor-prefixes, single-line-per-selector, space-after-comma, force-attribute-nesting, no-qualifying-elements, no-mergeable-selectors
+// stylelint-disable property-no-vendor-prefix, no-duplicate-selectors
 
 /*! normalize for this project */
 
 *,
 *:before,
 *:after {
-  // position: relative;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -284,7 +283,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace, monospace;
+  font-family: monospace;
   font-size: 1em;
 }
 
@@ -342,9 +341,9 @@ select {
  */
 
 button,
- html input[type='button'], /* 1 */
- input[type='reset'],
- input[type='submit'] {
+html input[type='button'], /* 1 */
+input[type='reset'],
+input[type='submit'] {
   padding: 0;
   margin: 0;
   background: none;

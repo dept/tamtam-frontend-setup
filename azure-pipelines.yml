@@ -1,0 +1,46 @@
+trigger:
+  - 'master'
+  - 'develop'
+  - 'feature/*'
+  - 'release/*'
+
+name: $(Build.DefinitionName)-$(SourceBranchName)-$(Date:yyyyMMdd)$(Rev:.r)
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  directory.frontend: '.'
+  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '12.x'
+    displayName: 'Install Node 12.x'
+
+  - task: Cache@2
+    inputs:
+      key: 'yarn | "$(Agent.OS)" | $(directory.frontend)/yarn.lock | v1'
+      restoreKeys: |
+        yarn | "$(Agent.OS) | v1"
+      path: $(YARN_CACHE_FOLDER)
+    displayName: Load node_modules from cache
+
+  - script: yarn --frozen-lockfile
+    displayName: Install dependencies
+
+  - script: yarn deploy
+    displayName: Build
+
+  - task: ArchiveFiles@2
+    displayName: 'Archive build: Frontend'
+    inputs:
+      rootFolderOrFile: '$(directory.frontend)/build'
+      includeRootFolder: false
+      archiveFile: '$(Build.ArtifactStagingDirectory)/frontend.zip'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: Frontend'
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/frontend.zip'
+      ArtifactName: frontend

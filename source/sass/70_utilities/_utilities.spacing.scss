@@ -1,4 +1,4 @@
-// sass-lint:disable no-vendor-prefixes, brace-style, no-important, no-trailing-whitespace
+// stylelint-disable property-no-vendor-prefix, declaration-no-important
 
 //
 //    A collection of some helper classes for tweaking the layout of the elements.
@@ -63,5 +63,5 @@ $spacing-breakpoint-done: false;
 
   // Set to true to skip next breakpoints
   // to prevent duplicate classes when no responsive margin present.
-  $spacing-breakpoint-done: true;
+  $spacing-breakpoint-done: true; // stylelint-disable-line scss/dollar-variable-first-in-block
 }

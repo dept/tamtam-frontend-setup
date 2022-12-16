@@ -23,6 +23,7 @@ Desktop.ini
 
 ### VSCode ###
 .gitignore/
+.history
 
 # JIRA plugin
 atlassian-ide-plugin.xml

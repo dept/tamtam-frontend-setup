@@ -1,3 +1,3 @@
-module.exports = options => {
-  return options
+module.exports = config => {
+  return config
 }

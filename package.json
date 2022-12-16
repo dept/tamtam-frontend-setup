@@ -1,6 +1,6 @@
 {
   "name": "frontend-setup",
-  "version": "2.6.1",
+  "version": "3.0.1",
   "license": "MIT",
   "description": "A basic project setup for creating (static) html templates. Filled with automated tasks and configuration options.",
   "author": "Dept",
@@ -24,21 +24,48 @@
     "url": "https://bitbucket.org/tamtam-nl/tamtam-frontend-setup"
   },
   "engines": {
-    "node": "^12",
-    "npm": "^6"
+    "node": ">=12",
+    "npm": ">=6"
+  },
+  "browserslist": [
+    "defaults",
+    "> 1%",
+    "not IE 11"
+  ],
+  "jira-prepare-commit-msg": {
+    "messagePattern": "$J: $M",
+    "allowEmptyCommitMessage": true
+  },
+  "lint-staged": {
+    "**/*.(js|ts|tsx)": [
+      "eslint --fix"
+    ],
+    "**/*.(js|json|ts|tsx)": [
+      "prettier --write"
+    ],
+    "**/*.scss": [
+      "stylelint --customSyntax postcss-scss"
+    ]
   },
   "scripts": {
-    "postinstall": "dept-builder npm-install-recursive --dirs source/components,source/utilities --ignore node_modules",
-    "bamboo": "dept-builder deploy",
+    "postinstall": "husky install || (cd ../.. && husky install src/frontend/.husky)",
     "deploy": "dept-builder deploy",
-    "gulp": "dept-builder start",
     "start": "dept-builder start",
-    "build": "dept-builder build",
-    "dist": "dept-builder dist",
-    "task": "dept-builder task",
-    "create": "dept-builder create"
+    "favicons": "dept-builder favicons",
+    "generate": "dept-builder generate",
+    "lint": "yarn lint:js && yarn lint:css",
+    "lint:js": "eslint './source/**/*.{js,jsx,ts,tsx}'",
+    "lint:css": "stylelint **/*.scss",
+    "lint-fix": "yarn lint:js --fix && yarn lint:css --fix",
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "tamtam-frontend-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#2.1.0"
-  }
+    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#dev-3.0.9",
+    "husky": "^7.0.2"
+  },
+  "dependencies": {},
+  "workspaces": [
+    "source/components/*",
+    "source/utilities/*"
+  ]
 }

@@ -1,3 +1,4 @@
+// stylelint-disable property-no-vendor-prefix
 @mixin truncate-text($max-lines: 2, $line-height: $font-line-height-body) {
   overflow: hidden;
   text-overflow: ellipsis;
