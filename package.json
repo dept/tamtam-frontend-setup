@@ -60,7 +60,7 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#3.0.10",
+    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#3.0.11",
     "husky": "^7.0.2"
   },
   "dependencies": {},
