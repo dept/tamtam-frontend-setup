@@ -20,9 +20,6 @@ class LazyImage {
   _setObserverables() {
     InView.addElements(this.images, 'lazyimage::load')
   }
-  static _removeShadowImage(image?: HTMLImageElement | null) {
-    image?.addEventListener('transitionend', () => image.remove(), false)
-  }
   /**
    * Load the image
    */
@@ -76,7 +73,7 @@ class LazyImage {
   }
 }
 
-function getImageNodes<T extends Element>(selector: string) {
+function getImageNodes<T extends HTMLElement>(selector: string) {
   return Array.from(document.querySelectorAll<T>(selector))
 }
 
