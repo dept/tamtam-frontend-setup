@@ -1,6 +1,6 @@
 {
   "name": "frontend-setup",
-  "version": "3.0.4",
+  "version": "3.1.0",
   "license": "MIT",
   "description": "A basic project setup for creating (static) html templates. Filled with automated tasks and configuration options.",
   "author": "Dept",
@@ -10,12 +10,12 @@
       "email": "adrian.klingen@deptagency.com"
     },
     {
-      "name": "Dylan Vens",
-      "email": "dylan.vens@deptagency.com"
+      "name": "Frank van der Hammen",
+      "email": "frank.vanderhammen@deptagency.com"
     },
     {
-      "name": "Tim de Wolf",
-      "email": "tim.dewolf@deptagency.com"
+      "name": "Mark Smits",
+      "email": "mark.smits@deptagency.com"
     }
   ],
   "private": true,
