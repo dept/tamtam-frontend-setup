@@ -53,8 +53,9 @@
     "start": "dept-builder start",
     "favicons": "dept-builder favicons",
     "generate": "dept-builder generate",
+    "prettier": "prettier --write \"**/*.(js|json|ts|tsx)\"",
     "lint": "yarn lint:js && yarn lint:css",
-    "lint:js": "eslint './source/**/*.{js,jsx,ts,tsx}'",
+    "lint:js": "eslint \"./source/**/*.{js,jsx,ts,tsx}\"",
     "lint:css": "stylelint **/*.scss",
     "lint-fix": "yarn lint:js --fix && yarn lint:css --fix",
     "type-check": "tsc --noEmit"
