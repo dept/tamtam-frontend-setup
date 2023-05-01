@@ -23,6 +23,7 @@ $assets-path: '../' !default;
 @import '@/components/footer/stylesheet/_components.footer';
 @import '@/components/header/stylesheet/_components.header';
 @import '@/components/image/stylesheet/_components.image';
+@import '@/components/skiplinks/stylesheet/_components.skiplinks';
 /* endinject */
 
 @import '50_scopes/scopes.rich-text';
