@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <meta name="description" content="{{ global.site.description }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="disabled-adaptations" content="watch">
 
 
@@ -57,8 +57,7 @@
 
     {% endif %}
 
-
-    <a class="u-sr-only" href="#content" title="Skip to main content">Skip to main content</a>
+    {% include 'skiplinks.html' %}
 
     {% include "header.html" %}
 

@@ -1,6 +1,6 @@
 {
   "name": "frontend-setup",
-  "version": "3.0.5",
+  "version": "3.1.0",
   "license": "MIT",
   "description": "A basic project setup for creating (static) html templates. Filled with automated tasks and configuration options.",
   "author": "Dept",
@@ -10,12 +10,12 @@
       "email": "adrian.klingen@deptagency.com"
     },
     {
-      "name": "Dylan Vens",
-      "email": "dylan.vens@deptagency.com"
+      "name": "Frank van der Hammen",
+      "email": "frank.vanderhammen@deptagency.com"
     },
     {
-      "name": "Tim de Wolf",
-      "email": "tim.dewolf@deptagency.com"
+      "name": "Mark Smits",
+      "email": "mark.smits@deptagency.com"
     }
   ],
   "private": true,
@@ -53,8 +53,9 @@
     "start": "dept-builder start",
     "favicons": "dept-builder favicons",
     "generate": "dept-builder generate",
+    "prettier": "prettier --write \"**/*.(js|json|ts|tsx)\"",
     "lint": "yarn lint:js && yarn lint:css",
-    "lint:js": "eslint './source/**/*.{js,jsx,ts,tsx}'",
+    "lint:js": "eslint \"./source/**/*.{js,jsx,ts,tsx}\"",
     "lint:css": "stylelint **/*.scss",
     "lint-fix": "yarn lint:js --fix && yarn lint:css --fix",
     "type-check": "tsc --noEmit"
