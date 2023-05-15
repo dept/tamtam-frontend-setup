@@ -1,0 +1,94 @@
+:root {
+  --modal-padding: 32px;
+  --modal-default-max-height: 80vh;
+}
+
+@mixin modal {
+  position: fixed;
+  overflow: hidden;
+  border: 0;
+  padding: var(--modal-padding) 0;
+  box-sizing: border-box;
+  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0);
+  transition: 300ms;
+
+  &::backdrop {
+    opacity: 0;
+  }
+
+  &[open] {
+    box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.3);
+  }
+}
+
+@mixin drawer {
+  @include modal;
+  display: block;
+  left: unset;
+  right: unset;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  width: 400px;
+  height: 100vh;
+  max-height: unset;
+
+  &[open] {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.modal--drawer-left {
+  @include drawer;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.modal--drawer-right {
+  @include drawer;
+  right: 0;
+  transform: translateX(100%);
+}
+
+.modal--default {
+  @include modal;
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: fit-content;
+  max-height: var(--modal-default-max-height);
+  opacity: 0;
+  visibility: hidden;
+  margin: auto;
+
+  &[open] {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal__content {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 0 var(--modal-padding);
+
+  .modal--default & {
+    height: fit-content;
+    max-height: calc(var(--modal-default-max-height) - var(--modal-padding) * 2);
+  }
+}
+
+.modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+html[class^='has-modal-open--'] {
+  body {
+    position: fixed;
+    overflow: hidden;
+  }
+}

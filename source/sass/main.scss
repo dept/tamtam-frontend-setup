@@ -24,6 +24,7 @@ $assets-path: '../' !default;
 @import '@/components/header/stylesheet/_components.header';
 @import '@/components/image/stylesheet/_components.image';
 @import '@/components/skiplinks/stylesheet/_components.skiplinks';
+@import '@/components/modal/stylesheet/_components.modal';
 /* endinject */
 
 @import '50_scopes/scopes.rich-text';

@@ -1,0 +1,8 @@
+{% macro modal(data) %}
+<dialog class="c-modal {% if data.variant %} modal--{{ data.variant }} {% else %} modal--default{% endif %}" id="{{ data.id }}" js-hook-modal>
+  <div class="modal__content">
+    {{ caller() }}
+  </div>
+  <button class="modal__close" aria-label="Sluit modal" js-hook-modal-close-btn>X</button>
+</dialog>
+{% endmacro %}

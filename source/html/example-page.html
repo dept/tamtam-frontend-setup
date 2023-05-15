@@ -72,6 +72,36 @@
 
         {{ button( { label: 'button with an arrow', icon: 'chevron-right' } ) }}
 
+        <br/><br/>
+
+        <h3>How to use modals:</h3> <br/>
+
+        {{ button( { label: 'open modal default', attr: 'aria-controls="modal-default"' } ) }}
+        {{ button( { label: 'open drawer left', attr: 'aria-controls="drawer-left"' } ) }}
+        {{ button( { label: 'open drawer right', attr: 'aria-controls="drawer-right"' } ) }}
+
+        {% from 'modal.html' import modal  %}
+
+        {% call modal({
+          id: 'modal-default'
+        }) %}
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nulla, natus deleniti accusamus harum ullam saepe doloribus expedita asperiores fugiat veritatis! Consequuntur quibusdam ducimus ratione?</p>
+        {% endcall %}
+
+        {% call modal({
+          id: 'drawer-left',
+          variant: 'drawer-left'
+        }) %}
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nulla, natus deleniti accusamus harum ullam saepe doloribus expedita asperiores fugiat veritatis! Consequuntur quibusdam ducimus ratione?</p>
+        {% endcall %}
+
+        {% call modal({
+          id: 'drawer-right',
+          variant: 'drawer-right'
+        }) %}
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nulla, natus deleniti accusamus harum ullam saepe doloribus expedita asperiores fugiat veritatis! Consequuntur quibusdam ducimus ratione?</p>
+        {% endcall %}
+
 
         <h3 class="u-margin-top--md">Including modules:</h3> <br/>
 
