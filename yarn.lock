@@ -3855,7 +3855,7 @@ depd@^1.1.2, depd@~1.1.2:
 
 "dept-builder@git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#feature/a11y-scan":
   version "3.0.13"
-  resolved "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#261bc7441eab1f6bc7968997e54f25b039277d52"
+  resolved "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#d8ef519b8dd2fb0d63ad799933eb1405add743ed"
   dependencies:
     "@babel/core" "7.20.5"
     "@babel/eslint-parser" "7.19.1"
