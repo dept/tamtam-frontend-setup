@@ -1,8 +1,8 @@
 # Build results
 build/
 
-# A11y scan screenshots
-a11y-scan-screenshots/
+# A11y scan results
+a11y-scan-results/
 
 # Dependency directory
 node_modules/
