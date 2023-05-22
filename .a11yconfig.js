@@ -1,7 +1,10 @@
 module.exports = {
   maxWorkers: 4,
   takeScreenshot: true,
-  fileIgnore: ['**/api-response--**', 'index.html'],
+  fileIgnore: [
+    // Ignore the automatically generated pages list "index.html" by default
+    '**/index.html',
+  ],
   // For more documentation on usage check
   // https://www.npmjs.com/package/pa11y#configuration
   pa11yConfig: {
