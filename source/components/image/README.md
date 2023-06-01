@@ -38,9 +38,9 @@ import '@/components/image'
 | `alt`                  | yes      | `string`                                   |
 | `imageStyle`           | no       | `type of data/images/styles/${style}.json` |
 | `image`                | no       | `string`                                   |
+| `fetchPriority`        | no       | `'high' | 'low' | 'auto'`                  |
 | `preload` _deprecated_ | no       | `string`                                   |
 | `srcset` _deprecated_  | no       | `string`                                   |
-
 ### Default
 
 By default the image component will always auto-generate placeholder images by using https://satyr.dev.
@@ -172,6 +172,15 @@ These sources breakpoints should still match your `imageStyle` breakpoints.
 }) }}
 ```
 
+### Images with fetch priority
+Images loaded with the fetchPriority attribute set are not lazy loaded and instruct the browser to load the image with the appropriate priority. This helps reducing the Largest Contentful Paint on page load.
+
+This can be used in example for Hero components that are rendered above the page fold on page load.
+
+More information can be found in the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/fetchPriority)
+
+
+
 ## Dependencies
 
 - In-view libary
@@ -179,5 +188,6 @@ These sources breakpoints should still match your `imageStyle` breakpoints.
 
 ## Developers
 
-- [Jeroen Reumkens](mailto:jeroen-reumkens@tamtam.nl)
-- [Adrian Klingen (co author)](mailto:adrian.klingen@deptagency.com)
+- [Adrian Klingen](mailto:adrian.klingen@deptagency.com)
+- [Mark Smits (co author)](mailto:mark.smits@deptagency.com)
+
