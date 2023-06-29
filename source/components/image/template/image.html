@@ -40,10 +40,11 @@
       {% if data.srcset or data.image %}
         <img class="image__default"
           {%- if data.preload %} src="{{ data.preload }}" {% endif -%}
+          {%- if not data.alt %} role="presentation" {% endif -%}
           {%- if showPreload and not data.preload %} src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ aspect[0] }} {{ aspect[1] }}'/%3E" {% endif -%}
           data-src="{{ data.image }}"
           {%- if data.srcset %} data-srcset="{{ data.srcset }}" {% endif -%}
-          alt="{{ data.alt or 'Image' }}"
+          alt="{{ data.alt or '' }}"
         >
       {% else %}
         <picture>
@@ -60,8 +61,9 @@
             <source data-srcset="{{- hasCustomSource or placeholderUrl|join(',') -}}"
               media="{{- mqStart -}} {{- ' and ' if (mqEnd and mqStart and not loop.last) -}} {{- mqEnd -}}" type="image/jpeg"/>
           {%- endfor %}
-          <img class="image__default" alt="{{ data.alt or 'Image' }}"
+          <img class="image__default" alt="{{ data.alt or '' }}"
             {%- if data.preload %} src="{{ data.preload }}" {% endif -%}
+            {%- if not data.alt %} role="presentation" {% endif -%}
             {%- if showPreload and not data.preload %} src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ aspect[0] }} {{ aspect[1] }}'/%3E" {% endif -%}
           >
         </picture>
