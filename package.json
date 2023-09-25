@@ -51,6 +51,7 @@
     "postinstall": "husky install || (cd ../.. && husky install src/frontend/.husky)",
     "deploy": "dept-builder deploy",
     "start": "dept-builder start",
+    "dev": "yarn run start",
     "favicons": "dept-builder favicons",
     "generate": "dept-builder generate",
     "prettier": "prettier --write \"**/*.(js|json|ts|tsx)\"",
