@@ -4002,9 +4002,9 @@ depd@^1.1.2, depd@~1.1.2:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
 
-"dept-builder@git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#3.2.0":
-  version "3.2.0"
-  resolved "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#5bbd6c698299f94a6a0d56a0e9d86bb203c34d3a"
+"dept-builder@git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#3.2.2":
+  version "3.2.2"
+  resolved "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#de05e470f80cef402283b99357774f09c227df9b"
   dependencies:
     "@babel/core" "7.21.8"
     "@babel/eslint-parser" "7.21.8"
