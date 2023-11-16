@@ -1,6 +1,6 @@
 {
   "name": "frontend-setup",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "license": "MIT",
   "description": "A basic project setup for creating (static) html templates. Filled with automated tasks and configuration options.",
   "author": "Dept",
@@ -62,7 +62,7 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#3.2.2",
+    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#3.4.2",
     "husky": "^7.0.2"
   },
   "dependencies": {},
