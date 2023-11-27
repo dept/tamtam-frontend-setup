@@ -1,6 +1,6 @@
 {
   "name": "frontend-setup",
-  "version": "3.4.2",
+  "version": "3.4.3",
   "license": "MIT",
   "description": "A basic project setup for creating (static) html templates. Filled with automated tasks and configuration options.",
   "author": "Dept",
