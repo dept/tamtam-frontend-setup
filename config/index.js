@@ -9,6 +9,8 @@ const extendConfig = config => {
   //   }
   // ]
 
+  config.htmlOutputPath = config.isDevelopment ? '' : 'html'
+
   return config
 }
 
