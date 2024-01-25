@@ -9,7 +9,7 @@ const extendConfig = config => {
   //   }
   // ]
 
-  config.htmlOutputPath = config.isDevelopment ? '' : 'html'
+  config.htmlOutputPath = config.buildStatic || config.isDevelopment ? '' : 'html'
 
   return config
 }
