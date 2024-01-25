@@ -2,11 +2,12 @@ trigger:
   batch: true
   branches:
     include:
-      - 'main'
-      - 'master'
-      - 'develop'
-      - 'feature/*'
-      - 'release/*'
+      - main
+      - master
+      - release/*
+      - acceptance
+      - develop
+      - support
 
 parameters:
   - name: bypassCache
