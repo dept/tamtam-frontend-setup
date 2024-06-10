@@ -27,7 +27,10 @@
     {%- if data.url %} href="{{ data.url }}"{% endif -%}
     {%- if data.hook %} js-hook-{{ data.hook }}{% endif -%}
     {%- if data.controls %} aria-controls="{{ data.controls }}"{% endif -%}
-    {%- if data.attr %} {{ data.attr|safe }}{% endif -%}>
+    {%- if data.attr %} {{ data.attr|safe }}{% endif -%}
+    {%- for key, value in data.attr %}
+        {{ key }}="{{ value }}" 
+    {% endfor %}>
 
         <span class="button__label">{{ data.label }}</span>
 
