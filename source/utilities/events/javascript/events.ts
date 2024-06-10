@@ -44,7 +44,10 @@ class Events {
     readAndBindEventsFromDOM()
   }
 
-  $on<T>(event: string, callback: (event: CustomEvent, data: T, currentTarget?: Element) => void) {
+  $on<T extends Record<string, any>>(
+    event: string,
+    callback: (event: CustomEvent, data: T, currentTarget?: Element) => void,
+  ) {
     // Remove if duplicate event is detected
     if (store[event]?.callbackString === callback.toString())
       eventEl.removeEventListener(event, store[event].callbackWrapper!, false)
@@ -218,7 +221,7 @@ function _domFind(
 /**
  * Extracts and returns specific properties from an given object
  */
-function extractPropFromObject(object: Record<string, any>, propName: string) {
+function extractPropFromObject<T extends Record<string, any>>(object: T, propName: string) {
   return object && object[propName] ? object[propName] : null
 }
 
