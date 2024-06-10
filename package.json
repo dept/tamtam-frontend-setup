@@ -49,7 +49,7 @@
     ]
   },
   "scripts": {
-    "postinstall": "husky install || (cd ../.. && husky install src/frontend/.husky)",
+    "postinstall": "husky || (cd ../.. && husky src/frontend/.husky)",
     "deploy": "dept-builder deploy",
     "start": "dept-builder start",
     "dev": "yarn run start",
