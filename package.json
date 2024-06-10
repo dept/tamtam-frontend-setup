@@ -24,8 +24,8 @@
     "url": "https://bitbucket.org/tamtam-nl/tamtam-frontend-setup"
   },
   "engines": {
-    "node": ">=16",
-    "npm": ">=6"
+    "node": ">=20",
+    "npm": "Please use Yarn"
   },
   "browserslist": [
     "defaults",

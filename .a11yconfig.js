@@ -16,8 +16,8 @@ module.exports = {
     // Example: "duplicate-id" for ignoring duplicate IDs
     ignore: [],
     viewport: {
-      width: 1280,
-      height: 1024, // Height will be overridden to always match the document height
+      width: 1920,
+      height: 1080, // Height will be overridden to always match the document height
     },
   },
 }
