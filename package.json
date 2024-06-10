@@ -38,6 +38,7 @@
   },
   "lint-staged": {
     "**/*.(js|ts|tsx)": [
+      "tsc",
       "eslint --fix"
     ],
     "**/*.(js|json|ts|tsx)": [
@@ -64,7 +65,7 @@
   },
   "devDependencies": {
     "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#feature/a11y-scan",
-    "husky": "^7.0.2"
+    "husky": "^9.0.11"
   },
   "dependencies": {},
   "workspaces": [
