@@ -63,7 +63,7 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#feature/a11y-scan",
+    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#3.5.0",
     "husky": "^9.0.11"
   },
   "workspaces": [

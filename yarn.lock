@@ -3547,9 +3547,9 @@ depd@~1.1.2:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha512-7emPTl6Dpo6JRXOXjLRxck+FlLRX5847cLKEn00PLAgc3g2hTZZgr+e4c2v6QpSmLeFP3n5yUo7ft6avBK/5jQ==
 
-"dept-builder@git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#feature/a11y-scan":
-  version "3.2.4"
-  resolved "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#f1e75e0a9b90093b87268104f7f4808d89a9c9b4"
+"dept-builder@git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#3.5.0":
+  version "3.5.0"
+  resolved "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#c2af0e2479b5d21b18e4d3265ea8bfb478cfadd4"
   dependencies:
     "@babel/core" "7.24.7"
     "@babel/eslint-parser" "7.24.7"
