@@ -6,9 +6,13 @@
 
         <h1 class="u-margin-bottom--lg">Example page template</h1>
 
-        <h3 class="u-margin-bottom--xs">All the data available in this template:</h3>
+        <h2 class="u-h3 u-margin-bottom--xs">All the data available in this template:</h2>
 
-        {% debug %}
+        {% if global.project.debug %}
+          {% debug %}
+        {% else %}
+          <p>Debug data is only shown with global.project.debug enabled.</p>
+        {% endif %}
 
         <h3 class="u-margin-top--md">How to use the data:</h3> <br/>
 

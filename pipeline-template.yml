@@ -12,9 +12,9 @@ jobs:
       vmImage: 'ubuntu-latest'
     steps:
       - task: UseNode@1
-        displayName: 'Install Node 16.x'
+        displayName: 'Install Node 20.x'
         inputs:
-          version: '16.x'
+          version: '20.x'
 
       - task: Cache@2
         displayName: Cache Yarn packages

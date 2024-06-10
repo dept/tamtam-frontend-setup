@@ -1,6 +1,9 @@
 # Build results
 build/
 
+# A11y scan results
+a11y-scan-results/
+
 # Dependency directory
 node_modules/
 

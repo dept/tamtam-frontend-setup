@@ -11,19 +11,13 @@ module.exports = {
   ],
   rules: {
     'prettier/prettier': true,
-    'color-hex-case': 'lower',
+    'value-keyword-case': ['lower', { ignoreProperties: [/^\$font/, 'font-family'] }],
     'declaration-no-important': true,
-    'declaration-colon-space-after': 'always',
-    'declaration-colon-space-before': 'never',
-    'function-whitespace-after': 'always',
     'max-nesting-depth': [4, { ignore: ['pseudo-classes'] }],
     'no-empty-source': null,
     'no-descending-specificity': null,
     'selector-class-pattern': BEMPattern,
     'keyframes-name-pattern': kebabCasePattern,
-    'block-opening-brace-newline-after': 'always-multi-line',
-    'block-opening-brace-space-after': 'always-single-line',
-    'block-opening-brace-space-before': 'always',
     'at-rule-empty-line-before': [
       'always',
       {

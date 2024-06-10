@@ -24,8 +24,8 @@
     "url": "https://bitbucket.org/tamtam-nl/tamtam-frontend-setup"
   },
   "engines": {
-    "node": ">=16",
-    "npm": ">=6"
+    "node": ">=20",
+    "npm": "Please use Yarn"
   },
   "browserslist": [
     "defaults",
@@ -48,12 +48,13 @@
     ]
   },
   "scripts": {
-    "postinstall": "husky install || (cd ../.. && husky install src/frontend/.husky)",
+    "postinstall": "husky || (cd ../.. && husky src/frontend/.husky)",
     "deploy": "dept-builder deploy",
     "start": "dept-builder start",
     "dev": "yarn run start",
     "favicons": "dept-builder favicons",
     "generate": "dept-builder generate",
+    "a11y": "dept-builder a11y",
     "prettier": "prettier --write \"**/*.(js|json|ts|tsx)\"",
     "lint": "yarn lint:js && yarn lint:css",
     "lint:js": "eslint \"./source/**/*.{js,jsx,ts,tsx}\"",
@@ -62,10 +63,9 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#3.4.2",
-    "husky": "^7.0.2"
+    "dept-builder": "git+https://bitbucket.org/tamtam-nl/tamtam-frontend-builder.git#3.5.0",
+    "husky": "^9.0.11"
   },
-  "dependencies": {},
   "workspaces": [
     "source/components/*",
     "source/utilities/*"
